@@ -1,0 +1,87 @@
+0.9.0
+	Initial Release
+0.9.1
+	--	fixed bug that caused MAK to write garbage to attributes when
+		a pattern in the Name->Attribute app did not match the filename.
+
+	--	fixed bug that caused MAK not to accept single character attributes.
+
+	--	fixed bug that caused MAK not to recieve focus when clicked anywhere
+		other than the title or menu bars.
+
+	-- introduced hack to better support larger fonts
+
+1.0.0
+	--	made gui much more font sensitive removing previous large font hacks.
+	-- included initial documentation
+2.0.0
+	-- sort genre list alphabetically.
+	-- support string type track and year attributes.
+	-- updated icon to include outline and shadowing
+	-- major gui overhaul.  
+		-- Added Support for ID3 Tag Editing to Attribute Editor
+	  		now called "The Editor"
+		-- Combind Tags To Attributes & Attributes To Tags Tabs into
+			new "Tags & Attributes" tab
+		-- Combind Name To Attributes & Attributes To Name Tabs into
+			new "Name & Attributes" tab
+3.0.0
+	-- vastly improved GUI
+		-- no more tabs!
+		-- list is now global to all functions
+		-- window settings are only saved when the user wants them to be
+	-- added partial support for Ogg Vorbis
+		-- DISCLAIMER: Army Knife will write ID3v1.1 tags to ogg files.
+			this is NOT in the Ogg Vorbis spec
+		-- DISCLAIMER: Army Knife does NOT read ogg vorbis comment fields.
+	-- changed name from "The MP3 Army Knife" to "The Army Knife"
+	-- added all ID3v1.1 genres to the genre list.
+3.1.0
+	-- Fixed bug that caused list not to occupy correct window space
+		when window saved larger than default.
+	-- Tracker Add-On again!!!!
+	-- Threaded adding of files to list.  Now it doesn't appear as if
+		Army Knife is doing nothing when loading large lists.
+	-- New indicator of number of selected files.
+	-- User Defined Genre's PLEASE SEE README!!
+3.1.1
+	-- Fixed spelling error in genre menu
+	-- Replaced Attribute/Tag library with the one used by FlipSide A.E.
+3.1.2
+	-- Fixed bugs in Attribute/Tag lib
+	-- Fixed bug with Editor Track saving introduced in prev release
+	-- Made GUI much more font sensitive
+	-- Made GUI smaller to accomidate smaller res screens
+3.1.3
+	-- Fixed another bug that affected Track numbers when inputing a single digit.
+3.1.5
+	-- Added Attributes and mechanism for TTE
+?
+	-- process_refs() changed to launch Army Knife stand-alone, 
+	   so as to make it not affect Tracker in the event of a crash.
+
+	mmu_man:
+		-- Replicability
+		-- mp3gain view added
+		-- shortcuts for odd keyboards
+	
+	Vegard Waerp:
+		-- buffer overflow patches
+4.0.0
+	-- major changes in the source tree
+	-- integrated taglib library for ID3v2, Ogg and FLAC support
+	-- application signatures changed
+	-- resource files updated
+	-- updated About text
+	-- progress bars fixed
+	-- new keyboard shortcuts
+	-- Apply button set to Default
+	-- mp3gain view removed
+	-- untyped files will be identified
+	-- preference window removed
+	-- filename pattern dropdown menu added
+	-- filename pattern entry window added
+	-- addrefs barberpole added
+	-- replicant disabled
+	-- added a check/uncheck all checkboxes
+	-- added MPEG mode
