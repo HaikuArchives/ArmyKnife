@@ -47,9 +47,11 @@ DEPDIR := dependencies/libsanta
 SRCDIR := source/Santa
 INCLUDEDIR := source/Santa
 RELEASEDIR := lib
+HEADERDIR := include/Santa
 
-BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
+BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1 *.h)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
+HEADERS := $(addprefix $(SRCDIR)/,$(BASEINCLUDES))
 
 # create directories
 MAKEDEP := $(shell mkdir -p $(DEPDIR))
@@ -97,6 +99,8 @@ all : build
 install : build
 	@cp $(OBJDIR)/$(BINARY) $(RELEASEDIR)/$(BINARY)
 	@$(MIMESET) -f $(RELEASEDIR)/$(BINARY)
+	@mkdir -p $(HEADERDIR)
+	@cp $(HEADERS) $(HEADERDIR)
 
 build : $(BINARY)
 
@@ -104,6 +108,7 @@ clean :
 	@rm -f $(RELEASEDIR)/$(BINARY)
 	@rm -rf $(OBJDIR)
 	@rm -rf $(DEPDIR)
+	@rm -rf $(HEADERDIR)
 	@rm -f $(TEMPDEPFILE)
 
 $(BINARY) : $(OBJDIR) $(OBJECTS)
