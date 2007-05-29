@@ -1,0 +1,153 @@
+# ----------------
+# JBQ code license
+# ----------------
+# 
+# Copyright 1996,97,98,99,2000 Jean-Baptiste M. QUERU
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions, and the following disclaimer.
+# 
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions, and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 
+# 3. The name of the author may not be used to endorse or promote products
+#    derived from this software without specific prior written permission.
+# 
+# 
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+# TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.    
+
+# the executable
+BINARY := ArmyKnife-M
+SHORTNAME := ArmyKnife
+VERSION := 4.0
+BUILDDATE := $(shell date +%Y-%b-%d)
+FULLNAME := $(PACKAGE)-$(VERSION)-$(BUILDDATE)
+RESOURCES := ArmyKnife.rsrc
+#DEFINES := 
+
+# libraries
+SYS_LIBS := -lbe -lroot 
+SRC_LIBS := -ltag -lsanta
+
+# directories
+OBJDIR := objects/armyknife
+DEPDIR := dependencies/armyknife
+SRCDIR := source/ArmyKnife
+INCLUDEDIR := include
+DATADIR := documentation/armyknife
+LIBDIR := lib
+RELEASEDIR := release/ArmyKnife
+
+BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
+INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
+
+# dependencies
+TEMPDEPFILE := armyknife_temp_deps
+
+# compiler, linker, ...
+CC := gcc -c -pipe
+LD := gcc
+
+CFLAGS += $(DEFINES)
+CFLAGS += -DBUILD_DATE=\"$(BUILDDATE)\"
+#CFLAGS += -Wall -W -Wno-multichar -Wpointer-arith
+#CFLAGS += -Wwrite-strings -Woverloaded-virtual
+#CFLAGS += -Wconversion -Wpointer-arith
+#CFLAGS += -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
+#CFLAGS += -Wcast-qual -Wshadow
+CFLAGS += $(INCLUDES) -I$(INCLUDEDIR)
+
+LDFLAGS := $(SYS_LIBS) -L$(LIBDIR) $(SRC_LIBS)
+
+DEP := gcc -MM $(DEFINES) $(INCLUDES) -I$(INCLUDEDIR)
+
+# create the dep dir.
+MAKEDEP := $(shell mkdir -p $(DEPDIR))
+
+ZIP := zip -r -9 -y
+
+################################################
+
+# the engine
+
+MAKEFILE := Makefile
+
+DATA := $(shell find $(DATADIR) -type f)
+
+BASESOURCES := $(shell cd $(SRCDIR) && ls -1 *.cpp)
+SOURCES := $(addprefix $(SRCDIR)/,$(BASESOURCES))
+OBJECTS := $(addprefix $(OBJDIR)/,$(addsuffix .o,$(basename $(BASESOURCES))))
+DEPENDS := $(addprefix $(DEPDIR)/,$(addsuffix .d,$(basename $(BASESOURCES))))
+
+#BASEHEADERS := $(shell cd $(SRCDIR) && ls -1 *.h)
+#HEADERS := $(addprefix $(SRCDIR)/,$(BASEHEADERS))
+
+.PHONY : default release clean zipfile all
+
+.DELETE_ON_ERROR : $(RELEASEDIR)/$(BINARY)
+
+default : build
+
+build : $(BINARY)
+
+# rule to create the object file directory if needed
+$(OBJDIR)::
+	@[ -d $(OBJDIR) ] || mkdir $(OBJDIR) > /dev/null 2>&1
+
+clean :
+	@echo cleaning
+	@rm -rf $(RELEASEDIR)
+	@rm -rf $(OBJDIR)
+	@rm -rf $(DEPDIR)
+	@rm -f $(TEMPDEPFILE)
+
+all : zipfile
+
+$(BINARY) : $(OBJDIR) $(OBJECTS)
+	@rm -f $(TEMPDEPFILE)
+	@mkdir -p $(RELEASEDIR)/
+	@echo linking $@
+	@$(LD) -o $(RELEASEDIR)/$@ $(OBJECTS) $(LDFLAGS)
+	@echo merging resources
+	@xres -o $(RELEASEDIR)/$@ $(SRCDIR)/$(RESOURCES)
+	@mimeset -f $(RELEASEDIR)/$@
+	
+$(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+	@echo $(CC) $< $(CFLAGS) -o $@
+	@$(CC) $< $(CFLAGS) -o $@
+
+$(DEPDIR)/%.d : $(SRCDIR)/%.cpp
+	@/bin/echo generating dependencies for $<
+	@/bin/echo $@ $(OBJDIR)/$(shell $(DEP) $<) > $(TEMPDEPFILE)
+	@/bin/echo $(OBJDIR)/$(basename $(@F))".o : $(MAKEFILE)" | /bin/cat - $(TEMPDEPFILE) > $@
+
+zipfile : $(BINARY) $(DATA) $(MAKEFILE)
+	@rm -rf release//$(FULLNAME)
+	@mkdir -p release/$(FULLNAME)
+	@copyattr -d -r $(BINARY) $(DATADIR)/* $@~/$(FULLNAME)/
+	@find $@~ -type f | xargs mimeset
+	@cd $@~ && $(ZIP) $@ $(FULLNAME)
+	@mv -f $@~/$@ .
+	@rm -rf $@~
+
+ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(MAKECMDGOALS),depend)
+-include $(DEPENDS)
+endif
+endif
+
