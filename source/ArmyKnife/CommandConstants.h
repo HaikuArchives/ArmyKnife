@@ -48,9 +48,19 @@
 #define MSG_TA_MODE '041'
 #define MSG_NA_MODE '042'
 #define MSG_MPEG_MODE '043'
+#ifdef _TTE_
+#define MSG_TT_INFO_MODE '044'
+#endif
 
 #define MSG_BEEP_ON_UNSUPPORTED '050'
 
 #define MSG_CLEAR_CHECKBOX '060'
+
+#define MSG_MAKE_APPLY_BUTTON_DEFAULT '080'
+#define MSG_MAKE_APPLY_BUTTON_NOT_DEFAULT '081'
+
+#define MSG_EDIT_CUT '091'
+#define MSG_EDIT_COPY '092'
+#define MSG_EDIT_PASTE '093'
 
 #endif

@@ -1,7 +1,6 @@
 #include <signal.h>
 #include <be/app/Message.h>
 #include <be/interface/Button.h>
-//#include <be/interface/Dragger.h>
 #include <be/interface/ListView.h>
 #include <be/interface/Rect.h>
 #include <be/interface/StatusBar.h>
@@ -14,7 +13,7 @@
 #include <be/support/Beep.h>
 #include <be/support/List.h>
 #include <be/support/String.h>
-#include <Santa/BetterScrollView.h>
+#include <BetterScrollView.h>
 #include "AddOnView.h"
 #include "AppDefs.h"
 #include "AppView.h"
@@ -27,6 +26,10 @@
 #include "PickListView.h"
 #include "Preferences.h"
 #include "TAView.h"
+
+#ifdef _TTE_
+#include "TTInfoView.h"
+#endif
 
 AppView::AppView(BRect frame) : BView(frame, "ArmyKnifeAppView", B_FOLLOW_ALL,
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE_JUMP)
@@ -81,7 +84,6 @@ AppView::SaveWindowFrame()
 	PRINT(("AppView::SaveWindowFrame()\n"));
 
 	BRect rect = Window()->Frame();
-	rect.PrintToStream();
 	m_preferences->SetWindowFrame(rect);
 }
 
@@ -134,6 +136,14 @@ AppView::InitView()
 	else
 		delete aView;
 
+#ifdef _TTE_
+	aView = new TTInfoView(inframe, m_preferences);
+	if (aView->InitCheck() == B_OK)
+		m_pick_list_view->AddView(aView);
+	else
+		delete aView;
+#endif
+
 	SelectView(m_preferences->GetMode());
 
 	frame = m_pick_list_view->Frame();
@@ -149,6 +159,7 @@ AppView::InitView()
 	m_scroll_view = new BetterScrollView("m_scroll_view",m_list_view,B_FOLLOW_ALL);
 	m_scroll_view->SetDataRect(BRect(0,0,0,0));
 	AddChild(m_scroll_view);
+
 
 	BRect textFrame = m_scroll_view->Frame();
 	textFrame.bottom += 15;
@@ -525,7 +536,7 @@ AppView::AddRefsThreadFunc(void* data)
 		}
 		BRect dataRect(0,0,frameWidth,frameHeight);
 		view->m_scroll_view->SetDataRect(dataRect);
-
+		
 		// Sort List
 		view->m_list_view->SortItems(&AppView::SortFunc);
 
@@ -701,6 +712,7 @@ AppView::MessageReceived(BMessage* message)
 		case B_SIMPLE_DATA:
 			AddRefs(message);
 			break;
+			
 		default:
 			BView::MessageReceived(message);
 	}

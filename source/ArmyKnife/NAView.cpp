@@ -14,7 +14,6 @@
 #include <be/support/Debug.h>
 #include <be/support/List.h>
 #include "AudioAttributes.h"
-#include <Matcher/NameValueMatcher.h>
 #include "AppDefs.h"
 #include "AppView.h"
 #include "AppWindow.h"
@@ -70,42 +69,42 @@ NAView::InitView()
 	m_direction_box->MoveTo(space,space);
 	bottom = m_direction_box->Frame().bottom;
 
-	m_artist_stringview = new BStringView(frame,0,ARTIST_PATTERN);
+	m_artist_stringview = new BStringView(frame,0,ARTIST_PATTERN_INFO);
 	m_artist_stringview->ResizeToPreferred();
 	m_artist_stringview->MoveTo(space,space+bottom);
 	bottom = m_artist_stringview->Frame().bottom;
 
-	m_album_stringview = new BStringView(frame,0,ALBUM_PATTERN);
+	m_album_stringview = new BStringView(frame,0,ALBUM_PATTERN_INFO);
 	m_album_stringview->ResizeToPreferred();
 	m_album_stringview->MoveTo(space,space+bottom);
 	bottom = m_album_stringview->Frame().bottom;
 
-	m_title_stringview = new BStringView(frame,0,TITLE_PATTERN);
+	m_title_stringview = new BStringView(frame,0,TITLE_PATTERN_INFO);
 	m_title_stringview->ResizeToPreferred();
 	m_title_stringview->MoveTo(space,space+bottom);
 	bottom = m_title_stringview->Frame().bottom;
 
-	m_year_stringview = new BStringView(frame,0,YEAR_PATTERN);
+	m_year_stringview = new BStringView(frame,0,YEAR_PATTERN_INFO);
 	m_year_stringview->ResizeToPreferred();
 	m_year_stringview->MoveTo(space,space+bottom);
 	bottom = m_year_stringview->Frame().bottom;
 
-	m_comment_stringview = new BStringView(frame,0,COMMENT_PATTERN);
+	m_comment_stringview = new BStringView(frame,0,COMMENT_PATTERN_INFO);
 	m_comment_stringview->ResizeToPreferred();
 	m_comment_stringview->MoveTo(space,space+bottom);
 	bottom = m_comment_stringview->Frame().bottom;
 
-	m_track_stringview = new BStringView(frame,0,TRACK_PATTERN);
+	m_track_stringview = new BStringView(frame,0,TRACK_PATTERN_INFO);
 	m_track_stringview->ResizeToPreferred();
 	m_track_stringview->MoveTo(space,space+bottom);
 	bottom = m_track_stringview->Frame().bottom;
 
-	m_genre_stringview = new BStringView(frame,0,GENRE_PATTERN);
+	m_genre_stringview = new BStringView(frame,0,GENRE_PATTERN_INFO);
 	m_genre_stringview->ResizeToPreferred();
 	m_genre_stringview->MoveTo(space,space+bottom);
 	bottom = m_genre_stringview->Frame().bottom;
 
-	m_wildcard_stringview = new BStringView(frame,0,WILDCARD_PATTERN);
+	m_wildcard_stringview = new BStringView(frame,0,WILDCARD_PATTERN_INFO);
 	m_wildcard_stringview->ResizeToPreferred();
 	m_wildcard_stringview->MoveTo(space,space+bottom);
 	bottom = m_wildcard_stringview->Frame().bottom;
@@ -377,19 +376,19 @@ NAView::ApplyFunction(void* args)
 			}
 
 			BString name(pattern);
-			name.ReplaceAll(ARTIST_PAT,artist);
-			name.ReplaceAll(ALBUM_PAT,album);
-			name.ReplaceAll(TITLE_PAT,title);
-			name.ReplaceAll(YEAR_PAT,year);
-			name.ReplaceAll(COMMENT_PAT,comment);
-			name.ReplaceAll(TRACK_PAT,track);
-			name.ReplaceAll(GENRE_PAT,genre);
+			name.ReplaceAll(ARTIST_PATTERN, artist);
+			name.ReplaceAll(ALBUM_PATTERN, album);
+			name.ReplaceAll(TITLE_PATTERN, title);
+			name.ReplaceAll(YEAR_PATTERN, year);
+			name.ReplaceAll(COMMENT_PATTERN, comment);
+			name.ReplaceAll(TRACK_PATTERN, track);
+			name.ReplaceAll(GENRE_PATTERN, genre);
 			BEntry entry(ref);
 			entry.Rename(name.String());
 			entry.GetRef(ref);
 			refItem->UpdateText();
 		}
-		else
+		else	// n2a -- name to attributes
 		{
 			char name[2];
 			char value[B_PATH_NAME_LENGTH+1];
@@ -512,5 +511,110 @@ NAView::MessageReceived(BMessage* message)
 		default:
 			AddOnView::MessageReceived(message);
 	}
+}
+
+NameValueMatcher::NameValueMatcher(const char* nameStr, const char* valueStr, char delim)
+{
+	_delim = delim;
+	_name = 0;
+	_value = 0;
+
+	if(nameStr)
+	{
+		int len = strlen(nameStr);
+		_name = new char[len+1];
+		strcpy(_name,nameStr);
+	}
+
+	if(valueStr)
+	{
+		int len = strlen(valueStr);
+		_value = new char[len+1];
+		strcpy(_value,valueStr);
+	}
+
+	name_ptr = _name;
+	value_ptr = _value;
+
+	if(name_ptr && value_ptr)
+	{
+		while(*name_ptr == *value_ptr)
+		{
+			name_ptr++;
+			value_ptr++;
+		}
+	}
+}
+
+NameValueMatcher::~NameValueMatcher()
+{
+	delete [] _name;
+	delete [] _value;
+}
+
+int
+NameValueMatcher::NextMatch(char* name, char* value)
+{
+	int iVal;
+	int iTmp;
+	int len;
+	char* tmp = 0;
+
+	if(!name_ptr || !value_ptr || (*name_ptr != _delim))
+	{
+		return -1;
+	}
+
+	name[0] = name_ptr[1];
+	name[1] = 0;
+
+	name_ptr += 2;
+
+	iVal = 0;
+	while((*name_ptr != *value_ptr) && (*value_ptr != 0))
+	{
+		value[iVal] = *value_ptr;
+		value_ptr++;
+		iVal++;
+	}
+
+	if(*name_ptr == *value_ptr == 0)
+	{
+		name_ptr = 0;
+		value_ptr = 0;
+	}
+
+	if(name_ptr)
+	{
+		tmp = new char[strlen(name_ptr)+1];
+		memset(tmp,0,strlen(name_ptr)+1);
+
+		iTmp = 0;
+		while((*name_ptr != _delim) && (*name_ptr != 0))
+		{
+			tmp[iTmp] = *name_ptr;
+			name_ptr++;
+			iTmp++;
+		}
+		tmp[iTmp] = 0;
+	}
+
+	if(tmp)
+	{
+		len = strlen(tmp);
+		while((strncmp(value_ptr,tmp,len) != 0) && (*value_ptr != 0))
+		{
+			value[iVal] = *value_ptr;
+			value_ptr++;
+			iVal++;
+		}
+		value_ptr += len;
+	}
+
+	value[iVal] = 0;
+
+	delete [] tmp;
+
+	return 0;
 }
 

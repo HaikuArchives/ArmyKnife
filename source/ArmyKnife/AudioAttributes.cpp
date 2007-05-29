@@ -3,7 +3,6 @@
 #include <be/storage/File.h>
 #include <be/support/Debug.h>
 #include <be/support/TypeConstants.h>
-#include <String/String.h>
 #include "AudioAttributes.h"
 #include "AudioAttribute.h"
 
@@ -19,6 +18,7 @@
 #define RATING_NAME    "Rating"
 #define TEMPO_NAME     "Tempo"
 #define COMPOSER_NAME  "Composer"
+#define TT_INFO_NAME "Info"
 #endif
 
 #define ARTIST_ATTR    "Audio:Artist"
@@ -33,6 +33,7 @@
 #define RATING_ATTR    "Audio:Rating"
 #define TEMPO_ATTR     "Audio:Tempo"
 #define COMPOSER_ATTR  "Audio:Composer"
+#define TT_INFO_ATTR   "Audio:Info"
 #endif
 
 AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
@@ -50,6 +51,7 @@ AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
 	m_rating = new AudioAttribute(m_file, RATING_NAME, RATING_ATTR, B_INT32_TYPE);
 	m_tempo = new AudioAttribute(m_file, TEMPO_NAME, TEMPO_ATTR, B_STRING_TYPE);
 	m_composer = new AudioAttribute(m_file, COMPOSER_NAME, COMPOSER_ATTR, B_STRING_TYPE);
+	m_tt_info = new AudioAttribute(m_file, TT_INFO_NAME, TT_INFO_ATTR, B_STRING_TYPE);
 #endif
 	m_genre = new AudioAttribute(m_file, GENRE_NAME, GENRE_ATTR, B_STRING_TYPE);
 
@@ -63,6 +65,7 @@ AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
 	InitAttribute(m_rating);
 	InitAttribute(m_tempo);
 	InitAttribute(m_composer);
+	InitAttribute(m_tt_info);
 #endif
 	InitAttribute(m_genre);
 
@@ -83,6 +86,7 @@ AudioAttributes::~AudioAttributes()
 	delete m_rating;
 	delete m_tempo;
 	delete m_composer;
+	delete m_tt_info;
 #endif
 	delete m_genre;
 }
@@ -178,6 +182,14 @@ AudioAttributes::Composer()
 
 	return m_composer->Value();
 }
+
+const char*
+AudioAttributes::TTInfo()
+{
+	PRINT(("AudioAttributes::TTInfo()\n"));
+
+	return m_tt_info->Value();
+}
 #endif
 
 const char*
@@ -260,6 +272,14 @@ AudioAttributes::SetComposer(const char* value)
 
 	m_composer->SetValue(value);
 }
+
+void
+AudioAttributes::SetTTInfo(const char* value)
+{
+	PRINT(("AudioAttributes::SetTTInfo(const char*)\n"));
+
+	m_tt_info->SetValue(value);
+}
 #endif
 
 void
@@ -292,6 +312,12 @@ AudioAttributes::Read()
 	}
 
 	status = ReadComposer();
+	if(status != B_OK)
+	{
+		result = status;
+	}
+	
+	status = ReadTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
@@ -349,9 +375,9 @@ AudioAttributes::ReadTrack()
 	int retval = m_track->Read();
 	if(m_track->Value() && strlen(m_track->Value()) == 1)
 	{
-		String tmp = "0";
+		BString tmp = "0";
 		tmp += m_track->Value();
-		m_track->SetValue(tmp.Value());
+		m_track->SetValue(tmp.String());
 	}
 	return retval;
 }
@@ -379,6 +405,14 @@ AudioAttributes::ReadComposer()
 	PRINT(("AudioAttributes::ReadComposer()\n"));
 
 	return m_composer->Read();
+}
+
+status_t
+AudioAttributes::ReadTTInfo()
+{
+	PRINT(("AudioAttributes::ReadTTInfo()\n"));
+
+	return m_tt_info->Read();
 }
 #endif
 
@@ -412,6 +446,12 @@ AudioAttributes::Write()
 	}
 
 	status = WriteComposer();
+	if(status != B_OK)
+	{
+		result = status;
+	}
+	
+	status = WriteTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
@@ -492,6 +532,14 @@ AudioAttributes::WriteComposer()
 	PRINT(("AudioAttributes::WriteComposer()\n"));
 
 	return m_composer->Write();
+}
+
+status_t
+AudioAttributes::WriteTTInfo()
+{
+	PRINT(("AudioAttributes::WriteTTInfo()\n"));
+
+	return m_tt_info->Write();
 }
 #endif
 

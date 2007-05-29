@@ -2,6 +2,7 @@
 #include <be/app/Application.h>
 #include <be/app/Message.h>
 #include <be/interface/Alert.h>
+#include <be/interface/Button.h>
 #include <be/interface/Menu.h>
 #include <be/interface/MenuBar.h>
 #include <be/interface/MenuItem.h>
@@ -12,7 +13,6 @@
 #include <be/storage/Path.h>
 #include <be/support/ClassInfo.h>
 #include <be/support/Debug.h>
-#include <Santa/UserResizeSplitView.h>
 #include "AppDefs.h"
 #include "Application.h"
 #include "AppView.h"
@@ -76,14 +76,25 @@ AppWindow::InitWindow()
 
 	//create edit menu
 	m_edit_menu = new BMenu(EDIT_MENU);
+	
+	m_cut_menu_item = new BMenuItem(CUT_ITEM, new BMessage(MSG_EDIT_CUT), CUT_ITEM_SHORTCUT);
+	m_copy_menu_item = new BMenuItem(COPY_ITEM, new BMessage(MSG_EDIT_COPY), COPY_ITEM_SHORTCUT);
+	m_paste_menu_item = new BMenuItem(PASTE_ITEM, new BMessage(MSG_EDIT_PASTE), PASTE_ITEM_SHORTCUT);
+	m_select_all_menu_item= new BMenuItem(SELECT_ALL_ITEM, new BMessage(MSG_SELECT_ALL), SELECT_ALL_SHORTCUT); //, B_SHIFT_KEY);
+	
 	m_first_file_menu_item = new BMenuItem(FIRST_FILE_ITEM, new BMessage(MSG_FIRST_FILE), FIRST_FILE_SHORTCUT);
 	m_last_file_menu_item = new BMenuItem(LAST_FILE_ITEM, new BMessage(MSG_LAST_FILE), LAST_FILE_SHORTCUT);
 	m_previous_file_menu_item = new BMenuItem(PREVIOUS_FILE_ITEM, new BMessage(MSG_PREVIOUS_FILE), PREVIOUS_FILE_SHORTCUT);
 	m_next_file_menu_item = new BMenuItem(NEXT_FILE_ITEM, new BMessage(MSG_NEXT_FILE), NEXT_FILE_SHORTCUT);
 	m_reset_menu_item = new BMenuItem(RESET_ITEM, new BMessage(MSG_RESET), RESET_SHORTCUT);
 	m_clear_list_menu_item = new BMenuItem(CLEAR_LIST_ITEM, new BMessage(MSG_CLEAR_LIST), CLEAR_LIST_SHORTCUT);
-	m_select_all_menu_item= new BMenuItem(SELECT_ALL_ITEM, new BMessage(MSG_SELECT_ALL), SELECT_ALL_SHORTCUT);
-
+	
+	m_edit_menu->AddItem(m_cut_menu_item);
+	m_edit_menu->AddItem(m_copy_menu_item);
+	m_edit_menu->AddItem(m_paste_menu_item);
+	m_edit_menu->AddSeparatorItem();
+	m_edit_menu->AddItem(m_select_all_menu_item);
+	m_edit_menu->AddSeparatorItem();
 	m_edit_menu->AddItem(m_first_file_menu_item);
 	m_edit_menu->AddItem(m_last_file_menu_item);
 	m_edit_menu->AddSeparatorItem();
@@ -92,7 +103,7 @@ AppWindow::InitWindow()
 	m_edit_menu->AddSeparatorItem();
 	m_edit_menu->AddItem(m_reset_menu_item);
 	m_edit_menu->AddItem(m_clear_list_menu_item);
-	m_edit_menu->AddItem(m_select_all_menu_item);
+	
 
 	m_menu_bar->AddItem(m_edit_menu);
 
@@ -106,6 +117,10 @@ AppWindow::InitWindow()
 	m_mode_menu->AddItem(new BMenuItem(NA_MODE_NAME, new BMessage(MSG_NA_MODE), '3'));
 	m_mode_menu->AddSeparatorItem();
 	m_mode_menu->AddItem(new BMenuItem(MPEG_MODE_NAME, new BMessage(MSG_MPEG_MODE), '4'));
+#ifdef _TTE_
+	m_mode_menu->AddSeparatorItem();
+	m_mode_menu->AddItem(new BMenuItem(TT_INFO_MODE_NAME, new BMessage(MSG_TT_INFO_MODE), '5'));
+#endif
 	m_menu_bar->AddItem(m_mode_menu);
 		
 	// create options menu
@@ -163,7 +178,11 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_MPEG_MODE:
 			m_app_view->SelectView(3);
 			break;
-			
+#ifdef _TTE_
+		case MSG_TT_INFO_MODE:
+			m_app_view->SelectView(4);
+			break;
+#endif			
 		case MSG_PREVIOUS_MODE:
 			m_app_view->SetPreviousMode();
 			break;
@@ -176,9 +195,6 @@ AppWindow::MessageReceived(BMessage* message)
 			break;
 		case MSG_CLEAR_LIST:
 			m_app_view->ClearList();
-			break;
-		case MSG_SELECT_ALL:
-			m_app_view->SelectAll();
 			break;
 			
 		case MSG_PREVIOUS_FILE:
@@ -198,7 +214,53 @@ AppWindow::MessageReceived(BMessage* message)
 		case B_REFS_RECEIVED:
 			m_app_view->MessageReceived(message);
 			break;
+			
+		case MSG_MAKE_APPLY_BUTTON_DEFAULT:
+			m_app_view->m_apply_button->MakeDefault(true);
+			break;
+			
+		case MSG_MAKE_APPLY_BUTTON_NOT_DEFAULT:
+			m_app_view->m_apply_button->MakeDefault(false);
+			break;
+			
+		case MSG_EDIT_CUT:
+			{
+				message->what = B_CUT;
+				BView *view = CurrentFocus();
+				if (view)
+					view->MessageReceived(message);
+			}	
+			break;
+			
+		case MSG_EDIT_COPY:
+			{
+				message->what = B_COPY;
+				BView *view = CurrentFocus();
+				if (view)
+					view->MessageReceived(message);
+			}	
+			break;
+			
+		case MSG_EDIT_PASTE:
+			{
+				message->what = B_PASTE;
+				BView *view = CurrentFocus();
+				if (view)
+					view->MessageReceived(message);
+			}	
+			break;
 
+		case MSG_SELECT_ALL:
+			{
+				message->what = B_SELECT_ALL;
+				BView *view = CurrentFocus();
+				if (view)
+					view->MessageReceived(message);
+				else
+					m_app_view->SelectAll();
+			}
+			break;
+		
 		default:
 			BWindow::MessageReceived(message);
 	}
@@ -251,7 +313,7 @@ AppWindow::AboutRequested()
 		"His former website has since been taken over by "
 		"another company by the same name.\n\n"
 		
-		"The FlipSide Software applications are hosted by BeUnited at www.beunited.org.\n\n"
+		"The FlipSide Software applications are hosted by OsDrawer at www.osdrawer.net.\n\n"
 		
 		MAINTAINER " is the current maintainer.\n"
 		"You can reach him at " MAINTAINER_EMAIL;

@@ -44,6 +44,8 @@ class AppView : public BView
 		
 		void SaveWindowFrame();
 		
+		BButton*			m_apply_button;
+		
 	private:
 	
 		bool Busy();
@@ -60,7 +62,7 @@ class AppView : public BView
 		BListView*			m_list_view;
 		BetterScrollView*	m_scroll_view;
 		BStringView*		m_selected_string_view;
-		BButton*			m_apply_button;
+		
 		BButton*			m_reset_button;
 		BStatusBar*			m_status_bar;
 

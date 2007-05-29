@@ -1108,3 +1108,4 @@ EditorView::CheckAllBoxes(int32 value)
 #endif
 	m_genre_checkbox->SetValue(value);
 }
+

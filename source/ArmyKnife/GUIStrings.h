@@ -12,6 +12,13 @@
 #define QUIT_SHORTCUT 'Q'
 
 #define EDIT_MENU "Edit"
+#define CUT_ITEM "Cut"
+#define CUT_ITEM_SHORTCUT 'X'
+#define COPY_ITEM "Copy"
+#define COPY_ITEM_SHORTCUT 'C'
+#define PASTE_ITEM "Paste"
+#define PASTE_ITEM_SHORTCUT 'V'
+
 #define FIRST_FILE_ITEM "First File"
 #define FIRST_FILE_SHORTCUT B_HOME
 #define LAST_FILE_ITEM "Last File"
@@ -38,28 +45,29 @@
 #define MPEG_MODE_NAME "MPEG"
 #define OGG_MODE_NAME "OGG"
 #define FLAC_MODE_NAME "FLAC"
+#define TT_INFO_MODE_NAME "Info"
 
 #define OPTIONS_MENU "Options"
 #define BEEP_ON_UNSUPPORTED "Beep On Unsupported Files"
 
 #define ABOUT_BTN "Excellent"
 
-#define ARTIST_PATTERN "Artist = /a"
-#define ALBUM_PATTERN "Album = /n"
-#define TITLE_PATTERN "Title = /t"
-#define YEAR_PATTERN "Year = /y"
-#define COMMENT_PATTERN "Comment = /c"
-#define TRACK_PATTERN "Track = /k"
-#define GENRE_PATTERN "Genre = /g"
-#define WILDCARD_PATTERN "Wildcard = /*"
+#define ARTIST_PATTERN_INFO "Artist = /a"
+#define ALBUM_PATTERN_INFO "Album = /n"
+#define TITLE_PATTERN_INFO "Title = /t"
+#define YEAR_PATTERN_INFO "Year = /y"
+#define COMMENT_PATTERN_INFO "Comment = /c"
+#define TRACK_PATTERN_INFO "Track = /k"
+#define GENRE_PATTERN_INFO "Genre = /g"
+#define WILDCARD_PATTERN_INFO "Wildcard = /*"
 
-#define ARTIST_PAT "/a"
-#define ALBUM_PAT "/n"
-#define TRACK_PAT "/k"
-#define TITLE_PAT "/t"
-#define YEAR_PAT "/y"
-#define COMMENT_PAT "/c"
-#define GENRE_PAT "/g"
+#define ARTIST_PATTERN "/a"
+#define ALBUM_PATTERN "/n"
+#define TRACK_PATTERN "/k"
+#define TITLE_PATTERN "/t"
+#define YEAR_PATTERN "/y"
+#define COMMENT_PATTERN "/c"
+#define GENRE_PATTERN "/g"
 
 #define ARTIST_LABEL "Artist"
 #define ALBUM_LABEL "Album"

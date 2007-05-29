@@ -1,6 +1,8 @@
 #include <be/interface/Rect.h>
+#include <be/interface/Window.h>
 #include <be/support/Debug.h>
 #include <be/support/List.h>
+#include "CommandConstants.h"
 #include "AddOnView.h"
 
 AddOnView::AddOnView(BRect frame, const char* name) :
@@ -51,6 +53,9 @@ AddOnView::Show()
 	PRINT(("AddOnView::Show()\n"));
 
 	BView::Show();
+	
+	if (Window())
+		Window()->PostMessage(MSG_MAKE_APPLY_BUTTON_DEFAULT);
 }
 
 void

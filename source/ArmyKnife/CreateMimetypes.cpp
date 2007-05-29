@@ -106,7 +106,7 @@ void CreateOggMimetype()
 	//Create the attribute message;
 	BMessage attributeMessage;
 
-	//Add Artist Info
+	//Add Artist
 	attributeMessage.AddString("attr:name","Audio:Artist");
 	attributeMessage.AddString("attr:public_name","Artist");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -117,7 +117,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Album Info
+	//Add Album
 	attributeMessage.AddString("attr:name","Audio:Album");
 	attributeMessage.AddString("attr:public_name","Album");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -128,7 +128,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Title Info
+	//Add Title
 	attributeMessage.AddString("attr:name","Audio:Title");
 	attributeMessage.AddString("attr:public_name","Title");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -139,7 +139,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Track Info
+	//Add Track
 	attributeMessage.AddString("attr:name","Audio:Track");
 	attributeMessage.AddString("attr:public_name","Track");
 	attributeMessage.AddInt32("attr:type",B_INT32_TYPE);
@@ -150,7 +150,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Year Info
+	//Add Year
 	attributeMessage.AddString("attr:name","Audio:Year");
 	attributeMessage.AddString("attr:public_name","Year");
 	attributeMessage.AddInt32("attr:type",B_INT32_TYPE);
@@ -161,7 +161,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Comment Info
+	//Add Comment
 	attributeMessage.AddString("attr:name","Audio:Comment");
 	attributeMessage.AddString("attr:public_name","Comment");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -172,7 +172,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Genre Info
+	//Add Genre
 	attributeMessage.AddString("attr:name","Audio:Genre");
 	attributeMessage.AddString("attr:public_name","Genre");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -183,7 +183,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Rating Info
+	//Add Rating
 	attributeMessage.AddString("attr:name","Audio:Rating");
 	attributeMessage.AddString("attr:public_name","Rating");
 	attributeMessage.AddInt32("attr:type",B_INT32_TYPE);
@@ -194,7 +194,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Playing Time Info
+	//Add Playing Time
 	attributeMessage.AddString("attr:name","Audio:Length");
 	attributeMessage.AddString("attr:public_name","Playing Time");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -205,7 +205,7 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
 
-	//Add Bitrate Info
+	//Add Bitrate
 	attributeMessage.AddString("attr:name","Audio:Bitrate");
 	attributeMessage.AddString("attr:public_name","Bitrate");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
@@ -215,6 +215,19 @@ void CreateOggMimetype()
 	attributeMessage.AddInt32("attr:width",50);
 	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
 	attributeMessage.AddBool("attr:extra",false);
+
+#ifdef _TTE_	
+	//Add Info
+	attributeMessage.AddString("attr:name","Audio:Info");
+	attributeMessage.AddString("attr:public_name","Info");
+	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
+	attributeMessage.AddBool("attr:public",true);
+	attributeMessage.AddBool("attr:viewable",true);
+	attributeMessage.AddBool("attr:editable",true);
+	attributeMessage.AddInt32("attr:width",50);
+	attributeMessage.AddInt32("attr:alignment",B_ALIGN_LEFT);
+	attributeMessage.AddBool("attr:extra",false);
+#endif
 
 	oggMimeType.SetAttrInfo(&attributeMessage);
 

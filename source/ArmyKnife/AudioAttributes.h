@@ -22,6 +22,7 @@ class AudioAttributes : public AudioInfo
 		virtual const char* Rating();
 		virtual const char* Tempo();
 		virtual const char* Composer();
+		virtual const char* TTInfo();
 #endif
 		virtual const char* Genre();
 
@@ -35,6 +36,7 @@ class AudioAttributes : public AudioInfo
 		virtual void SetRating(const char* value);
 		virtual void SetTempo(const char* value);
 		virtual void SetComposer(const char* value);
+		virtual void SetTTInfo(const char* value);
 #endif
 		virtual void SetGenre(const char* value);
 
@@ -49,6 +51,7 @@ class AudioAttributes : public AudioInfo
 		virtual status_t ReadRating();
 		virtual status_t ReadTempo();
 		virtual status_t ReadComposer();
+		virtual status_t ReadTTInfo();
 #endif
 		virtual status_t ReadGenre();
 
@@ -63,6 +66,7 @@ class AudioAttributes : public AudioInfo
 		virtual status_t WriteRating();
 		virtual status_t WriteTempo();
 		virtual status_t WriteComposer();
+		virtual status_t WriteTTInfo();
 #endif
 		virtual status_t WriteGenre();
 
@@ -82,6 +86,7 @@ class AudioAttributes : public AudioInfo
 		AudioAttribute*		m_rating;
 		AudioAttribute*		m_tempo;
 		AudioAttribute*		m_composer;
+		AudioAttribute*		m_tt_info;
 #endif
 		AudioAttribute*		m_genre;
 };

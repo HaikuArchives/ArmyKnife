@@ -1,6 +1,4 @@
-#include <string.h>
 #include <be/support/Debug.h>
-#include <String.h>
 #include "ID3Tag.h"
 
 ID3Tag::ID3Tag(TagLib::FileRef * file, TagLib::Tag * tag, int tag_item)

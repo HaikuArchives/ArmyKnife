@@ -34,6 +34,9 @@ class AppWindow : public BWindow
 		BMenu*		m_options_menu;
 		BMenuItem*	m_about_menu_item;
 		BMenuItem*	m_quit_menu_item;
+		BMenuItem*	m_cut_menu_item;
+		BMenuItem*	m_copy_menu_item;
+		BMenuItem*	m_paste_menu_item;
 		BMenuItem*	m_first_file_menu_item;
 		BMenuItem*	m_last_file_menu_item;
 		BMenuItem*	m_previous_file_menu_item;
