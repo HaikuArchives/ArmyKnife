@@ -150,7 +150,7 @@ void CLVEasyItem::SetColumnContent(int column_index, const char *text, bool trun
 }
 
 
-void CLVEasyItem::SetColumnContent(int column_index, const BBitmap *bitmap, float horizontal_offset, bool copy,
+void CLVEasyItem::SetColumnContent(int column_index, const BBitmap* bitmap, float horizontal_offset, bool copy,
 	bool right_justify)
 {
 	PrepListsForSet(column_index);

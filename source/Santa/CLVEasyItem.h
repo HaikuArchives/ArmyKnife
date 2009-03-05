@@ -22,7 +22,7 @@
 //**** SYSTEM HEADER FILES
 //******************************************************************************************************
 #include <List.h>
-
+#include <Bitmap.h>
 
 //******************************************************************************************************
 //**** PROJECT HEADER FILES AND CLASS NAME DECLARATIONS
@@ -40,7 +40,7 @@ class CLVEasyItem : public CLVListItem
 		CLVEasyItem(uint32 level = 0, bool superitem = false, bool expanded = false, float minheight = 0.0);
 		virtual ~CLVEasyItem();
 
-		virtual void SetColumnContent(int column_index, const BBitmap *bitmap, float horizontal_offset = 2.0,
+		virtual void SetColumnContent(int column_index, const BBitmap* bitmap, float horizontal_offset = 2.0,
 			bool copy = true, bool right_justify = false);
 		virtual void SetColumnContent(int column_index, const char *text, bool truncate = true,
 			bool right_justify = false, bool editable = false);
@@ -75,4 +75,3 @@ class CLVEasyItem : public CLVListItem
 
 
 #endif
-
