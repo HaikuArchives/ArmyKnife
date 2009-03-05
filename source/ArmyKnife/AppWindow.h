@@ -1,13 +1,8 @@
 #ifndef __APP_WINDOW_H__
 #define __APP_WINDOW_H__
 
-#ifdef __HAIKU__
-#include <os/interface/Window.h>
-#include <os/interface/Menu.h>
-#else
-#include <be/interface/Window.h>
-#include <be/interface/Menu.h>
-#endif
+#include <Window.h>
+#include <Menu.h>
 
 class AppView;
 class BMessage;
