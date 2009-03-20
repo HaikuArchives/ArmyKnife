@@ -34,7 +34,7 @@
 # the executable
 BINARY := ArmyKnife-M
 SHORTNAME := ArmyKnife
-VERSION := 4.0
+VERSION := 4.1
 BUILDDATE := $(shell date +%Y-%b-%d)
 FULLNAME := $(PACKAGE)-$(VERSION)-$(BUILDDATE)
 RESOURCES := ArmyKnife.rsrc
