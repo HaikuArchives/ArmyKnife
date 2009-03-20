@@ -17,3 +17,4 @@ To clean it up, cd to projects/src/taglib/  and type 'make distclean'.
 
 To make the taglib example binaries, run 'make examples' in the taglib folder.
 
+test
