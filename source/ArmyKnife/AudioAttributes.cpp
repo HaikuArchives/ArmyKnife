@@ -18,7 +18,8 @@
 #define RATING_NAME    "Rating"
 #define TEMPO_NAME     "Tempo"
 #define COMPOSER_NAME  "Composer"
-#define TT_INFO_NAME "Info"
+#define TT_INFO_NAME   "Info"
+#define GENDER_NAME    "Gender"
 #endif
 
 #define ARTIST_ATTR    "Audio:Artist"
@@ -34,6 +35,7 @@
 #define TEMPO_ATTR     "Audio:Tempo"
 #define COMPOSER_ATTR  "Audio:Composer"
 #define TT_INFO_ATTR   "Audio:Info"
+#define GENDER_ATTR    "Audio:Gender"
 #endif
 
 AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
@@ -52,6 +54,7 @@ AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
 	m_tempo = new AudioAttribute(m_file, TEMPO_NAME, TEMPO_ATTR, B_STRING_TYPE);
 	m_composer = new AudioAttribute(m_file, COMPOSER_NAME, COMPOSER_ATTR, B_STRING_TYPE);
 	m_tt_info = new AudioAttribute(m_file, TT_INFO_NAME, TT_INFO_ATTR, B_STRING_TYPE);
+	m_gender = new AudioAttribute(m_file, GENDER_NAME, GENDER_ATTR, B_STRING_TYPE);
 #endif
 	m_genre = new AudioAttribute(m_file, GENRE_NAME, GENRE_ATTR, B_STRING_TYPE);
 
@@ -66,6 +69,7 @@ AudioAttributes::AudioAttributes(BFile* file) : AudioInfo()
 	InitAttribute(m_tempo);
 	InitAttribute(m_composer);
 	InitAttribute(m_tt_info);
+	InitAttribute(m_gender);
 #endif
 	InitAttribute(m_genre);
 
@@ -87,6 +91,7 @@ AudioAttributes::~AudioAttributes()
 	delete m_tempo;
 	delete m_composer;
 	delete m_tt_info;
+	delete m_gender;
 #endif
 	delete m_genre;
 }
@@ -190,6 +195,14 @@ AudioAttributes::TTInfo()
 
 	return m_tt_info->Value();
 }
+
+const char*
+AudioAttributes::Gender()
+{
+	PRINT(("AudioAttributes::Gender()\n"));
+
+	return m_gender->Value();
+}
 #endif
 
 const char*
@@ -280,6 +293,14 @@ AudioAttributes::SetTTInfo(const char* value)
 
 	m_tt_info->SetValue(value);
 }
+
+void
+AudioAttributes::SetGender(const char* value)
+{
+	PRINT(("AudioAttributes::SetGender(const char*)\n"));
+
+	m_gender->SetValue(value);
+}
 #endif
 
 void
@@ -318,6 +339,12 @@ AudioAttributes::Read()
 	}
 	
 	status = ReadTTInfo();
+	if(status != B_OK)
+	{
+		result = status;
+	}
+	
+	status = ReadGender();
 	if(status != B_OK)
 	{
 		result = status;
@@ -414,6 +441,14 @@ AudioAttributes::ReadTTInfo()
 
 	return m_tt_info->Read();
 }
+
+status_t
+AudioAttributes::ReadGender()
+{
+	PRINT(("AudioAttributes::ReadGender()\n"));
+
+	return m_gender->Read();
+}
 #endif
 
 status_t
@@ -452,6 +487,12 @@ AudioAttributes::Write()
 	}
 	
 	status = WriteTTInfo();
+	if(status != B_OK)
+	{
+		result = status;
+	}
+	
+	status = WriteGender();
 	if(status != B_OK)
 	{
 		result = status;
@@ -540,6 +581,14 @@ AudioAttributes::WriteTTInfo()
 	PRINT(("AudioAttributes::WriteTTInfo()\n"));
 
 	return m_tt_info->Write();
+}
+
+status_t
+AudioAttributes::WriteGender()
+{
+	PRINT(("AudioAttributes::WriteGender()\n"));
+
+	return m_gender->Write();
 }
 #endif
 

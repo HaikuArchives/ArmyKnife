@@ -155,11 +155,19 @@ EditorView::InitView()
 	}
 
 	m_composer_checkbox = new BCheckBox(BRect(0,0,0,0),0,COMPOSER_LABEL,
-			new BMessage(MSG_TEMPO_CHECKBOX));
+			new BMessage(MSG_COMPOSER_CHECKBOX));
 	m_composer_checkbox->ResizeToPreferred();
 	if(m_composer_checkbox->Frame().Width() > frame.Width())
 	{
 		frame = m_composer_checkbox->Frame();
+	}
+	
+	m_gender_checkbox = new BCheckBox(BRect(0,0,0,0),0,GENDER_LABEL,
+			new BMessage(MSG_GENDER_CHECKBOX));
+	m_gender_checkbox->ResizeToPreferred();
+	if(m_gender_checkbox->Frame().Width() > frame.Width())
+	{
+		frame = m_gender_checkbox->Frame();
 	}
 #endif
 
@@ -200,6 +208,8 @@ EditorView::InitView()
 	y += frame.Height() + space;
 	m_composer_checkbox->MoveTo(x,y);
 	y += frame.Height() + space;
+	m_gender_checkbox->MoveTo(x,y);
+	y += frame.Height() + space;
 #endif
 
 	m_genre_checkbox->MoveTo(x,y);
@@ -233,6 +243,8 @@ EditorView::InitView()
 	m_tempo_textcontrol->MoveTo(frame.right+5,m_tempo_checkbox->Frame().top);
 	m_composer_textcontrol = new BTextControl(tcFrame,0,0,0,0);
 	m_composer_textcontrol->MoveTo(frame.right+5,m_composer_checkbox->Frame().top);
+	m_gender_textcontrol = new BTextControl(tcFrame,0,0,0,0);
+	m_gender_textcontrol->MoveTo(frame.right+5,m_gender_checkbox->Frame().top);
 #endif
 
 	//INSIDE BOX
@@ -305,6 +317,9 @@ EditorView::InitView()
 
 	AddChild(m_composer_checkbox);
 	AddChild(m_composer_textcontrol);
+	
+	AddChild(m_gender_checkbox);
+	AddChild(m_gender_textcontrol);
 #endif
 
 	AddChild(m_genre_checkbox);
@@ -338,6 +353,7 @@ EditorView::AttachedToWindow()
 	m_rating_checkbox->SetTarget(this);
 	m_tempo_checkbox->SetTarget(this);
 	m_composer_checkbox->SetTarget(this);
+	m_gender_checkbox->SetTarget(this);
 #endif
 	m_genre_checkbox->SetTarget(this);
 	m_genre_menufield->Menu()->SetTargetForItems(this);
@@ -465,6 +481,7 @@ EditorView::WidgetsSetValues()
 		m_rating_checkbox->SetValue(B_CONTROL_OFF);
 		m_tempo_checkbox->SetValue(B_CONTROL_OFF);
 		m_composer_checkbox->SetValue(B_CONTROL_OFF);
+		m_gender_checkbox->SetValue(B_CONTROL_OFF);
 #endif
 		m_year_checkbox->SetValue(B_CONTROL_OFF);
 		m_genre_checkbox->SetValue(B_CONTROL_OFF);
@@ -480,6 +497,7 @@ EditorView::WidgetsSetValues()
 		m_rating_checkbox->SetValue(B_CONTROL_ON);
 		m_tempo_checkbox->SetValue(B_CONTROL_ON);
 		m_composer_checkbox->SetValue(B_CONTROL_ON);
+		m_gender_checkbox->SetValue(B_CONTROL_ON);
 #endif
 		m_year_checkbox->SetValue(B_CONTROL_ON);
 		m_genre_checkbox->SetValue(B_CONTROL_ON);
@@ -495,6 +513,7 @@ EditorView::WidgetsSetValues()
 		m_rating_checkbox->SetValue(B_CONTROL_ON);
 		m_tempo_checkbox->SetValue(B_CONTROL_ON);
 		m_composer_checkbox->SetValue(B_CONTROL_ON);
+		m_gender_checkbox->SetValue(B_CONTROL_ON);
 #endif
 		m_year_checkbox->SetValue(B_CONTROL_ON);
 		m_genre_checkbox->SetValue(B_CONTROL_ON);
@@ -514,6 +533,7 @@ EditorView::WidgetsSetValues()
 		const char* rating;
 		const char* tempo;
 		const char* composer;
+		const char* gender;
 #endif
 		const char* genre;
 
@@ -570,6 +590,12 @@ EditorView::WidgetsSetValues()
 			{
 				composer = "";
 			}
+			
+			gender = attributes.Gender();
+			if(!gender)
+			{
+				gender = "";
+			}
 #endif
 			genre = attributes.Genre();
 			if(!genre)
@@ -587,6 +613,7 @@ EditorView::WidgetsSetValues()
 			m_rating_textcontrol->SetText(rating);
 			m_tempo_textcontrol->SetText(tempo);
 			m_composer_textcontrol->SetText(composer);
+			m_gender_textcontrol->SetText(gender);
 #endif
 			BMenu* menu = m_genre_menufield->Menu();
 			BMenuItem* item = menu->FindItem(genre);
@@ -654,6 +681,7 @@ EditorView::WidgetsSetValues()
 			m_rating_textcontrol->SetText("");
 			m_tempo_textcontrol->SetText("");
 			m_composer_textcontrol->SetText("");
+			m_gender_textcontrol->SetText("");
 #endif
 			BMenu* menu = m_genre_menufield->Menu();
 			BMenuItem* item = menu->FindItem(genre);
@@ -684,6 +712,7 @@ EditorView::WidgetsSetValues()
 	m_rating_textcontrol->SetText("");
 	m_tempo_textcontrol->SetText("");
 	m_composer_textcontrol->SetText("");
+	m_gender_textcontrol->SetText("");
 #endif
 	m_genre_textcontrol->SetText("");
 }
@@ -709,6 +738,7 @@ EditorView::WidgetsSetEnabled()
 		m_rating_checkbox->SetEnabled(false);
 		m_tempo_checkbox->SetEnabled(false);
 		m_composer_checkbox->SetEnabled(false);
+		m_gender_checkbox->SetEnabled(false);
 #endif
 		m_genre_checkbox->SetEnabled(false);
 //		m_clear_all_checkbox->SetEnabled(true);
@@ -722,6 +752,7 @@ EditorView::WidgetsSetEnabled()
 		m_rating_textcontrol->SetEnabled(false);
 		m_tempo_textcontrol->SetEnabled(false);
 		m_composer_textcontrol->SetEnabled(false);
+		m_gender_textcontrol->SetEnabled(false);
 #endif
 		m_genre_menufield->SetEnabled(false);
 		m_genre_textcontrol->SetEnabled(false);
@@ -759,6 +790,9 @@ EditorView::WidgetsSetEnabled()
 
 			m_composer_checkbox->SetEnabled(true);
 			m_composer_textcontrol->SetEnabled(true);
+			
+			m_gender_checkbox->SetEnabled(true);
+			m_gender_textcontrol->SetEnabled(true);
 		}
 		else
 		{
@@ -786,6 +820,7 @@ EditorView::WidgetsSetEnabled()
 		SetEnabled(m_rating_checkbox,m_rating_textcontrol);
 		SetEnabled(m_tempo_checkbox,m_tempo_textcontrol);
 		SetEnabled(m_composer_checkbox,m_composer_textcontrol);
+		SetEnabled(m_gender_checkbox,m_gender_textcontrol);
 #endif
 		SetEnabled(m_genre_checkbox,m_genre_menufield);
 		SetEnabled(m_genre_checkbox,m_genre_textcontrol);
@@ -835,6 +870,7 @@ EditorView::ApplyFunction(void* args)
 	char rating[256];
 	char tempo[256];
 	char composer[256];
+	char gender[256];
 #endif
 	char genre[256];
 	bool doAttributes = false;
@@ -853,6 +889,7 @@ EditorView::ApplyFunction(void* args)
 	memset(rating,0,256);
 	memset(tempo,0,256);
 	memset(composer,0,256);
+	memset(gender,0,256);
 #endif
 	memset(genre,0,256);
 
@@ -866,6 +903,7 @@ EditorView::ApplyFunction(void* args)
 	strncpy(rating,view->m_rating_textcontrol->Text(),255);
 	strncpy(tempo,view->m_tempo_textcontrol->Text(),255);
 	strncpy(composer,view->m_composer_textcontrol->Text(),255);
+	strncpy(gender,view->m_gender_textcontrol->Text(),255);
 #endif
 	strncpy(genre,view->m_genre_textcontrol->Text(),255);
 	if(strcmp(genre,"") == 0)
@@ -948,6 +986,11 @@ EditorView::ApplyFunction(void* args)
 			{
 				attributes.SetComposer(composer);
 				attributes.WriteComposer();
+			}
+			if(view->m_gender_checkbox->Value() == B_CONTROL_ON)
+			{
+				attributes.SetGender(gender);
+				attributes.WriteGender();
 			}
 #endif
 			if(view->m_genre_checkbox->Value() == B_CONTROL_ON)
@@ -1040,6 +1083,9 @@ EditorView::MessageReceived(BMessage* message)
 		case MSG_COMPOSER_CHECKBOX:
 			SetEnabled(m_composer_checkbox,m_composer_textcontrol);
 			break;
+		case MSG_GENDER_CHECKBOX:
+			SetEnabled(m_gender_checkbox,m_gender_textcontrol);
+			break;
 #endif
 		case MSG_GENRE_CHECKBOX:
 			SetEnabled(m_genre_checkbox,m_genre_menufield);
@@ -1086,6 +1132,7 @@ EditorView::SetAllEnabled()
 	SetEnabled(m_rating_checkbox, m_rating_textcontrol);
 	SetEnabled(m_tempo_checkbox, m_tempo_textcontrol);
 	SetEnabled(m_composer_checkbox, m_composer_textcontrol);
+	SetEnabled(m_gender_checkbox, m_gender_textcontrol);
 #endif
 	SetEnabled(m_genre_checkbox, m_genre_menufield);
 	SetEnabled(m_genre_checkbox, m_genre_textcontrol);
@@ -1105,6 +1152,7 @@ EditorView::CheckAllBoxes(int32 value)
 	m_rating_checkbox->SetValue(value);
 	m_tempo_checkbox->SetValue(value);
 	m_composer_checkbox->SetValue(value);
+	m_gender_checkbox->SetValue(value);
 #endif
 	m_genre_checkbox->SetValue(value);
 }

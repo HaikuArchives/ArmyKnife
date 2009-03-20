@@ -114,6 +114,7 @@
 #define RATING_LABEL "Rating"
 #define TEMPO_LABEL "Tempo"
 #define COMPOSER_LABEL "Composer"
+#define GENDER_LABEL "Gender"
 #endif
 
 #endif

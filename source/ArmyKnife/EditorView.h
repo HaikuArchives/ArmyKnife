@@ -51,6 +51,7 @@ class EditorView : public AddOnView
 		BCheckBox*		m_rating_checkbox;
 		BCheckBox*		m_tempo_checkbox;
 		BCheckBox*		m_composer_checkbox;
+		BCheckBox*		m_gender_checkbox;
 #endif
 		BCheckBox*		m_clear_all_checkbox;
 
@@ -66,6 +67,7 @@ class EditorView : public AddOnView
 		BTextControl*	m_rating_textcontrol;
 		BTextControl*	m_tempo_textcontrol;
 		BTextControl*	m_composer_textcontrol;
+		BTextControl*	m_gender_textcontrol;
 #endif
 		BBox*			m_edit_box;
 		BBox*			m_genre_box;
