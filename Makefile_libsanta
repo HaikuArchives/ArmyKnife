@@ -92,11 +92,12 @@ DEPENDS := $(addprefix $(DEPDIR)/,$(addsuffix .d,$(basename $(BASESOURCES))))
 
 .DELETE_ON_ERROR : $(RELEASEDIR)/$(BINARY)
 
-default : build
+default : install
 
 all : build
 
 install : build
+	@mkdir -p $(RELEASEDIR)/
 	@cp $(OBJDIR)/$(BINARY) $(RELEASEDIR)/$(BINARY)
 	@$(MIMESET) -f $(RELEASEDIR)/$(BINARY)
 	@mkdir -p $(HEADERDIR)
@@ -113,11 +114,11 @@ clean :
 
 $(BINARY) : $(OBJDIR) $(OBJECTS)
 	@rm -f $(TEMPDEPFILE)
-	@mkdir -p $(RELEASEDIR)/
+	@mkdir -p $(OBJDIR)/
 	@echo linking $@
 	@echo $(AR) $(ARFLAGS) $(BINARY) $(OBJECTS)
 	@$(AR) $(ARFLAGS) $(OBJDIR)/$(BINARY) $(OBJECTS)
-	@mimeset -f $(RELEASEDIR)/$@
+	@mimeset -f $(OBJDIR)/$@
 	
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@echo $(CC) $< $(CFLAGS) -o $@
