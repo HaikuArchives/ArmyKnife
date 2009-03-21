@@ -52,6 +52,7 @@ INCLUDEDIR := include
 DATADIR := documentation/armyknife
 LIBDIR := lib
 RELEASEDIR := release/ArmyKnife
+RELEASEDOCSDIR := release/ArmyKnife/Documentation
 
 BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
@@ -117,6 +118,11 @@ clean :
 	@rm -f $(TEMPDEPFILE)
 
 all : zipfile
+
+release : $(BINARY)
+	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
+	@rm -rf $(RELEASEDOCSDIR)/.svn/
+	@cp -r documentation/armyknife_changelog.txt "$(RELEASEDOCSDIR)/Change Log"
 
 $(BINARY) : $(OBJDIR) $(OBJECTS)
 	@rm -f $(TEMPDEPFILE)
