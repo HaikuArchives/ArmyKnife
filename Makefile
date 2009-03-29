@@ -26,3 +26,8 @@ release:
 	$(MAKE) --makefile=Makefile_libsanta install
 	$(MAKE) --makefile=Makefile_armyknife release
 	$(MAKE) --makefile=Makefile_armyknife_tte release
+
+zipfile:
+	$(MAKE) --makefile=Makefile_libsanta install
+	$(MAKE) --makefile=Makefile_armyknife zipfile
+	$(MAKE) --makefile=Makefile_armyknife_tte zipfile

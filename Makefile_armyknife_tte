@@ -36,7 +36,7 @@ BINARY := ArmyKnifeTTE-M
 SHORTNAME := ArmyKnifeTTE
 VERSION := 4.1
 BUILDDATE := $(shell date +%Y-%b-%d)
-FULLNAME := $(PACKAGE)-$(VERSION)-$(BUILDDATE)
+FULLNAME := $(SHORTNAME)-$(VERSION)-$(BUILDDATE)
 RESOURCES := ArmyKnifeTTE.rsrc
 DEFINES := -D_TTE_
 
@@ -115,14 +115,20 @@ clean :
 	@echo cleaning
 	@rm -rf $(RELEASEDIR) $(OBJDIR) $(DEPDIR)
 	@rm -f $(TEMPDEPFILE)
+	@rm -rf /tmp/$(FULLNAME)
+	@rm -rf /tmp/$(FULLNAME).zip
+	@rm -rf $(RELEASEDIR)/$(FULLNAME)
+	@rm -rf $(RELEASEDIR)/$(FULLNAME).zip
 
 all : zipfile
 
 release : $(BINARY)
 	@mkdir -p $(RELEASEDIR)
+	@cp -r $(LIBDIR)/ $(RELEASEDIR)/lib
 	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
-	@rm -rf $(RELEASEDOCSDIR)/.svn/
 	@cp -r $(CHANGELOG) "$(RELEASEDOCSDIR)/Change Log"
+	@find $(RELEASEDIR) -type d| grep .svn$$ | xargs -n1 -i"{}" rm -rf "{}"
+	@mimeset -f $(RELEASEDIR)
 
 $(BINARY) : $(OBJDIR) $(OBJECTS)
 	@mkdir -p $(RELEASEDIR)/
@@ -141,14 +147,12 @@ $(DEPDIR)/%.d : $(SRCDIR)/%.cpp
 	@/bin/echo $@ $(OBJDIR)/$(shell $(DEP) $<) > $(TEMPDEPFILE)
 	@/bin/echo $(OBJDIR)/$(basename $(@F))".o : $(MAKEFILE)" | /bin/cat - $(TEMPDEPFILE) > $@
 
-zipfile : $(BINARY) $(DATA) $(MAKEFILE)
-	@rm -rf release//$(FULLNAME)
-	@mkdir -p release/$(FULLNAME)
-	@copyattr -d -r $(BINARY) $(DATADIR)/* $@~/$(FULLNAME)/
-	@find $@~ -type f | xargs mimeset
-	@cd $@~ && $(ZIP) $@ $(FULLNAME)
-	@mv -f $@~/$@ .
-	@rm -rf $@~
+zipfile : clean release
+	@rm -rf $(RELEASEDIR)/../$(FULLNAME)
+	@copyattr -d -r $(RELEASEDIR)/ /tmp/$(FULLNAME)
+	@cd /tmp && $(ZIP) $(FULLNAME).zip $(FULLNAME)
+	@mv /tmp/$(FULLNAME).zip $(RELEASEDIR)/../
+	@rm -rf /tmp/$(FULLNAME)
 
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(MAKECMDGOALS),depend)
