@@ -34,7 +34,7 @@
 # the executable
 BINARY := ArmyKnifeTTE-M
 SHORTNAME := ArmyKnifeTTE
-VERSION := 4.0
+VERSION := 4.1
 BUILDDATE := $(shell date +%Y-%b-%d)
 FULLNAME := $(PACKAGE)-$(VERSION)-$(BUILDDATE)
 RESOURCES := ArmyKnifeTTE.rsrc
@@ -52,6 +52,8 @@ INCLUDEDIR := include
 DATADIR := documentation/armyknife_tte
 LIBDIR := lib
 RELEASEDIR := release/ArmyKnifeTTE
+RELEASEDOCSDIR := release/ArmyKnifeTTE/Documentation
+CHANGELOG := documentation/armyknife_changelog.txt
 
 BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
@@ -112,11 +114,17 @@ $(OBJDIR)::
 clean :
 	@echo cleaning
 	@rm -rf $(RELEASEDIR) $(OBJDIR) $(DEPDIR)
+	@rm -f $(TEMPDEPFILE)
 
 all : zipfile
 
+release : $(BINARY)
+	@mkdir -p $(RELEASEDIR)
+	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
+	@rm -rf $(RELEASEDOCSDIR)/.svn/
+	@cp -r $(CHANGELOG) "$(RELEASEDOCSDIR)/Change Log"
+
 $(BINARY) : $(OBJDIR) $(OBJECTS)
-	@rm -f $(TEMPDEPFILE)
 	@mkdir -p $(RELEASEDIR)/
 	@echo linking $@
 	@$(LD) -o $(RELEASEDIR)/$@ $(OBJECTS) $(LDFLAGS)

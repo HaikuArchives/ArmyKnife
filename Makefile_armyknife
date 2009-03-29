@@ -53,12 +53,13 @@ DATADIR := documentation/armyknife
 LIBDIR := lib
 RELEASEDIR := release/ArmyKnife
 RELEASEDOCSDIR := release/ArmyKnife/Documentation
+CHANGELOG := documentation/armyknife_changelog.txt
 
 BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
 
 # dependencies
-TEMPDEPFILE := armyknife_temp_deps
+TEMPDEPFILE := /tmp/armyknife_temp_deps
 
 # compiler, linker, ...
 CC := gcc -c -pipe
@@ -112,20 +113,18 @@ $(OBJDIR)::
 
 clean :
 	@echo cleaning
-	@rm -rf $(RELEASEDIR)
-	@rm -rf $(OBJDIR)
-	@rm -rf $(DEPDIR)
+	@rm -rf $(RELEASEDIR) $(OBJDIR) $(DEPDIR)
 	@rm -f $(TEMPDEPFILE)
 
 all : zipfile
 
 release : $(BINARY)
+	@mkdir -p $(RELEASEDIR)
 	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
 	@rm -rf $(RELEASEDOCSDIR)/.svn/
-	@cp -r documentation/armyknife_changelog.txt "$(RELEASEDOCSDIR)/Change Log"
+	@cp -r $(CHANGELOG) "$(RELEASEDOCSDIR)/Change Log"
 
 $(BINARY) : $(OBJDIR) $(OBJECTS)
-	@rm -f $(TEMPDEPFILE)
 	@mkdir -p $(RELEASEDIR)/
 	@echo linking $@
 	@$(LD) -o $(RELEASEDIR)/$@ $(OBJECTS) $(LDFLAGS)
