@@ -1,11 +1,12 @@
-/*	$Id: ArmyKnife.rdef $
+/*	$Id: ArmyKnifeTTE.rdef $
 	Copyright 2009 
 	Distributed under the MIT License
-	Created: 2009-06-17
+	Created: 2009-06-27
 
 	Haiku vector icon created by Michele Frau (zuMi)
  */
 
+#include "ArmyKnifeTTE.rdef.h"
 
 resource large_icon array {
 	$"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
@@ -63,15 +64,15 @@ resource mini_icon array {
 
 resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.Be-elfexecutable";
 
-resource app_signature "application/x-vnd.beunited.armyknife";
+resource app_signature "application/x-vnd.beunited.armyknife-tte";
 
 resource file_types message {
-	"types" = "audio/x-mpeg",
-	"types" = "audio/x-vorbis",
 	"types" = "application/x-vnd.Be-volume",
 	"types" = "application/x-vnd.Be-directory",
+	"types" = "audio",
 	"types" = "audio/x-flac",
-	"types" = "audio"
+	"types" = "audio/x-mpeg",
+	"types" = "audio/x-vorbis"
 };
 
 resource app_version {
@@ -82,8 +83,8 @@ resource app_version {
 	variety = B_APPV_FINAL,
 	internal = 0,
 
-	short_info = "The Army Knife for MP3 and OggVorbis Files",
-	long_info = "Tag/Attribute & File Name tool for MP3 and OggVorbis files."
+	short_info = "The Army Knife of Audio Attributes!",
+	long_info = "The Official Attribute Editor of TuneTracker!"
 };
 
 resource app_flags B_MULTIPLE_LAUNCH;

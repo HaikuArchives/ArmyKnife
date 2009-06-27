@@ -38,6 +38,7 @@ VERSION := 4.1
 BUILDDATE := $(shell date +%Y-%b-%d)
 FULLNAME := $(SHORTNAME)-$(VERSION)-$(BUILDDATE)
 RESOURCES := ArmyKnife.rsrc
+RESOURCESRDEF := ArmyKnife.rdef
 #DEFINES := 
 
 # libraries
@@ -135,6 +136,7 @@ $(BINARY) : $(OBJDIR) $(OBJECTS)
 	@echo linking $@
 	@$(LD) -o $(RELEASEDIR)/$@ $(OBJECTS) $(LDFLAGS)
 	@echo merging resources
+	@rc $(SRCDIR)/$(RESOURCESRDEF)
 	@xres -o $(RELEASEDIR)/$@ $(SRCDIR)/$(RESOURCES)
 	@mimeset -f $(RELEASEDIR)/$@
 	
