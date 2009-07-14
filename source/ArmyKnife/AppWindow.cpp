@@ -316,7 +316,10 @@ AppWindow::AboutRequested()
 		"The FlipSide Software applications are hosted by OsDrawer at www.osdrawer.net.\n\n"
 		
 		MAINTAINER " is the current maintainer.\n"
-		"You can reach him at " MAINTAINER_EMAIL;
+		"You can reach him at " MAINTAINER_EMAIL "\n\n"
+
+		"To request new features, or to report bugs, file a new issue at:\n"
+		"http://dev.osdrawer.net/projects/armyknife/issues/new";
 	
 	BAlert* alert = new BAlert("AboutBox", msg.String(), ABOUT_BTN);
 	alert->Go(NULL);
