@@ -32,11 +32,14 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.    
 
 # the executable
-BINARY := ArmyKnife-M
+BINARY := ArmyKnife
 SHORTNAME := ArmyKnife
 VERSION := 4.1
-BUILDDATE := $(shell date +%Y-%b-%d)
+BUILDDATE := $(shell date +%Y-%m-%d)
+GCCMAJVERSION := $(shell gcc --version | head -c 1)
+OSVERSION := $(shell uname -o)
 FULLNAME := $(SHORTNAME)-$(VERSION)-$(BUILDDATE)
+ZIPFULLNAME := $(SHORTNAME)-$(VERSION)-gcc$(GCCMAJVERSION)-$(OSVERSION)-$(BUILDDATE)
 RESOURCES := ArmyKnife.rsrc
 RESOURCESRDEF := ArmyKnife.rdef
 #DEFINES := 
@@ -116,14 +119,15 @@ clean :
 	@echo cleaning
 	@rm -rf $(RELEASEDIR) $(OBJDIR) $(DEPDIR)
 	@rm -f $(TEMPDEPFILE)
-	@rm -rf /tmp/$(FULLNAME)
-	@rm -rf /tmp/$(FULLNAME).zip
-	@rm -rf $(RELEASEDIR)/$(FULLNAME)
-	@rm -rf $(RELEASEDIR)/$(FULLNAME).zip
+	@rm -rf /tmp/$(SHORTNAME)
+	@rm -rf /tmp/$(ZIPFULLNAME).zip
+	@rm -rf $(RELEASEDIR)/$(SHORTNAME)
+	@rm -rf $(RELEASEDIR)/$(ZIPFULLNAME).zip
 
 all : zipfile
 
 release : $(BINARY)
+	@cp .OptionalPackageDescription $(RELEASEDIR)
 	@mkdir -p $(RELEASEDIR)
 	@cp -r $(LIBDIR)/ $(RELEASEDIR)/lib
 	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
@@ -150,11 +154,11 @@ $(DEPDIR)/%.d : $(SRCDIR)/%.cpp
 	@/bin/echo $(OBJDIR)/$(basename $(@F))".o : $(MAKEFILE)" | /bin/cat - $(TEMPDEPFILE) > $@
 
 zipfile : clean release
-	@rm -rf $(RELEASEDIR)/../$(FULLNAME)
-	@copyattr -d -r $(RELEASEDIR)/ /tmp/$(FULLNAME)
-	@cd /tmp && $(ZIP) $(FULLNAME).zip $(FULLNAME)
-	@mv /tmp/$(FULLNAME).zip $(RELEASEDIR)/../
-	@rm -rf /tmp/$(FULLNAME)
+#	@rm -rf $(RELEASEDIR)/../$(SHORTNAME)
+	@copyattr -d -r $(RELEASEDIR)/ /tmp/$(SHORTNAME)
+	@cd /tmp && $(ZIP) $(ZIPFULLNAME).zip $(SHORTNAME)
+	@mv /tmp/$(ZIPFULLNAME).zip $(RELEASEDIR)/../
+	@rm -rf /tmp/$(SHORTNAME)
 
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(MAKECMDGOALS),depend)

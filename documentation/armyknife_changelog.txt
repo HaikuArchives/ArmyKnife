@@ -89,3 +89,4 @@
 4.1
 	-- taglib 1.5
 	-- fixed TTE composer checkbox bug
+	-- added HVIF icon
