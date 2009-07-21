@@ -4,31 +4,11 @@ INCLUDE_DIR = ../../include
 LIBRARY_DIR = ../../lib
 
 HDRS =	BetterScrollView.h\
-			CLVColumn.h\
-			CLVColumnLabelView.h\
-			CLVEasyItem.h\
-			CLVRefListItem.h\
-			CLVListItem.h\
 			Colors.h\
-			ColumnListView.h\
-			Cursors.h\
-			NewStrings.h\
-			PrefilledBitmap.h\
-			ScrollViewCorner.h\
-			UserResizeSplitView.h
+			ScrollViewCorner.h
 
 SRCS =	BetterScrollView.cpp\
-			CLVColumn.cpp\
-			CLVColumnLabelView.cpp\
-			CLVEasyItem.cpp\
-			CLVRefListItem.cpp\
-			CLVListItem.cpp\
-			ColumnListView.cpp\
-			Cursors.cpp\
-			NewStrings.cpp\
-			PrefilledBitmap.cpp\
-			ScrollViewCorner.cpp\
-			UserResizeSplitView.cpp
+			ScrollViewCorner.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
