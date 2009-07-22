@@ -63,7 +63,7 @@ resource mini_icon array {
 
 resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.Be-elfexecutable";
 
-resource app_signature "application/x-vnd.beunited.armyknife-tte";
+resource app_signature "application/x-vnd.armyknife-tte";
 
 resource file_types message {
 	"types" = "application/x-vnd.Be-volume",
@@ -76,7 +76,7 @@ resource file_types message {
 
 resource app_version {
 	major  = 4,
-	middle = 0,
+	middle = 1,
 	minor  = 0,
 
 	variety = B_APPV_FINAL,

@@ -64,7 +64,7 @@ resource mini_icon array {
 
 resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.Be-elfexecutable";
 
-resource app_signature "application/x-vnd.beunited.armyknife";
+resource app_signature "application/x-vnd.armyknife";
 
 resource file_types message {
 	"types" = "audio/x-mpeg",
@@ -77,14 +77,14 @@ resource file_types message {
 
 resource app_version {
 	major  = 4,
-	middle = 0,
+	middle = 1,
 	minor  = 0,
 
 	variety = B_APPV_FINAL,
 	internal = 0,
 
-	short_info = "The Army Knife for MP3 and OggVorbis Files",
-	long_info = "Tag/Attribute & File Name tool for MP3 and OggVorbis files."
+	short_info = "The Army Knife",
+	long_info = "MP3, Ogg and FLAC audio file tag editor."
 };
 
 resource app_flags B_MULTIPLE_LAUNCH;

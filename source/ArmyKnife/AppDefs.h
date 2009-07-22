@@ -10,11 +10,11 @@
 #ifdef _TTE_
 #define APPLICATION "The Army Knife - TuneTracker Edition"
 #define APPLICATION_DIR "ArmyKnifeTTE"
-#define SIGNATURE "application/x-vnd.osdrawer.armyknife-tte"
+#define SIGNATURE "application/x-vnd.armyknife-tte"
 #else
 #define APPLICATION "The Army Knife"
 #define APPLICATION_DIR "ArmyKnife"
-#define SIGNATURE "application/x-vnd.osdrawer.armyknife"
+#define SIGNATURE "application/x-vnd.armyknife"
 #endif
 
 #define VERSION "4.1.0"
