@@ -79,11 +79,17 @@
 
 #define PATTERN_LABEL "Pattern:"
 
-#define DIRECTION_LABEL "Choose Direction"
+#ifdef __HAIKU__
+#define A2T_LABEL "Attributes \xe2\x86\x92 Tags"
+#define T2A_LABEL "Tags \xe2\x86\x92 Attributes"
+#define A2N_LABEL "Attributes \xe2\x86\x92 Name"
+#define N2A_LABEL "Name \xe2\x86\x92 Attributes"
+#else
 #define A2T_LABEL "Attributes -> Tags"
 #define T2A_LABEL "Tags -> Attributes"
 #define A2N_LABEL "Attributes -> Name"
 #define N2A_LABEL "Name -> Attributes"
+#endif
 
 #define EDIT_LABEL "Edit"
 #define ATTRIBUTES_LABEL "Attributes"

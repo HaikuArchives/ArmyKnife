@@ -59,7 +59,6 @@ TAView::InitView()
 	float height = 4*space + 2*m_a2t_radiobutton->Frame().Height();
 
 	m_direction_box = new BBox(BRect(0,0,width,height),"m_direction_box");
-	m_direction_box->SetLabel(DIRECTION_LABEL);
 	m_direction_box->MoveTo(space,space);
 	bottom = m_direction_box->Frame().bottom;
 
