@@ -18,6 +18,7 @@ Barberpole::Barberpole (BRect a_rect, const char * a_name, uint32 a_resizing_mod
 	m_pattern.data[7] = 0x87;
 	
 	CreateBitmap();
+	DrawIntoBitmap();
 	
 	SetFont(be_plain_font);
 };
