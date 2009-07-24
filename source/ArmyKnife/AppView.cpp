@@ -152,8 +152,7 @@ AppView::InitView()
 	frame.InsetBy(0,12);
 	frame.right = Bounds().right - space - B_V_SCROLL_BAR_WIDTH;
 	frame.bottom -=  B_H_SCROLL_BAR_HEIGHT;
-	//m_list_view = new AKListView(& m_applying, frame,"m_list_view",B_MULTIPLE_SELECTION_LIST, B_FOLLOW_ALL);
-	m_list_view = new BListView(frame,"m_list_view",B_MULTIPLE_SELECTION_LIST, B_FOLLOW_ALL);
+	m_list_view = new AKListView(frame,"m_list_view",B_MULTIPLE_SELECTION_LIST, B_FOLLOW_ALL);
 	m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 
 	m_scroll_view = new BetterScrollView("m_scroll_view",m_list_view,B_FOLLOW_ALL);

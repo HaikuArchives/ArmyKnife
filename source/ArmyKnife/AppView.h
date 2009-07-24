@@ -2,6 +2,7 @@
 #define __APP_VIEW_H__
 
 #include <be/interface/View.h>
+#include "AKListView.h"
 #include "Barberpole.h"
 #include "EntryRefItem.h"
 #include "Preferences.h"
@@ -59,7 +60,7 @@ class AppView : public BView
 		static int SortFunc(const void* first, const void* second);
 
 		PickListView*		m_pick_list_view;
-		BListView*			m_list_view;
+		AKListView*			m_list_view;
 		BetterScrollView*	m_scroll_view;
 		BStringView*		m_selected_string_view;
 		
