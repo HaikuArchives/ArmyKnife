@@ -393,14 +393,9 @@ EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
 	{
 		rgb_color original_high = owner->HighColor();
 		rgb_color original_low = owner->LowColor();
-	
-	
-//		rgb_color color_a = {180, 110, 110, 0};
-//		rgb_color color_b = {255, 210, 210, 0};
 		
-		rgb_color color_a = {110, 110, 180,  0};
-		rgb_color color_b = {210, 210, 255, 0};
-		
+		rgb_color color_a = {180, 110, 110, 0};
+		rgb_color color_b = {255, 150, 150, 0};
 		rgb_color black = {0, 0, 0, 0};
 		rgb_color color;
 			
@@ -417,28 +412,14 @@ EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
 		owner->SetLowColor(color);
 		owner->FillRect(frame);
 
-		//
 		owner->SetHighColor(black);
-//		owner->StrokeRect(frame);
-		//
 		
-//		BString string = Text();
-//		string.Prepend("!!!");
-//		SetText(string.String());
-		
-//		owner->SetHighColor(original_high);
-//		owner->SetLowColor(color);
-/*		
-		BFont font;
-		owner->GetFont(& font);
-		font.SetFace(B_UNDERSCORE_FACE);
-		owner->SetFont(& font);
-*/
-//		owner->SetDrawingMode(B_OP_MAX);
-
-		//BStringItem::DrawItem(owner, frame, false);
-
-//		owner->SetHighColor(black);
+		BFont originalFont;
+		BFont italicFont;
+		owner->GetFont(& originalFont);
+		italicFont = originalFont;
+		italicFont.SetFace(B_BOLD_FACE);
+		owner->SetFont(& italicFont);
 		
 		BPoint point = frame.LeftBottom();
 		point.x += 4;
@@ -446,13 +427,10 @@ EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
 
 		owner->MovePenTo(point);
 		owner->DrawString(Text());
-				
-//		font.SetFace(B_REGULAR_FACE);
-//		owner->SetFont(& font);
-
 
 		owner->SetHighColor(original_high);
 		owner->SetLowColor(original_low);
+		owner->SetFont(& originalFont);
 	}
 	else
 		BStringItem::DrawItem(owner, frame, true);
