@@ -230,6 +230,7 @@ void Barberpole::FrameResized (float width, float height)
 	{
 		delete m_barberpole_bitmap;
 		CreateBitmap();
+		DrawIntoBitmap();
 	}
 	
 	Invalidate();
