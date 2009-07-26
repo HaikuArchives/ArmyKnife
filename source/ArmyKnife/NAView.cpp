@@ -113,8 +113,8 @@ NAView::InitView()
 	frame.top = space+bottom;
 
 	m_pattern_menu = new BMenu("Please Add Pattern!");
-	m_pattern_menufield = new BMenuField(frame, PATTERN_LABEL, "Filename", m_pattern_menu);
-	m_pattern_menufield->SetDivider(StringWidth("Filename") + 5);
+	m_pattern_menufield = new BMenuField(frame, PATTERN_LABEL, "Filename:", m_pattern_menu);
+	m_pattern_menufield->SetDivider(StringWidth("Filename:") + 3);
 
 	ResizeToPreferred();
 
