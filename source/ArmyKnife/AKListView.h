@@ -13,6 +13,10 @@ class AKListView : public BListView
 		~AKListView	();
 
 			virtual void 	KeyDown		(const char* bytes, int32 numBytes);
+			
+			virtual void 	SelectAll	();
+			virtual void 	DeselectAll	();
+			virtual void	ScrollToFirstUnaccepted();
 };
 
 #endif

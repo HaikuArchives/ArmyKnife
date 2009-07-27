@@ -514,3 +514,19 @@ MPEGView::MessageReceived(BMessage* message)
 	}
 }
 
+bool
+MPEGView::AcceptListItem(EntryRefItem* listItem)
+{
+	PRINT(("MPEGView::AcceptListItem()\n"));
+
+	if (!listItem->IsFSWritable())
+		return false;
+
+	if (!listItem->IsSupportedByTaglib())
+		return false;
+
+	if (!listItem->IsMP3())
+		return false;
+
+	return true;
+}

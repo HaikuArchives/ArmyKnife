@@ -512,6 +512,20 @@ NAView::MessageReceived(BMessage* message)
 	}
 }
 
+bool
+NAView::AcceptListItem(EntryRefItem* listItem)
+{
+	PRINT(("NAView::AcceptListItem()\n"));
+	
+	if (!listItem->IsFSWritable())
+		return false;
+		
+	if (!listItem->IsFSAttributable())
+		return false;
+
+	return true;
+}
+
 NameValueMatcher::NameValueMatcher(const char* nameStr, const char* valueStr, char delim)
 {
 	_delim = delim;

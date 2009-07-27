@@ -28,6 +28,7 @@ class MPEGView : public AddOnView
 		virtual void Apply();
 		virtual void Reset();
 		virtual void MessageReceived(BMessage* message);
+		virtual bool AcceptListItem(EntryRefItem* listItem);
 	private:
 		void InitView();
 		static int32 ApplyFunction(void* args);

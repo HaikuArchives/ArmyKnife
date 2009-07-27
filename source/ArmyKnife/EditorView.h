@@ -25,6 +25,7 @@ class EditorView : public AddOnView
 		virtual void Apply();
 		virtual void Reset();
 		virtual void MessageReceived(BMessage* message);
+		virtual bool AcceptListItem(EntryRefItem* listItem);
 	private:
 		void InitView();
 		void GenreSelectionAction();

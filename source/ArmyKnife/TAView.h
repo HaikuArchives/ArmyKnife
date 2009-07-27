@@ -21,6 +21,7 @@ class TAView : public AddOnView
 		virtual void SelectionChanged(BList* list);
 		virtual void Apply();
 		virtual void Reset();
+		virtual bool AcceptListItem(EntryRefItem* listItem);
 	private:
 		void InitView();
 		static int32 ApplyFunction(void* args);

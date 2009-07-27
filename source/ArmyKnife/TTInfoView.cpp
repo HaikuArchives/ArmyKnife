@@ -378,5 +378,19 @@ TTInfoView::IsNewInfoSane(const char * text)
 	return true;	
 }
 
+bool
+TTInfoView::AcceptListItem(EntryRefItem* listItem)
+{
+	PRINT(("TTInfoView::AcceptListItem()\n"));
+	
+	if (!listItem->IsFSWritable())
+		return false;
+	
+	if (!listItem->IsFSAttributable())
+		return false;
+
+	return true;
+}
+
 #endif // _TTE_
 

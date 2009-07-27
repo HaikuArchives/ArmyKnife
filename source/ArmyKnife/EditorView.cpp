@@ -63,7 +63,7 @@ EditorView::InitView()
 			new BMessage(RADIO_BUTTON_EVENT));
 	m_tag_radiobutton->ResizeToPreferred();
 
-	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,0);
+	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,new BMessage(MSG_APPLY_TO_BOTH));
 	m_apply_checkbox->ResizeToPreferred();
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
 
@@ -1106,7 +1106,11 @@ EditorView::MessageReceived(BMessage* message)
 				}
 			}
 			break;
+		case MSG_APPLY_TO_BOTH:
+			FlagUnacceptedListItems();
+			break;
 		case RADIO_BUTTON_EVENT:
+			FlagUnacceptedListItems();
 			WidgetsSetValues();
 			WidgetsSetEnabled();
 			WidgetsRBValues();
@@ -1157,3 +1161,41 @@ EditorView::CheckAllBoxes(int32 value)
 	m_genre_checkbox->SetValue(value);
 }
 
+bool
+EditorView::AcceptListItem(EntryRefItem* listItem)
+{
+	PRINT(("EditorView::AcceptListItem()\n"));
+	
+	if (m_apply_checkbox->Value() == B_CONTROL_ON)
+	{
+		if (!listItem->IsFSWritable())
+			return false;
+		
+		if (!listItem->IsFSAttributable())
+			return false;
+	
+		if(!listItem->IsSupportedByTaglib())
+			return false;
+	} 
+	else 
+	{
+		if (m_attribute_radiobutton->Value() == B_CONTROL_ON)
+		{
+			if (!listItem->IsFSWritable())
+				return false;
+			
+			if (!listItem->IsFSAttributable())
+				return false;
+		}
+		else
+		{
+			if (!listItem->IsFSWritable())
+				return false;
+		
+			if(!listItem->IsSupportedByTaglib())
+				return false;
+		}
+	}
+
+	return true;
+}

@@ -56,3 +56,39 @@ AKListView::KeyDown(const char* bytes, int32 numBytes)
 	}
 }
 
+void 
+AKListView::SelectAll()
+{
+	Select(0,CountItems()-1);
+}
+
+void 
+AKListView::DeselectAll()
+{
+	BListView::DeselectAll();
+}
+
+void 
+AKListView::ScrollToFirstUnaccepted()
+{
+	int numItems = CountItems();
+	
+	for (int i = 0; i < numItems; i++) {
+		
+		BListItem* item = ItemAt(i);
+		if (!item)
+			return;
+		
+		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
+		if (!refItem)
+			return;
+		
+		if (!refItem->IsAccepted()) {
+			BPoint point = ItemFrame(i).LeftTop();
+			if (i > 0);
+			point.y -= item->Height();
+			ScrollTo(point);
+			break;
+		}
+	}
+}

@@ -144,8 +144,6 @@ AppView::InitView()
 		delete aView;
 #endif
 
-	SelectView(m_preferences->GetMode());
-
 	frame = m_pick_list_view->Frame();
 	frame.bottom = Bounds().bottom - 50;
 	frame.OffsetBy(frame.Width() + space,0);
@@ -208,6 +206,19 @@ AppView::InitView()
 		dragger->SetLowColor(LowColor());
 	}
 */
+	// The following is a kludge to give each addon view a 
+	// pointer to the list view. It's done this way, for now,
+	// as the m_list_view is created after the add-ons
+	// due to how the layout is done.
+	
+	AddOnView* addOnView;
+	int numViews = m_pick_list_view->CountViews();
+	for (int i = 0; i < numViews; i++) {
+		addOnView = dynamic_cast<AddOnView*>(m_pick_list_view->ViewAt(i));
+		addOnView->SetListView(m_list_view);
+	}
+
+	SelectView(m_preferences->GetMode());
 }
 
 void // *******
@@ -517,7 +528,6 @@ AppView::AddRefsThreadFunc(void* data)
 
 	if(view->LockLooper())
 	{
-		// Setup DataRect for m_scroll_view
 		int numItems = view->m_list_view->CountItems();
 		float frameWidth = 0.0;
 		float frameHeight= 0.0;
@@ -536,11 +546,13 @@ AppView::AddRefsThreadFunc(void* data)
 		BRect dataRect(0,0,frameWidth,frameHeight);
 		view->m_scroll_view->SetDataRect(dataRect);
 		
-		// Sort List
 		view->m_list_view->SortItems(&AppView::SortFunc);
 
-		// Select All
-		view->m_list_view->Select(0,(int32)numItems-1);
+		view->m_list_view->SetSelectionMessage(NULL);
+		AddOnView* addOnView = dynamic_cast<AddOnView*>(view->m_pick_list_view->SelectedView());
+		addOnView->ListContentAdded();
+		view->m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
+		view->SelectionChanged();
 		
 		view->m_barberpole->Stop();
 

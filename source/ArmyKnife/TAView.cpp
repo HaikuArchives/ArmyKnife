@@ -402,3 +402,21 @@ TAView::ApplyFunction(void* args)
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
 }
+
+bool
+TAView::AcceptListItem(EntryRefItem* listItem)
+{
+	PRINT(("TAView::AcceptListItem()\n"));
+	
+	if (!listItem->IsFSWritable())
+		return false;
+		
+	if (!listItem->IsFSAttributable())
+		return false;
+	
+	if(!listItem->IsSupportedByTaglib())
+		return false;
+
+	return true;
+}
+
