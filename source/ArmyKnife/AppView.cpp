@@ -571,27 +571,24 @@ AppView::AddRefsHelper(AppView * view, EntryRefItem * ref_item)
 
 	if(ref_item->IsFile())
 	{
-		if(ref_item->IsFSWritable())
+		bool found = false;
+		for(int i=0; i<m_list_view->CountItems(); i++)
 		{
-			bool found = false;
-			for(int i=0; i<m_list_view->CountItems(); i++)
+			EntryRefItem* item = (EntryRefItem*)m_list_view->ItemAt(i);
+			entry_ref* ref = item->EntryRef();
+			if(*ref == *(ref_item->EntryRef()))
 			{
-				EntryRefItem* item = (EntryRefItem*)m_list_view->ItemAt(i);
-				entry_ref* ref = item->EntryRef();
-				if(*ref == *(ref_item->EntryRef()))
-				{
-					found = true;
-					delete ref_item;
-					return;
-				}
+				found = true;
+				delete ref_item;
+				return;
 			}
-			if(!found)
+		}
+		if(!found)
+		{
+			if(view->LockLooper())
 			{
-				if(view->LockLooper())
-				{
-					view->m_list_view->AddItem(ref_item);
-					view->UnlockLooper();
-				}
+				view->m_list_view->AddItem(ref_item);
+				view->UnlockLooper();
 			}
 		}
 	}
