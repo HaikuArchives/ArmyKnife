@@ -34,8 +34,10 @@ class EntryRefItem : public BStringItem
 		void UpdateText();
 		
 		void SetAccepted (bool accepted);
+		bool IsAccepted ();
 		
 		virtual void DrawItem (BView *owner, BRect frame, bool complete = false);
+		virtual	void Update(BView* owner, const BFont* font);
 				
 		bool IsFile();
 		bool IsDirectory();
@@ -84,6 +86,7 @@ class EntryRefItem : public BStringItem
 		bool		m_has_id3v2;
 		bool		m_has_ape;
 		
+		float		m_baseline_offset;
 };
 
 #endif

@@ -386,6 +386,12 @@ EntryRefItem::SetAccepted(bool accepted)
 	m_file_accepted = accepted;
 }
 
+bool
+EntryRefItem::IsAccepted()
+{
+	return m_file_accepted;
+}
+
 void
 EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
 {
@@ -414,24 +420,32 @@ EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
 
 		owner->SetHighColor(black);
 		
+/*		These font changes make redraws lag.
 		BFont originalFont;
 		BFont italicFont;
 		owner->GetFont(& originalFont);
 		italicFont = originalFont;
 		italicFont.SetFace(B_BOLD_FACE);
 		owner->SetFont(& italicFont);
-		
-		BPoint point = frame.LeftBottom();
-		point.x += 4;
-		point.y -= 2;
-
-		owner->MovePenTo(point);
+*/		
+		owner->MovePenTo(frame.left, frame.top + m_baseline_offset);
 		owner->DrawString(Text());
 
 		owner->SetHighColor(original_high);
 		owner->SetLowColor(original_low);
-		owner->SetFont(& originalFont);
+//		owner->SetFont(& originalFont);
 	}
 	else
 		BStringItem::DrawItem(owner, frame, true);
+}
+
+
+void
+EntryRefItem::Update(BView *owner, const BFont *font)
+{
+	font_height height;
+	font->GetHeight(&height);
+	m_baseline_offset = ceilf(height.ascent + height.leading / 2) + 2;
+
+	BStringItem::Update(owner, font);
 }
