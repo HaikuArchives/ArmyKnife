@@ -180,7 +180,7 @@ AppView::InitView()
 	frame.OffsetBy(-(frame.Width() + space),0);
 	m_reset_button = new BButton(frame,"m_reset_button", RESET_BUTTON, new BMessage(MSG_RESET),
 			B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	m_reset_button->SetEnabled(false);
+	m_reset_button->SetEnabled(true);
 	AddChild(m_reset_button);
 
 	frame = Bounds();
@@ -300,15 +300,13 @@ AppView::SelectionChanged()
 			buf << SELECTED_TEXT;
 			m_selected_string_view->SetText(buf.String());
 
-			if(list.CountItems() > 0)
+			if(m_list_view->HasSelectionOfOnlyAcceptedItems())
 			{
 				m_apply_button->SetEnabled(true);
-				m_reset_button->SetEnabled(true);
 			}
 			else
 			{
 				m_apply_button->SetEnabled(false);
-				m_reset_button->SetEnabled(false);
 			}
 
 			for(int i = 0; i < numViews; i++)
@@ -347,10 +345,6 @@ AppView::Reset()
 
 	if (! Busy())
 	{
-		// Select All
-		int numItems = m_list_view->CountItems();
-		m_list_view->Select(0,(int32)numItems-1);
-	
 		AddOnView* view = (AddOnView*)m_pick_list_view->SelectedView();
 		if(view)
 		{

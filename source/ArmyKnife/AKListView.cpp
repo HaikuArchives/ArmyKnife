@@ -92,3 +92,35 @@ AKListView::ScrollToFirstUnaccepted()
 		}
 	}
 }
+
+bool 
+AKListView::HasSelectionOfOnlyAcceptedItems()
+{
+	int32 i = 0;
+	int32 selection_index = 0;
+	int32 selection_count = 0;
+	BListItem* item;
+	EntryRefItem* refItem; 
+	
+	while ((selection_index = CurrentSelection(i)) >= 0) {
+			
+		BListItem* item = ItemAt(selection_index);
+		if (!item)
+			return false;
+		
+		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
+		if (!refItem)
+			return false;
+		if (!refItem->IsAccepted()) {
+			return false;
+		}
+		
+		selection_count++;
+		i++;
+	}
+	
+	if (selection_count > 0)
+		return true;
+	else
+		return false;
+}
