@@ -90,3 +90,8 @@
 	-- taglib 1.5
 	-- fixed TTE composer checkbox bug
 	-- added HVIF icon
+
+4.2
+	-- list items not supported by the current mode are highlighted
+	-- files on a read-only volume are now allowed to be opened
+		(but you can't do much with them)
