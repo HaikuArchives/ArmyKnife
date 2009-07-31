@@ -1,42 +1,39 @@
-#ifndef __BARBERPOLE_H__
-#define __BARBERPOLE_H__
+#ifndef _BARBERPOLE_H_
+#define _BARBERPOLE_H_
 
 #include <stdlib.h>
 
-#include <Window.h>
-#include <View.h>
 #include <Box.h>
 #include <Bitmap.h>
+#include <View.h>
+#include <Window.h>
+
 
 class Barberpole : public BBox 
 {
-	public:
-		Barberpole  (BRect a_rect, const char * a_name, uint32 a_resizing_mode, 
-					uint32 a_flags);
-		~Barberpole	();
+public:
+							Barberpole(BRect frame, const char* name,
+								uint32 resizing_mode, uint32 flags);
+							~Barberpole();
 
-					void	Start		();
-					void	Pause		();
-					void	Stop		();
-					bool	IsRunning	();
-			virtual void 	Pulse		();
-			virtual void 	Draw		(BRect a_draw);
-			virtual void	FrameMoved 	(BPoint a_point);
-			virtual void	FrameResized (float a_width, float a_height);
+			void			Start();
+			void			Pause();
+			void			Stop();
+			bool			IsRunning();
+	virtual	void			Pulse();
+	virtual	void			Draw(BRect draw);
+	virtual void			FrameMoved(BPoint point);
+	virtual	void			FrameResized(float width, float height);
 				
-	protected:
-					void	CreateBitmap			(void);
-					void	LightenBitmapHighColor	(rgb_color * a_color);
-					void	DrawIntoBitmap			(void);
+private:
+			void			_CreateBitmap();
+			void			_LightenBitmapHighColor(rgb_color* color);
+			void			_DrawOnBitmap();
 
-		bool		m_is_running;
-		pattern		m_pattern;
-		
-		BBitmap	*	m_barberpole_bitmap;
-		BView	*	m_barberpole_bitmap_view;
-
-	private:
-
+			bool			fIsRunning;
+			pattern			fPattern;
+			BBitmap*		fBitmap;
+			BView*			fBitmapView;
 };
 
-#endif
+#endif	// _BARBERPOLE_H_
