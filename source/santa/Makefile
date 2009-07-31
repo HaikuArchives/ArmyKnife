@@ -1,5 +1,5 @@
 LIBRARY = libsanta.a
-HEADER_DIR = ../../include/Santa
+HEADER_DIR = ../../include/santa
 INCLUDE_DIR = ../../include
 LIBRARY_DIR = ../../lib
 

@@ -40,8 +40,8 @@ GCCMAJVERSION := $(shell gcc --version | head -c 1)
 OSVERSION := $(shell uname -o)
 FULLNAME := $(SHORTNAME)-$(VERSION)-$(BUILDDATE)
 ZIPFULLNAME := $(SHORTNAME)-$(VERSION)-gcc$(GCCMAJVERSION)-$(OSVERSION)-$(BUILDDATE)
-RESOURCES := ArmyKnifeTTE.rsrc
-RESOURCESRDEF := ArmyKnifeTTE.rdef
+RESOURCES := armyknifette.rsrc
+RESOURCESRDEF := armyknifette.rdef
 DEFINES := -D_TTE_
 
 # libraries
@@ -51,7 +51,7 @@ SRC_LIBS := -ltag -lsanta -ltracker
 # directories
 OBJDIR := objects/armyknife_tte
 DEPDIR := dependencies/armyknife_tte
-SRCDIR := source/ArmyKnife
+SRCDIR := source/armyknife
 INCLUDEDIR := include
 DATADIR := documentation/armyknife_tte
 LIBDIR := lib

@@ -44,10 +44,10 @@ SYS_LIBS := -lbe -lroot
 # directories
 OBJDIR := objects/libsanta
 DEPDIR := dependencies/libsanta
-SRCDIR := source/Santa
-INCLUDEDIR := source/Santa
+SRCDIR := source/santa
+INCLUDEDIR := source/santa
 RELEASEDIR := lib
-HEADERDIR := include/Santa
+HEADERDIR := include/santa
 
 BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1 *.h)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
