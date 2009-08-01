@@ -2,7 +2,7 @@
 // authors: jonas.sundstrom@kirilla.com
 
 
-#include "Barberpole.h"
+#include "barberpole.h"
 
 
 Barberpole::Barberpole(BRect frame, const char* name, uint32 resizingMode,

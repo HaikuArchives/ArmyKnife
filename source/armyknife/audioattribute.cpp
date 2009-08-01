@@ -11,7 +11,7 @@
 #include <be/support/TypeConstants.h>
 #include <be/support/String.h>
 
-#include "AudioAttribute.h"
+#include "audioattribute.h"
 
 
 AudioAttribute::AudioAttribute(BFile* file, const char* name,

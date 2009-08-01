@@ -1,9 +1,9 @@
 #ifndef __NA_VIEW_H__
 #define __NA_VIEW_H__
 
-#include "AddOnView.h"
-#include "Preferences.h"
-#include "NAWindow.h"
+#include "addonview.h"
+#include "preferences.h"
+#include "nawindow.h"
 
 class BBox;
 class BList;

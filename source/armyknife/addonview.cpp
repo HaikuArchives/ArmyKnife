@@ -2,8 +2,9 @@
 #include <be/interface/Window.h>
 #include <be/support/Debug.h>
 #include <be/support/List.h>
-#include "CommandConstants.h"
-#include "AddOnView.h"
+
+#include "commandconstants.h"
+#include "addonview.h"
 
 AddOnView::AddOnView(BRect frame, const char* name) :
 	BView(frame, name, B_FOLLOW_ALL, B_NAVIGABLE_JUMP | B_FULL_UPDATE_ON_RESIZE)

@@ -21,15 +21,15 @@
 #include <tfile.h>
 #include <tag.h>
 #include <mpegfile.h>
-#include "AudioAttributes.h"
-#include "AppDefs.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "EntryRefItem.h"
-#include "GUIStrings.h"
-#include "MPEGView.h"
-#include "Preferences.h"
+#include "audioattributes.h"
+#include "appdefs.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "entryrefitem.h"
+#include "guistrings.h"
+#include "mpegview.h"
+#include "preferences.h"
 
 MPEGView::MPEGView(BRect frame, Preferences * preferences)
  :	AddOnView			(frame, MPEG_MODE_NAME),

@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 
-#include "AudioInfo.h"
-#include "EntryRefItem.h"
-#include "ID3Tag.h"
+#include "audioinfo.h"
+#include "entryrefitem.h"
+#include "id3tag.h"
 
 class ID3Tags : public AudioInfo
 {

@@ -6,10 +6,10 @@
 #include <be/interface/Rect.h>
 #include <be/support/Archivable.h>
 #include <be/support/Debug.h>
-#include "CommandConstants.h"
-#include "PickListView.h"
 
-#include "AppView.h"
+#include "commandconstants.h"
+#include "picklistview.h"
+#include "appview.h"
 
 PickListView::PickListView(BRect frame, const char* name = NULL,
 	uint32 resizingMode = B_FOLLOW_ALL,

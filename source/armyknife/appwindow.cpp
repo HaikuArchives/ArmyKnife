@@ -13,13 +13,13 @@
 #include <be/storage/Path.h>
 #include <be/support/ClassInfo.h>
 #include <be/support/Debug.h>
-#include "AppDefs.h"
-#include "Application.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "GUIStrings.h"
-#include "Preferences.h"
+#include "appdefs.h"
+#include "application.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "guistrings.h"
+#include "preferences.h"
 
 #define WIN_LEFT 200
 #define WIN_TOP 200

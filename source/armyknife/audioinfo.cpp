@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <be/support/Debug.h>
-#include "AudioInfo.h"
+#include "audioinfo.h"
 
 AudioInfo::AudioInfo()
 {

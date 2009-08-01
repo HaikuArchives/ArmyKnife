@@ -15,7 +15,7 @@
 #include <vorbisfile.h>
 #include <flacfile.h>
 
-#include "EntryRefItem.h"
+#include "entryrefitem.h"
 
 EntryRefItem::EntryRefItem(entry_ref* entryRef)
 :	BStringItem			(entryRef->name, 0, true),

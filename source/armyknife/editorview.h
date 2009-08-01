@@ -1,8 +1,8 @@
 #ifndef __EDITOR_VIEW_H__
 #define __EDITOR_VIEW_H__
 
-#include "AddOnView.h"
-#include "Preferences.h"
+#include "addonview.h"
+#include "preferences.h"
 
 class BCheckBox;
 class BList;

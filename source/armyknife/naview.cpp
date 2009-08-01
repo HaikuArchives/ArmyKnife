@@ -13,15 +13,15 @@
 #include <be/support/Archivable.h>
 #include <be/support/Debug.h>
 #include <be/support/List.h>
-#include "AudioAttributes.h"
-#include "AppDefs.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "EntryRefItem.h"
-#include "GUIStrings.h"
-#include "NAView.h"
-#include "Preferences.h"
+#include "audioattributes.h"
+#include "appdefs.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "entryrefitem.h"
+#include "guistrings.h"
+#include "naview.h"
+#include "preferences.h"
 
 NAView::NAView(BRect frame, Preferences * preferences)
  :	AddOnView		(frame, NA_MODE_NAME),

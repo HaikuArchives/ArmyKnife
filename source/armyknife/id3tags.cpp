@@ -12,8 +12,8 @@
 #include <vorbisfile.h>
 #include <flacfile.h>
 
-#include "GenreList.h"
-#include "ID3Tags.h"
+#include "genrelist.h"
+#include "id3tags.h"
 
 //using namespace TagLib;
 

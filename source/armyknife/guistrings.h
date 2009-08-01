@@ -1,7 +1,7 @@
 #ifndef __GUI_STRINGS_H__
 #define __GUI_STRINGS_H__
 
-#include "AppDefs.h"
+#include "appdefs.h"
 
 #define WIN_TITLE APPLICATION
 #define PREF_TITLE "The Army Knife Preferences"

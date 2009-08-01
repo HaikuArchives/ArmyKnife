@@ -17,16 +17,16 @@
 #include <be/storage/Path.h>
 #include <be/support/Debug.h>
 #include <be/support/List.h>
-#include "AudioAttributes.h"
-#include "GenreList.h"
-#include "ID3Tags.h"
-#include "AppDefs.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "EditorView.h"
-#include "EntryRefItem.h"
-#include "GUIStrings.h"
+#include "audioattributes.h"
+#include "genrelist.h"
+#include "id3tags.h"
+#include "appdefs.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "editorview.h"
+#include "entryrefitem.h"
+#include "guistrings.h"
 
 EditorView::EditorView(BRect frame, Preferences * preferences)
  :	AddOnView		(frame, EDITOR_MODE_NAME),

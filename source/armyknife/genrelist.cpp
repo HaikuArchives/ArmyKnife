@@ -1,6 +1,6 @@
 #include <be/support/Debug.h>
 #include <string.h>
-#include "GenreList.h"
+#include "genrelist.h"
 
 #define NUM_GENRES 115
 #define OTHER_INDEX 12

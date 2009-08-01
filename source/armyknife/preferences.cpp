@@ -6,10 +6,11 @@
 #include <be/storage/FindDirectory.h>
 #include <be/storage/Path.h>
 #include <be/support/Debug.h>
-#include "AppDefs.h"
-#include "CommandConstants.h"
-#include "GUIStrings.h"
-#include "Preferences.h"
+
+#include "appdefs.h"
+#include "commandconstants.h"
+#include "guistrings.h"
+#include "preferences.h"
 
 Preferences::Preferences()
 :	m_mode				(0),

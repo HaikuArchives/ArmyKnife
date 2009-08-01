@@ -1,5 +1,5 @@
-#include "AKListView.h"
-#include "EntryRefItem.h"
+#include "aklistview.h"
+#include "entryrefitem.h"
 
 // AKListView is meant to hold EntryRefItems.
 // EntryRefItem is a subclass of BListItem.

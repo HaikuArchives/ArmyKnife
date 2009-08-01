@@ -2,8 +2,8 @@
 #define __TT_COMMENT_VIEW_H__
 #ifdef _TTE_
 
-#include "AddOnView.h"
-#include "Preferences.h"
+#include "addonview.h"
+#include "preferences.h"
 
 class BList;
 class BMessage;

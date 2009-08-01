@@ -3,8 +3,8 @@
 #include <be/storage/File.h>
 #include <be/support/Debug.h>
 #include <be/support/TypeConstants.h>
-#include "AudioAttributes.h"
-#include "AudioAttribute.h"
+#include "audioattributes.h"
+#include "audioattribute.h"
 
 #define ARTIST_NAME    "Artist"
 #define ALBUM_NAME     "Album"

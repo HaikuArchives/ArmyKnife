@@ -3,12 +3,12 @@ HEADER_DIR = ../../include/santa
 INCLUDE_DIR = ../../include
 LIBRARY_DIR = ../../lib
 
-HDRS =	BetterScrollView.h\
-			Colors.h\
-			ScrollViewCorner.h
+HDRS =	betterscrollview.h\
+			colors.h\
+			scrollviewcorner.h
 
-SRCS =	BetterScrollView.cpp\
-			ScrollViewCorner.cpp
+SRCS =	betterscrollview.cpp\
+			scrollviewcorner.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

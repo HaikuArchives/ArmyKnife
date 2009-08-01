@@ -2,9 +2,9 @@
 #include <be/support/Debug.h>
 #include <be/support/String.h>
 
-#include "NAWindow.h"
-#include "CommandConstants.h"
-#include "GUIStrings.h"
+#include "nawindow.h"
+#include "commandconstants.h"
+#include "guistrings.h"
 
 PatternWindow::PatternWindow(BMessenger * messenger)
  :	BWindow(BRect(300,300,600,385), "New filename pattern", B_TITLED_WINDOW, B_NOT_V_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_MINIMIZABLE),

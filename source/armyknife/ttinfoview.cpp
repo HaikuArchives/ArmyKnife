@@ -24,17 +24,17 @@
 #define DEBUG 0
 #include <be/support/Debug.h>
 #include <be/support/List.h>
-#include "AudioAttributes.h"
-#include "GenreList.h"
-#include "ID3Tags.h"
-#include "AppDefs.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "EntryRefItem.h"
-#include "GUIStrings.h"
-#include "PickListView.h"
-#include "TTInfoView.h"
+#include "audioattributes.h"
+#include "genrelist.h"
+#include "id3tags.h"
+#include "appdefs.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "entryrefitem.h"
+#include "guistrings.h"
+#include "picklistview.h"
+#include "ttinfoview.h"
 
 TTInfoView::TTInfoView(BRect frame, Preferences * preferences)
  :	AddOnView		(frame, TT_INFO_MODE_NAME),

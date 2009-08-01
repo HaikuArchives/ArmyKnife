@@ -2,8 +2,9 @@
 #define __ADDON_VIEW_H__
 
 #include <be/interface/View.h>
-#include "AKListView.h"
-#include "EntryRefItem.h"
+
+#include "aklistview.h"
+#include "entryrefitem.h"
 
 class BList;
 class BMessage;

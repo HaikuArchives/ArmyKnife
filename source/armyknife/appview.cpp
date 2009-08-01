@@ -13,22 +13,22 @@
 #include <be/support/Beep.h>
 #include <be/support/List.h>
 #include <be/support/String.h>
-#include <BetterScrollView.h>
-#include "AddOnView.h"
-#include "AppDefs.h"
-#include "AppView.h"
-#include "AppWindow.h"
-#include "CommandConstants.h"
-#include "EditorView.h"
-#include "GUIStrings.h"
-#include "NAView.h"
-#include "MPEGView.h"
-#include "PickListView.h"
-#include "Preferences.h"
-#include "TAView.h"
+#include <betterscrollview.h>
+#include "addonview.h"
+#include "appdefs.h"
+#include "appview.h"
+#include "appwindow.h"
+#include "commandconstants.h"
+#include "editorview.h"
+#include "guistrings.h"
+#include "naview.h"
+#include "mpegview.h"
+#include "picklistview.h"
+#include "preferences.h"
+#include "taview.h"
 
 #ifdef _TTE_
-#include "TTInfoView.h"
+#include "ttinfoview.h"
 #endif
 
 AppView::AppView(BRect frame) : BView(frame, "ArmyKnifeAppView", B_FOLLOW_ALL,

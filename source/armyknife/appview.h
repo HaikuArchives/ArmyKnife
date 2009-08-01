@@ -2,10 +2,11 @@
 #define __APP_VIEW_H__
 
 #include <be/interface/View.h>
-#include "AKListView.h"
-#include "Barberpole.h"
-#include "EntryRefItem.h"
-#include "Preferences.h"
+
+#include "aklistview.h"
+#include "barberpole.h"
+#include "entryrefitem.h"
+#include "preferences.h"
 
 class BButton;
 class BetterScrollView;

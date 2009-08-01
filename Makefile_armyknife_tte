@@ -40,8 +40,8 @@ GCCMAJVERSION := $(shell gcc --version | head -c 1)
 OSVERSION := $(shell uname -o)
 FULLNAME := $(SHORTNAME)-$(VERSION)-$(BUILDDATE)
 ZIPFULLNAME := $(SHORTNAME)-$(VERSION)-gcc$(GCCMAJVERSION)-$(OSVERSION)-$(BUILDDATE)
-RESOURCES := armyknifette.rsrc
-RESOURCESRDEF := armyknifette.rdef
+RESOURCES := armyknife_tte.rsrc
+RESOURCESRDEF := armyknife_tte.rdef
 DEFINES := -D_TTE_
 
 # libraries

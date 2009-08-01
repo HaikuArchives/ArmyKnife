@@ -2,8 +2,8 @@
 #include <be/storage/Mime.h>
 #include <be/support/Debug.h>
 #include <be/support/String.h>
-#include "AppDefs.h"
-#include "CreateMimetypes.h"
+#include "appdefs.h"
+#include "createmimetypes.h"
 
 void CreateMimetypes()
 {

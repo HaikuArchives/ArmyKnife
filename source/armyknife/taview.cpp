@@ -12,13 +12,13 @@
 #include <be/support/Debug.h>
 #include <be/support/List.h>
 #include <be/support/SupportDefs.h>
-#include "AudioAttributes.h"
-#include "ID3Tags.h"
-#include "AppDefs.h"
-#include "CommandConstants.h"
-#include "EntryRefItem.h"
-#include "GUIStrings.h"
-#include "TAView.h"
+#include "audioattributes.h"
+#include "id3tags.h"
+#include "appdefs.h"
+#include "commandconstants.h"
+#include "entryrefitem.h"
+#include "guistrings.h"
+#include "taview.h"
 
 TAView::TAView(BRect frame, Preferences * preferences)
  :	AddOnView		(frame, TA_MODE_NAME),

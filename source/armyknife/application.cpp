@@ -5,10 +5,10 @@
 #include <be/support/Debug.h>
 #include <be/storage/Entry.h>
 
-#include "AppDefs.h"
-#include "Application.h"
-#include "AppWindow.h"
-#include "CreateMimetypes.h"
+#include "appdefs.h"
+#include "application.h"
+#include "appwindow.h"
+#include "createmimetypes.h"
 
 Application::Application()
  :	BApplication	(SIGNATURE),
