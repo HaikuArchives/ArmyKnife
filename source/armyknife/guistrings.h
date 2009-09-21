@@ -32,6 +32,7 @@
 #define CLEAR_LIST_ITEM "Clear List"
 #define CLEAR_LIST_SHORTCUT 'L'
 #define SELECT_ALL_ITEM "Select All"
+#define SELECT_ALL_UNSUPPORTED_ITEM "Select All Unsupported"
 #define SELECT_ALL_SHORTCUT 'A'
 
 #define MODE_MENU "Mode"

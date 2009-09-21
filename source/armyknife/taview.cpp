@@ -201,7 +201,7 @@ TAView::WidgetsSetEnabled()
 	PRINT(("TAView::WidgetsSetEnabled()\n"));
 
 	int numSelected = m_selected_items->CountItems();
-	if(numSelected > 0)
+	if(numSelected > 0 && m_list_view->HasSelectionOfOnlyAcceptedItems())
 	{
 		m_a2t_radiobutton->SetEnabled(true);
 		m_t2a_radiobutton->SetEnabled(true);

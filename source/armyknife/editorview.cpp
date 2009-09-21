@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <be/app/Message.h>
@@ -65,6 +66,7 @@ EditorView::InitView()
 
 	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,new BMessage(MSG_APPLY_TO_BOTH));
 	m_apply_checkbox->ResizeToPreferred();
+	m_apply_checkbox->SetValue(B_CONTROL_OFF);
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
 
 	frame.left = space;
@@ -470,7 +472,7 @@ EditorView::WidgetsSetValues()
 	PRINT(("EditorView::WidgetsSetValues()\n"));
 
 	int numSelected = m_selected_items->CountItems();
-	if(numSelected == 0)
+	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false)
 	{
 		m_artist_checkbox->SetValue(B_CONTROL_OFF);
 		m_album_checkbox->SetValue(B_CONTROL_OFF);
@@ -723,11 +725,8 @@ EditorView::WidgetsSetEnabled()
 	PRINT(("EditorView::WidgetsSetEnabled()\n"));
 
 	int numSelected = m_selected_items->CountItems();
-	if(numSelected == 0)
+	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false)
 	{
-		m_attribute_radiobutton->SetEnabled(false);
-		m_tag_radiobutton->SetEnabled(false);
-		m_apply_checkbox->SetEnabled(false);
 		m_artist_checkbox->SetEnabled(false);
 		m_album_checkbox->SetEnabled(false);
 		m_title_checkbox->SetEnabled(false);
@@ -759,9 +758,6 @@ EditorView::WidgetsSetEnabled()
 	}
 	else if(numSelected > 0)
 	{
-		m_attribute_radiobutton->SetEnabled(true);
-		m_tag_radiobutton->SetEnabled(true);
-		m_apply_checkbox->SetEnabled(true);
 		m_artist_checkbox->SetEnabled(true);
 		m_album_checkbox->SetEnabled(true);
 		m_title_checkbox->SetEnabled(true);
@@ -831,15 +827,9 @@ void
 EditorView::WidgetsRBValues()
 {
 	if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
-	{
 		m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
-		m_apply_checkbox->SetValue(B_CONTROL_OFF);
-	}
 	else
-	{
 		m_apply_checkbox->SetLabel(APPLY_TO_ATTRIBUTES);
-		m_apply_checkbox->SetValue(B_CONTROL_OFF);
-	}
 }
 
 int32
@@ -1166,36 +1156,26 @@ EditorView::AcceptListItem(EntryRefItem* listItem)
 {
 	PRINT(("EditorView::AcceptListItem()\n"));
 	
+	if (!listItem->IsFSWritable())
+		return false;
+	
 	if (m_apply_checkbox->Value() == B_CONTROL_ON)
 	{
-		if (!listItem->IsFSWritable())
-			return false;
-		
 		if (!listItem->IsFSAttributable())
 			return false;
 	
 		if(!listItem->IsSupportedByTaglib())
 			return false;
 	} 
-	else 
-	{
-		if (m_attribute_radiobutton->Value() == B_CONTROL_ON)
-		{
-			if (!listItem->IsFSWritable())
-				return false;
-			
-			if (!listItem->IsFSAttributable())
-				return false;
-		}
-		else
-		{
-			if (!listItem->IsFSWritable())
-				return false;
-		
-			if(!listItem->IsSupportedByTaglib())
-				return false;
-		}
-	}
+
+	if (m_attribute_radiobutton->Value() == B_CONTROL_ON
+		&& !listItem->IsFSAttributable())
+		return false;
+
+
+	if (m_tag_radiobutton->Value() == B_CONTROL_ON
+		&& !listItem->IsSupportedByTaglib())
+		return false;
 
 	return true;
 }

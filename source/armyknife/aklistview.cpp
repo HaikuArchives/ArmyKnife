@@ -48,6 +48,7 @@ AKListView::KeyDown(const char* bytes, int32 numBytes)
 						delete item;
 					}
 				}
+				Invoke();
 			}
 			break;
 			
@@ -123,4 +124,23 @@ AKListView::HasSelectionOfOnlyAcceptedItems()
 		return true;
 	else
 		return false;
+}
+
+void
+AKListView::SelectAllUnsupported()
+{
+	DeselectAll();
+	
+	BListItem* item;
+	EntryRefItem* refItem; 
+	
+	for (int32 i = 0; item = ItemAt(i); i++) {
+			
+		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
+		if (refItem == NULL)
+			continue;
+		
+		if(!refItem->IsAccepted())
+			Select(i, true);
+	}
 }

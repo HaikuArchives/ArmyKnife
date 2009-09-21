@@ -45,6 +45,7 @@ class AppWindow : public BWindow
 		BMenuItem*	m_reset_menu_item;
 		BMenuItem*	m_clear_list_menu_item;
 		BMenuItem*	m_select_all_menu_item;
+		BMenuItem*	m_select_all_unsupported_menu_item;
 		BMenuItem*	m_beep_menu_item;
 
 };

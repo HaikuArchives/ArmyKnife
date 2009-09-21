@@ -80,7 +80,9 @@ AppWindow::InitWindow()
 	m_cut_menu_item = new BMenuItem(CUT_ITEM, new BMessage(MSG_EDIT_CUT), CUT_ITEM_SHORTCUT);
 	m_copy_menu_item = new BMenuItem(COPY_ITEM, new BMessage(MSG_EDIT_COPY), COPY_ITEM_SHORTCUT);
 	m_paste_menu_item = new BMenuItem(PASTE_ITEM, new BMessage(MSG_EDIT_PASTE), PASTE_ITEM_SHORTCUT);
-	m_select_all_menu_item= new BMenuItem(SELECT_ALL_ITEM, new BMessage(MSG_SELECT_ALL), SELECT_ALL_SHORTCUT); //, B_SHIFT_KEY);
+	m_select_all_menu_item = new BMenuItem(SELECT_ALL_ITEM, new BMessage(MSG_SELECT_ALL), SELECT_ALL_SHORTCUT);
+	m_select_all_unsupported_menu_item = new BMenuItem(SELECT_ALL_UNSUPPORTED_ITEM,
+		new BMessage(MSG_SELECT_ALL_UNSUPPORTED), SELECT_ALL_SHORTCUT, B_SHIFT_KEY);
 	
 	m_first_file_menu_item = new BMenuItem(FIRST_FILE_ITEM, new BMessage(MSG_FIRST_FILE), FIRST_FILE_SHORTCUT);
 	m_last_file_menu_item = new BMenuItem(LAST_FILE_ITEM, new BMessage(MSG_LAST_FILE), LAST_FILE_SHORTCUT);
@@ -94,6 +96,7 @@ AppWindow::InitWindow()
 	m_edit_menu->AddItem(m_paste_menu_item);
 	m_edit_menu->AddSeparatorItem();
 	m_edit_menu->AddItem(m_select_all_menu_item);
+	m_edit_menu->AddItem(m_select_all_unsupported_menu_item);
 	m_edit_menu->AddSeparatorItem();
 	m_edit_menu->AddItem(m_first_file_menu_item);
 	m_edit_menu->AddItem(m_last_file_menu_item);
@@ -260,6 +263,10 @@ AppWindow::MessageReceived(BMessage* message)
 					m_app_view->SelectAll();
 			}
 			break;
+			
+		case MSG_SELECT_ALL_UNSUPPORTED:
+			m_app_view->SelectAllUnsupported();
+			break;
 		
 		default:
 			BWindow::MessageReceived(message);
@@ -369,6 +376,7 @@ AppWindow::DisableInterface()
 	m_reset_menu_item->SetEnabled(false);
 	m_clear_list_menu_item->SetEnabled(false);
 	m_select_all_menu_item->SetEnabled(false);
+	m_select_all_unsupported_menu_item->SetEnabled(false);
 //	m_beep_menu_item->SetEnabled(false);
 }
 
@@ -389,5 +397,6 @@ AppWindow::EnableInterface()
 	m_reset_menu_item->SetEnabled(true);
 	m_clear_list_menu_item->SetEnabled(true);
 	m_select_all_menu_item->SetEnabled(true);
+	m_select_all_unsupported_menu_item->SetEnabled(true);
 //	m_beep_menu_item->SetEnabled(true);
 }

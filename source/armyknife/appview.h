@@ -34,6 +34,7 @@ class AppView : public BView
 		void Reset();
 		void ClearList();
 		void SelectAll();
+		void SelectAllUnsupported();
 		void SelectPreviousFile();
 		void SelectNextFile();
 		void SelectFirstFile();

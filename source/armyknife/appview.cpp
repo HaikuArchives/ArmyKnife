@@ -385,6 +385,15 @@ AppView::SelectAll()
 }
 
 void
+AppView::SelectAllUnsupported()
+{
+	PRINT(("AppView::SelectAllUnsupported()\n"));
+
+	if (!Busy())
+		m_list_view->SelectAllUnsupported();
+}
+
+void
 AppView::SelectPreviousFile()
 {
 	PRINT(("AppView::SelectPreviousFile()\n"));
