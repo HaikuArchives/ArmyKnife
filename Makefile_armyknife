@@ -61,6 +61,7 @@ CHANGELOG := documentation/armyknife_changelog.txt
 
 BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
 INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
+INCLUDES += -I/boot/common/include/taglib
 
 # dependencies
 TEMPDEPFILE := /tmp/armyknife_temp_deps
