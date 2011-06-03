@@ -129,7 +129,11 @@ void CreateOggMimetype()
 	attributeMessage.AddBool("attr:extra",false);
 
 	//Add Title
+#ifdef __BEOS__
 	attributeMessage.AddString("attr:name","Audio:Title");
+#elif __HAIKU__
+	attributeMessage.AddString("attr:name","Media:Title");
+#endif
 	attributeMessage.AddString("attr:public_name","Title");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
 	attributeMessage.AddBool("attr:public",true);
@@ -151,7 +155,11 @@ void CreateOggMimetype()
 	attributeMessage.AddBool("attr:extra",false);
 
 	//Add Year
+#ifdef __BEOS__
 	attributeMessage.AddString("attr:name","Audio:Year");
+#elif __HAIKU__
+	attributeMessage.AddString("attr:name","Media:Year");
+#endif
 	attributeMessage.AddString("attr:public_name","Year");
 	attributeMessage.AddInt32("attr:type",B_INT32_TYPE);
 	attributeMessage.AddBool("attr:public",true);
@@ -162,7 +170,11 @@ void CreateOggMimetype()
 	attributeMessage.AddBool("attr:extra",false);
 
 	//Add Comment
+#ifdef __BEOS__
 	attributeMessage.AddString("attr:name","Audio:Comment");
+#elif __HAIKU__
+	attributeMessage.AddString("attr:name","Media:Comment");
+#endif
 	attributeMessage.AddString("attr:public_name","Comment");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
 	attributeMessage.AddBool("attr:public",true);
@@ -173,7 +185,11 @@ void CreateOggMimetype()
 	attributeMessage.AddBool("attr:extra",false);
 
 	//Add Genre
+#ifdef __BEOS__
 	attributeMessage.AddString("attr:name","Audio:Genre");
+#elif __HAIKU__
+	attributeMessage.AddString("attr:name","Media:Genre");
+#endif	
 	attributeMessage.AddString("attr:public_name","Genre");
 	attributeMessage.AddInt32("attr:type",B_STRING_TYPE);
 	attributeMessage.AddBool("attr:public",true);
@@ -184,7 +200,11 @@ void CreateOggMimetype()
 	attributeMessage.AddBool("attr:extra",false);
 
 	//Add Rating
+#ifdef __BEOS__
 	attributeMessage.AddString("attr:name","Audio:Rating");
+#elif __HAIKU__
+	attributeMessage.AddString("attr:name","Media:Rating");
+#endif	
 	attributeMessage.AddString("attr:public_name","Rating");
 	attributeMessage.AddInt32("attr:type",B_INT32_TYPE);
 	attributeMessage.AddBool("attr:public",true);

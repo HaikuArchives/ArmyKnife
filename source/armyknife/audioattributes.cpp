@@ -22,6 +22,7 @@
 #define GENDER_NAME    "Gender"
 #endif
 
+#ifdef __BEOS__
 #define ARTIST_ATTR    "Audio:Artist"
 #define ALBUM_ATTR     "Audio:Album"
 #define TITLE_ATTR     "Audio:Title"
@@ -29,9 +30,22 @@
 #define COMMENT_ATTR   "Audio:Comment"
 #define TRACK_ATTR     "Audio:Track"
 #define GENRE_ATTR     "Audio:Genre"
+#elif __HAIKU__
+#define ARTIST_ATTR    "Audio:Artist"
+#define ALBUM_ATTR     "Audio:Album"
+#define TITLE_ATTR     "Media:Title"
+#define YEAR_ATTR      "Media:Year"
+#define COMMENT_ATTR   "Media:Comment"
+#define TRACK_ATTR     "Audio:Track"
+#define GENRE_ATTR     "Media:Genre"
+#endif
 
 #ifdef _TTE_
+#ifdef __BEOS__
 #define RATING_ATTR    "Audio:Rating"
+#elif __HAIKU__
+#define RATING_ATTR    "Media:Rating"
+#endif
 #define TEMPO_ATTR     "Audio:Tempo"
 #define COMPOSER_ATTR  "Audio:Composer"
 #define TT_INFO_ATTR   "Audio:Info"
