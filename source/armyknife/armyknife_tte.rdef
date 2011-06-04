@@ -69,9 +69,9 @@ resource file_types message {
 	"types" = "application/x-vnd.Be-volume",
 	"types" = "application/x-vnd.Be-directory",
 	"types" = "audio",
-	"types" = "audio/x-flac",
-	"types" = "audio/x-mpeg",
-	"types" = "audio/x-vorbis"
+	"types" = "audio/flac",
+	"types" = "audio/mpeg",
+	"types" = "audio/vorbis"
 };
 
 resource app_version {

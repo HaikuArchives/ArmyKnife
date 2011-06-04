@@ -23,8 +23,8 @@
 #define WINDOW_FILE "window"
 #define PREFS_FILE "preferences"
 
-#define MP3_MIME_TYPE "audio/x-mpeg"
-#define OGG_MIME_TYPE "audio/x-vorbis"
-#define FLAC_MIME_TYPE "audio/x-flac"
+#define MP3_MIME_TYPE "audio/mpeg"
+#define OGG_MIME_TYPE "audio/ogg"
+#define FLAC_MIME_TYPE "audio/flac"
 
 #endif

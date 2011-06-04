@@ -67,11 +67,11 @@ resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.Be-elfexecutable";
 resource app_signature "application/x-vnd.armyknife";
 
 resource file_types message {
-	"types" = "audio/x-mpeg",
-	"types" = "audio/x-vorbis",
+	"types" = "audio/mpeg",
+	"types" = "audio/vorbis",
 	"types" = "application/x-vnd.Be-volume",
 	"types" = "application/x-vnd.Be-directory",
-	"types" = "audio/x-flac",
+	"types" = "audio/flac",
 	"types" = "audio"
 };
 

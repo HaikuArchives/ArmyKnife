@@ -123,7 +123,9 @@ AudioAttributes::InitAttribute(AudioAttribute* attrib)
 
 	if(!attrib->Exists())
 	{
+#ifndef __HAIKU__
 		return attrib->Create();
+#endif
 	}
 
 	return B_OK;

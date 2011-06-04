@@ -15,8 +15,10 @@ Application::Application()
 	m_window		(NULL)
 {
 	PRINT(("Application::Application()\n"));
-	
+
+#ifndef __HAIKU__
 	CreateMimetypes();
+#endif	
 	
 	m_window = AppWindow::CreateWindow();
 	m_window->Show();

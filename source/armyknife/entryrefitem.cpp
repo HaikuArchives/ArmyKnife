@@ -281,9 +281,9 @@ EntryRefItem::UpdateMimetypeClass()
 		||	m_mimetype == "audio/x-ogg"
 		||	m_mimetype == "audio/vorbis"
 		||	m_mimetype == "audio/x-vorbis"
-		||	m_mimetype == "application/ogg"
-		||	m_mimetype == "application/x-ogg"	// the correct one ?
-		||	m_mimetype == "application/vorbis"
+		||	m_mimetype == "application/ogg"	// the correct one ?
+		||	m_mimetype == "application/x-ogg"
+		||	m_mimetype == "application/vorbis"	// the correct one ?
 		||	m_mimetype == "application/x-vorbis")
 	{
 		m_mimetype_class = ENTRY_IS_OGG;
@@ -291,8 +291,8 @@ EntryRefItem::UpdateMimetypeClass()
 	
 	if (	m_mimetype == "audio/flac"
 		||	m_mimetype == "audio/x-flac"
-		||	m_mimetype == "application/flac"
-		||	m_mimetype == "application/x-flac")		// the correct one ?
+		||	m_mimetype == "application/flac"		// the correct one ?
+		||	m_mimetype == "application/x-flac")
 	{
 		m_mimetype_class = ENTRY_IS_FLAC;
 	}
