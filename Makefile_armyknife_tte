@@ -45,7 +45,7 @@ RESOURCESRDEF := armyknife_tte.rdef
 DEFINES := -D_TTE_
 
 # libraries
-SYS_LIBS := -lbe -lroot 
+SYS_LIBS := -lbe -lroot -ltranslation
 SRC_LIBS := -ltag -lsanta -ltracker
 
 # directories

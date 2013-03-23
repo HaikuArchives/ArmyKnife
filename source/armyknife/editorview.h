@@ -3,6 +3,7 @@
 
 #include "addonview.h"
 #include "preferences.h"
+#include "albumpictureview.h"
 
 class BCheckBox;
 class BList;
@@ -37,15 +38,18 @@ class EditorView : public AddOnView
 		void WidgetsSetValues();
 		void WidgetsSetEnabled();
 		void WidgetsRBValues();
+		
+		AlbumPictureView* m_album_picture;
 
 		BRadioButton*	m_tag_radiobutton;
 		BRadioButton*	m_attribute_radiobutton;
 		BCheckBox*		m_apply_checkbox;
+		BCheckBox*		m_picture_checkbox;
 		BCheckBox*		m_artist_checkbox;
 		BCheckBox*		m_album_checkbox;
 		BCheckBox*		m_title_checkbox;
 		BCheckBox*		m_year_checkbox;
-		BCheckBox*		m_comment_checkbox;
+		BCheckBox*		m_comment_checkbox;	
 		BCheckBox*		m_track_checkbox;
 		BCheckBox*		m_genre_checkbox;
 #ifdef _TTE_
@@ -73,7 +77,9 @@ class EditorView : public AddOnView
 		BBox*			m_edit_box;
 		BBox*			m_genre_box;
 		
-		Preferences * m_preferences;
+		bool			m_album_picture_changed;
+		
+		Preferences * 	m_preferences;
 };
 
 #endif

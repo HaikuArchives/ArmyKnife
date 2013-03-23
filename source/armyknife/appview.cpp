@@ -112,24 +112,28 @@ AppView::InitView()
 	BRect inframe = m_pick_list_view->BoxBounds();
 	AddOnView * aView;
 
+	// Edit view
 	aView = new EditorView(inframe, m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
+	// Copy view
 	aView = new TAView(inframe, m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
+	// Name view
 	aView = new NAView(inframe, m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
+	// MPEG view
 	aView = new MPEGView(inframe, m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);

@@ -18,6 +18,8 @@
 #include <be/storage/Path.h>
 #include <be/support/Debug.h>
 #include <be/support/List.h>
+#include <Path.h>
+
 #include "audioattributes.h"
 #include "genrelist.h"
 #include "id3tags.h"
@@ -28,6 +30,7 @@
 #include "editorview.h"
 #include "entryrefitem.h"
 #include "guistrings.h"
+#include "albumpictureview.h"
 
 EditorView::EditorView(BRect frame, Preferences * preferences)
  :	AddOnView		(frame, EDITOR_MODE_NAME),
@@ -35,6 +38,7 @@ EditorView::EditorView(BRect frame, Preferences * preferences)
 {
 	PRINT(("EditorView::EditorView(BRect)\n"));
 
+	m_album_picture_changed = false;
 	InitView();
 }
 
@@ -54,7 +58,7 @@ EditorView::InitView()
 
 	BCheckBox cb(BRect(0,0,0,0),0,0,0);
 	cb.ResizeToPreferred();
-
+	
 	m_attribute_radiobutton = new BRadioButton(BRect(0,0,0,0),0,ATTRIBUTES_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
 	m_attribute_radiobutton->ResizeToPreferred();
@@ -64,7 +68,8 @@ EditorView::InitView()
 			new BMessage(RADIO_BUTTON_EVENT));
 	m_tag_radiobutton->ResizeToPreferred();
 
-	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,new BMessage(MSG_APPLY_TO_BOTH));
+	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,
+			new BMessage(MSG_APPLY_TO_BOTH));
 	m_apply_checkbox->ResizeToPreferred();
 	m_apply_checkbox->SetValue(B_CONTROL_OFF);
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
@@ -94,10 +99,20 @@ EditorView::InitView()
 	m_tag_radiobutton->MoveBy(2*space+m_attribute_radiobutton->Frame().Width(),space);
 	m_apply_checkbox->MoveBy(space,2*space+m_attribute_radiobutton->Frame().Height());
 	
+	m_picture_checkbox = new BCheckBox(BRect(0,0,0,0),0,"",
+			new BMessage(MSG_PICTURE_CHECKBOX));
+	m_picture_checkbox->ResizeToPreferred();
+	frame = m_picture_checkbox->Frame();
+	m_album_picture = new AlbumPictureView(BRect(0, 0, 160, 160), "bitmap_view");
+		// Has to be initialized here because of the layout
+	
 	m_artist_checkbox = new BCheckBox(BRect(0,0,0,0),0,ARTIST_LABEL,
 			new BMessage(MSG_ARTIST_CHECKBOX));
 	m_artist_checkbox->ResizeToPreferred();
-	frame = m_artist_checkbox->Frame();
+	if(m_artist_checkbox->Frame().Width() > frame.Width())
+	{
+		frame = m_artist_checkbox->Frame();
+	}
 
 	m_album_checkbox = new BCheckBox(BRect(0,0,0,0),0,ALBUM_LABEL,
 			new BMessage(MSG_ALBUM_CHECKBOX));
@@ -185,12 +200,17 @@ EditorView::InitView()
 	m_clear_all_checkbox->ResizeToPreferred();
 	if(m_clear_all_checkbox->Frame().Width() > frame.Width())
 	{
-		frame = m_genre_checkbox->Frame();
+		frame = m_clear_all_checkbox->Frame();
 	}
 
+	// Set chekboxes' positions
 	float x,y;
 	x = space;
 	y = m_edit_box->Frame().bottom + 2*space;
+	m_picture_checkbox->MoveTo(x,y + m_album_picture->Bounds().Height() / 2 - 
+			m_picture_checkbox->Bounds().Height() / 2);
+	m_album_picture->MoveTo(x + m_picture_checkbox->Frame().Width(),y);
+	y += m_album_picture->Bounds().Height() + space;	
 	m_artist_checkbox->MoveTo(x,y);
 	y += frame.Height() + space;
 	m_album_checkbox->MoveTo(x,y);
@@ -291,6 +311,9 @@ EditorView::InitView()
 	ResizeToPreferred();
 
 	PRINT_OBJECT(Frame());
+	
+	AddChild(m_picture_checkbox);
+	AddChild(m_album_picture);
 
 	AddChild(m_artist_checkbox);
 	AddChild(m_artist_textcontrol);
@@ -399,6 +422,7 @@ void
 EditorView::SelectionChanged(BList* list)
 {
 	AddOnView::SelectionChanged(list);
+	m_album_picture_changed = false;
 
 	PRINT(("EditorView::SelectionChanged(BList* list)\n"));
 
@@ -474,6 +498,8 @@ EditorView::WidgetsSetValues()
 	int numSelected = m_selected_items->CountItems();
 	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false)
 	{
+		m_album_picture->NoImage();
+		m_picture_checkbox->SetValue(B_CONTROL_OFF);
 		m_artist_checkbox->SetValue(B_CONTROL_OFF);
 		m_album_checkbox->SetValue(B_CONTROL_OFF);
 		m_title_checkbox->SetValue(B_CONTROL_OFF);
@@ -490,6 +516,7 @@ EditorView::WidgetsSetValues()
 	}
 	else if(numSelected == 1)
 	{
+		m_picture_checkbox->SetValue(B_CONTROL_ON);
 		m_artist_checkbox->SetValue(B_CONTROL_ON);
 		m_album_checkbox->SetValue(B_CONTROL_ON);
 		m_title_checkbox->SetValue(B_CONTROL_ON);
@@ -506,6 +533,7 @@ EditorView::WidgetsSetValues()
 	}
 	else if(numSelected > 1)
 	{
+		m_picture_checkbox->SetValue(B_CONTROL_ON);
 		m_artist_checkbox->SetValue(B_CONTROL_ON);
 		m_album_checkbox->SetValue(B_CONTROL_ON);
 		m_title_checkbox->SetValue(B_CONTROL_OFF);
@@ -524,7 +552,7 @@ EditorView::WidgetsSetValues()
 	if(numSelected > 0)
 	{
 		EntryRefItem* item = (EntryRefItem*)m_selected_items->ItemAt(0);
-
+		
 		const char* artist;
 		const char* album;
 		const char* title;
@@ -543,6 +571,8 @@ EditorView::WidgetsSetValues()
 
 		if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
 		{
+			m_picture_checkbox->SetValue(B_CONTROL_OFF);
+			m_album_picture->NoImage();
 			AudioAttributes attributes(& audioFile);
 			artist = attributes.Artist();
 			if(!artist)
@@ -635,6 +665,15 @@ EditorView::WidgetsSetValues()
 		}
 		else if(item->IsSupportedByTaglib())
 		{
+			// Add album art
+			BPath filePath;
+			BEntry *entry = new BEntry(item->EntryRef());
+			if (item->IsMP3() && entry->GetPath(&filePath) == B_OK)
+			{
+				m_album_picture->UpdatePicture(filePath.Path());
+			}
+			delete entry;
+			
 			ID3Tags tags(item);
 
 			artist = tags.Artist();
@@ -727,6 +766,8 @@ EditorView::WidgetsSetEnabled()
 	int numSelected = m_selected_items->CountItems();
 	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false)
 	{
+		m_album_picture->NoImage();
+		m_picture_checkbox->SetEnabled(false);
 		m_artist_checkbox->SetEnabled(false);
 		m_album_checkbox->SetEnabled(false);
 		m_title_checkbox->SetEnabled(false);
@@ -758,6 +799,7 @@ EditorView::WidgetsSetEnabled()
 	}
 	else if(numSelected > 0)
 	{
+		m_picture_checkbox->SetEnabled(true);
 		m_artist_checkbox->SetEnabled(true);
 		m_album_checkbox->SetEnabled(true);
 		m_title_checkbox->SetEnabled(true);
@@ -774,6 +816,11 @@ EditorView::WidgetsSetEnabled()
 		m_track_textcontrol->SetEnabled(true);
 		m_genre_menufield->SetEnabled(true);
 		m_genre_textcontrol->SetEnabled(true);
+		
+		if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
+			m_picture_checkbox->SetEnabled(false);
+		else
+			m_picture_checkbox->SetEnabled(true);
 
 #ifdef _TTE_
 		if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
@@ -992,6 +1039,16 @@ EditorView::ApplyFunction(void* args)
 
 		if(doTags && refItem->IsSupportedByTaglib())
 		{
+			if (view->m_picture_checkbox->Value() == B_CONTROL_ON)
+			{
+				BPath filePath;
+				BEntry *entry = new BEntry(refItem->EntryRef());
+				if (refItem->IsMP3() && entry->GetPath(&filePath) == B_OK)
+				{
+					view->m_album_picture->SetPicture(filePath.Path());
+				}
+				delete entry;
+			}
 			ID3Tags tags(refItem);
 			if(view->m_artist_checkbox->Value() == B_CONTROL_ON)
 			{
@@ -1136,6 +1193,7 @@ EditorView::SetAllEnabled()
 void
 EditorView::CheckAllBoxes(int32 value)
 {
+	m_picture_checkbox->SetValue(value);
 	m_artist_checkbox->SetValue(value);
 	m_album_checkbox->SetValue(value);
 	m_title_checkbox->SetValue(value);

@@ -64,12 +64,10 @@ ID3Tag::Read()
 		case YEAR_TAG:
 			m_value.Truncate(0);
 			m_value << m_tag->year(); // t->setYear(value.toInt());
-			printf("ID3Tag::Read() value << tag->year(); value.String():%s\n", m_value.String());
 			break;
 		case TRACK_TAG:
 			m_value.Truncate(0);
 			m_value << m_tag->track(); // t->setTrack(value.toInt());
-			printf("ID3Tag::Read() value << tag->track(); value.String():%s\n", m_value.String());
 			break;
 		default:
 			break;
@@ -95,8 +93,6 @@ ID3Tag::Write()
       UTF8 = 3
     };
 	
-//	TagLib::String::Type type = UTF8;
-	
 	TagLib::String string (m_value.String(), (TagLib::String::Type) 3);  // 3 = UTF8
 
 	switch (m_tag_item)
@@ -117,12 +113,7 @@ ID3Tag::Write()
 			m_tag->setGenre(string);
 			break;
 		case YEAR_TAG:
-			PRINT(("ID3Tag::Write() *** value.String(): %s\n", m_value.String()));
-			PRINT(("ID3Tag::Write() *** tag->year(): %u\n", m_tag->year()));	
-			PRINT(("ID3Tag::Write() *** tag->year(): %u\n", m_tag->year()));	
 			m_tag->setYear(atoi(m_value.String()));
-			PRINT(("ID3Tag::Write() atoi(value.String(): %ld\n", atoi(m_value.String())));
-			PRINT(("ID3Tag::Write() *** tag->year(): %u\n", m_tag->year()));
 			break;
 		case TRACK_TAG:
 			m_tag->setTrack(atoi(m_value.String()));
