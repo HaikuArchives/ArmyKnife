@@ -1,18 +1,18 @@
 #include <signal.h>
-#include <be/app/Message.h>
-#include <be/interface/Button.h>
-#include <be/interface/ListView.h>
-#include <be/interface/Rect.h>
-#include <be/interface/StatusBar.h>
-#include <be/interface/StringView.h>
-#include <be/storage/Directory.h>
-#include <be/storage/Entry.h>
-#include <be/storage/Node.h>
-#include <be/storage/NodeInfo.h>
-#include <be/support/Debug.h>
-#include <be/support/Beep.h>
-#include <be/support/List.h>
-#include <be/support/String.h>
+#include <app/Message.h>
+#include <interface/Button.h>
+#include <interface/ListView.h>
+#include <interface/Rect.h>
+#include <interface/StatusBar.h>
+#include <interface/StringView.h>
+#include <storage/Directory.h>
+#include <storage/Entry.h>
+#include <storage/Node.h>
+#include <storage/NodeInfo.h>
+#include <support/Debug.h>
+#include <support/Beep.h>
+#include <support/List.h>
+#include <support/String.h>
 #include <santa/BetterScrollView.h>
 #include "addonview.h"
 #include "appdefs.h"
@@ -60,13 +60,6 @@ AppView::AppView(BMessage *data) : BView(data)
 	r.OffsetTo(B_ORIGIN);
 	r.top = r.bottom - 7;
 	r.left = r.right - 7;
-/*
-	BDragger *dragger = new BDragger(r, this, B_FOLLOW_RIGHT|B_FOLLOW_BOTTOM);
-	dragger->Archive(&msg); // tricky: force setting the popup menu
-	delete dragger;
-	dragger = new BDragger(&msg);
-	AddChild(dragger);
-*/
 }
 
 AppView::~AppView()

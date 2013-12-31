@@ -1,9 +1,9 @@
-#include <be/add-ons/tracker/TrackerAddOn.h>
-#include <be/app/Application.h>
-#include <be/app/Message.h>
-#include <be/app/Roster.h>
-#include <be/support/Debug.h>
-#include <be/storage/Entry.h>
+#include <add-ons/tracker/TrackerAddOn.h>
+#include <app/Application.h>
+#include <app/Message.h>
+#include <app/Roster.h>
+#include <support/Debug.h>
+#include <storage/Entry.h>
 
 #include "appdefs.h"
 #include "application.h"
