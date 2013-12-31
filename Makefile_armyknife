@@ -51,17 +51,11 @@ SRC_LIBS := -ltag -lsanta -ltracker
 # directories
 OBJDIR := objects/armyknife
 DEPDIR := dependencies/armyknife
-SRCDIR := source/armyknife
-INCLUDEDIR := include
+SRCDIR := source
 DATADIR := documentation/armyknife
-LIBDIR := lib
 RELEASEDIR := release/ArmyKnife
 RELEASEDOCSDIR := release/ArmyKnife/Documentation
 CHANGELOG := documentation/armyknife_changelog.txt
-
-BASEINCLUDES := $(shell cd $(INCLUDEDIR) && ls -1)
-INCLUDES := $(addprefix -I$(INCLUDEDIR)/,$(BASEINCLUDES))
-INCLUDES += -I/boot/common/include/taglib
 
 # dependencies
 TEMPDEPFILE := /tmp/armyknife_temp_deps
@@ -77,11 +71,10 @@ CFLAGS += -DBUILD_DATE=\"$(BUILDDATE)\"
 #CFLAGS += -Wconversion -Wpointer-arith
 #CFLAGS += -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
 #CFLAGS += -Wcast-qual -Wshadow
-CFLAGS += $(INCLUDES) -I$(INCLUDEDIR)
 
-LDFLAGS := $(SYS_LIBS) -L$(LIBDIR) $(SRC_LIBS)
+LDFLAGS := $(SYS_LIBS) $(SRC_LIBS)
 
-DEP := gcc -MM $(DEFINES) $(INCLUDES) -I$(INCLUDEDIR)
+DEP := gcc -MM $(DEFINES)
 
 # create the dep dir.
 MAKEDEP := $(shell mkdir -p $(DEPDIR))
@@ -128,9 +121,7 @@ clean :
 all : zipfile
 
 release : $(BINARY)
-	@cp .OptionalPackageDescription $(RELEASEDIR)
 	@mkdir -p $(RELEASEDIR)
-	@cp -r $(LIBDIR)/ $(RELEASEDIR)/lib
 	@cp -r $(DATADIR)/ $(RELEASEDIR)/Documentation
 	@cp -r $(CHANGELOG) "$(RELEASEDOCSDIR)/Change Log"
 	@find $(RELEASEDIR) -type d| grep .svn$$ | xargs -n1 -i"{}" rm -rf "{}"

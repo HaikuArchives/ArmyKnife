@@ -7,10 +7,10 @@
 #include <Path.h>
 #include <String.h>
 
-#include <mpegfile.h>
-#include <oggfile.h>
-#include <vorbisfile.h>
-#include <flacfile.h>
+#include <taglib/mpegfile.h>
+#include <taglib/oggfile.h>
+#include <taglib/vorbisfile.h>
+#include <taglib/flacfile.h>
 
 #include "genrelist.h"
 #include "id3tags.h"
