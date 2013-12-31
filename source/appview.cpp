@@ -13,7 +13,7 @@
 #include <be/support/Beep.h>
 #include <be/support/List.h>
 #include <be/support/String.h>
-#include <betterscrollview.h>
+#include <santa/BetterScrollView.h>
 #include "addonview.h"
 #include "appdefs.h"
 #include "appview.h"

@@ -7,13 +7,13 @@
 
 #include <Font.h>
 
-#include <tfile.h>
-#include <fileref.h>
-#include <tag.h>
-#include <mpegfile.h>
-#include <oggfile.h>
-#include <vorbisfile.h>
-#include <flacfile.h>
+#include <taglib/tfile.h>
+#include <taglib/fileref.h>
+#include <taglib/tag.h>
+#include <taglib/mpegfile.h>
+#include <taglib/oggfile.h>
+#include <taglib/vorbisfile.h>
+#include <taglib/flacfile.h>
 
 #include "entryrefitem.h"
 
