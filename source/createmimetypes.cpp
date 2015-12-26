@@ -1,7 +1,8 @@
-#include <be/interface/Bitmap.h>
-#include <be/storage/Mime.h>
-#include <be/support/Debug.h>
-#include <be/support/String.h>
+#include <Bitmap.h>
+#include <Debug.h>
+#include <Mime.h>
+#include <String.h>
+
 #include "appdefs.h"
 #include "createmimetypes.h"
 

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <be/support/Debug.h>
+#include <Debug.h>
 #include <Node.h>
 #include <NodeInfo.h>
 #include <Path.h>

@@ -1,8 +1,8 @@
 #ifndef __APP_WINDOW_H__
 #define __APP_WINDOW_H__
 
-#include <Window.h>
 #include <Menu.h>
+#include <Window.h>
 
 class AppView;
 class BMessage;

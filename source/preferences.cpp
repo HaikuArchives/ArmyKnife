@@ -1,11 +1,12 @@
 #include <errno.h>
 #include <string.h>
-#include <be/app/Message.h>
-#include <be/storage/Directory.h>
-#include <be/storage/File.h>
-#include <be/storage/FindDirectory.h>
-#include <be/storage/Path.h>
-#include <be/support/Debug.h>
+
+#include <Debug.h>
+#include <Directory.h>
+#include <File.h>
+#include <FindDirectory.h>
+#include <Message.h>
+#include <Path.h>
 
 #include "appdefs.h"
 #include "commandconstants.h"

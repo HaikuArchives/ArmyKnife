@@ -1,11 +1,11 @@
 #ifndef __NA_WINDOW_H__
 #define __NA_WINDOW_H__
 
-#include <be/app/Messenger.h>
-#include <be/interface/Button.h>
-#include <be/interface/TextControl.h>
-#include <be/interface/View.h>
-#include <be/interface/Window.h>
+#include <Button.h>
+#include <Messenger.h>
+#include <TextControl.h>
+#include <View.h>
+#include <Window.h>
 
 class PatternWindow : public BWindow
 {

@@ -1,11 +1,11 @@
 #include "albumpictureview.h"
 
-#include <be/interface/Rect.h>
-#include <be/interface/Font.h>
-#include <be/interface/Bitmap.h>
-#include <be/translation/TranslatorRoster.h>
-#include <be/translation/BitmapStream.h>
-#include <be/storage/Path.h>
+#include <Bitmap.h>
+#include <BitmapStream.h>
+#include <Font.h>
+#include <Path.h>
+#include <Rect.h>
+#include <TranslatorRoster.h>
 
 #include "entryrefitem.h"
 

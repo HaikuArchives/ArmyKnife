@@ -1,7 +1,7 @@
-#include <be/support/Beep.h>
-#include <be/support/Debug.h>
-#include <be/support/String.h>
+#include <Beep.h>
+#include <Debug.h>
 #include <LayoutBuilder.h>
+#include <String.h>
 
 #include "nawindow.h"
 #include "commandconstants.h"

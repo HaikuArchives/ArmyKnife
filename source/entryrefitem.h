@@ -1,10 +1,10 @@
 #ifndef __ENTRY_REF_ITEM_H__
 #define __ENTRY_REF_ITEM_H__
 
-#include <be/interface/ListItem.h>
-#include <be/interface/View.h>
-#include <be/storage/Entry.h>
-#include <be/support/String.h>
+#include <Entry.h>
+#include <ListItem.h>
+#include <String.h>
+#include <View.h>
 
 
 enum

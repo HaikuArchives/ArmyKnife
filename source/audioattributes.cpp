@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <string.h>
-#include <be/storage/File.h>
-#include <be/support/Debug.h>
-#include <be/support/TypeConstants.h>
+
+#include <Debug.h>
+#include <File.h>
+#include <TypeConstants.h>
+
 #include "audioattributes.h"
 #include "audioattribute.h"
 

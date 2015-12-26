@@ -1,26 +1,29 @@
-#include <be/app/Message.h>
-#include <be/app/Messenger.h>
-#include <be/interface/Box.h>
-#include <be/interface/CheckBox.h>
-#include <be/interface/Menu.h>
-#include <be/interface/MenuField.h>
-#include <be/interface/MenuItem.h>
-#include <be/interface/RadioButton.h>
-#include <be/interface/Rect.h>
-#include <be/interface/StringView.h>
-#include <be/interface/TextControl.h>
-#include <be/storage/Entry.h>
-#include <be/storage/File.h>
-#include <be/storage/Path.h>
-#include <be/support/Archivable.h>
-#include <be/support/Debug.h>
-#include <be/support/List.h>
+#include <Archivable.h>
+#include <Box.h>
+#include <CheckBox.h>
+#include <Debug.h>
+#include <Entry.h>
+#include <File.h>
+#include <LayoutBuilder.h>
+#include <List.h>
+#include <Menu.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <Message.h>
+#include <Messenger.h>
+#include <Path.h>
+#include <RadioButton.h>
+#include <Rect.h>
+#include <StringView.h>
+#include <TextControl.h>
+
 #include <taglib/id3v1tag.h>
 #include <taglib/id3v2tag.h>
 #include <taglib/apetag.h>
 #include <taglib/tfile.h>
 #include <taglib/tag.h>
 #include <taglib/mpegfile.h>
+
 #include "audioattributes.h"
 #include "appdefs.h"
 #include "appview.h"
@@ -30,7 +33,6 @@
 #include "guistrings.h"
 #include "mpegview.h"
 #include "preferences.h"
-#include <LayoutBuilder.h>
 
 MPEGView::MPEGView(Preferences * preferences)
  :	AddOnView			(MPEG_MODE_NAME),

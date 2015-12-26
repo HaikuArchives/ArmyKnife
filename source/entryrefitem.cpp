@@ -1,11 +1,10 @@
-#include <be/storage/Node.h>
-#include <be/storage/NodeInfo.h>
-#include <be/storage/Mime.h>
-#include <be/storage/Path.h>
-#include <be/storage/Volume.h>
-#include <be/support/Debug.h>
-
+#include <Debug.h>
 #include <Font.h>
+#include <Mime.h>
+#include <Node.h>
+#include <NodeInfo.h>
+#include <Path.h>
+#include <Volume.h>
 
 #include <taglib/tfile.h>
 #include <taglib/fileref.h>

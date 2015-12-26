@@ -1,15 +1,14 @@
-#include <be/app/Message.h>
-#include <be/interface/Box.h>
-#include <be/interface/Menu.h>
-#include <be/interface/MenuField.h>
-#include <be/interface/MenuItem.h>
-#include <be/interface/Rect.h>
-#include <be/support/Archivable.h>
-#include <be/support/Debug.h>
-
-#include <String.h>
-#include <LayoutBuilder.h>
+#include <Archivable.h>
+#include <Box.h>
 #include <CardLayout.h>
+#include <Debug.h>
+#include <LayoutBuilder.h>
+#include <Menu.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <Message.h>
+#include <Rect.h>
+#include <String.h>
 
 #include "commandconstants.h"
 #include "picklistview.h"

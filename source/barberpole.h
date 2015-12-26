@@ -3,10 +3,10 @@
 
 #include <stdlib.h>
 
-#include <Box.h>
 #include <Bitmap.h>
-#include <View.h>
+#include <Box.h>
 #include <Window.h>
+#include <View.h>
 
 
 class Barberpole : public BBox

@@ -1,8 +1,8 @@
 #ifndef __PREFERENCES_H__
 #define __PREFERENCES_H__
 
-#include <be/app/Message.h>
-#include <be/support/String.h>
+#include <Message.h>
+#include <String.h>
 
 class BMessage;
 class BString;

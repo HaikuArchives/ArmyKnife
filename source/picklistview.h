@@ -1,7 +1,6 @@
 #ifndef __PICK_LIST_VIEW_H__
 #define __PICK_LIST_VIEW_H__
 
-#include <be/interface/View.h>
 #include <Box.h>
 
 #define MENU_ITEM 'item'

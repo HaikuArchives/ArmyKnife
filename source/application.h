@@ -1,7 +1,7 @@
 #ifndef __APPLICATION_H__
 #define __APPLICATION_H__
 
-#include <be/app/Application.h>
+#include <Application.h>
 
 class AppWindow;
 class BMessage;

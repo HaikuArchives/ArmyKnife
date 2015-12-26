@@ -1,7 +1,7 @@
-#include <be/interface/Rect.h>
-#include <be/interface/Window.h>
-#include <be/support/Debug.h>
-#include <be/support/List.h>
+#include <Debug.h>
+#include <List.h>
+#include <Rect.h>
+#include <Window.h>
 
 #include "commandconstants.h"
 #include "addonview.h"

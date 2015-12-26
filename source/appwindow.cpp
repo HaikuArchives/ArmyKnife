@@ -1,18 +1,21 @@
 #include <signal.h>
-#include <be/app/Application.h>
-#include <be/app/Message.h>
-#include <be/interface/Alert.h>
-#include <be/interface/Button.h>
-#include <be/interface/Menu.h>
-#include <be/interface/MenuBar.h>
-#include <be/interface/MenuItem.h>
-#include <be/storage/Directory.h>
-#include <be/storage/Entry.h>
-#include <be/storage/File.h>
-#include <be/storage/FindDirectory.h>
-#include <be/storage/Path.h>
-#include <be/support/ClassInfo.h>
-#include <be/support/Debug.h>
+
+#include <Alert.h>
+#include <Application.h>
+#include <Button.h>
+#include <ClassInfo.h>
+#include <Debug.h>
+#include <Directory.h>
+#include <Entry.h>
+#include <LayoutBuilder.h>
+#include <Menu.h>
+#include <MenuBar.h>
+#include <MenuItem.h>
+#include <Message.h>
+#include <File.h>
+#include <FindDirectory.h>
+#include <Path.h>
+
 #include "appdefs.h"
 #include "application.h"
 #include "appview.h"
@@ -20,7 +23,6 @@
 #include "commandconstants.h"
 #include "guistrings.h"
 #include "preferences.h"
-#include <LayoutBuilder.h>
 
 #define WIN_LEFT 200
 #define WIN_TOP 200

@@ -1,7 +1,7 @@
 #ifndef __ADDON_VIEW_H__
 #define __ADDON_VIEW_H__
 
-#include <be/interface/View.h>
+#include <View.h>
 
 #include "aklistview.h"
 #include "entryrefitem.h"
