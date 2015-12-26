@@ -3,14 +3,13 @@
 
 // AKListView is meant to hold EntryRefItems.
 // EntryRefItem is a subclass of BListItem.
-// 
+//
 // AKListView's primary reason to exist is as a subclass of
 // BListView which allows deletion of list items by pressing
 // Delete or Backspace.
 
-AKListView::AKListView (BRect frame, const char* name, list_view_type type,
-	uint32 resizingMode, uint32 flags)
-:	BListView (frame, name, type, resizingMode, flags)
+AKListView::AKListView(const char* name, list_view_type type, uint32 flags)
+:	BListView (name, type, flags)
 {
 
 }
@@ -22,11 +21,11 @@ AKListView::~AKListView()
 }
 
 
-void 
+void
 AKListView::KeyDown(const char* bytes, int32 numBytes)
 {
 	uint8 byte = bytes[0];
-	
+
 	switch(byte)
 	{
 		case B_BACKSPACE:
@@ -40,7 +39,7 @@ AKListView::KeyDown(const char* bytes, int32 numBytes)
 					} else {
 						break;
 					}
-					
+
 					EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
 					if (refItem) {
 						delete refItem;
@@ -51,39 +50,39 @@ AKListView::KeyDown(const char* bytes, int32 numBytes)
 				Invoke();
 			}
 			break;
-			
+
 		default:
 			BListView::KeyDown(bytes, numBytes);
 	}
 }
 
-void 
+void
 AKListView::SelectAll()
 {
 	Select(0,CountItems()-1);
 }
 
-void 
+void
 AKListView::DeselectAll()
 {
 	BListView::DeselectAll();
 }
 
-void 
+void
 AKListView::ScrollToFirstUnaccepted()
 {
 	int numItems = CountItems();
-	
+
 	for (int i = 0; i < numItems; i++) {
-		
+
 		BListItem* item = ItemAt(i);
 		if (!item)
 			return;
-		
+
 		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
 		if (!refItem)
 			return;
-		
+
 		if (!refItem->IsAccepted()) {
 			BPoint point = ItemFrame(i).LeftTop();
 			if (i > 0);
@@ -94,32 +93,32 @@ AKListView::ScrollToFirstUnaccepted()
 	}
 }
 
-bool 
+bool
 AKListView::HasSelectionOfOnlyAcceptedItems()
 {
 	int32 i = 0;
 	int32 selection_index = 0;
 	int32 selection_count = 0;
 	BListItem* item;
-	EntryRefItem* refItem; 
-	
+	EntryRefItem* refItem;
+
 	while ((selection_index = CurrentSelection(i)) >= 0) {
-			
+
 		BListItem* item = ItemAt(selection_index);
 		if (!item)
 			return false;
-		
+
 		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
 		if (!refItem)
 			return false;
 		if (!refItem->IsAccepted()) {
 			return false;
 		}
-		
+
 		selection_count++;
 		i++;
 	}
-	
+
 	if (selection_count > 0)
 		return true;
 	else
@@ -130,16 +129,16 @@ void
 AKListView::SelectAllUnsupported()
 {
 	DeselectAll();
-	
+
 	BListItem* item;
-	EntryRefItem* refItem; 
-	
+	EntryRefItem* refItem;
+
 	for (int32 i = 0; item = ItemAt(i); i++) {
-			
+
 		EntryRefItem* refItem = dynamic_cast<EntryRefItem*>(item);
 		if (refItem == NULL)
 			continue;
-		
+
 		if(!refItem->IsAccepted())
 			Select(i, true);
 	}

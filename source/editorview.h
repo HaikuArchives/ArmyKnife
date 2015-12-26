@@ -16,10 +16,9 @@ class BTextControl;
 class EditorView : public AddOnView
 {
 	public:
-		EditorView(BRect frame, Preferences * preferences);
+		EditorView(Preferences * preferences);
 		~EditorView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);
@@ -38,7 +37,7 @@ class EditorView : public AddOnView
 		void WidgetsSetValues();
 		void WidgetsSetEnabled();
 		void WidgetsRBValues();
-		
+
 		AlbumPictureView* m_album_picture;
 
 		BRadioButton*	m_tag_radiobutton;
@@ -49,7 +48,7 @@ class EditorView : public AddOnView
 		BCheckBox*		m_album_checkbox;
 		BCheckBox*		m_title_checkbox;
 		BCheckBox*		m_year_checkbox;
-		BCheckBox*		m_comment_checkbox;	
+		BCheckBox*		m_comment_checkbox;
 		BCheckBox*		m_track_checkbox;
 		BCheckBox*		m_genre_checkbox;
 #ifdef _TTE_
@@ -76,10 +75,10 @@ class EditorView : public AddOnView
 #endif
 		BBox*			m_edit_box;
 		BBox*			m_genre_box;
-		
+
 		bool			m_album_picture_changed;
-		
-		Preferences * 	m_preferences;
+
+		Preferences *	m_preferences;
 };
 
 #endif

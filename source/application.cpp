@@ -1,9 +1,9 @@
-#include <add-ons/tracker/TrackerAddOn.h>
-#include <app/Application.h>
-#include <app/Message.h>
-#include <app/Roster.h>
-#include <support/Debug.h>
-#include <storage/Entry.h>
+#include <Application.h>
+#include <Debug.h>
+#include <Entry.h>
+#include <Message.h>
+#include <Roster.h>
+#include <TrackerAddOn.h>
 
 #include "appdefs.h"
 #include "application.h"
@@ -18,8 +18,8 @@ Application::Application()
 
 #ifndef __HAIKU__
 	CreateMimetypes();
-#endif	
-	
+#endif
+
 	m_window = AppWindow::CreateWindow();
 	m_window->Show();
 }
@@ -37,13 +37,13 @@ Application::ArgvReceived(int32 argc, char** argv)
 
 		entry_ref ref;
 		entry.GetRef (& ref);
-		
+
 		if (entry.Exists())
 			msg.AddRef ("refs", & ref);
 		else
 			printf("File not found: %s\n", argv[i]);
 	}
-	
+
 	RefsReceived(& msg);
 }
 
@@ -69,7 +69,7 @@ void
 process_refs(entry_ref dir_ref, BMessage* msg, void* reserved)
 {
 	PRINT(("process_refs()\n"));
-	
+
 	msg->what = B_REFS_RECEIVED;
 	be_roster->Launch (SIGNATURE, msg );
 }

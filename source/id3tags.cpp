@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <be/support/Debug.h>
+#include <Debug.h>
 #include <Node.h>
 #include <NodeInfo.h>
 #include <Path.h>
@@ -36,7 +36,7 @@ ID3Tags::ID3Tags(EntryRefItem * ref_item)
 	bool fileref_created_ok = false;
 
 	BPath filename(ref_item->EntryRef());
-	
+
 	if (ref_item->IsMP3())
 	{
 		PRINT(("Filetype == MPEG\n"));
@@ -55,15 +55,15 @@ ID3Tags::ID3Tags(EntryRefItem * ref_item)
 		m_file = new TagLib::FileRef(new TagLib::FLAC::File(filename.Path()));
 		fileref_created_ok = true;
 	}
-	
+
 	// XXX this needs more work
-	
+
 	if (! fileref_created_ok)
 	{
 		this->m_file = new TagLib::FileRef (filename.Path());
 		// XXX error checking
 	}
-	
+
 	if (m_file == NULL)
 	{
 		PRINT(("ID3Tags::ID3Tags() :: file == NULL\n"));
@@ -75,14 +75,14 @@ ID3Tags::ID3Tags(EntryRefItem * ref_item)
 		PRINT(("ID3Tags::ID3Tags() :: file->isNull()\n"));
 		return;
 	}
-	
-	
+
+
 	if (! m_file->tag())
 	{
 		PRINT(("ID3Tags::ID3Tags() :: !file->tag()\n"));
 		return;
 	}
-	
+
 	if (this->m_file != NULL)
 		this->m_tag	= this->m_file->tag();
 	else
@@ -104,12 +104,12 @@ ID3Tags::ID3Tags(EntryRefItem * ref_item)
 ID3Tags::~ID3Tags()
 {
 	PRINT(("ID3Tags::~ID3Tags()\n"));
-	
+
 	if (m_write_on_exit)
-		m_file->save();		
+		m_file->save();
 
 	delete m_file;
-	
+
 	delete m_artist;
 	delete m_album;
 	delete m_title;
@@ -171,7 +171,7 @@ const char*
 ID3Tags::Genre()
 {
 	PRINT(("ID3Tags::Genre()\n"));
-	
+
 	return m_genre->Value();
 }
 
@@ -299,9 +299,9 @@ status_t
 ID3Tags::Write()
 {
 	PRINT(("ID3Tags::Write()\n"));
-	
+
 	m_write_on_exit = true;
-	
+
 	return AudioInfo::Write();
 }
 
@@ -309,9 +309,9 @@ status_t
 ID3Tags::WriteArtist()
 {
 	PRINT(("ID3Tags::WriteArtist()\n"));
-	
+
 	m_write_on_exit = true;
-	
+
 	return m_artist->Write();
 }
 
@@ -371,6 +371,6 @@ ID3Tags::WriteGenre()
 	PRINT(("ID3Tags::WriteGenre()\n"));
 
 	m_write_on_exit = true;
-	
+
 	return m_genre->Write();
 }

@@ -12,10 +12,9 @@ class BRect;
 class TAView : public AddOnView
 {
 	public:
-		TAView(BRect frame, Preferences * preferences);
+		TAView(Preferences * preferences);
 		~TAView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);
@@ -27,7 +26,7 @@ class TAView : public AddOnView
 		static int32 ApplyFunction(void* args);
 		void WidgetsSetValues();
 		void WidgetsSetEnabled();
-		
+
 		BRadioButton*	m_a2t_radiobutton;
 		BRadioButton*	m_t2a_radiobutton;
 		BCheckBox*		m_artist_checkbox;
@@ -38,7 +37,7 @@ class TAView : public AddOnView
 		BCheckBox*		m_track_checkbox;
 		BCheckBox*		m_genre_checkbox;
 		BBox*			m_direction_box;
-		
+
 		Preferences*	m_preferences;
 };
 

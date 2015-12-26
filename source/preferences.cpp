@@ -1,11 +1,12 @@
 #include <errno.h>
 #include <string.h>
-#include <be/app/Message.h>
-#include <be/storage/Directory.h>
-#include <be/storage/File.h>
-#include <be/storage/FindDirectory.h>
-#include <be/storage/Path.h>
-#include <be/support/Debug.h>
+
+#include <Debug.h>
+#include <Directory.h>
+#include <File.h>
+#include <FindDirectory.h>
+#include <Message.h>
+#include <Path.h>
 
 #include "appdefs.h"
 #include "commandconstants.h"
@@ -19,7 +20,7 @@ Preferences::Preferences()
 	m_window_frame		(200,200,700,600)
 {
 	PRINT(("Preferences::Preferences()\n"));
-	
+
 	MakeDefaults();
 	GetPreferences();
 }
@@ -70,7 +71,7 @@ Preferences::GetPattern(BString * string)
 	PRINT(("Preferences::GetPattern(BString * string)\n"));
 
 	BString pattern;
-	
+
 	if(m_filename_patterns.FindString("nameattr", m_pattern, & pattern) == B_OK)
 	{
 		*string = pattern;
@@ -83,12 +84,12 @@ Preferences::SetPattern(int32 index)
 	PRINT(("Preferences::SetPattern(int32 index: %ld)\n", index));
 
 	BString pattern;
-	
+
 	if(m_filename_patterns.FindString("nameattr", index, & pattern) == B_OK)
 	{
 		m_pattern = index;
 	}
-	
+
 }
 
 status_t
@@ -115,25 +116,25 @@ Preferences::AddPattern(BString * string)
 	if (string != NULL)
 	{
 		BMessage new_pattern_message;
-		
+
 		new_pattern_message.AddString("nameattr", string->String());
-		
+
 		BString temp;
 		int32 index = 0;
-		
+
 		while (m_filename_patterns.FindString("nameattr", index++, & temp) == B_OK)
 		{
 			new_pattern_message.AddString("nameattr", temp.String());
 		}
-		
+
 		m_filename_patterns.MakeEmpty();
 		m_filename_patterns = new_pattern_message;
-		
+
 		SetPattern(0);
 	}
 }
 
-void		
+void
 Preferences::DeletePattern(int32 index)
 {
 	PRINT(("Preferences::DeletePattern(int32 index)\n"));
@@ -146,7 +147,7 @@ void
 Preferences::GetWindowFrame(BRect * rect)
 {
 	PRINT(("Preferences::GetWindowFrame()\n"));
-	
+
 	*rect = m_window_frame;
 }
 
@@ -154,7 +155,7 @@ void
 Preferences::SetWindowFrame(BRect rect)
 {
 	PRINT(("Preferences::SetWindowFrame()\n"));
-	
+
 	m_window_frame = rect;
 }
 
@@ -181,7 +182,7 @@ Preferences::GetPreferences()
 		int32		pattern	=	0;
 		BMessage	patterns;
 		BRect		rect	(200,200,700,600);
-		
+
 		status = message.FindInt32("mode", &mode);
 		if(status == B_OK)
 			m_mode = mode;
@@ -189,11 +190,11 @@ Preferences::GetPreferences()
 		status = message.FindInt32("pattern", &pattern);
 		if(status == B_OK)
 			m_pattern = pattern;
-	
+
 		status = message.FindMessage("patterns", &patterns);
 		if(status == B_OK)
 			m_filename_patterns = patterns;
-		
+
 		status = message.FindRect("winframe", &rect);
 		if(status == B_OK)
 			m_window_frame = rect;
@@ -226,7 +227,7 @@ Preferences::SavePreferences()
 		PRINT(("file.InitCheck(): %s\n", strerror(errno)));
 		return;
 	}
-	
+
 	if(preferences.Flatten(&file) != B_OK)
 	{
 		PRINT(("preferences.Flatten(&file): %s\n", strerror(errno)));

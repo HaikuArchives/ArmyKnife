@@ -1,15 +1,18 @@
 #ifndef __APP_VIEW_H__
 #define __APP_VIEW_H__
 
-#include <be/interface/View.h>
+#include <View.h>
 
 #include "aklistview.h"
 #include "barberpole.h"
 #include "entryrefitem.h"
 #include "preferences.h"
 
+#define INDEX_BARBERPOLE (int32)0
+#define INDEX_STATUSBAR (int32)1
+
 class BButton;
-class BetterScrollView;
+class BScrollView;
 class BListView;
 class BMessage;
 class BRect;
@@ -17,11 +20,12 @@ class BStatusBar;
 class BStringView;
 class PickListView;
 class BDragger;
+class BCardLayout;
 
 class AppView : public BView
 {
 	public:
-		AppView(BRect frame);
+		AppView();
 		AppView(BMessage *data);
 		~AppView();
 		static	BArchivable	*Instantiate(BMessage *data);
@@ -29,7 +33,7 @@ class AppView : public BView
 		virtual void AttachedToWindow();
 		virtual void GetPreferredSize(float* width, float* height);
 		virtual void MessageReceived(BMessage* message);
-		
+
 		void Apply();
 		void Reset();
 		void ClearList();
@@ -44,13 +48,13 @@ class AppView : public BView
 		bool HasAddonView(const char *name);
 		void SetPreviousMode();
 		void SetNextMode();
-		
+
 		void SaveWindowFrame();
-		
+
 		BButton*			m_apply_button;
-		
+
 	private:
-	
+
 		bool Busy();
 		void InitView();
 		void DisableInterface();
@@ -63,9 +67,9 @@ class AppView : public BView
 
 		PickListView*		m_pick_list_view;
 		AKListView*			m_list_view;
-		BetterScrollView*	m_scroll_view;
+		BScrollView*		m_scroll_view;
 		BStringView*		m_selected_string_view;
-		
+
 		BButton*			m_reset_button;
 		BStatusBar*			m_status_bar;
 
@@ -74,6 +78,8 @@ class AppView : public BView
 
 		Preferences*		m_preferences;
 		Barberpole*			m_barberpole;
+
+		BCardLayout*		m_status_card;
 };
 
 void quit_requested(int sig);

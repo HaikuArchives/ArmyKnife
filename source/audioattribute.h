@@ -1,8 +1,8 @@
 #ifndef __AUDIO_ATTRIBUTE_H__
 #define __AUDIO_ATTRIBUTE_H__
 
-#include <be/support/SupportDefs.h>
-#include <be/support/String.h>
+#include <SupportDefs.h>
+#include <String.h>
 
 class BFile;
 
@@ -32,7 +32,7 @@ class AudioAttribute
 		char		m_attribute[B_ATTR_NAME_LENGTH];
 		type_code	m_type;
 		char*		m_value;
-	
+
 	private:
 		void Trim(BString * string);
 };

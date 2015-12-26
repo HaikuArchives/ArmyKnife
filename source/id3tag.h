@@ -36,7 +36,7 @@ class ID3Tag
 
 		int					m_tag_item;
 		BString				m_value;
-		
+
 };
 
 #endif

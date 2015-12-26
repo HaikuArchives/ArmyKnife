@@ -1,19 +1,24 @@
 #include <signal.h>
-#include <app/Message.h>
-#include <interface/Button.h>
-#include <interface/ListView.h>
-#include <interface/Rect.h>
-#include <interface/StatusBar.h>
-#include <interface/StringView.h>
-#include <storage/Directory.h>
-#include <storage/Entry.h>
-#include <storage/Node.h>
-#include <storage/NodeInfo.h>
-#include <support/Debug.h>
-#include <support/Beep.h>
-#include <support/List.h>
-#include <support/String.h>
-#include <santa/BetterScrollView.h>
+
+#include <Beep.h>
+#include <Button.h>
+#include <CardLayout.h>
+#include <Debug.h>
+#include <Directory.h>
+#include <Entry.h>
+#include <Layout.h>
+#include <LayoutBuilder.h>
+#include <List.h>
+#include <ListView.h>
+#include <Message.h>
+#include <Node.h>
+#include <NodeInfo.h>
+#include <Rect.h>
+#include <ScrollView.h>
+#include <StatusBar.h>
+#include <String.h>
+#include <StringView.h>
+
 #include "addonview.h"
 #include "appdefs.h"
 #include "appview.h"
@@ -31,21 +36,13 @@
 #include "ttinfoview.h"
 #endif
 
-AppView::AppView(BRect frame) : BView(frame, "ArmyKnifeAppView", B_FOLLOW_ALL,
+AppView::AppView() : BView("ArmyKnifeAppView",
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE_JUMP)
 {
 	PRINT(("AppView::AppView(BRect)\n"));
 
 	m_adding = 0;
 	m_applying = false;
-
-	BRect r = Bounds();
-	r.OffsetTo(B_ORIGIN);
-	r.top = r.bottom - 7;
-	r.left = r.right - 7;
-
-//	BDragger *dragger = new BDragger(r, this, B_FOLLOW_RIGHT|B_FOLLOW_BOTTOM);
-//	AddChild(dragger);
 }
 
 AppView::AppView(BMessage *data) : BView(data)
@@ -54,20 +51,14 @@ AppView::AppView(BMessage *data) : BView(data)
 
 	m_adding = 0;
 	m_applying = false;
-
-	BMessage msg;
-	BRect r = Bounds();
-	r.OffsetTo(B_ORIGIN);
-	r.top = r.bottom - 7;
-	r.left = r.right - 7;
 }
 
 AppView::~AppView()
 {
 	PRINT(("AppView::~AppView()\n"));
-	
+
 	m_preferences->SetMode(m_pick_list_view->SelectedIndex());
-	
+
 	delete m_preferences;
 }
 
@@ -84,117 +75,98 @@ void
 AppView::InitView()
 {
 	PRINT(("AppView::InitView()\n"));
-	
+
 	m_preferences = new Preferences();
-	
-	BRect winframe;
-	m_preferences->GetWindowFrame(& winframe);
-	
-	Window()->MoveTo(winframe.LeftTop());
-	Window()->ResizeTo(winframe.Width(), winframe.Height());
 
 	SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 
-	float space = 6;
+	m_pick_list_view = new PickListView("m_pick_list_view");
 
-	BRect frame(0,0,100,100);
-	m_pick_list_view = new PickListView(frame,"m_pick_list_view",
-			B_FOLLOW_LEFT | B_FOLLOW_TOP);
-	AddChild(m_pick_list_view);
-
-	BRect inframe = m_pick_list_view->BoxBounds();
 	AddOnView * aView;
 
 	// Edit view
-	aView = new EditorView(inframe, m_preferences);
+	aView = new EditorView(m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
 	// Copy view
-	aView = new TAView(inframe, m_preferences);
+	aView = new TAView(m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
 	// Name view
-	aView = new NAView(inframe, m_preferences);
+	aView = new NAView(m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
 	// MPEG view
-	aView = new MPEGView(inframe, m_preferences);
+	aView = new MPEGView(m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 
 #ifdef _TTE_
-	aView = new TTInfoView(inframe, m_preferences);
+	aView = new TTInfoView(m_preferences);
 	if (aView->InitCheck() == B_OK)
 		m_pick_list_view->AddView(aView);
 	else
 		delete aView;
 #endif
 
-	frame = m_pick_list_view->Frame();
-	frame.bottom = Bounds().bottom - 50;
-	frame.OffsetBy(frame.Width() + space,0);
-	frame.InsetBy(0,12);
-	frame.right = Bounds().right - space - B_V_SCROLL_BAR_WIDTH;
-	frame.bottom -=  B_H_SCROLL_BAR_HEIGHT;
-	m_list_view = new AKListView(frame,"m_list_view",B_MULTIPLE_SELECTION_LIST, B_FOLLOW_ALL);
+	m_list_view = new AKListView("m_list_view",B_MULTIPLE_SELECTION_LIST);
 	m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 
-	m_scroll_view = new BetterScrollView("m_scroll_view",m_list_view,B_FOLLOW_ALL);
-	m_scroll_view->SetDataRect(BRect(0,0,0,0));
-	AddChild(m_scroll_view);
+	m_scroll_view = new BScrollView("m_scroll_view",m_list_view, 0, true, true);
+	m_scroll_view->SetExplicitMinSize(BSize(300, 0));
 
-
-	BRect textFrame = m_scroll_view->Frame();
-	textFrame.bottom += 15;
-	textFrame.top = textFrame.bottom - 10;
-	textFrame.left = textFrame.right - 150;
-	m_selected_string_view = new BStringView(textFrame,"m_selected_string_view","",
-			B_FOLLOW_RIGHT|B_FOLLOW_BOTTOM);
+	m_selected_string_view = new BStringView("m_selected_string_view","");
 	m_selected_string_view->SetAlignment(B_ALIGN_RIGHT);
 	m_selected_string_view->SetFontSize(10);
-	AddChild(m_selected_string_view);
 
-	frame = Bounds();
-	frame.InsetBy(space,space);
-	frame.top = frame.bottom - 30;
-	frame.left = frame.right - 70;
-	m_apply_button = new BButton(frame,"m_apply_button", APPLY_BUTTON, new BMessage(MSG_APPLY),
-			B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	m_apply_button = new BButton("m_apply_button", APPLY_BUTTON,
+		new BMessage(MSG_APPLY));
 	m_apply_button->SetEnabled(false);
-	AddChild(m_apply_button);
 
-	frame.OffsetBy(-(frame.Width() + space),0);
-	m_reset_button = new BButton(frame,"m_reset_button", RESET_BUTTON, new BMessage(MSG_RESET),
-			B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	m_reset_button = new BButton("m_reset_button", RESET_BUTTON,
+		new BMessage(MSG_RESET));
 	m_reset_button->SetEnabled(true);
-	AddChild(m_reset_button);
 
-	frame = Bounds();
-	frame.InsetBy(space,space);
-	frame.right = (m_reset_button->Frame()).left - space;
-	frame.top = frame.bottom - 35;
-	m_status_bar = new BStatusBar(frame,"m_status_bar","0%","100%");
-	m_status_bar->SetResizingMode(B_FOLLOW_LEFT_RIGHT|B_FOLLOW_BOTTOM);
+	m_status_bar = new BStatusBar("m_status_bar","0%","100%");
 	m_status_bar->Hide();
-	AddChild(m_status_bar);
 
-	frame.InsetBy(0,5);
-	frame.top += 10;
+	m_barberpole = new Barberpole("barberpole", B_WILL_DRAW|B_FRAME_EVENTS);
 
-	m_barberpole = new Barberpole (frame, "barberpole", B_FOLLOW_LEFT_RIGHT|B_FOLLOW_BOTTOM, B_WILL_DRAW|B_FRAME_EVENTS);
-	AddChild(m_barberpole);
-/*	
+	m_status_card = new BCardLayout();
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS, 0, B_USE_WINDOW_INSETS,
+			B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(m_pick_list_view)
+			.Add(m_scroll_view)
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.AddGlue()
+			.Add(m_selected_string_view)
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.Add(m_status_card)
+			.Add(m_reset_button)
+			.Add(m_apply_button);
+
+	m_status_card->AddView(m_barberpole);
+	m_status_card->AddView(m_status_bar);
+
+	m_status_card->SetVisibleItem((long int)0);
+
+/*
 	BView *dragger = FindView("_dragger_");
 	if (dragger) {
 		RemoveChild(dragger); // tricky: avoid redraw bugs
@@ -203,11 +175,11 @@ AppView::InitView()
 		dragger->SetLowColor(LowColor());
 	}
 */
-	// The following is a kludge to give each addon view a 
+	// The following is a kludge to give each addon view a
 	// pointer to the list view. It's done this way, for now,
 	// as the m_list_view is created after the add-ons
 	// due to how the layout is done.
-	
+
 	AddOnView* addOnView;
 	int numViews = m_pick_list_view->CountViews();
 	for (int i = 0; i < numViews; i++) {
@@ -322,11 +294,11 @@ void
 AppView::Apply()
 {
 	PRINT(("AppView::Apply()\n"));
-	
+
 	if (! Busy())
 	{
 		DisableInterface();
-	
+
 		AddOnView* view = (AddOnView*)m_pick_list_view->SelectedView();
 		if(view)
 		{
@@ -365,7 +337,6 @@ AppView::ClearList()
 			delete item;
 		}
 		m_list_view->Invalidate();
-		m_scroll_view->SetDataRect(BRect(0,0,0,0));
 	}
 }
 
@@ -394,17 +365,17 @@ void
 AppView::SelectPreviousFile()
 {
 	PRINT(("AppView::SelectPreviousFile()\n"));
-	
+
 	if (! Busy())
 	{
 		int32 index = m_list_view->CurrentSelection(0);
-	
+
 		if (index < 0)
 			m_list_view->Select(m_list_view->CountItems()-1);
-	
+
 		if (index > 0)
 			m_list_view->Select(--index);
-			
+
 			m_list_view->ScrollToSelection();
 	}
 }
@@ -421,13 +392,13 @@ AppView::SelectNextFile()
 		else
 		{
 			int32 index = 0;
-					
+
 			while (m_list_view->CurrentSelection(index) >= 0)
 				index++;
-			
+
 			int32 last_selected = m_list_view->CurrentSelection(--index);
 			m_list_view->Select(++last_selected);
-			
+
 			m_list_view->ScrollToSelection();
 		}
 	}
@@ -480,18 +451,18 @@ void
 AppView::AddRefs(BMessage* refsMessage)
 {
 	PRINT(("AppView::AddRefs(BMessage*)\n"));
-	
+
 	if (! m_applying)
 	{
 		m_adding++;
 		m_barberpole->Start();
-		
-	
+
+
 		BList* args = new BList();
 		BMessage* msg = new BMessage(*refsMessage);
 		args->AddItem(this);
 		args->AddItem(msg);
-	
+
 		thread_id my_thread = spawn_thread(&AppView::AddRefsThreadFunc,"AddRefs",
 				B_NORMAL_PRIORITY,(void*)args);
 		resume_thread(my_thread);
@@ -519,7 +490,7 @@ AppView::AddRefsThreadFunc(void* data)
 	entry_ref tmp_ref;
 	int numRefs = 0;
 	EntryRefItem * ref_item = NULL;
-	
+
 	while(refsMessage->FindRef("refs", numRefs++, & tmp_ref) == B_NO_ERROR)
 	{
 		ref_item = new EntryRefItem (& tmp_ref);
@@ -544,8 +515,7 @@ AppView::AddRefsThreadFunc(void* data)
 			}
 		}
 		BRect dataRect(0,0,frameWidth,frameHeight);
-		view->m_scroll_view->SetDataRect(dataRect);
-		
+
 		view->m_list_view->SortItems(&AppView::SortFunc);
 
 		view->m_list_view->SetSelectionMessage(NULL);
@@ -553,7 +523,7 @@ AppView::AddRefsThreadFunc(void* data)
 		addOnView->ListContentAdded();
 		view->m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 		view->SelectionChanged();
-		
+
 		view->m_barberpole->Stop();
 
 		view->m_adding--;
@@ -641,7 +611,7 @@ AppView::AttachedToWindow()
 	m_list_view->SetTarget(this);
 	m_apply_button->SetTarget(this);
 	m_reset_button->SetTarget(this);
-	
+
 	m_apply_button->MakeDefault(true);
 }
 
@@ -673,16 +643,14 @@ AppView::MessageReceived(BMessage* message)
 			break;
 		case START_APPLY:
 			m_applying = true;
-			m_barberpole->Hide();
-			m_status_bar->Show();
+			m_status_card->SetVisibleItem(INDEX_STATUSBAR);
 			m_apply_button->SetEnabled(false);
 			m_reset_button->SetEnabled(false);
 			m_pick_list_view->MessageReceived(message);
 			break;
 		case END_APPLY:
 			m_applying = false;
-			m_status_bar->Hide();
-			m_barberpole->Show();
+			m_status_card->SetVisibleItem(INDEX_BARBERPOLE);
 			m_apply_button->SetEnabled(true);
 			m_reset_button->SetEnabled(true);
 			SelectionChanged();
@@ -701,7 +669,7 @@ AppView::MessageReceived(BMessage* message)
 			{
 				file.Prepend("  ");
 				m_status_bar->SetText(file.String());
-			}	
+			}
 			break;
 		}
 		case STATUS_BAR_UPDATE:
@@ -720,7 +688,7 @@ AppView::MessageReceived(BMessage* message)
 		case B_SIMPLE_DATA:
 			AddRefs(message);
 			break;
-			
+
 		default:
 			BView::MessageReceived(message);
 	}
@@ -732,7 +700,7 @@ AppView::SetPreviousMode()
 	if (! Busy())
 	{
 		int32 mode = m_pick_list_view->SelectedIndex();
-	
+
 		if (mode > 0)
 		{
 			mode--;
@@ -747,7 +715,7 @@ AppView::SetNextMode()
 	if (! Busy())
 	{
 		int32 mode = m_pick_list_view->SelectedIndex();
-	
+
 		if ((mode+1) < m_pick_list_view->CountViews())
 		{
 			mode++;

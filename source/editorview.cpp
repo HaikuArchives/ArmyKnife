@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <be/app/Message.h>
-#include <be/app/Messenger.h>
-#include <be/interface/Box.h>
-#include <be/interface/CheckBox.h>
-#include <be/interface/Menu.h>
-#include <be/interface/MenuField.h>
-#include <be/interface/MenuItem.h>
-#include <be/interface/OptionPopUp.h>
-#include <be/interface/RadioButton.h>
-#include <be/interface/Rect.h>
-#include <be/interface/TextControl.h>
-#include <be/storage/Entry.h>
-#include <be/storage/File.h>
-#include <be/storage/NodeInfo.h>
-#include <be/storage/Path.h>
-#include <be/support/Debug.h>
-#include <be/support/List.h>
+
+#include <Box.h>
+#include <CheckBox.h>
+#include <Debug.h>
+#include <Entry.h>
+#include <File.h>
+#include <GroupLayout.h>
+#include <List.h>
+#include <Layout.h>
+#include <LayoutBuilder.h>
+#include <Message.h>
+#include <Menu.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <Messenger.h>
+#include <NodeInfo.h>
+#include <OptionPopUp.h>
 #include <Path.h>
+#include <RadioButton.h>
+#include <Rect.h>
+#include <TextControl.h>
 
 #include "audioattributes.h"
 #include "genrelist.h"
@@ -32,9 +35,9 @@
 #include "guistrings.h"
 #include "albumpictureview.h"
 
-EditorView::EditorView(BRect frame, Preferences * preferences)
- :	AddOnView		(frame, EDITOR_MODE_NAME),
- 	m_preferences	(preferences)
+EditorView::EditorView(Preferences * preferences)
+ :	AddOnView		(EDITOR_MODE_NAME),
+	m_preferences	(preferences)
 {
 	PRINT(("EditorView::EditorView(BRect)\n"));
 
@@ -54,219 +57,81 @@ EditorView::InitView()
 
 	int space = 6;
 
-	BRect frame;
-
-	BCheckBox cb(BRect(0,0,0,0),0,0,0);
-	cb.ResizeToPreferred();
-	
-	m_attribute_radiobutton = new BRadioButton(BRect(0,0,0,0),0,ATTRIBUTES_LABEL,
+	m_attribute_radiobutton = new BRadioButton("m_attribute_radiobutton",ATTRIBUTES_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
-	m_attribute_radiobutton->ResizeToPreferred();
 	m_attribute_radiobutton->SetValue(B_CONTROL_ON);
 
-	m_tag_radiobutton = new BRadioButton(BRect(0,0,0,0),0,TAGS_LABEL,
+	m_tag_radiobutton = new BRadioButton("m_tag_radiobutton",TAGS_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
-	m_tag_radiobutton->ResizeToPreferred();
 
-	m_apply_checkbox = new BCheckBox(BRect(0,0,0,0),0,APPLY_TO_ATTRIBUTES,
+	m_apply_checkbox = new BCheckBox("m_apply_checkbox",APPLY_TO_ATTRIBUTES,
 			new BMessage(MSG_APPLY_TO_BOTH));
-	m_apply_checkbox->ResizeToPreferred();
 	m_apply_checkbox->SetValue(B_CONTROL_OFF);
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
 
-	frame.left = space;
-	frame.top = space;
-	frame.right = m_apply_checkbox->Frame().Width() + (3 * space);
+	m_edit_box = new BBox("m_edit_box");
+	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(m_attribute_radiobutton)
+			.Add(m_tag_radiobutton)
+		.End()
+		.Add(m_apply_checkbox);
 
-	if(m_attribute_radiobutton->Frame().Height() >=
-			m_tag_radiobutton->Frame().Height())
-	{
-		frame.bottom = m_attribute_radiobutton->Frame().Height() +
-			m_apply_checkbox->Frame().Height() + (4 * space);
-	}
-	else
-	{
-		frame.bottom = m_tag_radiobutton->Frame().Height() +
-			m_apply_checkbox->Frame().Height() + (4 * space);
-	}
+	m_edit_box->AddChild(editBoxLayout->View());
 
-	m_edit_box = new BBox(frame,0);
-	AddChild(m_edit_box);
-	m_edit_box->AddChild(m_attribute_radiobutton);
-	m_edit_box->AddChild(m_tag_radiobutton);
-	m_edit_box->AddChild(m_apply_checkbox);
-	m_attribute_radiobutton->MoveBy(space,space);
-	m_tag_radiobutton->MoveBy(2*space+m_attribute_radiobutton->Frame().Width(),space);
-	m_apply_checkbox->MoveBy(space,2*space+m_attribute_radiobutton->Frame().Height());
-	
-	m_picture_checkbox = new BCheckBox(BRect(0,0,0,0),0,"",
+	m_picture_checkbox = new BCheckBox("m_picutre_checkbox","",
 			new BMessage(MSG_PICTURE_CHECKBOX));
-	m_picture_checkbox->ResizeToPreferred();
-	frame = m_picture_checkbox->Frame();
-	m_album_picture = new AlbumPictureView(BRect(0, 0, 160, 160), "bitmap_view");
-		// Has to be initialized here because of the layout
-	
-	m_artist_checkbox = new BCheckBox(BRect(0,0,0,0),0,ARTIST_LABEL,
+	m_album_picture = new AlbumPictureView("bitmap_view");
+
+	m_artist_checkbox = new BCheckBox("m_artist_checkbox",ARTIST_LABEL,
 			new BMessage(MSG_ARTIST_CHECKBOX));
-	m_artist_checkbox->ResizeToPreferred();
-	if(m_artist_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_artist_checkbox->Frame();
-	}
 
-	m_album_checkbox = new BCheckBox(BRect(0,0,0,0),0,ALBUM_LABEL,
+	m_album_checkbox = new BCheckBox("m_album_checkbox",ALBUM_LABEL,
 			new BMessage(MSG_ALBUM_CHECKBOX));
-	m_album_checkbox->ResizeToPreferred();
-	if(m_album_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_album_checkbox->Frame();
-	}
 
-	m_title_checkbox = new BCheckBox(BRect(0,0,0,0),0,TITLE_LABEL,
+	m_title_checkbox = new BCheckBox("m_title_checkbox",TITLE_LABEL,
 			new BMessage(MSG_TITLE_CHECKBOX));
-	m_title_checkbox->ResizeToPreferred();
-	if(m_title_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_title_checkbox->Frame();
-	}
 
-	m_year_checkbox = new BCheckBox(BRect(0,0,0,0),0,YEAR_LABEL,
+	m_year_checkbox = new BCheckBox("m_year_checkbox",YEAR_LABEL,
 			new BMessage(MSG_YEAR_CHECKBOX));
-	m_year_checkbox->ResizeToPreferred();
-	if(m_year_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_year_checkbox->Frame();
-	}
 
-	m_comment_checkbox = new BCheckBox(BRect(0,0,0,0),0,COMMENT_LABEL,
+	m_comment_checkbox = new BCheckBox("m_comment_checkbox",COMMENT_LABEL,
 			new BMessage(MSG_COMMENT_CHECKBOX));
-	m_comment_checkbox->ResizeToPreferred();
-	if(m_comment_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_comment_checkbox->Frame();
-	}
 
-	m_track_checkbox = new BCheckBox(BRect(0,0,0,0),0,TRACK_LABEL,
+	m_track_checkbox = new BCheckBox("m_track_checkbox",TRACK_LABEL,
 			new BMessage(MSG_TRACK_CHECKBOX));
-	m_track_checkbox->ResizeToPreferred();
-	if(m_track_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_track_checkbox->Frame();
-	}
 
 #ifdef _TTE_
-	m_rating_checkbox = new BCheckBox(BRect(0,0,0,0),0,RATING_LABEL,
+	m_rating_checkbox = new BCheckBox("m_rating_checkbox",RATING_LABEL,
 			new BMessage(MSG_RATING_CHECKBOX));
-	m_rating_checkbox->ResizeToPreferred();
-	if(m_rating_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_rating_checkbox->Frame();
-	}
 
-	m_tempo_checkbox = new BCheckBox(BRect(0,0,0,0),0,TEMPO_LABEL,
+	m_tempo_checkbox = new BCheckBox("m_tempo_checkbox",TEMPO_LABEL,
 			new BMessage(MSG_TEMPO_CHECKBOX));
-	m_tempo_checkbox->ResizeToPreferred();
-	if(m_tempo_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_tempo_checkbox->Frame();
-	}
 
-	m_composer_checkbox = new BCheckBox(BRect(0,0,0,0),0,COMPOSER_LABEL,
+	m_composer_checkbox = new BCheckBox("m_composer_checkbox",COMPOSER_LABEL,
 			new BMessage(MSG_COMPOSER_CHECKBOX));
-	m_composer_checkbox->ResizeToPreferred();
-	if(m_composer_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_composer_checkbox->Frame();
-	}
-	
-	m_gender_checkbox = new BCheckBox(BRect(0,0,0,0),0,GENDER_LABEL,
+
+	m_gender_checkbox = new BCheckBox("m_gender_checkbox",GENDER_LABEL,
 			new BMessage(MSG_GENDER_CHECKBOX));
-	m_gender_checkbox->ResizeToPreferred();
-	if(m_gender_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_gender_checkbox->Frame();
-	}
 #endif
 
-	m_genre_checkbox = new BCheckBox(BRect(0,0,0,0),0,GENRE_LABEL,
+	m_genre_checkbox = new BCheckBox("m_genre_checkbox",GENRE_LABEL,
 			new BMessage(MSG_GENRE_CHECKBOX));
-	m_genre_checkbox->ResizeToPreferred();
-	if(m_genre_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_genre_checkbox->Frame();
-	}
-	
-	m_clear_all_checkbox = new BCheckBox(BRect(0,0,0,0),0,B_UTF8_ELLIPSIS, new BMessage(MSG_CLEAR_CHECKBOX));
-	m_clear_all_checkbox->ResizeToPreferred();
-	if(m_clear_all_checkbox->Frame().Width() > frame.Width())
-	{
-		frame = m_clear_all_checkbox->Frame();
-	}
 
-	// Set chekboxes' positions
-	float x,y;
-	x = space;
-	y = m_edit_box->Frame().bottom + 2*space;
-	m_picture_checkbox->MoveTo(x,y + m_album_picture->Bounds().Height() / 2 - 
-			m_picture_checkbox->Bounds().Height() / 2);
-	m_album_picture->MoveTo(x + m_picture_checkbox->Frame().Width(),y);
-	y += m_album_picture->Bounds().Height() + space;	
-	m_artist_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_album_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_title_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_year_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_comment_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_track_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-#ifdef _TTE_
-	m_rating_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_tempo_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_composer_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-	m_gender_checkbox->MoveTo(x,y);
-	y += frame.Height() + space;
-#endif
-
-	m_genre_checkbox->MoveTo(x,y);
-	y += frame.Height() + space * 2;
-	m_clear_all_checkbox->MoveTo(x,y);
-
-	BRect tcFrame(0,0,110,frame.Height());
-
-	m_artist_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_artist_textcontrol->MoveTo(frame.right+5,m_artist_checkbox->Frame().top);
-
-	m_album_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_album_textcontrol->MoveTo(frame.right+5,m_album_checkbox->Frame().top);
-	
-	m_title_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_title_textcontrol->MoveTo(frame.right+5,m_title_checkbox->Frame().top);
-	
-	m_year_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_year_textcontrol->MoveTo(frame.right+5,m_year_checkbox->Frame().top);
-	
-	m_comment_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_comment_textcontrol->MoveTo(frame.right+5,m_comment_checkbox->Frame().top);
-	
-	m_track_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_track_textcontrol->MoveTo(frame.right+5,m_track_checkbox->Frame().top);
+	m_clear_all_checkbox = new BCheckBox("m_clear_all_checkbox",B_UTF8_ELLIPSIS, new BMessage(MSG_CLEAR_CHECKBOX));
+	m_artist_textcontrol = new BTextControl("m_artist_textcontrol","","",NULL);
+	m_album_textcontrol = new BTextControl("m_album_textcontrol","","",NULL);
+	m_title_textcontrol = new BTextControl("m_title_textcontrol","","",NULL);
+	m_year_textcontrol = new BTextControl("m_year_textcontrol","","",NULL);
+	m_comment_textcontrol = new BTextControl("m_comment_textcontrol","","",NULL);
+	m_track_textcontrol = new BTextControl("m_track_textcontrol","","",NULL);
 
 #ifdef _TTE_
-	m_rating_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_rating_textcontrol->MoveTo(frame.right+5,m_rating_checkbox->Frame().top);
-	m_tempo_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_tempo_textcontrol->MoveTo(frame.right+5,m_tempo_checkbox->Frame().top);
-	m_composer_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_composer_textcontrol->MoveTo(frame.right+5,m_composer_checkbox->Frame().top);
-	m_gender_textcontrol = new BTextControl(tcFrame,0,0,0,0);
-	m_gender_textcontrol->MoveTo(frame.right+5,m_gender_checkbox->Frame().top);
+	m_rating_textcontrol = new BTextControl("m_rating_textcontrol","","",NULL);
+	m_tempo_textcontrol = new BTextControl("m_tempo_textcontrol","","",NULL);
+	m_composer_textcontrol = new BTextControl("m_composer_textcontrol","","",NULL);
+	m_gender_textcontrol = new BTextControl("m_gender_textcontrol","","",NULL);
 #endif
 
 	//INSIDE BOX
@@ -295,64 +160,47 @@ EditorView::InitView()
 		last = current;
 	}
 
-	m_genre_menufield = new BMenuField(BRect(space, space, 0, 0), 0, 0, menu);
+	m_genre_menufield = new BMenuField("m_genre_menufield", "", menu);
 
-	//since a BMenuField doesn't report it's adjusted size correctly
-	//we use the height of a BTextControl to approximate the height
-	//of the BMenuField.  Not perfect, but close.
-	m_genre_textcontrol = new BTextControl(BRect(0,0,110-(2*space),0),0,0,0,0);
-	m_genre_textcontrol->MoveTo(space,2*space+m_genre_textcontrol->Frame().bottom);
+	m_genre_textcontrol = new BTextControl("m_genre_textcontrol","","",NULL);
 	//DONE INSIDE BOX
 
-	tcFrame.bottom = m_genre_textcontrol->Frame().bottom + 2*space;
-	m_genre_box = new BBox(tcFrame,0);
-	m_genre_box->MoveTo(frame.right+5, m_genre_checkbox->Frame().top);
+	m_genre_box = new BBox("m_genre_box");
+
+	BGroupLayout *genreBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(m_genre_menufield)
+		.Add(m_genre_textcontrol);
+
+	m_genre_box->AddChild(genreBoxLayout->View());
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(m_edit_box)
+		.AddGroup(B_HORIZONTAL)
+			.Add(m_picture_checkbox)
+			.Add(m_album_picture)
+		.End()
+		.AddGrid()
+			.Add(m_artist_checkbox, 0, 0)
+			.Add(m_artist_textcontrol, 1, 0)
+			.Add(m_album_checkbox, 0, 1)
+			.Add(m_album_textcontrol, 1, 1)
+			.Add(m_title_checkbox, 0, 2)
+			.Add(m_title_textcontrol, 1, 2)
+			.Add(m_year_checkbox, 0, 3)
+			.Add(m_year_textcontrol, 1, 3)
+			.Add(m_comment_checkbox, 0, 4)
+			.Add(m_comment_textcontrol, 1, 4)
+			.Add(m_track_checkbox, 0, 5)
+			.Add(m_track_textcontrol, 1, 5)
+			.Add(m_genre_checkbox, 0, 6)
+			.Add(m_genre_box, 1, 6, 1, 3)
+			.Add(m_clear_all_checkbox, 0, 7, 1, 2)
+		.End()
+		.AddGlue();
 
 	ResizeToPreferred();
-
-	PRINT_OBJECT(Frame());
-	
-	AddChild(m_picture_checkbox);
-	AddChild(m_album_picture);
-
-	AddChild(m_artist_checkbox);
-	AddChild(m_artist_textcontrol);
-
-	AddChild(m_album_checkbox);
-	AddChild(m_album_textcontrol);
-
-	AddChild(m_title_checkbox);
-	AddChild(m_title_textcontrol);
-
-	AddChild(m_year_checkbox);
-	AddChild(m_year_textcontrol);
-
-	AddChild(m_comment_checkbox);
-	AddChild(m_comment_textcontrol);
-
-	AddChild(m_track_checkbox);
-	AddChild(m_track_textcontrol);
-
-#ifdef _TTE_
-	AddChild(m_rating_checkbox);
-	AddChild(m_rating_textcontrol);
-
-	AddChild(m_tempo_checkbox);
-	AddChild(m_tempo_textcontrol);
-
-	AddChild(m_composer_checkbox);
-	AddChild(m_composer_textcontrol);
-	
-	AddChild(m_gender_checkbox);
-	AddChild(m_gender_textcontrol);
-#endif
-
-	AddChild(m_genre_checkbox);
-	AddChild(m_genre_box);
-	m_genre_box->AddChild(m_genre_menufield);
-	m_genre_box->AddChild(m_genre_textcontrol);
-	
-	AddChild(m_clear_all_checkbox);
 
 	WidgetsSetValues();
 	WidgetsSetEnabled();
@@ -382,24 +230,8 @@ EditorView::AttachedToWindow()
 #endif
 	m_genre_checkbox->SetTarget(this);
 	m_genre_menufield->Menu()->SetTargetForItems(this);
-	
+
 	m_clear_all_checkbox->SetTarget(this);
-}
-
-void
-EditorView::GetPreferredSize(float* width, float* height)
-{
-	PRINT(("EditorView::GetPreferredSize(float*,float*)\n"));
-
-	int space = 6;
-
-	*width = m_artist_textcontrol->Frame().right;
-	if((m_edit_box->Frame().right) > *width)
-	{
-		*width = m_edit_box->Frame().right;
-	}
-
-	*height = m_genre_box->Frame().bottom;
 }
 
 void
@@ -552,7 +384,7 @@ EditorView::WidgetsSetValues()
 	if(numSelected > 0)
 	{
 		EntryRefItem* item = (EntryRefItem*)m_selected_items->ItemAt(0);
-		
+
 		const char* artist;
 		const char* album;
 		const char* title;
@@ -622,7 +454,7 @@ EditorView::WidgetsSetValues()
 			{
 				composer = "";
 			}
-			
+
 			gender = attributes.Gender();
 			if(!gender)
 			{
@@ -673,7 +505,7 @@ EditorView::WidgetsSetValues()
 				m_album_picture->UpdatePicture(filePath.Path());
 			}
 			delete entry;
-			
+
 			ID3Tags tags(item);
 
 			artist = tags.Artist();
@@ -737,7 +569,7 @@ EditorView::WidgetsSetValues()
 				item->SetMarked(true);
 				m_genre_textcontrol->SetText(genre);
 			}
-			
+
 
 			return;
 		}
@@ -816,7 +648,7 @@ EditorView::WidgetsSetEnabled()
 		m_track_textcontrol->SetEnabled(true);
 		m_genre_menufield->SetEnabled(true);
 		m_genre_textcontrol->SetEnabled(true);
-		
+
 		if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
 			m_picture_checkbox->SetEnabled(false);
 		else
@@ -833,7 +665,7 @@ EditorView::WidgetsSetEnabled()
 
 			m_composer_checkbox->SetEnabled(true);
 			m_composer_textcontrol->SetEnabled(true);
-			
+
 			m_gender_checkbox->SetEnabled(true);
 			m_gender_textcontrol->SetEnabled(true);
 		}
@@ -965,12 +797,12 @@ EditorView::ApplyFunction(void* args)
 	int numSelected = view->m_selected_items->CountItems();
 	maxMsg.AddInt32("maxValue",numSelected);
 	messenger.SendMessage(&maxMsg);
-	
+
 	for(int i=0; i<numSelected; i++)
 	{
 		EntryRefItem * refItem = (EntryRefItem*)view->m_selected_items->ItemAt(i);
 		BFile audioFile(refItem->EntryRef(), B_READ_WRITE);
-		
+
 		fileMsg.MakeEmpty();
 		fileMsg.AddString("file", refItem->EntryRef()->name);
 		messenger.SendMessage(&fileMsg);
@@ -1086,9 +918,9 @@ EditorView::ApplyFunction(void* args)
 				tags.WriteGenre();
 			}
 		}
-		
+
 		refItem->UpdateTaglibMetadata();
-		
+
 		messenger.SendMessage(&updateMsg);
 	}
 	messenger.SendMessage(&resetMsg);
@@ -1138,7 +970,7 @@ EditorView::MessageReceived(BMessage* message)
 			SetEnabled(m_genre_checkbox,m_genre_menufield);
 			SetEnabled(m_genre_checkbox,m_genre_textcontrol);
 			break;
-			
+
 		case MSG_CLEAR_CHECKBOX:
 			{
 				if (m_clear_all_checkbox->Value() == B_CONTROL_ON)
@@ -1213,18 +1045,18 @@ bool
 EditorView::AcceptListItem(EntryRefItem* listItem)
 {
 	PRINT(("EditorView::AcceptListItem()\n"));
-	
+
 	if (!listItem->IsFSWritable())
 		return false;
-	
+
 	if (m_apply_checkbox->Value() == B_CONTROL_ON)
 	{
 		if (!listItem->IsFSAttributable())
 			return false;
-	
+
 		if(!listItem->IsSupportedByTaglib())
 			return false;
-	} 
+	}
 
 	if (m_attribute_radiobutton->Value() == B_CONTROL_ON
 		&& !listItem->IsFSAttributable())

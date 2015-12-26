@@ -19,10 +19,9 @@ class BTextControl;
 class NAView : public AddOnView
 {
 	public:
-		NAView(BRect frame, Preferences * preferences);
+		NAView(Preferences * preferences);
 		~NAView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);
@@ -37,7 +36,7 @@ class NAView : public AddOnView
 		void WidgetsSetEnabled();
 		void WidgetsRBValues();
 		void MakePatternMenu();
-		
+
 		BRadioButton*	m_a2n_radiobutton;
 		BRadioButton*	m_n2a_radiobutton;
 		BStringView*	m_artist_stringview;
@@ -49,12 +48,12 @@ class NAView : public AddOnView
 		BStringView*	m_genre_stringview;
 		BStringView*	m_wildcard_stringview;
 		BBox*			m_direction_box;
-		
+
 		BMessage		m_filename_patterns;
 		BMenuField*		m_pattern_menufield;
 		BMenu*			m_pattern_menu;
 		PatternWindow*	m_pattern_window;
-		
+
 		Preferences*	m_preferences;
 
 };

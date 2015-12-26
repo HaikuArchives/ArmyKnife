@@ -2,7 +2,7 @@
 #define __ALBUM_PICTURE_VIEW_H__
 
 #include <TranslationUtils.h>
-#include <be/interface/View.h>
+#include <View.h>
 
 #include <taglib/id3v2tag.h>
 #include <taglib/mpegfile.h>
@@ -18,7 +18,7 @@ class BPath;
 class AlbumPictureView : public BView
 {
 	public:
-		AlbumPictureView(BRect frame, const char *name);
+		AlbumPictureView(const char *name);
 		~AlbumPictureView();
 		void UpdatePicture(const char* path);
 		void NoImage();

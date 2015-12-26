@@ -1,11 +1,11 @@
 #ifndef __NA_WINDOW_H__
 #define __NA_WINDOW_H__
 
-#include <be/app/Messenger.h>
-#include <be/interface/Button.h>
-#include <be/interface/TextControl.h>
-#include <be/interface/View.h>
-#include <be/interface/Window.h>
+#include <Button.h>
+#include <Messenger.h>
+#include <TextControl.h>
+#include <View.h>
+#include <Window.h>
 
 class PatternWindow : public BWindow
 {
@@ -15,14 +15,13 @@ class PatternWindow : public BWindow
 		virtual void MessageReceived(BMessage* message);
 
 	private:
-		
-		BView *			m_view;
+
 		BTextControl *	m_text_control;
 		BButton *		m_add_button;
 		BButton *		m_cancel_button;
-		
+
 		BMessenger *	m_parent_messenger;
-	
+
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef __ADDON_VIEW_H__
 #define __ADDON_VIEW_H__
 
-#include <be/interface/View.h>
+#include <View.h>
 
 #include "aklistview.h"
 #include "entryrefitem.h"
@@ -13,7 +13,7 @@ class BRect;
 class AddOnView : public BView
 {
 	public:
-		AddOnView(BRect frame, const char* name);
+		AddOnView(const char* name);
 		~AddOnView();
 		virtual void AttachedToWindow();
 		virtual void Hide();

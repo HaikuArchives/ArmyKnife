@@ -3,17 +3,17 @@
 
 #include <stdlib.h>
 
-#include <Box.h>
 #include <Bitmap.h>
-#include <View.h>
+#include <Box.h>
 #include <Window.h>
+#include <View.h>
 
 
-class Barberpole : public BBox 
+class Barberpole : public BBox
 {
 public:
-							Barberpole(BRect frame, const char* name,
-								uint32 resizing_mode, uint32 flags);
+							Barberpole(const char* name,
+								uint32 flags);
 							~Barberpole();
 
 			void			Start();
@@ -24,7 +24,7 @@ public:
 	virtual	void			Draw(BRect draw);
 	virtual void			FrameMoved(BPoint point);
 	virtual	void			FrameResized(float width, float height);
-				
+
 private:
 			void			_CreateBitmap();
 			void			_LightenBitmapHighColor(rgb_color* color);

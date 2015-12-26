@@ -1,36 +1,41 @@
-#include <be/app/Message.h>
-#include <be/interface/Box.h>
-#include <be/interface/Menu.h>
-#include <be/interface/MenuField.h>
-#include <be/interface/MenuItem.h>
-#include <be/interface/Rect.h>
-#include <be/support/Archivable.h>
-#include <be/support/Debug.h>
+#include <Archivable.h>
+#include <Box.h>
+#include <CardLayout.h>
+#include <Debug.h>
+#include <LayoutBuilder.h>
+#include <Menu.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <Message.h>
+#include <Rect.h>
+#include <String.h>
 
 #include "commandconstants.h"
 #include "picklistview.h"
-#include "appview.h"
+//#include "appview.h"
 
-PickListView::PickListView(BRect frame, const char* name = NULL,
-	uint32 resizingMode = B_FOLLOW_ALL,
-	uint32 flags = B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE_JUMP,
+PickListView::PickListView(const char* name = NULL,
+	uint32 flags = B_WILL_DRAW |  B_NAVIGABLE_JUMP,
 	border_style border = B_FANCY_BORDER) :
-		BView(frame,name,resizingMode,flags)
+		BBox(name, flags, border)
 {
 	PRINT(("PickListView::PickListView(BRect,const char*,uint32,uint32,border_style)\n"));
 
 	m_selected_index = NO_VIEW_SELECTED;
 
-	frame = Bounds();
-	frame.InsetBy(10,10);
 	m_view_menu = new BMenu("m_view_menu");
 	m_view_menu->SetLabelFromMarked(true);
-	m_view_box = new BBox(frame,"pickListViewBox",B_FOLLOW_ALL,flags,border);
-	m_view_box->SetLabel(new BMenuField(BRect(0,0,0,0), "label", NULL, m_view_menu));
-	AddChild(m_view_box);
+	SetLabel(new BMenuField("label", NULL, m_view_menu));
+
+	m_view_layout = new BCardLayout();
+
+	m_card_view = new BView("m_card_view", 0, m_view_layout);
+
+	AddChild(m_card_view);
 }
 
-PickListView::PickListView(BMessage* archive) : BView(archive)
+
+PickListView::PickListView(BMessage* archive) : BBox(archive)
 {
 	PRINT(("PickListView::PickListView(BMessage*)\n"));
 
@@ -78,16 +83,18 @@ PickListView::AttachedToWindow()
 {
 	PRINT(("PickListView::AttachedToWindow()\n"));
 
-	BView::AttachedToWindow();
+	BBox::AttachedToWindow();
 
 	BView* parent = Parent();
 	if(parent)
 	{
 		SetViewColor(parent->ViewColor());
+		m_card_view->SetViewColor(parent->ViewColor());
 	}
 	else
 	{
 		SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+		m_card_view->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	}
 	m_view_menu->SetTargetForItems(this);
 	SelectView(m_selected_index);
@@ -103,15 +110,15 @@ PickListView::MessageReceived(BMessage* message)
 		case MENU_ITEM:
 			MenuSelectionChanged(message);
 			break;
-			
+
 		case START_APPLY:
 			m_view_menu->Supermenu()->SetEnabled(false);
 			break;
-			
+
 		case END_APPLY:
 			m_view_menu->Supermenu()->SetEnabled(true);
-			break;			
-			
+			break;
+
 		default:
 			BView::MessageReceived(message);
 	}
@@ -127,17 +134,6 @@ PickListView::MenuSelectionChanged(BMessage* message)
 	SelectView(index);
 }
 
-BRect
-PickListView::BoxBounds()
-{
-	PRINT(("PickListView::BoxBounds()\n"));
-
-	BRect bounds = m_view_box->Bounds();
-	bounds.OffsetBy(5,10);
-	bounds.InsetBy(10,15);
-	return bounds;
-}
-
 void
 PickListView::AddView(BView* view)
 {
@@ -150,36 +146,10 @@ PickListView::AddView(BView* view)
 		{
 			view->Show();
 		}
-		while(!view->IsHidden())
-		{
-			view->Hide();
-		}
-
-		if(view->Bounds().Width() > BoxBounds().Width())
-		{
-			float diff = view->Bounds().Width() - BoxBounds().Width();
-			ResizeBy(diff+15,0);
-		}
-		else
-		{
-			float diff = BoxBounds().Width() - view->Bounds().Width();
-			view->ResizeBy(diff-15,0);
-		}
-
-		if(view->Bounds().Height() > BoxBounds().Height())
-		{
-			float diff = view->Bounds().Height() - BoxBounds().Height();
-			ResizeBy(0,diff+25);
-		}
-		else
-		{
-			float diff = BoxBounds().Height() - view->Bounds().Height();
-			view->ResizeBy(0,diff-25);
-		}
 
 		m_view_menu->AddItem(new BMenuItem(view->Name(),new BMessage(MENU_ITEM)));
 		m_view_menu->SetTargetForItems(this);
-		m_view_box->AddChild(view);
+		m_view_layout->AddView(view);
 	}
 }
 
@@ -200,7 +170,7 @@ PickListView::RemoveView(int32 index)
 	{
 		BMenuItem* item = m_view_menu->RemoveItem(index);
 		delete item;
-		m_view_box->RemoveChild(ViewAt(index));
+		m_view_layout->RemoveItem(index);
 	}
 	if(CountViews() > 0)
 	{
@@ -233,16 +203,9 @@ PickListView::SelectView(int32 index)
 			{
 				if((index >= 0) && (index < CountViews()))
 				{
-					if(m_selected_index != NO_VIEW_SELECTED)
-					{
-						BView* view = ViewAt(m_selected_index);
-						view->Hide();
-					}
-
 					BMenuItem* item = m_view_menu->ItemAt(index);
 					item->SetMarked(true);
-					BView* view = ViewAt(index);
-					view->Show();
+					m_view_layout->SetVisibleItem(index);
 					m_selected_index = index;
 				}
 				UnlockLooper();
@@ -282,13 +245,12 @@ PickListView::IsSelected(int32 index)
 
 	return (index == SelectedIndex());
 }
-		
+
 int32
 PickListView::CountViews()
 {
 	PRINT(("PickListView::CountViews()\n"));
-
-	return m_view_box->CountChildren() - 1;
+	return m_view_layout->CountItems();
 }
 
 BView*
@@ -299,7 +261,7 @@ PickListView::ViewAt(int32 index)
 	BView* result = NULL;
 	if((index >= 0) && (index < CountViews()))
 	{
-		result = m_view_box->ChildAt(index+1);
+		result = m_view_layout->ItemAt(index)->View();
 	}
 	return result;
 }

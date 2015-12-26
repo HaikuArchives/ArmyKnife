@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <string.h>
-#include <be/storage/File.h>
-#include <be/support/Debug.h>
-#include <be/support/TypeConstants.h>
+
+#include <Debug.h>
+#include <File.h>
+#include <TypeConstants.h>
+
 #include "audioattributes.h"
 #include "audioattribute.h"
 
@@ -195,7 +197,7 @@ AudioAttributes::Tempo()
 
 	return m_tempo->Value();
 }
-	
+
 const char*
 AudioAttributes::Composer()
 {
@@ -353,13 +355,13 @@ AudioAttributes::Read()
 	{
 		result = status;
 	}
-	
+
 	status = ReadTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
 	}
-	
+
 	status = ReadGender();
 	if(status != B_OK)
 	{
@@ -501,13 +503,13 @@ AudioAttributes::Write()
 	{
 		result = status;
 	}
-	
+
 	status = WriteTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
 	}
-	
+
 	status = WriteGender();
 	if(status != B_OK)
 	{

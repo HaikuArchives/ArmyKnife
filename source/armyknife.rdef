@@ -1,10 +1,10 @@
 /*	$Id: ArmyKnife.rdef $
-	Copyright 2009 
+	Copyright 2009
 	Distributed under the MIT License
 	Created: 2009-06-17
 
-	Haiku vector icon created by Michele Frau (zuMi), 
-	with some enhancements by Stephan Assmus (stippi). 
+	Haiku vector icon created by Michele Frau (zuMi),
+	with some enhancements by Stephan Assmus (stippi).
  */
 
 
@@ -76,8 +76,8 @@ resource file_types message {
 };
 
 resource app_version {
-	major  = 4,
-	middle = 3,
+	major  = 5,
+	middle = 0,
 	minor  = 0,
 
 	variety = B_APPV_FINAL,

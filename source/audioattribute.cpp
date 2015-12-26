@@ -1,15 +1,16 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
-#include <be/interface/InterfaceDefs.h>
-#include <be/kernel/fs_attr.h>
-#include <be/kernel/fs_index.h>
-#include <be/storage/File.h>
-#include <be/storage/Mime.h>
-#include <be/storage/NodeInfo.h>
-#include <be/support/Debug.h>
-#include <be/support/TypeConstants.h>
-#include <be/support/String.h>
+#include <fs_attr.h>
+#include <fs_index.h>
+
+#include <Debug.h>
+#include <File.h>
+#include <InterfaceDefs.h>
+#include <Mime.h>
+#include <NodeInfo.h>
+#include <TypeConstants.h>
+#include <String.h>
 
 #include "audioattribute.h"
 
@@ -329,7 +330,7 @@ void AudioAttribute::Trim(BString * string)
 			string->Remove(0,1);
 		else
 			break;
-		
+
 	while(string->FindLast(' ') == (string->Length()-1))
 		if (string->Length() > 0)
 			string->RemoveLast(" ");

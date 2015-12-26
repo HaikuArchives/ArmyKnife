@@ -1,7 +1,7 @@
 #ifndef __PICK_LIST_VIEW_H__
 #define __PICK_LIST_VIEW_H__
 
-#include <be/interface/View.h>
+#include <Box.h>
 
 #define MENU_ITEM 'item'
 #define VIEW_NOT_FOUND -888
@@ -12,13 +12,13 @@ class BBox;
 class BMessage;
 class BMenu;
 class BRect;
+class BCardLayout;
 
-class PickListView : public BView
+class PickListView : public BBox
 {
 	public:
-		PickListView(BRect frame, const char* name = NULL,
-				uint32 resizingMode = B_FOLLOW_ALL,
-				uint32 flags = B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE_JUMP,
+		PickListView(const char* name = NULL,
+				uint32 flags = B_WILL_DRAW | B_NAVIGABLE_JUMP,
 				border_style border = B_FANCY_BORDER);
 		PickListView(BMessage* archive);
 		~PickListView();
@@ -28,8 +28,6 @@ class PickListView : public BView
 		virtual status_t Archive(BMessage* archive, bool deep=true)const;
 		virtual void AttachedToWindow();
 		virtual void MessageReceived(BMessage* message);
-
-		BRect BoxBounds();
 
 		virtual void AddView(BView* view);
 
@@ -44,16 +42,18 @@ class PickListView : public BView
 
 		bool IsSelected(BView* view);
 		bool IsSelected(int32 index);
-		
+
 		int32 CountViews();
 		BView* ViewAt(int32 index);
 		int32 IndexOf(BView* view);
 	private:
 		void MenuSelectionChanged(BMessage* message);
 
-		BBox*	m_view_box;
-		BMenu*	m_view_menu;
-		int32	m_selected_index;
+		BCardLayout*		m_view_layout;
+		BView*				m_card_view;
+		BBox*				m_view_box;
+		BMenu*				m_view_menu;
+		int32				m_selected_index;
 };
 
 #endif
