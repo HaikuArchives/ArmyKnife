@@ -34,7 +34,7 @@
 # the executable
 BINARY := ArmyKnifeTTE
 SHORTNAME := ArmyKnifeTTE
-VERSION := 4.1
+VERSION := 5.0
 BUILDDATE := $(shell date +%Y-%m-%d)
 GCCMAJVERSION := $(shell gcc --version | head -c 1)
 OSVERSION := $(shell uname -o)
