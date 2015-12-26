@@ -34,22 +34,22 @@ class MPEGView : public AddOnView
 		void WidgetsSetValues();
 		void WidgetsSetEnabled();
 		void WidgetsRBValues();
-		
+
 		Preferences*	m_preferences;
-		
+
 		BBox*			m_info_box;
 		BStringView*	m_files_string;
 		BStringView*	m_id3v1_string;
 		BStringView*	m_id3v2_string;
 		BStringView*	m_ape_string;
-		
+
 		BBox*			m_add_remove_box;
 		BRadioButton*	m_add_radiobutton;
 		BRadioButton*	m_remove_radiobutton;
 		BCheckBox*		m_id3v1_checkbox;
 		BCheckBox*		m_id3v2_checkbox;
 		BCheckBox*		m_ape_checkbox;
-		
+
 		int32	m_files_count;
 		int32	m_id3v1_count;
 		int32	m_id3v2_count;

@@ -32,7 +32,7 @@ class AudioAttribute
 		char		m_attribute[B_ATTR_NAME_LENGTH];
 		type_code	m_type;
 		char*		m_value;
-	
+
 	private:
 		void Trim(BString * string);
 };

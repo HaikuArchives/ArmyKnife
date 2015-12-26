@@ -19,9 +19,9 @@ Barberpole::Barberpole(const char* name, uint32 flags)
 	fPattern.data[5] = 0xe1;
 	fPattern.data[6] = 0xc3;
 	fPattern.data[7] = 0x87;
-	
+
 	_CreateBitmap();
-	
+
 	SetFont(be_plain_font);
 };
 
@@ -52,7 +52,7 @@ Barberpole::Pause()
 }
 
 
-void 
+void
 Barberpole::Stop()
 {
 	fIsRunning = false;
@@ -63,8 +63,8 @@ Barberpole::Stop()
 }
 
 
-bool 
-Barberpole::IsRunning()	
+bool
+Barberpole::IsRunning()
 {
 	return fIsRunning;
 }
@@ -74,12 +74,12 @@ void
 Barberpole::Pulse()
 {
 	uchar tmp = fPattern.data[7];
-	
+
 	for (int j = 7;  j > 0;  --j)
 		fPattern.data[j] = fPattern.data[j-1];
-	
+
 	fPattern.data[0] = tmp;
-	
+
 	Invalidate();
 }
 
@@ -124,7 +124,7 @@ Barberpole::_DrawOnBitmap()
 		BRect rect = fBitmap->Bounds();
 
 		fBitmapView->SetDrawingMode(B_OP_COPY);
-	
+
 		rgb_color  color;
 		color.red = 0;
 		color.green = 0;
@@ -134,8 +134,8 @@ Barberpole::_DrawOnBitmap()
 
 		// draw the pole
 		rect.InsetBy(2,2);
-		fBitmapView->FillRect(rect, fPattern);	
-		
+		fBitmapView->FillRect(rect, fPattern);
+
 		// draw frame
 
 		// left
@@ -183,8 +183,8 @@ Barberpole::_DrawOnBitmap()
 		point_a.x += 1;
 		point_a.y -= 1;
 		point_b.y -= 1;
-		fBitmapView->StrokeLine(point_a, point_b);		
-		
+		fBitmapView->StrokeLine(point_a, point_b);
+
 		// some blending
 		color.red = 150;
 		color.green = 150;
@@ -192,23 +192,23 @@ Barberpole::_DrawOnBitmap()
 		fBitmapView->SetHighColor(color);
 		fBitmapView->SetDrawingMode(B_OP_SUBTRACT);
 		fBitmapView->StrokeRect(rect);
-	
+
 		rect.InsetBy(1,1);
 		_LightenBitmapHighColor(&color);
 		fBitmapView->StrokeRect(rect);
-		
+
 		rect.InsetBy(1,1);
 		_LightenBitmapHighColor(&color);
 		fBitmapView->StrokeRect(rect);
-		
+
 		rect.InsetBy(1,1);
 		_LightenBitmapHighColor(&color);
 		fBitmapView->StrokeRect(rect);
-		
+
 		rect.InsetBy(1,1);
 		_LightenBitmapHighColor(&color);
 		fBitmapView->StrokeRect(rect);
-		
+
 		fBitmapView->Sync();
 		fBitmap->Unlock();
 	}
@@ -221,7 +221,7 @@ Barberpole::_LightenBitmapHighColor(rgb_color* color)
 	color->red -= 30;
 	color->green -= 30;
 	color->blue -= 30;
-	
+
 	fBitmapView->SetHighColor(*color);
 }
 

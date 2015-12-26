@@ -54,9 +54,9 @@ AddOnView::Show()
 	PRINT(("AddOnView::Show()\n"));
 
 	BView::Show();
-	
+
 	FlagUnacceptedListItems();
-	
+
 	if (Window())
 		Window()->PostMessage(MSG_MAKE_APPLY_BUTTON_DEFAULT);
 }
@@ -65,7 +65,7 @@ void
 AddOnView::SelectionChanged(BList* list)
 {
 	PRINT(("AddOnView::SelectionChanged(BList* list)\n"));
-	
+
 	m_selected_items->MakeEmpty();
 	m_selected_items->AddList(list);
 }
@@ -100,9 +100,9 @@ void
 AddOnView::FlagUnacceptedListItems()
 {
 	PRINT(("AddOnView::FlagUnacceptedListItems()\n"));
-	
+
 	bool foundUnaccepted = false;
-	
+
 	EntryRefItem* listItem;
 	int numItems = m_list_view->CountItems();
 	for (int i = 0; i < numItems; i++) {
@@ -118,7 +118,7 @@ AddOnView::FlagUnacceptedListItems()
 			}
 		}
 	}
-	
+
 	if (foundUnaccepted) {
 		m_list_view->DeselectAll();
 		m_list_view->ScrollToFirstUnaccepted();
@@ -131,7 +131,7 @@ void
 AddOnView::ListContentAdded()
 {
 	PRINT(("AddOnView::ListContentAdded()\n"));
-	
+
 	FlagUnacceptedListItems();
 }
 
@@ -139,7 +139,7 @@ bool
 AddOnView::AcceptListItem(EntryRefItem* listItem)
 {
 	PRINT(("AddOnView::AcceptListItem()\n"));
-	
+
 	if (listItem->IsSupportedByTaglib())
 		return true;
 	else

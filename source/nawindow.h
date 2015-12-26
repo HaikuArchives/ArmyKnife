@@ -15,13 +15,13 @@ class PatternWindow : public BWindow
 		virtual void MessageReceived(BMessage* message);
 
 	private:
-		
+
 		BTextControl *	m_text_control;
 		BButton *		m_add_button;
 		BButton *		m_cancel_button;
-		
+
 		BMessenger *	m_parent_messenger;
-	
+
 };
 
 #endif

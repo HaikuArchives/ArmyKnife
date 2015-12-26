@@ -84,15 +84,15 @@ status_t
 ID3Tag::Write()
 {
 	PRINT(("ID3Tag::Write()\n"));
-	
-    enum 
+
+    enum
     {
       Latin1 = 0,
       UTF16 = 1,
       UTF16BE = 2,
       UTF8 = 3
     };
-	
+
 	TagLib::String string (m_value.String(), (TagLib::String::Type) 3);  // 3 = UTF8
 
 	switch (m_tag_item)

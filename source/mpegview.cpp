@@ -134,7 +134,7 @@ void
 MPEGView::Hide()
 {
 	PRINT(("MPEGView::Hide()\n"));
-	
+
 	AddOnView::Hide();
 }
 
@@ -142,7 +142,7 @@ void
 MPEGView::Show()
 {
 	PRINT(("MPEGView::Show()\n"));
-	
+
 	AddOnView::Show();
 }
 
@@ -152,32 +152,32 @@ MPEGView::SelectionChanged(BList* list)
 	AddOnView::SelectionChanged(list);
 
 	PRINT(("MPEGView::SelectionChanged()\n"));
-	
+
 	EntryRefItem * ref_item = (NULL);
 	int32 index = 0;
 	int32 id3v1_tags = 0;
 	int32 id3v2_tags = 0;
 	int32 ape_tags = 0;
-		
+
 	while (ref_item = (EntryRefItem*) m_selected_items->ItemAt(index++))
 	{
 		if (ref_item->HasID3V1Tag())
 			id3v1_tags++;
-		
+
 		if (ref_item->HasID3V2Tag())
 			id3v2_tags++;
-			
+
 		if (ref_item->HasAPETag())
 			ape_tags++;
 	}
 
 	index--;
-	
+
 	m_files_count = index;
 	m_id3v1_count = id3v1_tags;
 	m_id3v2_count = id3v2_tags;
 	m_ape_count = ape_tags;
-	
+
 	WidgetsSetValues();
 	WidgetsSetEnabled();
 	WidgetsRBValues();
@@ -209,7 +209,7 @@ void
 MPEGView::WidgetsSetValues()
 {
 	PRINT(("MPEGView::WidgetsSetValues()\n"));
-	
+
 	BString files_string;
 	BString id3v1_string;
 	BString id3v2_string;
@@ -217,26 +217,26 @@ MPEGView::WidgetsSetValues()
 
 	if (m_files_count == 1)	files_string << m_files_count << " file in selection.";
 	else					files_string << m_files_count << " files in selection.";
-	
+
 	if (m_id3v1_count == 1)	id3v1_string << m_id3v1_count << " has ID3v1 tags.";
 	else					id3v1_string << m_id3v1_count << " have ID3v1 tags.";
-	
+
 	if (m_id3v2_count == 1)	id3v2_string << m_id3v2_count << " has ID3v2 tags.";
 	else					id3v2_string << m_id3v2_count << " have ID3v2 tags.";
-	
+
 	if (m_ape_count == 1)	ape_string << m_ape_count << " has APE tags.";
 	else					ape_string << m_ape_count << " have APE tags.";
-		
+
 	m_files_string->SetText(files_string.String());
 	m_id3v1_string->SetText(id3v1_string.String());
 	m_id3v2_string->SetText(id3v2_string.String());
 	m_ape_string->SetText(ape_string.String());
-	
+
 	m_files_string->ResizeToPreferred();
 	m_id3v1_string->ResizeToPreferred();
 	m_id3v2_string->ResizeToPreferred();
 	m_ape_string->ResizeToPreferred();
-	
+
 	m_id3v1_checkbox->SetValue(B_CONTROL_OFF);
 	m_id3v2_checkbox->SetValue(B_CONTROL_OFF);
 	m_ape_checkbox->SetValue(B_CONTROL_OFF);
@@ -278,10 +278,10 @@ MPEGView::WidgetsRBValues()
 	{
 		if (m_id3v1_count < m_files_count)
 			m_id3v1_checkbox->SetEnabled(true);
-		
+
 		if (m_id3v2_count < m_files_count)
 			m_id3v2_checkbox->SetEnabled(true);
-			
+
 		//if (m_ape_count < m_files_count)
 		//	m_ape_checkbox->SetEnabled(true);
 		m_ape_checkbox->SetEnabled(false);
@@ -290,10 +290,10 @@ MPEGView::WidgetsRBValues()
 	{
 		if (m_id3v1_count > 0)
 			m_id3v1_checkbox->SetEnabled(true);
-			
+
 		if (m_id3v2_count > 0)
 			m_id3v2_checkbox->SetEnabled(true);
-			
+
 		if (m_ape_count > 0)
 			m_ape_checkbox->SetEnabled(true);
 	}
@@ -319,43 +319,43 @@ MPEGView::ApplyFunction(void* args)
 	int numSelected = view->m_selected_items->CountItems();
 	maxMsg.AddInt32("maxValue",numSelected);
 	messenger.SendMessage(&maxMsg);
-	
+
 	for(int i=0; i<numSelected; i++)
 	{
 		EntryRefItem* refItem = (EntryRefItem*)view->m_selected_items->ItemAt(i);
 
 		BPath  filename(refItem->EntryRef());
 		TagLib::MPEG::File * file;
-		
+
 		if (! refItem->IsMP3())
 			continue;
-		
+
 		if (! refItem->IsSupportedByTaglib())
 			continue;
 
 		file = new TagLib::MPEG::File(filename.Path());
-		
+
 		if (! file->isValid())
 		{
 			delete file;
 			continue;
 		}
-		
+
 		bool add_id3v1 = false;
 		bool add_id3v2 = false;
 		bool add_ape = false;
 		bool remove_id3v1 = false;
 		bool remove_id3v2 = false;
 		bool remove_ape = false;
-		
+
 		if(view->m_add_radiobutton->Value() == B_CONTROL_ON)
 		{
 			if (view->m_id3v1_checkbox->Value() == B_CONTROL_ON)
 				add_id3v1 = true;
-				
+
 			if (view->m_id3v2_checkbox->Value() == B_CONTROL_ON)
 				add_id3v2 = true;
-			
+
 			if (view->m_ape_checkbox->Value() == B_CONTROL_ON)
 				add_ape = true;
 		}
@@ -363,15 +363,15 @@ MPEGView::ApplyFunction(void* args)
 		{
 			if (view->m_id3v1_checkbox->Value() == B_CONTROL_ON)
 				remove_id3v1 = true;
-				
+
 			if (view->m_id3v2_checkbox->Value() == B_CONTROL_ON)
 				remove_id3v2 = true;
-			
+
 			if (view->m_ape_checkbox->Value() == B_CONTROL_ON)
 				remove_ape = true;
 		}
-		
-		TagLib::ID3v1::Tag * id3v1_tag;		
+
+		TagLib::ID3v1::Tag * id3v1_tag;
 		TagLib::ID3v2::Tag * id3v2_tag;
 		TagLib::APE::Tag * ape_tag;
 
@@ -384,7 +384,7 @@ MPEGView::ApplyFunction(void* args)
 				file->save();
 			}
 		}
-			
+
 		if (add_id3v2 && ! refItem->HasID3V2Tag())
 		{
 			id3v2_tag = file->ID3v2Tag(true);
@@ -394,32 +394,32 @@ MPEGView::ApplyFunction(void* args)
 				file->save();
 			}
 		}
-		
+
 		if (add_ape && ! refItem->HasAPETag())
 		{
 			ape_tag = file->APETag(true);
 			file->save();
 		}
-		
+
 		if (remove_id3v1 && refItem->HasID3V1Tag())
 			file->strip(TagLib::MPEG::File::ID3v1);
-			
+
 		if (remove_id3v2 && refItem->HasID3V2Tag())
 			file->strip(TagLib::MPEG::File::ID3v2);
-		
+
 		if (remove_ape && refItem->HasAPETag())
 			file->strip(TagLib::MPEG::File::APE);
-			
+
 		delete file;
 		refItem->UpdateTaglibMetadata();
-		
+
 		messenger.SendMessage(&updateMsg);
 	}
-	
+
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
-	
-	
+
+
 }
 
 void
@@ -433,7 +433,7 @@ MPEGView::MessageReceived(BMessage* message)
 		case RADIO_BUTTON_EVENT:
 			WidgetsRBValues();
 			break;
-	
+
 		default:
 			AddOnView::MessageReceived(message);
 	}

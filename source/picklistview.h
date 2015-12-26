@@ -43,7 +43,7 @@ class PickListView : public BBox
 
 		bool IsSelected(BView* view);
 		bool IsSelected(int32 index);
-		
+
 		int32 CountViews();
 		BView* ViewAt(int32 index);
 		int32 IndexOf(BView* view);

@@ -111,15 +111,15 @@ PickListView::MessageReceived(BMessage* message)
 		case MENU_ITEM:
 			MenuSelectionChanged(message);
 			break;
-			
+
 		case START_APPLY:
 			m_view_menu->Supermenu()->SetEnabled(false);
 			break;
-			
+
 		case END_APPLY:
 			m_view_menu->Supermenu()->SetEnabled(true);
-			break;			
-			
+			break;
+
 		default:
 			BView::MessageReceived(message);
 	}

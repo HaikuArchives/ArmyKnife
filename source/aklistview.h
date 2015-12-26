@@ -3,7 +3,7 @@
 
 #include <ListView.h>
 
-class AKListView : public BListView 
+class AKListView : public BListView
 {
 	public:
 		AKListView  (const char* name,
@@ -11,11 +11,11 @@ class AKListView : public BListView
 			uint32 flags = B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS);
 		~AKListView	();
 
-			virtual void 	KeyDown(const char* bytes, int32 numBytes);
-			
-			virtual void 	SelectAll();
-			virtual void 	DeselectAll();
-			virtual void 	SelectAllUnsupported();
+			virtual void	KeyDown(const char* bytes, int32 numBytes);
+
+			virtual void	SelectAll();
+			virtual void	DeselectAll();
+			virtual void	SelectAllUnsupported();
 			virtual void	ScrollToFirstUnaccepted();
 					bool	HasSelectionOfOnlyAcceptedItems();
 };

@@ -24,25 +24,25 @@ class Preferences
 		void	GetPattern(BString * string);
 
 		void	AddPattern(BString * string);
-		
+
 		status_t	GetPatternAt(int32 index, BString * string);
 
 		void	DeletePattern(int32 index);
 		void	NewPattern(BString * string);
-		
+
 		void	GetWindowFrame(BRect * rect);
 		void	SetWindowFrame(BRect rect);
 
 	private:
-	
+
 		void		MakeDefaults();
-				
+
 		int32		m_mode;
 		int32		m_pattern;
 		BMessage	m_filename_patterns;
 		BRect		m_window_frame;
-		
-		
+
+
 };
 
 #endif

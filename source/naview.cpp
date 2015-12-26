@@ -163,7 +163,7 @@ NAView::WidgetsSetValues()
 	m_a2n_radiobutton->SetValue(B_CONTROL_ON);
 
 	MakePatternMenu();
-		
+
 	WidgetsRBValues();
 }
 
@@ -218,25 +218,25 @@ NAView::MakePatternMenu()
 	{
 		// loop
 	}
-	
-	
+
+
 	while(m_preferences->GetPatternAt(count++, & pattern) == B_OK)
 	{
 		m_pattern_menu->AddItem(new BMenuItem(pattern.String(), new BMessage(MSG_PATTERN_CHANGED)));
 	}
-	
+
 	m_pattern_menu->AddSeparatorItem();
 	m_pattern_menu->AddItem(new BMenuItem("New" B_UTF8_ELLIPSIS, new BMessage(MSG_NEW_PATTERN)));
 	m_pattern_menu->AddItem(new BMenuItem("Delete Current", new BMessage(MSG_DELETE_PATTERN)));
-	
+
 	int32 index = m_preferences->GetPattern();
-	
+
 	m_pattern_menu->SetRadioMode(true);
 	m_pattern_menu->SetLabelFromMarked(true);
 	m_pattern_menu->ItemAt(index)->SetMarked(true);
 	m_pattern_menu->SetLabelFromMarked(false);
 	m_pattern_menu->SetRadioMode(false);
-	
+
 	m_pattern_menu->SetTargetForItems(this);
 }
 
@@ -276,7 +276,7 @@ NAView::ApplyFunction(void* args)
 		entry_ref* ref = refItem->EntryRef();
 		BFile id3File(ref,B_READ_WRITE);
 		AudioAttributes attributes(&id3File);
-		
+
 		fileMsg.MakeEmpty();
 		fileMsg.AddString("file", refItem->EntryRef()->name);
 		messenger.SendMessage(&fileMsg);
@@ -397,7 +397,7 @@ NAView::MessageReceived(BMessage* message)
 		case RADIO_BUTTON_EVENT:
 			WidgetsRBValues();
 			break;
-			
+
 		case MSG_PATTERN_CHANGED:
 			{
 				int32 index;
@@ -407,42 +407,42 @@ NAView::MessageReceived(BMessage* message)
 				m_pattern_menu->ItemAt(index)->SetMarked(true);
 				m_pattern_menu->SetLabelFromMarked(false);
 				m_pattern_menu->SetRadioMode(false);
-				
+
 				m_preferences->SetPattern(index);
 			}
 			break;
-			
+
 		case MSG_NEW_PATTERN:
 			{
 				m_pattern_window = new PatternWindow(new BMessenger(this));
 				m_pattern_window->Show();
 			}
 			break;
-			
+
 		case MSG_PATTERN_CREATED:
 			{
 				BString pattern;
-				
+
 				if (message->FindString("pattern", & pattern) == B_OK)
 					m_preferences->AddPattern(& pattern);
-					
+
 				MakePatternMenu();
 			}
 			break;
-			
+
 		case MSG_DELETE_PATTERN:
 			{
 				if (m_pattern_menu->CountItems() > 4)
 				{
 					BMenuItem * item =	m_pattern_menu->FindMarked();
 					int32 index	=		m_pattern_menu->IndexOf(item);
-					
+
 					m_preferences->DeletePattern(index);
 					m_preferences->SetPattern((int32) 0);
-					
+
 					item = m_pattern_menu->RemoveItem(index);
 					delete item;
-					
+
 					m_pattern_menu->SetRadioMode(true);
 					m_pattern_menu->SetLabelFromMarked(true);
 					m_pattern_menu->ItemAt(0)->SetMarked(true);
@@ -451,7 +451,7 @@ NAView::MessageReceived(BMessage* message)
 				}
 			}
 			break;
-			
+
 		default:
 			AddOnView::MessageReceived(message);
 	}
@@ -461,10 +461,10 @@ bool
 NAView::AcceptListItem(EntryRefItem* listItem)
 {
 	PRINT(("NAView::AcceptListItem()\n"));
-	
+
 	if (!listItem->IsFSWritable())
 		return false;
-		
+
 	if (!listItem->IsFSAttributable())
 		return false;
 

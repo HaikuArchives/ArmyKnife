@@ -24,7 +24,7 @@
 
 TAView::TAView(Preferences * preferences)
  :	AddOnView		(TA_MODE_NAME),
- 	m_preferences	(preferences)
+	m_preferences	(preferences)
 {
 	PRINT(("TAView::TAView(BRect)\n"));
 
@@ -265,15 +265,15 @@ TAView::ApplyFunction(void* args)
 		if(refItem->IsSupportedByTaglib() == false)
 		{
 			PRINT(("TAView::ApplyFunction():: FILE NOT SUPPORTED :: %s\n", refItem->EntryRef()->name));
-		
+
 			continue;
 		}
-		
+
 		BFile audioFile(refItem->EntryRef(), B_READ_WRITE);
 
 		AudioAttributes attributes(& audioFile);
 		ID3Tags * tags = new ID3Tags (refItem); // XXX
-		
+
 		fileMsg.MakeEmpty();
 		fileMsg.AddString("file", refItem->EntryRef()->name);
 		messenger.SendMessage(&fileMsg);
@@ -354,10 +354,10 @@ TAView::ApplyFunction(void* args)
 				attributes.WriteGenre();
 			}
 		}
-		
+
 		delete tags;
 		refItem->UpdateTaglibMetadata();
-		
+
 		messenger.SendMessage(&updateMsg);
 	}
 	messenger.SendMessage(&resetMsg);
@@ -368,13 +368,13 @@ bool
 TAView::AcceptListItem(EntryRefItem* listItem)
 {
 	PRINT(("TAView::AcceptListItem()\n"));
-	
+
 	if (!listItem->IsFSWritable())
 		return false;
-		
+
 	if (!listItem->IsFSAttributable())
 		return false;
-	
+
 	if(!listItem->IsSupportedByTaglib())
 		return false;
 

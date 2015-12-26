@@ -47,20 +47,20 @@ PatternWindow::MessageReceived(BMessage* message)
 		case MSG_PATTERN_CREATED:
 		{
 			BString string = m_text_control->Text();
-			
+
 			if (string.FindFirst("/") < 0)
 			{
 				// XXX -- show BAlert and explain some
 				beep();
 				break;
 			}
-			
+
 			message->AddString("pattern", m_text_control->Text());
 			m_parent_messenger->SendMessage(message);
 			PostMessage(B_QUIT_REQUESTED);
 		}
 			break;
-		
+
 		default:
 			BWindow::MessageReceived(message);
 	}

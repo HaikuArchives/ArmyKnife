@@ -329,7 +329,7 @@ void AudioAttribute::Trim(BString * string)
 			string->Remove(0,1);
 		else
 			break;
-		
+
 	while(string->FindLast(' ') == (string->Length()-1))
 		if (string->Length() > 0)
 			string->RemoveLast(" ");

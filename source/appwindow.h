@@ -19,14 +19,14 @@ class AppWindow : public BWindow
 		virtual bool QuitRequested();
 		virtual void FrameMoved(BPoint point);
 		virtual void FrameResized(float width, float height);
-		
+
 		void DisableInterface();
 		void EnableInterface();
-		
+
 	private:
 		void InitWindow();
 		void AboutRequested();
-		
+
 		AppView*	m_app_view;
 		BMenuBar*	m_menu_bar;
 		BMenu*		m_file_menu;

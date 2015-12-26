@@ -195,7 +195,7 @@ AudioAttributes::Tempo()
 
 	return m_tempo->Value();
 }
-	
+
 const char*
 AudioAttributes::Composer()
 {
@@ -353,13 +353,13 @@ AudioAttributes::Read()
 	{
 		result = status;
 	}
-	
+
 	status = ReadTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
 	}
-	
+
 	status = ReadGender();
 	if(status != B_OK)
 	{
@@ -501,13 +501,13 @@ AudioAttributes::Write()
 	{
 		result = status;
 	}
-	
+
 	status = WriteTTInfo();
 	if(status != B_OK)
 	{
 		result = status;
 	}
-	
+
 	status = WriteGender();
 	if(status != B_OK)
 	{

@@ -54,9 +54,9 @@ AppView::AppView(BMessage *data) : BView(data)
 AppView::~AppView()
 {
 	PRINT(("AppView::~AppView()\n"));
-	
+
 	m_preferences->SetMode(m_pick_list_view->SelectedIndex());
-	
+
 	delete m_preferences;
 }
 
@@ -164,7 +164,7 @@ AppView::InitView()
 
 	m_status_card->SetVisibleItem((long int)0);
 
-/*	
+/*
 	BView *dragger = FindView("_dragger_");
 	if (dragger) {
 		RemoveChild(dragger); // tricky: avoid redraw bugs
@@ -173,11 +173,11 @@ AppView::InitView()
 		dragger->SetLowColor(LowColor());
 	}
 */
-	// The following is a kludge to give each addon view a 
+	// The following is a kludge to give each addon view a
 	// pointer to the list view. It's done this way, for now,
 	// as the m_list_view is created after the add-ons
 	// due to how the layout is done.
-	
+
 	AddOnView* addOnView;
 	int numViews = m_pick_list_view->CountViews();
 	for (int i = 0; i < numViews; i++) {
@@ -292,11 +292,11 @@ void
 AppView::Apply()
 {
 	PRINT(("AppView::Apply()\n"));
-	
+
 	if (! Busy())
 	{
 		DisableInterface();
-	
+
 		AddOnView* view = (AddOnView*)m_pick_list_view->SelectedView();
 		if(view)
 		{
@@ -363,17 +363,17 @@ void
 AppView::SelectPreviousFile()
 {
 	PRINT(("AppView::SelectPreviousFile()\n"));
-	
+
 	if (! Busy())
 	{
 		int32 index = m_list_view->CurrentSelection(0);
-	
+
 		if (index < 0)
 			m_list_view->Select(m_list_view->CountItems()-1);
-	
+
 		if (index > 0)
 			m_list_view->Select(--index);
-			
+
 			m_list_view->ScrollToSelection();
 	}
 }
@@ -390,13 +390,13 @@ AppView::SelectNextFile()
 		else
 		{
 			int32 index = 0;
-					
+
 			while (m_list_view->CurrentSelection(index) >= 0)
 				index++;
-			
+
 			int32 last_selected = m_list_view->CurrentSelection(--index);
 			m_list_view->Select(++last_selected);
-			
+
 			m_list_view->ScrollToSelection();
 		}
 	}
@@ -449,18 +449,18 @@ void
 AppView::AddRefs(BMessage* refsMessage)
 {
 	PRINT(("AppView::AddRefs(BMessage*)\n"));
-	
+
 	if (! m_applying)
 	{
 		m_adding++;
 		m_barberpole->Start();
-		
-	
+
+
 		BList* args = new BList();
 		BMessage* msg = new BMessage(*refsMessage);
 		args->AddItem(this);
 		args->AddItem(msg);
-	
+
 		thread_id my_thread = spawn_thread(&AppView::AddRefsThreadFunc,"AddRefs",
 				B_NORMAL_PRIORITY,(void*)args);
 		resume_thread(my_thread);
@@ -488,7 +488,7 @@ AppView::AddRefsThreadFunc(void* data)
 	entry_ref tmp_ref;
 	int numRefs = 0;
 	EntryRefItem * ref_item = NULL;
-	
+
 	while(refsMessage->FindRef("refs", numRefs++, & tmp_ref) == B_NO_ERROR)
 	{
 		ref_item = new EntryRefItem (& tmp_ref);
@@ -513,7 +513,7 @@ AppView::AddRefsThreadFunc(void* data)
 			}
 		}
 		BRect dataRect(0,0,frameWidth,frameHeight);
-		
+
 		view->m_list_view->SortItems(&AppView::SortFunc);
 
 		view->m_list_view->SetSelectionMessage(NULL);
@@ -521,7 +521,7 @@ AppView::AddRefsThreadFunc(void* data)
 		addOnView->ListContentAdded();
 		view->m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 		view->SelectionChanged();
-		
+
 		view->m_barberpole->Stop();
 
 		view->m_adding--;
@@ -609,7 +609,7 @@ AppView::AttachedToWindow()
 	m_list_view->SetTarget(this);
 	m_apply_button->SetTarget(this);
 	m_reset_button->SetTarget(this);
-	
+
 	m_apply_button->MakeDefault(true);
 }
 
@@ -667,7 +667,7 @@ AppView::MessageReceived(BMessage* message)
 			{
 				file.Prepend("  ");
 				m_status_bar->SetText(file.String());
-			}	
+			}
 			break;
 		}
 		case STATUS_BAR_UPDATE:
@@ -686,7 +686,7 @@ AppView::MessageReceived(BMessage* message)
 		case B_SIMPLE_DATA:
 			AddRefs(message);
 			break;
-			
+
 		default:
 			BView::MessageReceived(message);
 	}
@@ -698,7 +698,7 @@ AppView::SetPreviousMode()
 	if (! Busy())
 	{
 		int32 mode = m_pick_list_view->SelectedIndex();
-	
+
 		if (mode > 0)
 		{
 			mode--;
@@ -713,7 +713,7 @@ AppView::SetNextMode()
 	if (! Busy())
 	{
 		int32 mode = m_pick_list_view->SelectedIndex();
-	
+
 		if ((mode+1) < m_pick_list_view->CountViews())
 		{
 			mode++;

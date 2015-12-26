@@ -25,7 +25,7 @@ class TTInfoView : public AddOnView
 		virtual void Reset();
 		virtual void MessageReceived(BMessage* message);
 		virtual bool AcceptListItem(EntryRefItem* listItem);
-		
+
 	private:
 		void InitView();
 		static int32 ApplyFunction(void* args);
@@ -33,7 +33,7 @@ class TTInfoView : public AddOnView
 		void WidgetsSetValues();
 		void WidgetsSetEnabled();
 		void WidgetsRBValues();
-		
+
 		void GetInfoFromSelection(int32 numberOfSelectedItems, BString *output, bool doListFiles = false);
 		bool IsNewInfoSane(const char * text);
 

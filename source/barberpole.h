@@ -9,7 +9,7 @@
 #include <Window.h>
 
 
-class Barberpole : public BBox 
+class Barberpole : public BBox
 {
 public:
 							Barberpole(const char* name,
@@ -24,7 +24,7 @@ public:
 	virtual	void			Draw(BRect draw);
 	virtual void			FrameMoved(BPoint point);
 	virtual	void			FrameResized(float width, float height);
-				
+
 private:
 			void			_CreateBitmap();
 			void			_LightenBitmapHighColor(rgb_color* color);

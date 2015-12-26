@@ -33,7 +33,7 @@ class AppView : public BView
 		virtual void AttachedToWindow();
 		virtual void GetPreferredSize(float* width, float* height);
 		virtual void MessageReceived(BMessage* message);
-		
+
 		void Apply();
 		void Reset();
 		void ClearList();
@@ -48,13 +48,13 @@ class AppView : public BView
 		bool HasAddonView(const char *name);
 		void SetPreviousMode();
 		void SetNextMode();
-		
+
 		void SaveWindowFrame();
-		
+
 		BButton*			m_apply_button;
-		
+
 	private:
-	
+
 		bool Busy();
 		void InitView();
 		void DisableInterface();
@@ -69,7 +69,7 @@ class AppView : public BView
 		AKListView*			m_list_view;
 		BScrollView*		m_scroll_view;
 		BStringView*		m_selected_string_view;
-		
+
 		BButton*			m_reset_button;
 		BStatusBar*			m_status_bar;
 

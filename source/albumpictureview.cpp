@@ -53,22 +53,22 @@ AlbumPictureView::ProcessRefs(BMessage *message)
 	message->GetInfo("refs", NULL, &refCount);
 	if (refCount != 1)
 		return false;
-	
+
 	// Find first item in the refs list and
-	// load it if it is a picture 
+	// load it if it is a picture
 	// or return false otherwise
 	entry_ref tempRef;
 	delete m_bitmap;
 	m_bitmap = NULL;
 	BPath filePath;
-	
-	if (message->FindRef("refs", &tempRef) == B_NO_ERROR && 
+
+	if (message->FindRef("refs", &tempRef) == B_NO_ERROR &&
 		BEntry(&tempRef).GetPath(&filePath) == B_OK &&
 		(m_bitmap = BTranslationUtils::GetBitmap(filePath.Path())) != NULL)
 	{
 		// Draw only if we a track is chosen in the list
 		if (m_attached_to_track)
-			DrawBitmap(m_bitmap, BRect(0, 0, 
+			DrawBitmap(m_bitmap, BRect(0, 0,
 				Bounds().Width(),
 				Bounds().Height()));
 		return true;
@@ -82,7 +82,7 @@ AlbumPictureView::Draw(BRect rect)
 {
 	Clear();
 	if (m_bitmap != NULL)
-		DrawBitmap(m_bitmap, BRect(0, 0, 
+		DrawBitmap(m_bitmap, BRect(0, 0,
 			Bounds().Width(),
 			Bounds().Height()));
 	else
@@ -91,7 +91,7 @@ AlbumPictureView::Draw(BRect rect)
 
 
 // Clears the image
-void 
+void
 AlbumPictureView::Clear()
 {
 	SetHighColor(255,255,255);
@@ -105,11 +105,11 @@ AlbumPictureView::SetPicture(const char *path)
 {
 	if (m_bitmap == NULL)
 		return;
-	
+
 	TagLib::MPEG::File file(path);
 	TagLib::ID3v2::Tag *fileTags = file.ID3v2Tag();
 	TagLib::ID3v2::FrameList foundFrames = fileTags->frameList("APIC");
-	
+
 	// Delete all the covers in this file
 	if (!foundFrames.isEmpty())
 	{
@@ -118,43 +118,43 @@ AlbumPictureView::SetPicture(const char *path)
 		{
 			TagLib::ID3v2::AttachedPictureFrame *currentFrame =
 				static_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
-			
+
 			if (currentFrame->type() ==
 				TagLib::ID3v2::AttachedPictureFrame::FrontCover)
 				fileTags->removeFrame(currentFrame, true);
 		}
 	}
-	
+
 	// Find the translator type that suits us
 	BTranslatorRoster *roster = BTranslatorRoster::Default();
 	translator_id *translators;
 	int32 numTranslators;
 	uint32 foundType = 0;
 	const char *mimeName = "image/jpeg";
-	
+
 	roster->GetAllTranslators(&translators, &numTranslators);
-	
+
 	for (int32 i = 0; i < numTranslators && foundType == 0; ++i)
 	{
 		const translation_format *formats;
 		int32 numFormats;
-		
+
 		roster->GetOutputFormats(translators[i], &formats, &numFormats);
-		
+
 		for (int32 j = 0; j < numFormats && foundType == 0; ++j)
 		{
 			if (!strcasecmp(formats[j].MIME, mimeName))
 				foundType = formats[j].type;
 		}
 	}
-	
+
 	// Convert bitmap to jpeg
 	BMallocIO *buffer = new BMallocIO();
 	BBitmapStream *stream = new BBitmapStream(m_bitmap);
 	roster->Translate(stream, NULL, NULL, buffer, foundType);
-	
+
 	// Write jpeg to tags and save the file
-	TagLib::ID3v2::AttachedPictureFrame *pictureFrame = 
+	TagLib::ID3v2::AttachedPictureFrame *pictureFrame =
 		new TagLib::ID3v2::AttachedPictureFrame();
 	pictureFrame->setMimeType(mimeName);
 	pictureFrame->setType(TagLib::ID3v2::AttachedPictureFrame::FrontCover);
@@ -164,13 +164,13 @@ AlbumPictureView::SetPicture(const char *path)
 	fileTags->addFrame(pictureFrame);
 	printf("drag:%i\n", fileTags->frameList("APIC").size());
 	file.save();
-	
+
 	delete buffer;
 }
 
 
 // Loads album art for the song, path to which is specified
-void 
+void
 AlbumPictureView::UpdatePicture(const char *path)
 {
 	Clear();
@@ -185,7 +185,7 @@ AlbumPictureView::UpdatePicture(const char *path)
 	TagLib::ID3v2::Tag *fileTags = file.ID3v2Tag();
 	TagLib::ID3v2::FrameList frame;
 	TagLib::ID3v2::AttachedPictureFrame *pictureFrame = NULL;
-	
+
 	if (fileTags != NULL)
 	{
 		// Find frame containing pictures
@@ -217,20 +217,20 @@ AlbumPictureView::UpdatePicture(const char *path)
 					++counter)
 				{
 					delete m_bitmap;
-					
+
 					BMemoryIO *memStream = new BMemoryIO(
 						pictureFrame->picture().data(),
 						pictureFrame->picture().size());
-					
+
 					m_bitmap = BTranslationUtils::GetBitmap(memStream);
-					
+
 					delete memStream;
 				}
 				if (m_bitmap != NULL)
 				{
 					DrawBitmap(m_bitmap,
 						BRect(0,0,
-						Bounds().Width(), 
+						Bounds().Width(),
 						Bounds().Height()));
 				}
 				else
@@ -266,7 +266,7 @@ AlbumPictureView::NoImage()
 	BFont font;
 	font.SetSize(12.0);
 	SetFont(&font);
-	
+
 	const char* noImageText = "No image";
 	DrawString(noImageText, 
 		BPoint(Bounds().Width() / 2 - StringWidth(noImageText) / 2,

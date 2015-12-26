@@ -66,26 +66,26 @@ AppWindow::InitWindow()
 	m_file_menu->AddItem(m_about_menu_item);
 	m_file_menu->AddSeparatorItem();
 	m_file_menu->AddItem(m_quit_menu_item);
-	
+
 	m_menu_bar->AddItem(m_file_menu);
 
 	//create edit menu
 	m_edit_menu = new BMenu(EDIT_MENU);
-	
+
 	m_cut_menu_item = new BMenuItem(CUT_ITEM, new BMessage(MSG_EDIT_CUT), CUT_ITEM_SHORTCUT);
 	m_copy_menu_item = new BMenuItem(COPY_ITEM, new BMessage(MSG_EDIT_COPY), COPY_ITEM_SHORTCUT);
 	m_paste_menu_item = new BMenuItem(PASTE_ITEM, new BMessage(MSG_EDIT_PASTE), PASTE_ITEM_SHORTCUT);
 	m_select_all_menu_item = new BMenuItem(SELECT_ALL_ITEM, new BMessage(MSG_SELECT_ALL), SELECT_ALL_SHORTCUT);
 	m_select_all_unsupported_menu_item = new BMenuItem(SELECT_ALL_UNSUPPORTED_ITEM,
 		new BMessage(MSG_SELECT_ALL_UNSUPPORTED), SELECT_ALL_SHORTCUT, B_SHIFT_KEY);
-	
+
 	m_first_file_menu_item = new BMenuItem(FIRST_FILE_ITEM, new BMessage(MSG_FIRST_FILE), FIRST_FILE_SHORTCUT);
 	m_last_file_menu_item = new BMenuItem(LAST_FILE_ITEM, new BMessage(MSG_LAST_FILE), LAST_FILE_SHORTCUT);
 	m_previous_file_menu_item = new BMenuItem(PREVIOUS_FILE_ITEM, new BMessage(MSG_PREVIOUS_FILE), PREVIOUS_FILE_SHORTCUT);
 	m_next_file_menu_item = new BMenuItem(NEXT_FILE_ITEM, new BMessage(MSG_NEXT_FILE), NEXT_FILE_SHORTCUT);
 	m_reset_menu_item = new BMenuItem(RESET_ITEM, new BMessage(MSG_RESET), RESET_SHORTCUT);
 	m_clear_list_menu_item = new BMenuItem(CLEAR_LIST_ITEM, new BMessage(MSG_CLEAR_LIST), CLEAR_LIST_SHORTCUT);
-	
+
 	m_edit_menu->AddItem(m_cut_menu_item);
 	m_edit_menu->AddItem(m_copy_menu_item);
 	m_edit_menu->AddItem(m_paste_menu_item);
@@ -119,7 +119,7 @@ AppWindow::InitWindow()
 	m_mode_menu->AddItem(new BMenuItem(TT_INFO_MODE_NAME, new BMessage(MSG_TT_INFO_MODE), '5'));
 #endif
 	m_menu_bar->AddItem(m_mode_menu);
-		
+
 	// create options menu
 	/*
 	m_options_menu = new BMenu(OPTIONS_MENU);
@@ -128,12 +128,12 @@ AppWindow::InitWindow()
 	m_options_menu->AddItem(m_beep_menu_item);
 	m_menu_bar->AddItem(m_options_menu);
 	*/
-	
+
 	// add m_app_view below menu bar
 	SetKeyMenuBar(m_menu_bar);
 
 	m_app_view = new AppView();
-	
+
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.Add(m_menu_bar)
 		.Add(m_app_view);
@@ -168,72 +168,72 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_TT_INFO_MODE:
 			m_app_view->SelectView(4);
 			break;
-#endif			
+#endif
 		case MSG_PREVIOUS_MODE:
 			m_app_view->SetPreviousMode();
 			break;
 		case MSG_NEXT_MODE:
 			m_app_view->SetNextMode();
 			break;
-			
+
 		case MSG_RESET:
 			m_app_view->Reset();
 			break;
 		case MSG_CLEAR_LIST:
 			m_app_view->ClearList();
 			break;
-			
+
 		case MSG_PREVIOUS_FILE:
 			m_app_view->SelectPreviousFile();
 			break;
 		case MSG_NEXT_FILE:
 			m_app_view->SelectNextFile();
 			break;
-			
+
 		case MSG_FIRST_FILE:
 			m_app_view->SelectFirstFile();
 			break;
 		case MSG_LAST_FILE:
 			m_app_view->SelectLastFile();
 			break;
-	
+
 		case B_REFS_RECEIVED:
 			m_app_view->MessageReceived(message);
 			break;
-			
+
 		case MSG_MAKE_APPLY_BUTTON_DEFAULT:
 			m_app_view->m_apply_button->MakeDefault(true);
 			break;
-			
+
 		case MSG_MAKE_APPLY_BUTTON_NOT_DEFAULT:
 			m_app_view->m_apply_button->MakeDefault(false);
 			break;
-			
+
 		case MSG_EDIT_CUT:
 			{
 				message->what = B_CUT;
 				BView *view = CurrentFocus();
 				if (view)
 					view->MessageReceived(message);
-			}	
+			}
 			break;
-			
+
 		case MSG_EDIT_COPY:
 			{
 				message->what = B_COPY;
 				BView *view = CurrentFocus();
 				if (view)
 					view->MessageReceived(message);
-			}	
+			}
 			break;
-			
+
 		case MSG_EDIT_PASTE:
 			{
 				message->what = B_PASTE;
 				BView *view = CurrentFocus();
 				if (view)
 					view->MessageReceived(message);
-			}	
+			}
 			break;
 
 		case MSG_SELECT_ALL:
@@ -246,11 +246,11 @@ AppWindow::MessageReceived(BMessage* message)
 					m_app_view->SelectAll();
 			}
 			break;
-			
+
 		case MSG_SELECT_ALL_UNSUPPORTED:
 			m_app_view->SelectAllUnsupported();
 			break;
-		
+
 		default:
 			BWindow::MessageReceived(message);
 	}
@@ -272,7 +272,7 @@ bool
 AppWindow::QuitRequested()
 {
 	PRINT(("AppWindow::QuitRequested()\n"));
-	
+
 	thread_id addrefs = find_thread("AddRefs");
 	if(addrefs != B_NAME_NOT_FOUND)
 	{
@@ -302,15 +302,15 @@ AppWindow::AboutRequested()
 		"Created by Jason Burgess of now defunct FlipSide Software. "
 		"His former website has since been taken over by "
 		"another company by the same name.\n\n"
-		
+
 		"The FlipSide Software applications are hosted by OsDrawer at www.osdrawer.net.\n\n"
-		
+
 		MAINTAINER " is the current maintainer.\n"
 		"You can reach him at " MAINTAINER_EMAIL "\n\n"
 
 		"To request new features, or to report bugs, file a new issue at:\n"
 		"http://dev.osdrawer.net/projects/armyknife/issues/new";
-	
+
 	BAlert* alert = new BAlert("AboutBox", msg.String(), ABOUT_BTN);
 	alert->Go(NULL);
 }
