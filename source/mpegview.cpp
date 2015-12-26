@@ -30,9 +30,10 @@
 #include "guistrings.h"
 #include "mpegview.h"
 #include "preferences.h"
+#include <LayoutBuilder.h>
 
-MPEGView::MPEGView(BRect frame, Preferences * preferences)
- :	AddOnView			(frame, MPEG_MODE_NAME),
+MPEGView::MPEGView(Preferences * preferences)
+ :	AddOnView			(MPEG_MODE_NAME),
 	m_preferences		(preferences),
 	m_info_box			(NULL),
 	m_files_string		(NULL),
@@ -65,123 +66,55 @@ MPEGView::InitView()
 {
 	PRINT(("MPEGView::InitView()\n"));
 
-	int space = 6;
-	float bottom = 0;
-	BRect frame(0,0,0,0);
-	
-	m_info_box = new BBox(frame, "m_info_box");
+	m_files_string = new BStringView("m_files_string", MPEG_FILES_STRING_DEFAULT);
+	m_id3v1_string = new BStringView("m_id3v1_string", MPEG_ID3V1_STRING_DEFAULT);
+	m_id3v2_string = new BStringView("m_id3v2_string", MPEG_ID3V2_STRING_DEFAULT);
+	m_ape_string = new BStringView("m_ape_string", MPEG_APE_STRING_DEFAULT);
+
+	m_info_box = new BBox("m_info_box");
 	m_info_box->SetLabel(MPEG_INFO_BOX_LABEL);
-	m_info_box->MoveTo(space, space);
-	AddChild(m_info_box);
 
-	m_files_string = new BStringView(frame, "m_files_string", MPEG_FILES_STRING_DEFAULT);
-	m_files_string->ResizeToPreferred();
-	m_files_string->MoveTo(space, space + StringWidth("W"));
-		// "W" is roughly the height of the label
-		
-	bottom = m_files_string->Frame().bottom;
+	BGroupLayout *infoBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(m_files_string)
+		.Add(m_id3v1_string)
+		.Add(m_id3v2_string)
+		.Add(m_ape_string);
 
-	m_id3v1_string = new BStringView(frame, "m_id3v1_string", MPEG_ID3V1_STRING_DEFAULT);
-	m_id3v1_string->ResizeToPreferred();
-	m_id3v1_string->MoveTo(space, space + bottom);
-	bottom = m_id3v1_string->Frame().bottom;
+	m_info_box->AddChild(infoBoxLayout->View());
 
-	m_id3v2_string = new BStringView(frame, "m_id3v2_string", MPEG_ID3V2_STRING_DEFAULT);
-	m_id3v2_string->ResizeToPreferred();
-	m_id3v2_string->MoveTo(space, space + bottom);
-	bottom = m_id3v2_string->Frame().bottom;
-	
-	m_ape_string = new BStringView(frame, "m_ape_string", MPEG_APE_STRING_DEFAULT);
-	m_ape_string->ResizeToPreferred();
-	m_ape_string->MoveTo(space, space + bottom);
-	bottom = m_ape_string->Frame().bottom;
-
-	m_info_box->AddChild(m_files_string);
-	m_info_box->AddChild(m_id3v1_string);
-	m_info_box->AddChild(m_id3v2_string);
-	m_info_box->AddChild(m_ape_string);
-//	m_info_box->ResizeToPreferred();
-
-	float width = 0;
-	width = max_c(width, StringWidth(MPEG_INFO_BOX_LABEL) + 20);
-	width = max_c(width, m_files_string->Frame().Width());
-	width = max_c(width, m_id3v1_string->Frame().Width());
-	width = max_c(width, m_id3v2_string->Frame().Width());
-	width = max_c(width, m_ape_string->Frame().Width());
-	width += 2*space;
-	
-	float height = 5 * space
-		+ StringWidth("W")
-		+ m_files_string->Frame().Height()
-		+ m_id3v1_string->Frame().Height()
-		+ m_id3v2_string->Frame().Height()
-		+ m_ape_string->Frame().Height();
-		
-		
-	m_info_box->ResizeTo(width, height);
-	
-	bottom = m_info_box->Frame().bottom;
-	
-	m_add_remove_box = new BBox(frame, "m_add_remove_box");
-	m_add_remove_box->SetLabel(MPEG_ADD_REMOVE_BOX_LABEL);
-	m_add_remove_box->MoveTo(space, bottom+space*4);
-	AddChild(m_add_remove_box);
-
-	m_add_radiobutton = new BRadioButton(frame, 0, MPEG_ADD_RADIOBUTTON, new BMessage(RADIO_BUTTON_EVENT));
+	m_add_radiobutton = new BRadioButton("m_add_radiobutton",
+		MPEG_ADD_RADIOBUTTON, new BMessage(RADIO_BUTTON_EVENT));
 	m_add_radiobutton->SetValue(B_CONTROL_ON);
-	m_add_radiobutton->ResizeToPreferred();
-	m_add_radiobutton->MoveTo(space, space + StringWidth("W"));
-	bottom = m_add_radiobutton->Frame().bottom;
 
-	m_remove_radiobutton = new BRadioButton(frame, 0, MPEG_REMOVE_RADIOBUTTON, new BMessage(RADIO_BUTTON_EVENT));
-	m_remove_radiobutton->ResizeToPreferred();
-	m_remove_radiobutton->MoveTo(space, space + bottom);
-	bottom = m_remove_radiobutton->Frame().bottom;
-	
-	m_id3v1_checkbox = new BCheckBox(frame,"m_id3v1_checkbox", "ID3v1", NULL);
-	m_id3v1_checkbox->ResizeToPreferred();
-	m_id3v1_checkbox->MoveTo(space, space + bottom);
-	bottom = m_id3v1_checkbox->Frame().bottom;
-	
-	m_id3v2_checkbox = new BCheckBox(frame,"m_id3v2_checkbox", "ID3v2", NULL);
-	m_id3v2_checkbox->ResizeToPreferred();
-	m_id3v2_checkbox->MoveTo(space, space + bottom);
-	bottom = m_id3v2_checkbox->Frame().bottom;
-	
-	m_ape_checkbox = new BCheckBox(frame,"m_ape_checkbox", "APE", NULL);
-	m_ape_checkbox->ResizeToPreferred();
-	m_ape_checkbox->MoveTo(space, space + bottom);
-	bottom = m_ape_checkbox->Frame().bottom;
+	m_remove_radiobutton = new BRadioButton("m_remove_radiobutton",
+		MPEG_REMOVE_RADIOBUTTON, new BMessage(RADIO_BUTTON_EVENT));
 
-	m_add_remove_box->AddChild(m_add_radiobutton);
-	m_add_remove_box->AddChild(m_remove_radiobutton);
-	m_add_remove_box->AddChild(m_id3v1_checkbox);
-	m_add_remove_box->AddChild(m_id3v2_checkbox);
-	m_add_remove_box->AddChild(m_ape_checkbox);
-//	m_add_remove_box->ResizeToPreferred();
-	
-	width = 1;
-	width = max_c(width, StringWidth(MPEG_ADD_REMOVE_BOX_LABEL) + 20);
-	width = max_c(width, m_add_radiobutton->Frame().Width());
-	width = max_c(width, m_remove_radiobutton->Frame().Width());
-	width = max_c(width, m_id3v1_checkbox->Frame().Width());
-	width = max_c(width, m_id3v2_checkbox->Frame().Width());
-	width = max_c(width, m_ape_checkbox->Frame().Width());
-	
-	width += 2*space;
-	
-	height = 6 * space
-		+ StringWidth("W")
-		+ m_add_radiobutton->Frame().Height()
-		+ m_remove_radiobutton->Frame().Height()
-		+ m_id3v1_checkbox->Frame().Height()
-		+ m_id3v2_checkbox->Frame().Height()
-		+ m_ape_checkbox->Frame().Height();
-		
-	m_add_remove_box->ResizeTo(width, height);
-	
+	m_id3v1_checkbox = new BCheckBox("m_id3v1_checkbox", "ID3v1", NULL);
+	m_id3v2_checkbox = new BCheckBox("m_id3v2_checkbox", "ID3v2", NULL);
+	m_ape_checkbox = new BCheckBox("m_ape_checkbox", "APE", NULL);
+
+	m_add_remove_box = new BBox("m_add_remove_box");
+	m_add_remove_box->SetLabel(MPEG_ADD_REMOVE_BOX_LABEL);
+
+	BGroupLayout *addRemoveBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(m_add_radiobutton)
+		.Add(m_remove_radiobutton)
+		.Add(m_id3v1_checkbox)
+		.Add(m_id3v2_checkbox)
+		.Add(m_ape_checkbox);
+
+	m_add_remove_box->AddChild(addRemoveBoxLayout->View());
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(m_info_box)
+		.Add(m_add_remove_box)
+		.AddGlue();
+
 	ResizeToPreferred();
-	
+
 	WidgetsSetValues();
 	WidgetsSetEnabled();
 }
@@ -195,14 +128,6 @@ MPEGView::AttachedToWindow()
 
 	m_add_radiobutton->SetTarget(this);
 	m_remove_radiobutton->SetTarget(this);
-}
-
-void
-MPEGView::GetPreferredSize(float* width, float* height)
-{
-	PRINT(("MPEGView::GetPreferredSize()\n"));
-
-	// XXX
 }
 
 void

@@ -19,10 +19,9 @@ class BTextControl;
 class NAView : public AddOnView
 {
 	public:
-		NAView(BRect frame, Preferences * preferences);
+		NAView(Preferences * preferences);
 		~NAView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);

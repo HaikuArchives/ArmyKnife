@@ -16,10 +16,9 @@ class BTextControl;
 class EditorView : public AddOnView
 {
 	public:
-		EditorView(BRect frame, Preferences * preferences);
+		EditorView(Preferences * preferences);
 		~EditorView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);

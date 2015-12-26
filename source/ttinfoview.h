@@ -14,7 +14,7 @@ class BStringView;
 class TTInfoView : public AddOnView
 {
 	public:
-		TTInfoView(BRect frame, Preferences * preferences);
+		TTInfoView(Preferences * preferences);
 		~TTInfoView();
 		virtual void AttachedToWindow();
 		virtual void GetPreferredSize(float* width, float* height);

@@ -46,7 +46,7 @@ RESOURCESRDEF := armyknife.rdef
 
 # libraries
 SYS_LIBS := -lbe -lroot -ltranslation
-SRC_LIBS := -ltag -lsanta -ltracker
+SRC_LIBS := -ltag -ltracker
 
 # directories
 OBJDIR := objects/armyknife

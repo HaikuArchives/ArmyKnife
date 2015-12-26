@@ -8,9 +8,8 @@
 // BListView which allows deletion of list items by pressing
 // Delete or Backspace.
 
-AKListView::AKListView (BRect frame, const char* name, list_view_type type,
-	uint32 resizingMode, uint32 flags)
-:	BListView (frame, name, type, resizingMode, flags)
+AKListView::AKListView(const char* name, list_view_type type, uint32 flags)
+:	BListView (name, type, flags)
 {
 
 }

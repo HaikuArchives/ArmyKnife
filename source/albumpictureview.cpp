@@ -9,9 +9,12 @@
 
 #include "entryrefitem.h"
 
-AlbumPictureView::AlbumPictureView(BRect frame, const char *name)
-	: BView(frame, name, B_FOLLOW_H_CENTER, B_WILL_DRAW)
+AlbumPictureView::AlbumPictureView(const char *name)
+	: BView(name, B_WILL_DRAW)
 {
+	SetExplicitPreferredSize(BSize(160, 160));
+	SetExplicitMinSize(BSize(160, 160));
+	SetExplicitMaxSize(BSize(160, 160));
 	m_attached_to_track = false;
 	NoImage();
 }

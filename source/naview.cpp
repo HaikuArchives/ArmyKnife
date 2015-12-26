@@ -22,9 +22,10 @@
 #include "guistrings.h"
 #include "naview.h"
 #include "preferences.h"
+#include <LayoutBuilder.h>
 
-NAView::NAView(BRect frame, Preferences * preferences)
- :	AddOnView		(frame, NA_MODE_NAME),
+NAView::NAView(Preferences * preferences)
+ :	AddOnView		(NA_MODE_NAME),
 	m_preferences	(preferences)
 {
 	PRINT(("NAView::NAView(BRect)\n"));
@@ -42,96 +43,52 @@ NAView::InitView()
 {
 	PRINT(("NAView::InitView()\n"));
 
-	int space = 6;
-	float bottom = 0;
-	BRect frame(0,0,0,0);
-
-	m_a2n_radiobutton = new BRadioButton(frame,0,A2N_LABEL,
+	m_a2n_radiobutton = new BRadioButton("m_a2n_radiobutton",A2N_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
 	m_a2n_radiobutton->SetValue(B_CONTROL_ON);
-	m_a2n_radiobutton->ResizeToPreferred();
-	m_a2n_radiobutton->MoveTo(space,2*space);
-	bottom = m_a2n_radiobutton->Frame().bottom;
 
-	m_n2a_radiobutton = new BRadioButton(frame,0,N2A_LABEL,
+	m_n2a_radiobutton = new BRadioButton("m_n2a_radiobutton",N2A_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
-	m_n2a_radiobutton->ResizeToPreferred();
-	m_n2a_radiobutton->MoveTo(space,space+bottom);
 
-	float width = 2*space +
-		max_c(m_a2n_radiobutton->Frame().Width(),m_n2a_radiobutton->Frame().Width());
+	m_direction_box = new BBox("m_direction_box");
 
-	float height = 4*space + m_a2n_radiobutton->Frame().Height() +
-		m_n2a_radiobutton->Frame().Height();
+	BGroupLayout *directionBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(m_a2n_radiobutton)
+		.Add(m_n2a_radiobutton);
 
-	m_direction_box = new BBox(BRect(0,0,width,height),"m_direction_box");
-	m_direction_box->MoveTo(space,space);
-	bottom = m_direction_box->Frame().bottom;
+	m_direction_box->AddChild(directionBoxLayout->View());
 
-	m_artist_stringview = new BStringView(frame,0,ARTIST_PATTERN_INFO);
-	m_artist_stringview->ResizeToPreferred();
-	m_artist_stringview->MoveTo(space,space+bottom);
-	bottom = m_artist_stringview->Frame().bottom;
-
-	m_album_stringview = new BStringView(frame,0,ALBUM_PATTERN_INFO);
-	m_album_stringview->ResizeToPreferred();
-	m_album_stringview->MoveTo(space,space+bottom);
-	bottom = m_album_stringview->Frame().bottom;
-
-	m_title_stringview = new BStringView(frame,0,TITLE_PATTERN_INFO);
-	m_title_stringview->ResizeToPreferred();
-	m_title_stringview->MoveTo(space,space+bottom);
-	bottom = m_title_stringview->Frame().bottom;
-
-	m_year_stringview = new BStringView(frame,0,YEAR_PATTERN_INFO);
-	m_year_stringview->ResizeToPreferred();
-	m_year_stringview->MoveTo(space,space+bottom);
-	bottom = m_year_stringview->Frame().bottom;
-
-	m_comment_stringview = new BStringView(frame,0,COMMENT_PATTERN_INFO);
-	m_comment_stringview->ResizeToPreferred();
-	m_comment_stringview->MoveTo(space,space+bottom);
-	bottom = m_comment_stringview->Frame().bottom;
-
-	m_track_stringview = new BStringView(frame,0,TRACK_PATTERN_INFO);
-	m_track_stringview->ResizeToPreferred();
-	m_track_stringview->MoveTo(space,space+bottom);
-	bottom = m_track_stringview->Frame().bottom;
-
-	m_genre_stringview = new BStringView(frame,0,GENRE_PATTERN_INFO);
-	m_genre_stringview->ResizeToPreferred();
-	m_genre_stringview->MoveTo(space,space+bottom);
-	bottom = m_genre_stringview->Frame().bottom;
-
-	m_wildcard_stringview = new BStringView(frame,0,WILDCARD_PATTERN_INFO);
-	m_wildcard_stringview->ResizeToPreferred();
-	m_wildcard_stringview->MoveTo(space,space+bottom);
-	bottom = m_wildcard_stringview->Frame().bottom;
-
-	frame = Bounds();
-	frame.InsetBy(space,0);
-	frame.top = space+bottom;
+	m_artist_stringview = new BStringView("m_artist_stv",ARTIST_PATTERN_INFO);
+	m_album_stringview = new BStringView("m_album_strv",ALBUM_PATTERN_INFO);
+	m_title_stringview = new BStringView("m_title_strv",TITLE_PATTERN_INFO);
+	m_year_stringview = new BStringView("m_year_strv",YEAR_PATTERN_INFO);
+	m_comment_stringview = new BStringView("m_comment_strv",COMMENT_PATTERN_INFO);
+	m_track_stringview = new BStringView("m_track_strv",TRACK_PATTERN_INFO);
+	m_genre_stringview = new BStringView("m_genre_strv",GENRE_PATTERN_INFO);
+	m_wildcard_stringview = new BStringView("m_wildcard_strv",WILDCARD_PATTERN_INFO);
 
 	m_pattern_menu = new BMenu("Please Add Pattern!");
-	m_pattern_menufield = new BMenuField(frame, PATTERN_LABEL, "Filename:", m_pattern_menu);
+	m_pattern_menufield = new BMenuField(PATTERN_LABEL, "Filename:", m_pattern_menu);
 	m_pattern_menufield->SetDivider(StringWidth("Filename:") + 3);
 
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(m_direction_box)
+		.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
+			.Add(m_artist_stringview)
+			.Add(m_album_stringview)
+			.Add(m_title_stringview)
+			.Add(m_year_stringview)
+			.Add(m_comment_stringview)
+			.Add(m_track_stringview)
+			.Add(m_genre_stringview)
+			.Add(m_wildcard_stringview)
+		.End()
+		.Add(m_pattern_menufield)
+		.AddGlue();
+
 	ResizeToPreferred();
-
-	AddChild(m_direction_box);
-	m_direction_box->AddChild(m_a2n_radiobutton);
-	m_direction_box->AddChild(m_n2a_radiobutton);
-
-	AddChild(m_artist_stringview);
-	AddChild(m_album_stringview);
-	AddChild(m_title_stringview);
-	AddChild(m_year_stringview);
-	AddChild(m_comment_stringview);
-	AddChild(m_track_stringview);
-	AddChild(m_genre_stringview);
-	AddChild(m_wildcard_stringview);
-
-	AddChild(m_pattern_menufield);
 
 	WidgetsSetValues();
 	WidgetsSetEnabled();
@@ -147,18 +104,6 @@ NAView::AttachedToWindow()
 	m_a2n_radiobutton->SetTarget(this);
 	m_n2a_radiobutton->SetTarget(this);
 	m_pattern_menu->SetTargetForItems(this);
-}
-
-void
-NAView::GetPreferredSize(float* width, float* height)
-{
-	PRINT(("NAView::GetPreferredSize(float*,float*)\n"));
-
-	*width = m_direction_box->Frame().right;
-//	*height = patternTextControl->Frame().bottom;
-//
-//	I wonder why this is necessary.
-//	Anyway, patternTextControl is gone, so we can't use it.
 }
 
 void

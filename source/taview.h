@@ -12,10 +12,9 @@ class BRect;
 class TAView : public AddOnView
 {
 	public:
-		TAView(BRect frame, Preferences * preferences);
+		TAView(Preferences * preferences);
 		~TAView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);

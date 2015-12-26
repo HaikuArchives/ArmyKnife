@@ -16,7 +16,6 @@ class PatternWindow : public BWindow
 
 	private:
 		
-		BView *			m_view;
 		BTextControl *	m_text_control;
 		BButton *		m_add_button;
 		BButton *		m_cancel_button;

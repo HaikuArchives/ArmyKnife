@@ -18,7 +18,7 @@ class BPath;
 class AlbumPictureView : public BView
 {
 	public:
-		AlbumPictureView(BRect frame, const char *name);
+		AlbumPictureView(const char *name);
 		~AlbumPictureView();
 		void UpdatePicture(const char* path);
 		void NoImage();

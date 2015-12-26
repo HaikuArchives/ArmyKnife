@@ -20,6 +20,7 @@
 #include "commandconstants.h"
 #include "guistrings.h"
 #include "preferences.h"
+#include <LayoutBuilder.h>
 
 #define WIN_LEFT 200
 #define WIN_TOP 200
@@ -31,7 +32,7 @@
 #define WIN_MAX_HEIGHT 2000
 
 AppWindow::AppWindow() : BWindow(BRect(WIN_LEFT,WIN_TOP,WIN_RIGHT,WIN_BOTTOM),
-	WIN_TITLE,B_TITLED_WINDOW,B_ASYNCHRONOUS_CONTROLS)
+	WIN_TITLE,B_TITLED_WINDOW,B_ASYNCHRONOUS_CONTROLS | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	PRINT(("AppWindow::AppWindow()\n"));
 
@@ -55,13 +56,7 @@ AppWindow::InitWindow()
 {
 	PRINT(("AppWindow::InitWindow()\n"));
 
-	SetTitle(WIN_TITLE);
-	SetType(B_TITLED_WINDOW);
-	SetFlags(B_ASYNCHRONOUS_CONTROLS);
-	SetSizeLimits(WIN_MIN_WIDTH,WIN_MAX_WIDTH,WIN_MIN_HEIGHT,WIN_MAX_HEIGHT);
-	SetWorkspaces(B_CURRENT_WORKSPACE);
-
-	m_menu_bar = new BMenuBar(BRect(),"menuBar");
+	m_menu_bar = new BMenuBar("menuBar");
 
 	//create file menu
 	m_file_menu = new BMenu(FILE_MENU);
@@ -106,7 +101,6 @@ AppWindow::InitWindow()
 	m_edit_menu->AddSeparatorItem();
 	m_edit_menu->AddItem(m_reset_menu_item);
 	m_edit_menu->AddItem(m_clear_list_menu_item);
-	
 
 	m_menu_bar->AddItem(m_edit_menu);
 
@@ -136,26 +130,15 @@ AppWindow::InitWindow()
 	*/
 	
 	// add m_app_view below menu bar
-	AddChild(m_menu_bar);
 	SetKeyMenuBar(m_menu_bar);
 
-	BRect frame = Bounds();
-	frame.top += (m_menu_bar->Bounds()).Height() + 1;
-
-	m_app_view = new AppView(frame);
-	AddChild(m_app_view);
+	m_app_view = new AppView();
 	
-	// final touches
-	float wHt = Bounds().Height() - (m_menu_bar->Bounds().Height() + 1);
-	float vHt,vWt;
-	m_app_view->GetPreferredSize(&vWt,&vHt);
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.Add(m_menu_bar)
+		.Add(m_app_view);
 
-	if(wHt < vHt)
-	{
-		ResizeBy(0,vHt-wHt);
-	}
-	
-	SetSizeLimits(WIN_MIN_WIDTH,WIN_MAX_WIDTH,vHt,WIN_MAX_HEIGHT);
+	ResizeToPreferred();
 }
 
 void

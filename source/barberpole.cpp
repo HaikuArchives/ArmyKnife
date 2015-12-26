@@ -5,10 +5,9 @@
 #include "barberpole.h"
 
 
-Barberpole::Barberpole(BRect frame, const char* name, uint32 resizingMode,
-	uint32 flags)
+Barberpole::Barberpole(const char* name, uint32 flags)
 	:
-	BBox(frame, name, resizingMode, flags),
+	BBox(name, flags),
 	fIsRunning(false),
 	fBitmap(NULL)
 {
@@ -97,12 +96,22 @@ Barberpole::Draw(BRect rect)
 	else
 	{
 		BBox::Draw(rect);
-		
-		float string_width = StringWidth("idle");
-		float view_width = Bounds().Width();
 
-		MovePenTo (view_width/2 - string_width/2, 12);
-		DrawString("idle");
+		BFont font;
+		GetFont(&font);
+
+		float string_width = StringWidth("idle");
+		float string_height = font.Size();
+
+		BRect bounds = Bounds();
+		float view_width = bounds.Width();
+		float view_height = bounds.Height();
+		float view_left = bounds.left;
+		float view_bottom = bounds.bottom;
+
+		DrawString("idle",
+			BPoint(view_left + view_width/2 - string_width/2,
+				view_bottom - view_height/2 + string_height/2));
 	}
 }
 

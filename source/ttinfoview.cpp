@@ -36,8 +36,8 @@
 #include "picklistview.h"
 #include "ttinfoview.h"
 
-TTInfoView::TTInfoView(BRect frame, Preferences * preferences)
- :	AddOnView		(frame, TT_INFO_MODE_NAME),
+TTInfoView::TTInfoView(Preferences * preferences)
+ :	AddOnView		(TT_INFO_MODE_NAME),
  	m_preferences	(preferences)
 {
 	PRINT(("TTInfoView::TTInfoView(BRect)\n"));

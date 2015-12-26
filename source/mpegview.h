@@ -18,10 +18,9 @@ class BTextControl;
 class MPEGView : public AddOnView
 {
 	public:
-		MPEGView(BRect frame, Preferences * preferences);
+		MPEGView(Preferences * preferences);
 		~MPEGView();
 		virtual void AttachedToWindow();
-		virtual void GetPreferredSize(float* width, float* height);
 		virtual void Hide();
 		virtual void Show();
 		virtual void SelectionChanged(BList* list);

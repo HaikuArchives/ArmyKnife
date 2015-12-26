@@ -12,8 +12,8 @@
 class Barberpole : public BBox 
 {
 public:
-							Barberpole(BRect frame, const char* name,
-								uint32 resizing_mode, uint32 flags);
+							Barberpole(const char* name,
+								uint32 flags);
 							~Barberpole();
 
 			void			Start();

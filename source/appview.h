@@ -8,8 +8,11 @@
 #include "entryrefitem.h"
 #include "preferences.h"
 
+#define INDEX_BARBERPOLE (int32)0
+#define INDEX_STATUSBAR (int32)1
+
 class BButton;
-class BetterScrollView;
+class BScrollView;
 class BListView;
 class BMessage;
 class BRect;
@@ -17,11 +20,12 @@ class BStatusBar;
 class BStringView;
 class PickListView;
 class BDragger;
+class BCardLayout;
 
 class AppView : public BView
 {
 	public:
-		AppView(BRect frame);
+		AppView();
 		AppView(BMessage *data);
 		~AppView();
 		static	BArchivable	*Instantiate(BMessage *data);
@@ -63,7 +67,7 @@ class AppView : public BView
 
 		PickListView*		m_pick_list_view;
 		AKListView*			m_list_view;
-		BetterScrollView*	m_scroll_view;
+		BScrollView*		m_scroll_view;
 		BStringView*		m_selected_string_view;
 		
 		BButton*			m_reset_button;
@@ -74,6 +78,8 @@ class AppView : public BView
 
 		Preferences*		m_preferences;
 		Barberpole*			m_barberpole;
+
+		BCardLayout*		m_status_card;
 };
 
 void quit_requested(int sig);

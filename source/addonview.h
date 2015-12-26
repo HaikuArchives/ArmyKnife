@@ -13,7 +13,7 @@ class BRect;
 class AddOnView : public BView
 {
 	public:
-		AddOnView(BRect frame, const char* name);
+		AddOnView(const char* name);
 		~AddOnView();
 		virtual void AttachedToWindow();
 		virtual void Hide();

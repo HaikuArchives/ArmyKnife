@@ -6,8 +6,8 @@
 #include "commandconstants.h"
 #include "addonview.h"
 
-AddOnView::AddOnView(BRect frame, const char* name) :
-	BView(frame, name, B_FOLLOW_ALL, B_NAVIGABLE_JUMP | B_FULL_UPDATE_ON_RESIZE)
+AddOnView::AddOnView(const char* name) :
+	BView(name, B_NAVIGABLE_JUMP | B_FULL_UPDATE_ON_RESIZE)
 {
 	PRINT(("AddOnView::AddOnView(BRect,const char*)\n"));
 
