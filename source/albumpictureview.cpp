@@ -8,6 +8,7 @@
 #include <TranslatorRoster.h>
 
 #include "entryrefitem.h"
+#include "guistrings.h"
 
 AlbumPictureView::AlbumPictureView(const char *name)
 	: BView(name, B_WILL_DRAW)
@@ -267,7 +268,7 @@ AlbumPictureView::NoImage()
 	font.SetSize(12.0);
 	SetFont(&font);
 
-	const char* noImageText = "No image";
+	const char* noImageText = NO_IMAGE;
 	DrawString(noImageText, 
 		BPoint(Bounds().Width() / 2 - StringWidth(noImageText) / 2,
 		Bounds().Height() / 2));

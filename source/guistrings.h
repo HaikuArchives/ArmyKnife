@@ -1,66 +1,68 @@
 #ifndef __GUI_STRINGS_H__
 #define __GUI_STRINGS_H__
 
+#include <Catalog.h>
+
 #include "appdefs.h"
 
-#define WIN_TITLE APPLICATION
-#define PREF_TITLE "The Army Knife Preferences"
+#define WIN_TITLE B_TRANSLATE_SYSTEM_NAME(APPLICATION)
+#define PREF_TITLE B_TRANSLATE_CONTEXT("The Army Knife Preferences", "Window title")
 
-#define FILE_MENU "File"
-#define ABOUT_ITEM "About..."
-#define QUIT_ITEM "Quit"
+#define FILE_MENU B_TRANSLATE_CONTEXT("File", "File menu")
+#define ABOUT_ITEM B_TRANSLATE_CONTEXT("About...", "File menu")
+#define QUIT_ITEM B_TRANSLATE_CONTEXT("Quit", "File menu")
 #define QUIT_SHORTCUT 'Q'
 
-#define EDIT_MENU "Edit"
-#define CUT_ITEM "Cut"
+#define EDIT_MENU B_TRANSLATE_CONTEXT("Edit", "Edit menu: Copy/Paste")
+#define CUT_ITEM B_TRANSLATE_CONTEXT("Cut", "Edit menu: Copy/Paste")
 #define CUT_ITEM_SHORTCUT 'X'
-#define COPY_ITEM "Copy"
+#define COPY_ITEM B_TRANSLATE_CONTEXT("Copy", "Edit menu: Copy/Paste")
 #define COPY_ITEM_SHORTCUT 'C'
-#define PASTE_ITEM "Paste"
+#define PASTE_ITEM B_TRANSLATE_CONTEXT("Paste", "Edit menu: Copy/Paste")
 #define PASTE_ITEM_SHORTCUT 'V'
 
-#define FIRST_FILE_ITEM "First File"
+#define FIRST_FILE_ITEM B_TRANSLATE_CONTEXT("First File", "Edit menu: Selecting files")
 #define FIRST_FILE_SHORTCUT B_HOME
-#define LAST_FILE_ITEM "Last File"
+#define LAST_FILE_ITEM B_TRANSLATE_CONTEXT("Last File", "Edit menu: Selecting files")
 #define LAST_FILE_SHORTCUT B_END
-#define PREVIOUS_FILE_ITEM "Previous File"
+#define PREVIOUS_FILE_ITEM B_TRANSLATE_CONTEXT("Previous File", "Edit menu: Selecting files")
 #define PREVIOUS_FILE_SHORTCUT B_UP_ARROW
-#define NEXT_FILE_ITEM "Next File"
+#define NEXT_FILE_ITEM B_TRANSLATE_CONTEXT("Next File", "Edit menu: Selecting files")
 #define NEXT_FILE_SHORTCUT B_DOWN_ARROW
-#define RESET_ITEM "Reset"
+#define RESET_ITEM B_TRANSLATE_CONTEXT("Reset", "Edit menu: Selecting files")
 #define RESET_SHORTCUT 'R'
-#define CLEAR_LIST_ITEM "Clear List"
+#define CLEAR_LIST_ITEM B_TRANSLATE_CONTEXT("Clear List", "Edit menu: Selecting files")
 #define CLEAR_LIST_SHORTCUT 'L'
-#define SELECT_ALL_ITEM "Select All"
-#define SELECT_ALL_UNSUPPORTED_ITEM "Select All Unsupported"
+#define SELECT_ALL_ITEM B_TRANSLATE_CONTEXT("Select All", "Edit menu: Selecting files")
+#define SELECT_ALL_UNSUPPORTED_ITEM B_TRANSLATE_CONTEXT("Select All Unsupported", "Edit menu: Selecting files")
 #define SELECT_ALL_SHORTCUT 'A'
 
-#define MODE_MENU "Mode"
-#define PREVIOUS_MODE_NAME "Previous Mode"
+#define MODE_MENU B_TRANSLATE_CONTEXT("Mode", "Mode menu")
+#define PREVIOUS_MODE_NAME B_TRANSLATE_CONTEXT("Previous Mode", "Mode menu")
 #define PREVIOUS_MODE_SHORTCUT B_LEFT_ARROW
-#define NEXT_MODE_NAME "Next Mode"
+#define NEXT_MODE_NAME B_TRANSLATE_CONTEXT("Next Mode", "Mode menu")
 #define NEXT_MODE_SHORTCUT B_RIGHT_ARROW
-#define EDITOR_MODE_NAME "Edit"
-#define TA_MODE_NAME "Copy"
-#define NA_MODE_NAME "Name" 
-#define MPEG_MODE_NAME "MPEG"
-#define OGG_MODE_NAME "OGG"
-#define FLAC_MODE_NAME "FLAC"
-#define TT_INFO_MODE_NAME "Info"
+#define EDITOR_MODE_NAME B_TRANSLATE_CONTEXT("Edit", "Mode menu")
+#define TA_MODE_NAME B_TRANSLATE_CONTEXT("Copy", "Mode menu")
+#define NA_MODE_NAME B_TRANSLATE_CONTEXT("Name", "Mode menu")
+#define MPEG_MODE_NAME B_TRANSLATE_CONTEXT("MPEG", "Mode menu")
+#define OGG_MODE_NAME B_TRANSLATE_CONTEXT("OGG", "Mode menu")
+#define FLAC_MODE_NAME B_TRANSLATE_CONTEXT("FLAC", "Mode menu")
+#define TT_INFO_MODE_NAME B_TRANSLATE_CONTEXT("Info", "Mode menu")
 
-#define OPTIONS_MENU "Options"
-#define BEEP_ON_UNSUPPORTED "Beep On Unsupported Files"
+#define OPTIONS_MENU B_TRANSLATE_CONTEXT("Options", "Options menu")
+#define BEEP_ON_UNSUPPORTED B_TRANSLATE_CONTEXT("Beep On Unsupported Files", "Options menu")
 
-#define ABOUT_BTN "Excellent"
+#define ABOUT_BTN B_TRANSLATE_ALL("Excellent", "About message", "In context, this means \"dismiss\"")
 
-#define ARTIST_PATTERN_INFO "Artist = /a"
-#define ALBUM_PATTERN_INFO "Album = /n"
-#define TITLE_PATTERN_INFO "Title = /t"
-#define YEAR_PATTERN_INFO "Year = /y"
-#define COMMENT_PATTERN_INFO "Comment = /c"
-#define TRACK_PATTERN_INFO "Track = /k"
-#define GENRE_PATTERN_INFO "Genre = /g"
-#define WILDCARD_PATTERN_INFO "Wildcard = /*"
+#define ARTIST_PATTERN_INFO B_TRANSLATE_ALL("Artist = /a", "Pattern explanation", "Leave /a untouched.")
+#define ALBUM_PATTERN_INFO B_TRANSLATE_ALL("Album = /n", "Pattern explanation", "Leave /n untouched.")
+#define TITLE_PATTERN_INFO B_TRANSLATE_ALL("Title = /t", "Pattern explanation", "Leave /t untouched.")
+#define YEAR_PATTERN_INFO B_TRANSLATE_ALL("Year = /y", "Pattern explanation", "Leave /y untouched.")
+#define COMMENT_PATTERN_INFO B_TRANSLATE_ALL("Comment = /c", "Pattern explanation", "Leave /c untouched.")
+#define TRACK_PATTERN_INFO B_TRANSLATE_ALL("Track = /k", "Pattern explanation", "Leave /k untouched.")
+#define GENRE_PATTERN_INFO B_TRANSLATE_ALL("Genre = /g", "Pattern explanation", "Leave /g untouched.")
+#define WILDCARD_PATTERN_INFO B_TRANSLATE_ALL("Wildcard = /*", "Pattern explanation", "Leave /* untouched.")
 
 #define ARTIST_PATTERN "/a"
 #define ALBUM_PATTERN "/n"
@@ -70,21 +72,21 @@
 #define COMMENT_PATTERN "/c"
 #define GENRE_PATTERN "/g"
 
-#define ARTIST_LABEL "Artist"
-#define ALBUM_LABEL "Album"
-#define TITLE_LABEL "Title"
-#define YEAR_LABEL "Year"
-#define COMMENT_LABEL "Comment"
-#define TRACK_LABEL "Track"
-#define GENRE_LABEL "Genre"
+#define ARTIST_LABEL B_TRANSLATE_CONTEXT("Artist", "Tag type")
+#define ALBUM_LABEL B_TRANSLATE_CONTEXT("Album", "Tag type")
+#define TITLE_LABEL B_TRANSLATE_CONTEXT("Title", "Tag type")
+#define YEAR_LABEL B_TRANSLATE_CONTEXT("Year", "Tag type")
+#define COMMENT_LABEL B_TRANSLATE_CONTEXT("Comment", "Tag type")
+#define TRACK_LABEL B_TRANSLATE_CONTEXT("Track", "Tag type")
+#define GENRE_LABEL B_TRANSLATE_CONTEXT("Genre", "Tag type")
 
-#define PATTERN_LABEL "Pattern:"
+#define PATTERN_LABEL B_TRANSLATE_CONTEXT("Pattern:", "Pattern label")
 
 #ifdef __HAIKU__
-#define A2T_LABEL "Attributes \xe2\x86\x92 Tags"
-#define T2A_LABEL "Tags \xe2\x86\x92 Attributes"
-#define A2N_LABEL "Attributes \xe2\x86\x92 Name"
-#define N2A_LABEL "Name \xe2\x86\x92 Attributes"
+#define A2T_LABEL B_TRANSLATE_CONTEXT("Attributes \xe2\x86\x92 Tags", "Conversion type")
+#define T2A_LABEL B_TRANSLATE_CONTEXT("Tags \xe2\x86\x92 Attributes", "Conversion type")
+#define A2N_LABEL B_TRANSLATE_CONTEXT("Attributes \xe2\x86\x92 Name", "Conversion type")
+#define N2A_LABEL B_TRANSLATE_CONTEXT("Name \xe2\x86\x92 Attributes", "Conversion type")
 #else
 #define A2T_LABEL "Attributes -> Tags"
 #define T2A_LABEL "Tags -> Attributes"
@@ -92,30 +94,33 @@
 #define N2A_LABEL "Name -> Attributes"
 #endif
 
-#define EDIT_LABEL "Edit"
-#define ATTRIBUTES_LABEL "Attributes"
-#define TAGS_LABEL "Tags"
-#define APPLY_TO_ATTRIBUTES "Also Apply To Attributes"
-#define APPLY_TO_TAGS "Also Apply To Tags"
+#define EDIT_LABEL B_TRANSLATE_CONTEXT("Edit", "Edit mode operation")
+#define ATTRIBUTES_LABEL B_TRANSLATE_CONTEXT("Attributes", "Edit mode operation")
+#define TAGS_LABEL B_TRANSLATE_CONTEXT("Tags", "Edit mode operation")
+#define APPLY_TO_ATTRIBUTES B_TRANSLATE_CONTEXT("Also Apply To Attributes", "Edit mode operation")
+#define APPLY_TO_TAGS B_TRANSLATE_CONTEXT("Also Apply To Tags", "Edit mode operation")
 
-#define ADD_BUTTON "Add"
-#define APPLY_BUTTON "Apply"
-#define RESET_BUTTON "Reset"
-#define CANCEL_BUTTON "Cancel"
-#define SELECTED_TEXT " selected"
+#define NO_IMAGE B_TRANSLATE_CONTEXT("No image", "Status")
+#define IDLE B_TRANSLATE_CONTEXT("idle", "Status")
 
-#define DEFAULT_NA_PATTERN_LABEL "Default Name & Attributes Pattern"
-#define DEFAULT_FUNCTION_LABEL "Default Function"
+#define ADD_BUTTON B_TRANSLATE_CONTEXT("Add", "Main action")
+#define APPLY_BUTTON B_TRANSLATE_CONTEXT("Apply", "Main action")
+#define RESET_BUTTON B_TRANSLATE_CONTEXT("Reset", "Main action")
+#define CANCEL_BUTTON B_TRANSLATE_CONTEXT("Cancel", "Main action")
+#define SELECTED_TEXT B_TRANSLATE_CONTEXT(" selected", "Main action")
 
-#define MPEG_INFO_BOX_LABEL "Info"
-#define MPEG_FILES_STRING_DEFAULT "0 files in selection."
-#define MPEG_ID3V1_STRING_DEFAULT "0 have ID3v1 tags."
-#define MPEG_ID3V2_STRING_DEFAULT "0 have ID3v2 tags."
-#define MPEG_APE_STRING_DEFAULT "0 have APE tags."
+#define DEFAULT_NA_PATTERN_LABEL B_TRANSLATE_CONTEXT("Default Name & Attributes Pattern", "Default")
+#define DEFAULT_FUNCTION_LABEL B_TRANSLATE_CONTEXT("Default Function", "Default")
 
-#define MPEG_ADD_REMOVE_BOX_LABEL "Add/Remove"
-#define MPEG_ADD_RADIOBUTTON "Add"
-#define MPEG_REMOVE_RADIOBUTTON "Remove"
+#define MPEG_INFO_BOX_LABEL B_TRANSLATE_CONTEXT("Info", "MPEG information")
+#define MPEG_FILES_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 files in selection.", "MPEG information")
+#define MPEG_ID3V1_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v1 tags.", "MPEG information")
+#define MPEG_ID3V2_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v2 tags.", "MPEG information")
+#define MPEG_APE_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have APE tags.", "MPEG information")
+
+#define MPEG_ADD_REMOVE_BOX_LABEL B_TRANSLATE_CONTEXT("Add/Remove", "MPEG operation")
+#define MPEG_ADD_RADIOBUTTON B_TRANSLATE_CONTEXT("Add", "MPEG operation")
+#define MPEG_REMOVE_RADIOBUTTON B_TRANSLATE_CONTEXT("Remove", "MPEG operation")
 
 #ifdef _TTE_
 #define RATING_LABEL "Rating"

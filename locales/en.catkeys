@@ -1,0 +1,64 @@
+1	English	application/x-vnd.armyknife	2439916034
+MPEG	Mode menu		MPEG
+Genre	Tag type		Genre
+0 have ID3v1 tags.	MPEG information		0 have ID3v1 tags.
+Reset	Edit menu: Selecting files		Reset
+No image	Status		No image
+Next File	Edit menu: Selecting files		Next File
+Last File	Edit menu: Selecting files		Last File
+Copy	Edit menu: Copy/Paste		Copy
+Pattern:	Pattern label		Pattern:
+Tags	Edit mode operation		Tags
+Select All Unsupported	Edit menu: Selecting files		Select All Unsupported
+Next Mode	Mode menu		Next Mode
+Paste	Edit menu: Copy/Paste		Paste
+Name → Attributes	Conversion type		Name → Attributes
+Year	Tag type		Year
+Info	MPEG information		Info
+Title	Tag type		Title
+Excellent	About message	In context, this means \"dismiss\"	Excellent
+0 have APE tags.	MPEG information		0 have APE tags.
+Select All	Edit menu: Selecting files		Select All
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Previous Mode	Mode menu		Previous Mode
+Clear List	Edit menu: Selecting files		Clear List
+Album	Tag type		Album
+Quit	File menu		Quit
+Remove	MPEG operation		Remove
+ selected	Main action		 selected
+Copy	Mode menu		Copy
+0 files in selection.	MPEG information		0 files in selection.
+About...	File menu		About...
+idle	Status		idle
+Add/Remove	MPEG operation		Add/Remove
+Track	Tag type		Track
+Cancel	Main action		Cancel
+Apply	Main action		Apply
+Tags → Attributes	Conversion type		Tags → Attributes
+Name	Mode menu		Name
+Also Apply To Attributes	Edit mode operation		Also Apply To Attributes
+First File	Edit menu: Selecting files		First File
+Attributes	Edit mode operation		Attributes
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+0 have ID3v2 tags.	MPEG information		0 have ID3v2 tags.
+Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
+Previous File	Edit menu: Selecting files		Previous File
+Cut	Edit menu: Copy/Paste		Cut
+Also Apply To Tags	Edit mode operation		Also Apply To Tags
+Edit	Mode menu		Edit
+Mode	Mode menu		Mode
+Add	Main action		Add
+File	File menu		File
+Attributes → Tags	Conversion type		Attributes → Tags
+Comment	Tag type		Comment
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
+Artist	Tag type		Artist
+Edit	Edit menu: Copy/Paste		Edit
+The Army Knife	System name		The Army Knife
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
+Attributes → Name	Conversion type		Attributes → Name
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Reset	Main action		Reset
+Comment = /c	Pattern explanation	Leave /c untouched.	Comment = /c
+Add	MPEG operation		Add

@@ -3,7 +3,7 @@
 
 
 #include "barberpole.h"
-
+#include "guistrings.h"
 
 Barberpole::Barberpole(const char* name, uint32 flags)
 	:
@@ -100,7 +100,9 @@ Barberpole::Draw(BRect rect)
 		BFont font;
 		GetFont(&font);
 
-		float string_width = StringWidth("idle");
+		const char* idle = IDLE;
+
+		float string_width = StringWidth(idle);
 		float string_height = font.Size();
 
 		BRect bounds = Bounds();
@@ -109,7 +111,7 @@ Barberpole::Draw(BRect rect)
 		float view_left = bounds.left;
 		float view_bottom = bounds.bottom;
 
-		DrawString("idle",
+		DrawString(idle,
 			BPoint(view_left + view_width/2 - string_width/2,
 				view_bottom - view_height/2 + string_height/2));
 	}

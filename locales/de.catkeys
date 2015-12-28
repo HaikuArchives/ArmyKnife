@@ -1,0 +1,64 @@
+1	German	application/x-vnd.armyknife	2439916034
+MPEG	Mode menu		MPEG
+Genre	Tag type		Genre
+0 have ID3v1 tags.	MPEG information		0 haben ID3v1-Tags.
+Reset	Edit menu: Selecting files		Zurücksetzen
+No image	Status		Kein Bild
+Next File	Edit menu: Selecting files		Nächste Datei
+Last File	Edit menu: Selecting files		Letzte Datei
+Copy	Edit menu: Copy/Paste		Kopieren
+Pattern:	Pattern label		Muster:
+Tags	Edit mode operation		Tags
+Select All Unsupported	Edit menu: Selecting files		Alle nicht Unterstützten auswählen
+Next Mode	Mode menu		Nächster Modus
+Paste	Edit menu: Copy/Paste		Einfügen
+Name → Attributes	Conversion type		Name → Attribute
+Year	Tag type		Jahr
+Info	MPEG information		Info
+Title	Tag type		Titel
+Excellent	About message	In context, this means \"dismiss\"	Hervorragend
+0 have APE tags.	MPEG information		0 haben APE-Tags.
+Select All	Edit menu: Selecting files		Alle auswählen
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Previous Mode	Mode menu		Vorheriger Modus
+Clear List	Edit menu: Selecting files		Liste leeren
+Album	Tag type		Album
+Quit	File menu		Schließen
+Remove	MPEG operation		Entfernen
+ selected	Main action		 ausgewählt
+Copy	Mode menu		Kopieren
+0 files in selection.	MPEG information		0 Dateien ausgewählt.
+About...	File menu		Über...
+idle	Status		untätig
+Add/Remove	MPEG operation		Hinzufügen/Entfernen
+Track	Tag type		Nummer
+Cancel	Main action		Abbrechen
+Apply	Main action		Anwenden
+Tags → Attributes	Conversion type		Tags → Attribute
+Name	Mode menu		Name
+Also Apply To Attributes	Edit mode operation		Auch auf Attribute anwenden
+First File	Edit menu: Selecting files		Erste Datei
+Attributes	Edit mode operation		Attribute
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+0 have ID3v2 tags.	MPEG information		0 haben ID3v2-Tags.
+Year = /y	Pattern explanation	Leave /y untouched.	Jahr = /y
+Previous File	Edit menu: Selecting files		Vorherige Datei
+Cut	Edit menu: Copy/Paste		Ausschneiden
+Also Apply To Tags	Edit mode operation		Auch auf Tags anwenden
+Edit	Mode menu		Bearbeiten
+Mode	Mode menu		Modus
+Add	Main action		Hinzufügen
+File	File menu		Datei
+Attributes → Tags	Conversion type		Attribute → Tags
+Comment	Tag type		Kommentar
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Beliebig = /*
+Artist	Tag type		Künstler
+Edit	Edit menu: Copy/Paste		Bearbeiten
+The Army Knife	System name		The Army Knife
+Artist = /a	Pattern explanation	Leave /a untouched.	Künstler = /a
+Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
+Attributes → Name	Conversion type		Attribute → Name
+Track = /k	Pattern explanation	Leave /k untouched.	Nummer = /k
+Reset	Main action		Zurücksetzen
+Comment = /c	Pattern explanation	Leave /c untouched.	Kommentar = /c
+Add	MPEG operation		Hinzufügen
