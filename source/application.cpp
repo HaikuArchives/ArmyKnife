@@ -55,7 +55,7 @@ Application::RefsReceived(BMessage* message)
 	m_window->PostMessage(message);
 }
 
-void
+int
 main()
 {
 	PRINT(("main()\n"));
@@ -63,6 +63,7 @@ main()
 	new Application();
 	be_app->Run();
 	delete be_app;
+	return 0;
 }
 
 void

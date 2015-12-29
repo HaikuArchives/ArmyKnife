@@ -14,9 +14,7 @@
 #include "picklistview.h"
 //#include "appview.h"
 
-PickListView::PickListView(const char* name = NULL,
-	uint32 flags = B_WILL_DRAW |  B_NAVIGABLE_JUMP,
-	border_style border = B_FANCY_BORDER) :
+PickListView::PickListView(const char* name, uint32 flags, border_style border) :
 		BBox(name, flags, border)
 {
 	PRINT(("PickListView::PickListView(BRect,const char*,uint32,uint32,border_style)\n"));
@@ -66,7 +64,7 @@ PickListView::Instantiate(BMessage* archive)
 }
 
 status_t
-PickListView::Archive(BMessage* archive, bool deep=true) const
+PickListView::Archive(BMessage* archive, bool deep) const
 {
 	PRINT(("PickListView::Archive(BMessage*,bool)\n"));
 
