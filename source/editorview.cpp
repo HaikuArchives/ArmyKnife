@@ -8,7 +8,6 @@
 #include <Entry.h>
 #include <File.h>
 #include <GroupLayout.h>
-#include <List.h>
 #include <Layout.h>
 #include <LayoutBuilder.h>
 #include <Message.h>
@@ -17,6 +16,7 @@
 #include <MenuItem.h>
 #include <Messenger.h>
 #include <NodeInfo.h>
+#include <ObjectList.h>
 #include <OptionPopUp.h>
 #include <Path.h>
 #include <RadioButton.h>
@@ -138,19 +138,18 @@ EditorView::InitView()
 	BMenu* menu = new BMenu(GENRE_LABEL);
 	menu->SetLabelFromMarked(true);
 	int genres = GenreList::NumGenres();
-	BList genreList;
+	BObjectList<const char> genreList;
 	for(int i=0;i<genres;i++)
 	{
-		char* genre = GenreList::Genre(i);
+		const char* genre = GenreList::Genre(i);
 		genreList.AddItem(genre);
-
 	}
 	genreList.SortItems(GenreList::GenreSort);
 	char last = 'A';
 	char current;
 	for(int i=0;i<genres;i++)
 	{
-		char* genre = (char*)genreList.ItemAt(i);
+		const char* genre = genreList.ItemAt(i);
 		current = genre[0];
 		if(current != last)
 		{

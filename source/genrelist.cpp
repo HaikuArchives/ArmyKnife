@@ -5,7 +5,7 @@
 #define NUM_GENRES 115
 #define OTHER_INDEX 12
 
-char* genre_list[] =
+const char* genre_list[] =
 {
 	"Blues",
 	"Classic Rock",
@@ -134,7 +134,7 @@ GenreList::~GenreList()
 	PRINT(("GenreList::~GenreList()\n"));
 }
 
-char*
+const char*
 GenreList::Genre(int value)
 {
 	PRINT(("GenreList::Genre(int)\n"));
@@ -175,12 +175,9 @@ GenreList::NumGenres()
 }
 
 int
-GenreList::GenreSort(const void* g1, const void* g2)
+GenreList::GenreSort(const char* g1, const char* g2)
 {
 	//PRINT(("GenreList::GenreSort()\n"));
-
-	char* genre1 = *((char**) g1);
-	char* genre2 = *((char**) g2);
-	return strcmp(genre1,genre2);
+	return strcmp(g1,g2);
 }
 
