@@ -14,7 +14,7 @@ class AppWindow : public BWindow
 		AppWindow();
 		AppWindow(BMessage* archive);
 		~AppWindow();
-		static AppWindow* AppWindow::CreateWindow();
+		static AppWindow* CreateWindow();
 		virtual void MessageReceived(BMessage* message);
 		virtual bool QuitRequested();
 		virtual void FrameMoved(BPoint point);

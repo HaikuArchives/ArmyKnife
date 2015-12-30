@@ -392,7 +392,7 @@ EntryRefItem::IsAccepted()
 }
 
 void
-EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete = false)
+EntryRefItem::DrawItem(BView *owner, BRect frame, bool complete)
 {
 	if (! m_file_accepted)
 	{

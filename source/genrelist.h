@@ -7,10 +7,10 @@ class GenreList
 		GenreList();
 		~GenreList();
 
-		static char* Genre(int value);
+		static const char* Genre(int value);
 		static int Genre(const char* value);
 		static int NumGenres();
-		static int GenreSort(const void* g1, const void* g2);
+		static int GenreSort(const char* g1, const char* g2);
 };
 
 #endif

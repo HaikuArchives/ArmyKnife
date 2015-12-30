@@ -160,7 +160,7 @@ AlbumPictureView::SetPicture(const char *path)
 	pictureFrame->setMimeType(mimeName);
 	pictureFrame->setType(TagLib::ID3v2::AttachedPictureFrame::FrontCover);
 	pictureFrame->setPicture(
-		TagLib::ByteVector(static_cast<char*>(buffer->Buffer()), buffer->BufferLength() + 1));
+		TagLib::ByteVector(static_cast<const char*>(buffer->Buffer()), buffer->BufferLength() + 1));
 	printf("drag:%i\n", fileTags->frameList("APIC").size());
 	fileTags->addFrame(pictureFrame);
 	printf("drag:%i\n", fileTags->frameList("APIC").size());
