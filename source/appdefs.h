@@ -17,7 +17,7 @@
 #define SIGNATURE "application/x-vnd.armyknife"
 #endif
 
-#define VERSION "5.0.0"
+#define VERSION "5.1.0"
 
 #define PROJECT_DIR "FlipSide Software"
 #define WINDOW_FILE "window"
