@@ -1,4 +1,4 @@
-1	English	application/x-vnd.armyknife	2439916034
+1	English	application/x-vnd.armyknife	3412892590
 MPEG	Mode menu		MPEG
 Genre	Tag type		Genre
 0 have ID3v1 tags.	MPEG information		0 have ID3v1 tags.
@@ -12,6 +12,7 @@ Tags	Edit mode operation		Tags
 Select All Unsupported	Edit menu: Selecting files		Select All Unsupported
 Next Mode	Mode menu		Next Mode
 Paste	Edit menu: Copy/Paste		Paste
+Online Tag Lookup	Window title		Online Tag Lookup
 Name → Attributes	Conversion type		Name → Attributes
 Year	Tag type		Year
 Info	MPEG information		Info
@@ -32,16 +33,19 @@ About...	File menu		About...
 idle	Status		idle
 Add/Remove	MPEG operation		Add/Remove
 Track	Tag type		Track
+Working…	Query lookup button		Working…
 Cancel	Main action		Cancel
 Apply	Main action		Apply
 Tags → Attributes	Conversion type		Tags → Attributes
 Name	Mode menu		Name
 Also Apply To Attributes	Edit mode operation		Also Apply To Attributes
+Show More	Query lookup button		Show More
 First File	Edit menu: Selecting files		First File
 Attributes	Edit mode operation		Attributes
 Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
 0 have ID3v2 tags.	MPEG information		0 have ID3v2 tags.
 Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
+No more results	Query lookup button		No more results
 Previous File	Edit menu: Selecting files		Previous File
 Cut	Edit menu: Copy/Paste		Cut
 Also Apply To Tags	Edit mode operation		Also Apply To Tags
@@ -54,6 +58,7 @@ Comment	Tag type		Comment
 Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
 Artist	Tag type		Artist
 Edit	Edit menu: Copy/Paste		Edit
+Online Tag Lookup…	Editor view button		Online Tag Lookup…
 The Army Knife	System name		The Army Knife
 Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
 Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
