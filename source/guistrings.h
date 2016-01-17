@@ -7,6 +7,7 @@
 
 #define WIN_TITLE B_TRANSLATE_SYSTEM_NAME(APPLICATION)
 #define PREF_TITLE B_TRANSLATE_CONTEXT("The Army Knife Preferences", "Window title")
+#define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online Tag Lookup", "Window title")
 
 #define FILE_MENU B_TRANSLATE_CONTEXT("File", "File menu")
 #define ABOUT_ITEM B_TRANSLATE_CONTEXT("About...", "File menu")
@@ -128,5 +129,10 @@
 #define COMPOSER_LABEL "Composer"
 #define GENDER_LABEL "Gender"
 #endif
+
+#define QUERY_START_QUERY B_TRANSLATE_CONTEXT("Online Tag Lookup" B_UTF8_ELLIPSIS, "Editor view button")
+#define QUERY_MORE B_TRANSLATE_CONTEXT("Show More", "Query lookup button")
+#define QUERY_WORKING B_TRANSLATE_CONTEXT("Working" B_UTF8_ELLIPSIS, "Query lookup button")
+#define QUERY_NO_MORE_RESULTS B_TRANSLATE_CONTEXT("No more results", "Query lookup button")
 
 #endif

@@ -45,11 +45,15 @@ SRCS = \
 	source/genrelist.cpp \
 	source/id3tag.cpp \
 	source/id3tags.cpp \
+	source/musicbrainzquery.cpp \
 	source/mpegview.cpp \
 	source/naview.cpp \
 	source/nawindow.cpp \
 	source/picklistview.cpp \
 	source/preferences.cpp \
+	source/query.cpp \
+	source/queryable.cpp \
+	source/querywindow.cpp \
 	source/taview.cpp \
 	source/ttinfoview.cpp
 
@@ -78,7 +82,7 @@ RSRCS =
 #	- 	if your library does not follow the standard library naming scheme,
 #		you need to specify the path to the library and it's name.
 #		(e.g. for mylib.a, specify "mylib.a" or "path/mylib.a")
-LIBS = be tag translation localestub $(STDCPPLIBS)
+LIBS = be tag translation localestub $(STDCPPLIBS) musicbrainz5 columnlistview
 
 #	Specify additional paths to directories following the standard libXXX.so
 #	or libXXX.a naming scheme. You can specify full paths or paths relative
@@ -90,7 +94,7 @@ LIBPATHS =
 #	Additional paths to look for system headers. These use the form
 #	"#include <header>". Directories that contain the files in SRCS are
 #	NOT auto-included here.
-SYSTEM_INCLUDE_PATHS = 
+SYSTEM_INCLUDE_PATHS = /system/develop/headers/private/interface
 
 #	Additional paths paths to look for local headers. These use the form
 #	#include "header". Directories that contain the files in SRCS are

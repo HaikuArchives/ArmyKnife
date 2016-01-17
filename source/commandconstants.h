@@ -67,4 +67,9 @@
 #define MSG_EDIT_COPY '092'
 #define MSG_EDIT_PASTE '093'
 
+#define MSG_TAG_LOOKUP '094'
+#define MSG_ADOPT_TAGS '095'
+#define MSG_SHOW_MORE '096'
+#define MSG_UPDATE_BUTTON '097'
+
 #endif
