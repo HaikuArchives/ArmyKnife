@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Alert.h>
 #include <Box.h>
+#include <Button.h>
 #include <CheckBox.h>
 #include <Debug.h>
 #include <Entry.h>
@@ -34,6 +36,8 @@
 #include "entryrefitem.h"
 #include "guistrings.h"
 #include "albumpictureview.h"
+#include "querywindow.h"
+#include "musicbrainzquery.h"
 
 EditorView::EditorView(Preferences * preferences)
  :	AddOnView		(EDITOR_MODE_NAME),
@@ -173,6 +177,8 @@ EditorView::InitView()
 
 	m_genre_box->AddChild(genreBoxLayout->View());
 
+	m_tag_lookup = new BButton("m_tag_lookup", QUERY_START_QUERY, new BMessage(MSG_TAG_LOOKUP));
+
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(m_edit_box)
@@ -197,7 +203,10 @@ EditorView::InitView()
 			.Add(m_genre_box, 1, 6, 1, 3)
 			.Add(m_clear_all_checkbox, 0, 7, 1, 2)
 		.End()
-		.AddGlue();
+		.AddGlue()
+		.AddGroup(B_HORIZONTAL)
+			.AddGlue()
+			.Add(m_tag_lookup);
 
 	ResizeToPreferred();
 
@@ -231,6 +240,8 @@ EditorView::AttachedToWindow()
 	m_genre_menufield->Menu()->SetTargetForItems(this);
 
 	m_clear_all_checkbox->SetTarget(this);
+
+	m_tag_lookup->SetTarget(this);
 }
 
 void
@@ -627,9 +638,11 @@ EditorView::WidgetsSetEnabled()
 #endif
 		m_genre_menufield->SetEnabled(false);
 		m_genre_textcontrol->SetEnabled(false);
+		m_tag_lookup->SetEnabled(false);
 	}
 	else if(numSelected > 0)
 	{
+		m_tag_lookup->SetEnabled(true);
 		m_picture_checkbox->SetEnabled(true);
 		m_artist_checkbox->SetEnabled(true);
 		m_album_checkbox->SetEnabled(true);
@@ -996,6 +1009,56 @@ EditorView::MessageReceived(BMessage* message)
 		case MSG_GENRE_CHANGED:
 			GenreSelectionAction();
 			break;
+		case MSG_TAG_LOOKUP:
+		{
+			Queryable a;
+
+			if (m_artist_checkbox->Value() == B_CONTROL_ON
+				&& m_artist_textcontrol->Text()[0] != '\0')
+				a.SetArtist(m_artist_textcontrol->Text());
+
+			if (m_album_checkbox->Value() == B_CONTROL_ON
+				&& m_album_textcontrol->Text()[0] != '\0')
+				a.SetAlbum(m_album_textcontrol->Text());
+
+			if (m_title_checkbox->Value() == B_CONTROL_ON
+				&& m_title_textcontrol->Text()[0] != '\0')
+				a.SetTitle(m_title_textcontrol->Text());
+
+			if (m_year_checkbox->Value() == B_CONTROL_ON
+				&& m_year_textcontrol->Text()[0] != '\0')
+				a.SetYear(m_year_textcontrol->Text());
+
+			if (m_comment_checkbox->Value() == B_CONTROL_ON
+				&& m_comment_textcontrol->Text()[0] != '\0')
+				a.SetComment(m_comment_textcontrol->Text());
+
+			if (m_track_checkbox->Value() == B_CONTROL_ON
+				&& m_track_textcontrol->Text()[0] != '\0')
+				a.SetTrack(m_track_textcontrol->Text());
+
+			QueryWindow* win = new QueryWindow(new MusicBrainzQuery(a),
+				BMessenger(this));
+			win->Show();
+			break;
+		}
+		case MSG_ADOPT_TAGS:
+		{
+			Queryable* dest = static_cast<Queryable*>(
+				Queryable::Instantiate(message));
+			if (dest == NULL)
+				break;
+
+			m_artist_textcontrol->SetText(dest->Artist());
+			m_album_textcontrol->SetText(dest->Album());
+			m_title_textcontrol->SetText(dest->Title());
+			m_year_textcontrol->SetText(dest->Year());
+			m_comment_textcontrol->SetText(dest->Comment());
+			m_track_textcontrol->SetText(dest->Track());
+
+			delete dest;
+			break;
+		}
 		default:
 			AddOnView::MessageReceived(message);
 	}

@@ -11,7 +11,8 @@
 #include "guistrings.h"
 
 AlbumPictureView::AlbumPictureView(const char *name)
-	: BView(name, B_WILL_DRAW)
+	:	BView(name, B_WILL_DRAW),
+		m_bitmap(NULL)
 {
 	SetExplicitPreferredSize(BSize(160, 160));
 	SetExplicitMinSize(BSize(160, 160));

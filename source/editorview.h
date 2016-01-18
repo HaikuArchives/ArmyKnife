@@ -75,6 +75,7 @@ class EditorView : public AddOnView
 #endif
 		BBox*			m_edit_box;
 		BBox*			m_genre_box;
+		BButton*		m_tag_lookup;
 
 		bool			m_album_picture_changed;
 
