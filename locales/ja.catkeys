@@ -1,7 +1,7 @@
 1	Japanese	application/x-vnd.armyknife	3412892590
 MPEG	Mode menu		MPEG
 Genre	Tag type		ジャンル
-0 have ID3v1 tags.	MPEG information		0 は ID3v1 タグがあります。
+0 have ID3v1 tags.	MPEG information		0 ID3v1 タグあり
 Reset	Edit menu: Selecting files		初期設定
 No image	Status		画像無し
 Next File	Edit menu: Selecting files		次のファイル
@@ -18,7 +18,7 @@ Year	Tag type		年
 Info	MPEG information		情報
 Title	Tag type		曲名
 Excellent	About message	In context, this means \"dismiss\"	お疲れ
-0 have APE tags.	MPEG information		0 は APE タグがあります。
+0 have APE tags.	MPEG information		0 APE タグあり
 Select All	Edit menu: Selecting files		すべてを選択
 Album = /n	Pattern explanation	Leave /n untouched.	アルバム = /n
 Previous Mode	Mode menu		前のモード
@@ -43,7 +43,7 @@ Show More	Query lookup button		更に表示
 First File	Edit menu: Selecting files		先頭のファイル
 Attributes	Edit mode operation		属性
 Genre = /g	Pattern explanation	Leave /g untouched.	ジャンル = /g
-0 have ID3v2 tags.	MPEG information		0 は ID3v2 タグがあります。
+0 have ID3v2 tags.	MPEG information		0 ID3v2 タグあり
 Year = /y	Pattern explanation	Leave /y untouched.	年 = /y
 No more results	Query lookup button		結果は以上です。
 Previous File	Edit menu: Selecting files		前のファイル
