@@ -164,7 +164,7 @@ AppView::InitView()
 	m_status_card->AddView(m_barberpole);
 	m_status_card->AddView(m_status_bar);
 
-	m_status_card->SetVisibleItem((long int)0);
+	m_status_card->SetVisibleItem((int32)0);
 
 /*
 	BView *dragger = FindView("_dragger_");
