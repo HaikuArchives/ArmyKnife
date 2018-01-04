@@ -4,6 +4,9 @@
 #include <Menu.h>
 #include <Window.h>
 
+static const BString ReadmeLoc = "file:///boot/system/apps/ArmyKnife/Documentation/armyknife/readme.html";
+static const BString ChangelogLoc = "file:///boot/system/apps/ArmyKnife/Documentation/armyknife_changelog.txt"; 
+
 class AppView;
 class BMessage;
 class Preferences;
@@ -33,6 +36,7 @@ class AppWindow : public BWindow
 		BMenu*		m_edit_menu;
 		BMenu*		m_mode_menu;
 		BMenu*		m_options_menu;
+		BMenu*		m_help_menu;
 		BMenuItem*	m_about_menu_item;
 		BMenuItem*	m_quit_menu_item;
 		BMenuItem*	m_cut_menu_item;
@@ -47,6 +51,8 @@ class AppWindow : public BWindow
 		BMenuItem*	m_select_all_menu_item;
 		BMenuItem*	m_select_all_unsupported_menu_item;
 		BMenuItem*	m_beep_menu_item;
+		BMenuItem*	m_readme_item;
+		BMenuItem*	m_changelog_item;
 
 };
 

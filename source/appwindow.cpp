@@ -15,6 +15,7 @@
 #include <File.h>
 #include <FindDirectory.h>
 #include <Path.h>
+#include <Roster.h>
 
 #include "appdefs.h"
 #include "application.h"
@@ -121,6 +122,16 @@ AppWindow::InitWindow()
 	m_mode_menu->AddItem(new BMenuItem(TT_INFO_MODE_NAME, new BMessage(MSG_TT_INFO_MODE), '5'));
 #endif
 	m_menu_bar->AddItem(m_mode_menu);
+
+	
+	m_help_menu = new BMenu(HELP_MENU);
+	m_readme_item = new BMenuItem(README_ITEM, new BMessage(MSG_README));
+	m_changelog_item = new BMenuItem(CHANGELOG_ITEM, new BMessage(MSG_CHANGELOG));
+
+	m_help_menu->AddItem(m_readme_item);
+	m_help_menu->AddItem(m_changelog_item);
+
+	m_menu_bar->AddItem(m_help_menu);
 
 	// create options menu
 	/*
@@ -252,7 +263,23 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_SELECT_ALL_UNSUPPORTED:
 			m_app_view->SelectAllUnsupported();
 			break;
+		
+		case MSG_README:
+		{
+			BMessage message(B_REFS_RECEIVED);
+ 			message.AddString("url", ReadmeLoc);
+ 			be_roster->Launch("text/html", &message);
+			break;
+		}
 
+		case MSG_CHANGELOG:
+		{
+			BMessage message(B_REFS_RECEIVED);
+ 			message.AddString("url", ChangelogLoc);
+ 			be_roster->Launch("text/html", &message);
+			break;
+		}
+		
 		default:
 			BWindow::MessageReceived(message);
 	}

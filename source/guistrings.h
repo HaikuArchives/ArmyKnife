@@ -51,6 +51,10 @@
 #define FLAC_MODE_NAME B_TRANSLATE_CONTEXT("FLAC", "Mode menu")
 #define TT_INFO_MODE_NAME B_TRANSLATE_CONTEXT("Info", "Mode menu")
 
+#define HELP_MENU B_TRANSLATE_CONTEXT("Help", "Help menu")
+#define README_ITEM B_TRANSLATE_CONTEXT("Readme", "Help menu")
+#define CHANGELOG_ITEM B_TRANSLATE_CONTEXT("Changelog", "Help menu")
+
 #define OPTIONS_MENU B_TRANSLATE_CONTEXT("Options", "Options menu")
 #define BEEP_ON_UNSUPPORTED B_TRANSLATE_CONTEXT("Beep On Unsupported Files", "Options menu")
 
