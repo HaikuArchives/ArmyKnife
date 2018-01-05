@@ -274,8 +274,14 @@ AppWindow::MessageReceived(BMessage* message)
 
 		case MSG_CHANGELOG:
 		{
+			BPath path;
+			find_directory(B_USER_SETTINGS_DIRECTORY,&path);
+			path.Append(PROJECT_DIR);
+			path.Append(APPLICATION_DIR);
+			path.Append(DOCUMENTATION_DIR);
+			path.Append(CHANGELOG_FILE);
 			BMessage message(B_REFS_RECEIVED);
- 			message.AddString("url", ChangelogLoc);
+ 			message.AddString("url", path.Path());
  			be_roster->Launch("text/html", &message);
 			break;
 		}
