@@ -56,6 +56,9 @@
 #define MSG_TT_INFO_MODE '044'
 #endif
 
+#define MSG_README '045'
+#define MSG_CHANGELOG '046'
+
 #define MSG_BEEP_ON_UNSUPPORTED '050'
 
 #define MSG_CLEAR_CHECKBOX '060'

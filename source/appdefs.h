@@ -22,6 +22,9 @@
 #define PROJECT_DIR "FlipSide Software"
 #define WINDOW_FILE "window"
 #define PREFS_FILE "preferences"
+#define DOCUMENTATION_DIR "Documentation"
+#define README_FILE "armyknife/readme.html"
+#define CHANGELOG_FILE "armyknife_changelog.txt"
 
 #define MP3_MIME_TYPE "audio/mpeg"
 #define OGG_MIME_TYPE "audio/ogg"
