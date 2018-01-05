@@ -5,9 +5,6 @@
 #include <Window.h>
 #include <String.h>
 
-static const BString ReadmeLoc = "file:///boot/system/apps/ArmyKnife/Documentation/armyknife/readme.html";
-static const BString ChangelogLoc = "file:///boot/system/apps/ArmyKnife/Documentation/armyknife_changelog.txt"; 
-
 class AppView;
 class BMessage;
 class Preferences;
