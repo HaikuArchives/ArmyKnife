@@ -399,6 +399,9 @@ AppWindow::DisableInterface()
 	m_clear_list_menu_item->SetEnabled(false);
 	m_select_all_menu_item->SetEnabled(false);
 	m_select_all_unsupported_menu_item->SetEnabled(false);
+	m_help_menu->SetEnabled(false);
+	m_readme_item->SetEnabled(false);
+	m_changelog_item->SetEnabled(false);
 //	m_beep_menu_item->SetEnabled(false);
 }
 
@@ -420,5 +423,8 @@ AppWindow::EnableInterface()
 	m_clear_list_menu_item->SetEnabled(true);
 	m_select_all_menu_item->SetEnabled(true);
 	m_select_all_unsupported_menu_item->SetEnabled(true);
+	m_help_menu->SetEnabled(true);
+	m_readme_item->SetEnabled(true);
+	m_changelog_item->SetEnabled(true);
 //	m_beep_menu_item->SetEnabled(true);
 }
