@@ -275,8 +275,7 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_CHANGELOG:
 		{
 			BPath path;
-			find_directory(B_USER_SETTINGS_DIRECTORY,&path);
-			path.Append(PROJECT_DIR);
+			find_directory(B_USER_APPS_DIRECTORY,&path);
 			path.Append(APPLICATION_DIR);
 			path.Append(DOCUMENTATION_DIR);
 			path.Append(CHANGELOG_FILE);
