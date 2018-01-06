@@ -109,7 +109,7 @@
 #define IDLE B_TRANSLATE_CONTEXT("idle", "Status")
 
 #define ADD_BUTTON B_TRANSLATE_CONTEXT("Add", "Main action")
-#define APPLY_BUTTON B_TRANSLATE_CONTEXT("Apply", "Main action")
+#define APPLY_BUTTON B_TRANSLATE_CONTEXT("Save", "Main action")
 #define RESET_BUTTON B_TRANSLATE_CONTEXT("Reset", "Main action")
 #define CANCEL_BUTTON B_TRANSLATE_CONTEXT("Cancel", "Main action")
 #define SELECTED_TEXT B_TRANSLATE_CONTEXT(" selected", "Main action")

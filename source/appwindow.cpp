@@ -267,10 +267,15 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_README:
 		{
 			BPath path;
-			find_directory(B_APPS_DIRECTORY, &path);
-			path.Append(APPLICATION_DIR);
+			app_info info;
+			be_roster->GetActiveAppInfo(&info);
+			BEntry entry(&info.ref);
+			
+			entry.GetPath(&path);
+			path.GetParent(&path);
 			path.Append(DOCUMENTATION_DIR);
 			path.Append(README_FILE);
+			
 			BMessage message(B_REFS_RECEIVED);
  			message.AddString("url", path.Path());
  			be_roster->Launch("text/html", &message);
@@ -280,10 +285,15 @@ AppWindow::MessageReceived(BMessage* message)
 		case MSG_CHANGELOG:
 		{
 			BPath path;
-			find_directory(B_APPS_DIRECTORY, &path);
-			path.Append(APPLICATION_DIR);
+			app_info info;
+			be_roster->GetActiveAppInfo(&info);
+			BEntry entry(&info.ref);
+			
+			entry.GetPath(&path);
+			path.GetParent(&path);
 			path.Append(DOCUMENTATION_DIR);
 			path.Append(CHANGELOG_FILE);
+			
 			BMessage message(B_REFS_RECEIVED);
  			message.AddString("url", path.Path());
  			be_roster->Launch("text/html", &message);
