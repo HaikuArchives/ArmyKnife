@@ -553,7 +553,7 @@ AppView::AddRefsHelper(AppView * view, EntryRefItem * ref_item)
 				return;
 			}
 		}
-		if(!found)
+		if(!found && ref_item->IsSupportedByTaglib())
 		{
 			if(view->LockLooper())
 			{
