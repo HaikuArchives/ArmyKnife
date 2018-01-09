@@ -59,6 +59,8 @@
 #define MSG_README '045'
 #define MSG_CHANGELOG '046'
 
+#define MSG_FILE_OPEN '047'
+
 #define MSG_BEEP_ON_UNSUPPORTED '050'
 
 #define MSG_CLEAR_CHECKBOX '060'
