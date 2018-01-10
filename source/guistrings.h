@@ -10,8 +10,10 @@
 #define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online Tag Lookup", "Window title")
 
 #define FILE_MENU B_TRANSLATE_CONTEXT("File", "File menu")
+#define OPEN_ITEM B_TRANSLATE_CONTEXT("Open", "File menu")
 #define ABOUT_ITEM B_TRANSLATE_CONTEXT("About...", "File menu")
 #define QUIT_ITEM B_TRANSLATE_CONTEXT("Quit", "File menu")
+#define OPEN_SHORTCUT 'O'
 #define QUIT_SHORTCUT 'Q'
 
 #define EDIT_MENU B_TRANSLATE_CONTEXT("Edit", "Edit menu: Copy/Paste")
