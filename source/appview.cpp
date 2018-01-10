@@ -125,7 +125,7 @@ AppView::InitView()
 
 	m_scroll_view = new BScrollView("m_scroll_view",m_list_view, 0, true, true);
 	m_scroll_view->SetExplicitMinSize(BSize(300, 0));
-
+	
 	m_selected_string_view = new BStringView("m_selected_string_view","");
 	m_selected_string_view->SetAlignment(B_ALIGN_RIGHT);
 	m_selected_string_view->SetFontSize(10);

@@ -3,16 +3,16 @@
 
 #define AUTHOR "Jason Burgess"
 #define PROJECT "FlipSide Software"
-#define PROJECT_WWW "http://dev.osdrawer.net/projects/show/armyknife"
-#define MAINTAINER "Jonas Sundström"
-#define MAINTAINER_EMAIL "jonas@kirilla.com"
+#define PROJECT_WWW "http://github.com/HaikuArchives/ArmyKnife"
+#define MAINTAINER "Scott McCreary"
+#define MAINTAINER_EMAIL "scottmc2@gmail.com"
 
 #ifdef _TTE_
-#define APPLICATION "The Army Knife - TuneTracker Edition"
+#define APPLICATION "Army Knife - TuneTracker Edition"
 #define APPLICATION_DIR "ArmyKnifeTTE"
 #define SIGNATURE "application/x-vnd.armyknife-tte"
 #else
-#define APPLICATION "The Army Knife"
+#define APPLICATION "ArmyKnife"
 #define APPLICATION_DIR "ArmyKnife"
 #define SIGNATURE "application/x-vnd.armyknife"
 #endif

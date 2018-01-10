@@ -362,13 +362,12 @@ AppWindow::AboutRequested()
 		"His former website has since been taken over by "
 		"another company by the same name.\n\n"
 
-		"The FlipSide Software applications are hosted by OsDrawer at www.osdrawer.net.\n\n"
+		"The FlipSide Software applications are hosted by HaikuArchives at github.com/Haiku/Archives\n\n"
 
 		MAINTAINER " is the current maintainer.\n"
-		"You can reach him at " MAINTAINER_EMAIL "\n\n"
 
 		"To request new features, or to report bugs, file a new issue at:\n"
-		"http://dev.osdrawer.net/projects/armyknife/issues/new";
+		"http://github.com/HaikuArchives/ArmyKnife/issues";
 
 	BAlert* alert = new BAlert("AboutBox", msg.String(), ABOUT_BTN);
 	alert->Go(NULL);
