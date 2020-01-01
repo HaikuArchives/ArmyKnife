@@ -15,6 +15,7 @@
 #include <File.h>
 #include <FindDirectory.h>
 #include <Path.h>
+#include <private/interface/AboutWindow.h>
 #include <Roster.h>
 
 #include "appdefs.h"
@@ -355,22 +356,21 @@ AppWindow::QuitRequested()
 void
 AppWindow::AboutRequested()
 {
-	PRINT(("AppWindow::AboutRequested()\n"));
-	BString msg;
-	msg = APPLICATION " " VERSION "\n\n"
-		"Created by Jason Burgess of now defunct FlipSide Software. "
-		"His former website has since been taken over by "
-		"another company by the same name.\n\n"
-
-		"The FlipSide Software applications are hosted by HaikuArchives at github.com/Haiku/Archives\n\n"
-
-		MAINTAINER " is the current maintainer.\n"
-
-		"To request new features, or to report bugs, file a new issue at:\n"
-		"http://github.com/HaikuArchives/ArmyKnife/issues";
-
-	BAlert* alert = new BAlert("AboutBox", msg.String(), ABOUT_BTN);
-	alert->Go(NULL);
+	BAboutWindow* about = new BAboutWindow("ArmyKnife", SIGNATURE);
+	
+	const char* author[] = {
+		"Jason Burgess",
+		NULL
+	};
+	
+	about->AddAuthors(author);
+	about->AddText("Created by Jason Burgess of now defunct FlipSide Software.\n"
+			"His former website has since been taken over by another company by the same name.");
+	about->AddText("The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives");
+	about->AddText(MAINTAINER " is a current maintainer.");
+	about->AddText("To request new features, or to report bugs, file a new issue at:\n"
+			"http://github.com/HaikuArchives/ArmyKnife/issues");
+	about->Show();
 }
 
 AppWindow*
