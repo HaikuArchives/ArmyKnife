@@ -18,6 +18,7 @@ class AKListView : public BListView
 			virtual void	SelectAllUnsupported();
 			virtual void	ScrollToFirstUnaccepted();
 					bool	HasSelectionOfOnlyAcceptedItems();
+					void	NoItem();
 };
 
 #endif

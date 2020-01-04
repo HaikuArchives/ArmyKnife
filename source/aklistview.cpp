@@ -143,3 +143,18 @@ AKListView::SelectAllUnsupported()
 			Select(i, true);
 	}
 }
+
+void
+AKListView::NoItem()
+{
+	SetDrawingMode(B_OP_OVER);
+	SetHighColor(0,0,0);
+	BFont font;
+	font.SetSize(12.0);
+	SetFont(&font);
+	
+	const char* noItemText = "Drag and drop files here";
+	DrawString(noItemText,
+			BPoint(Bounds().Width() / 2 - StringWidth(noItemText) / 2,
+			Bounds().Height() / 2));
+}
