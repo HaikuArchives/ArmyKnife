@@ -28,8 +28,10 @@ PickListView::PickListView(const char* name, uint32 flags, border_style border) 
 	m_view_layout = new BCardLayout();
 
 	m_card_view = new BView("m_card_view", 0, m_view_layout);
-
-	AddChild(m_card_view);
+	
+	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_ITEM_SPACING)
+		.SetInsets(10,25,10,25)
+		.Add(m_card_view);
 }
 
 
