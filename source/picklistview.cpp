@@ -20,17 +20,20 @@ PickListView::PickListView(const char* name, uint32 flags, border_style border) 
 	PRINT(("PickListView::PickListView(BRect,const char*,uint32,uint32,border_style)\n"));
 
 	m_selected_index = NO_VIEW_SELECTED;
-
+	
+	m_view_box = new BBox("m_box_view", B_WILL_DRAW | B_FRAME_EVENTS, B_NO_BORDER);
+	
 	m_view_menu = new BMenu("m_view_menu");
 	m_view_menu->SetLabelFromMarked(true);
-	SetLabel(new BMenuField("label", NULL, m_view_menu));
+	m_view_box->SetLabel(new BMenuField("label", NULL, m_view_menu));
 
 	m_view_layout = new BCardLayout();
 
 	m_card_view = new BView("m_card_view", 0, m_view_layout);
 	
 	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_ITEM_SPACING)
-		.SetInsets(10,25,10,25)
+		.SetInsets(0,10,0,10)
+		.Add(m_view_box)
 		.Add(m_card_view);
 }
 
