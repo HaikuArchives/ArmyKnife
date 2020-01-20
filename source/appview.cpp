@@ -88,7 +88,7 @@ AppView::InitView()
 
 	SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 
-	m_pick_list_view = new PickListView("m_pick_list_view");
+	m_pick_list_view = new PickListView("m_pick_list_view", B_WILL_DRAW | B_FRAME_EVENTS );
 
 	AddOnView * aView;
 
@@ -128,12 +128,14 @@ AppView::InitView()
 		delete aView;
 #endif
 
-	m_list_view = new AKListView("m_list_view",B_MULTIPLE_SELECTION_LIST);
+	m_list_view = new AKListView("m_list_view", B_MULTIPLE_SELECTION_LIST, B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
 	m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 
-	m_scroll_view = new BScrollView("m_scroll_view",m_list_view, 0, true, true);
-	m_scroll_view->SetExplicitMinSize(BSize(300, 0));
-	
+	m_scroll_view_right = new BScrollView("m_scroll_view_right", m_list_view, B_WILL_DRAW, true, true);
+
+	m_scroll_view_left = new BScrollView("m_scroll_view_left", m_pick_list_view, B_WILL_DRAW, false, true);
+	m_scroll_view_left->SetExplicitMinSize(BSize(0, 250));
+
 	m_selected_string_view = new BStringView("m_selected_string_view","");
 	m_selected_string_view->SetAlignment(B_ALIGN_RIGHT);
 	m_selected_string_view->SetFontSize(10);
@@ -153,12 +155,11 @@ AppView::InitView()
 
 	m_status_card = new BCardLayout();
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.SetInsets(B_USE_WINDOW_INSETS, 0, B_USE_WINDOW_INSETS,
-			B_USE_WINDOW_INSETS)
+	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_DEFAULT_SPACING)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
-			.Add(m_pick_list_view)
-			.Add(m_scroll_view)
+			.Add(m_scroll_view_left)
+			.Add(m_scroll_view_right)
 		.End()
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()

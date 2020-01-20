@@ -68,7 +68,8 @@ class AppView : public BView
 
 		PickListView*		m_pick_list_view;
 		AKListView*			m_list_view;
-		BScrollView*		m_scroll_view;
+		BScrollView*		m_scroll_view_right;
+		BScrollView*		m_scroll_view_left;
 		BStringView*		m_selected_string_view;
 
 		BButton*			m_reset_button;

@@ -26,14 +26,12 @@
 #include "guistrings.h"
 #include "preferences.h"
 
-#define WIN_LEFT 200
-#define WIN_TOP 200
-#define WIN_RIGHT 700
-#define WIN_BOTTOM 600
-#define WIN_MIN_WIDTH 500
-#define WIN_MAX_WIDTH 2000
+#define WIN_LEFT 100
+#define WIN_TOP 100
+#define WIN_RIGHT 600
+#define WIN_BOTTOM 700
+#define WIN_MIN_WIDTH 550
 #define WIN_MIN_HEIGHT 400
-#define WIN_MAX_HEIGHT 2000
 
 AppWindow::AppWindow() : BWindow(BRect(WIN_LEFT,WIN_TOP,WIN_RIGHT,WIN_BOTTOM),
 	WIN_TITLE,B_TITLED_WINDOW,B_ASYNCHRONOUS_CONTROLS | B_AUTO_UPDATE_SIZE_LIMITS)
@@ -152,6 +150,7 @@ AppWindow::InitWindow()
 	SetKeyMenuBar(m_menu_bar);
 
 	m_app_view = new AppView();
+	m_app_view->SetExplicitMinSize(BSize(WIN_MIN_WIDTH, WIN_MIN_HEIGHT));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.Add(m_menu_bar)

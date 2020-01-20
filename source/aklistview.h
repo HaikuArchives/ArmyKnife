@@ -8,7 +8,7 @@ class AKListView : public BListView
 	public:
 		AKListView  (const char* name,
 			list_view_type type = B_SINGLE_SELECTION_LIST,
-			uint32 flags = B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS);
+			uint32 flags = B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS | B_FULL_UPDATE_ON_RESIZE);
 		~AKListView	();
 
 			virtual void	KeyDown(const char* bytes, int32 numBytes);

@@ -19,7 +19,7 @@ class PickListView : public BBox
 	public:
 		PickListView(const char* name = NULL,
 				uint32 flags = B_WILL_DRAW | B_NAVIGABLE_JUMP,
-				border_style border = B_FANCY_BORDER);
+				border_style border = B_NO_BORDER);
 		PickListView(BMessage* archive);
 		~PickListView();
 
