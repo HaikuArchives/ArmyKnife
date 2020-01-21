@@ -157,7 +157,7 @@ AppView::InitView()
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_DEFAULT_SPACING)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.AddGroup(B_HORIZONTAL)
+		.AddSplit(B_HORIZONTAL)
 			.Add(m_scroll_view_left)
 			.Add(m_scroll_view_right)
 		.End()
