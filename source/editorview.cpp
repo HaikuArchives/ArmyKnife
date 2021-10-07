@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,6 +27,7 @@
 #include <Path.h>
 #include <RadioButton.h>
 #include <Rect.h>
+#include <String.h>
 #include <TextControl.h>
 
 #include "audioattributes.h"
@@ -43,24 +48,16 @@ EditorView::EditorView(Preferences * preferences)
  :	AddOnView		(EDITOR_MODE_NAME),
 	m_preferences	(preferences)
 {
-	PRINT(("EditorView::EditorView(BRect)\n"));
-
 	m_album_picture_changed = false;
 	InitView();
 }
 
-EditorView::~EditorView()
-{
-	PRINT(("EditorView::~EditorView()\n"));
+EditorView::~EditorView(){
 }
 
-void
-EditorView::InitView()
+void EditorView::InitView()
 {
-	PRINT(("EditorView::InitView()\n"));
-
 	int space = 6;
-
 	m_attribute_radiobutton = new BRadioButton("m_attribute_radiobutton",ATTRIBUTES_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
 	m_attribute_radiobutton->SetValue(B_CONTROL_ON);
@@ -83,47 +80,35 @@ EditorView::InitView()
 		.Add(m_apply_checkbox);
 
 	m_edit_box->AddChild(editBoxLayout->View());
-
 	m_picture_checkbox = new BCheckBox("m_picutre_checkbox","",
 			new BMessage(MSG_PICTURE_CHECKBOX));
 	m_album_picture = new AlbumPictureView("bitmap_view");
-
 	m_artist_checkbox = new BCheckBox("m_artist_checkbox",ARTIST_LABEL,
 			new BMessage(MSG_ARTIST_CHECKBOX));
-
 	m_album_checkbox = new BCheckBox("m_album_checkbox",ALBUM_LABEL,
 			new BMessage(MSG_ALBUM_CHECKBOX));
-
 	m_title_checkbox = new BCheckBox("m_title_checkbox",TITLE_LABEL,
 			new BMessage(MSG_TITLE_CHECKBOX));
-
 	m_year_checkbox = new BCheckBox("m_year_checkbox",YEAR_LABEL,
 			new BMessage(MSG_YEAR_CHECKBOX));
-
 	m_comment_checkbox = new BCheckBox("m_comment_checkbox",COMMENT_LABEL,
 			new BMessage(MSG_COMMENT_CHECKBOX));
-
 	m_track_checkbox = new BCheckBox("m_track_checkbox",TRACK_LABEL,
 			new BMessage(MSG_TRACK_CHECKBOX));
-
 #ifdef _TTE_
 	m_rating_checkbox = new BCheckBox("m_rating_checkbox",RATING_LABEL,
 			new BMessage(MSG_RATING_CHECKBOX));
-
 	m_tempo_checkbox = new BCheckBox("m_tempo_checkbox",TEMPO_LABEL,
 			new BMessage(MSG_TEMPO_CHECKBOX));
-
 	m_composer_checkbox = new BCheckBox("m_composer_checkbox",COMPOSER_LABEL,
 			new BMessage(MSG_COMPOSER_CHECKBOX));
-
 	m_gender_checkbox = new BCheckBox("m_gender_checkbox",GENDER_LABEL,
 			new BMessage(MSG_GENDER_CHECKBOX));
 #endif
-
 	m_genre_checkbox = new BCheckBox("m_genre_checkbox",GENRE_LABEL,
 			new BMessage(MSG_GENRE_CHECKBOX));
-
-	m_clear_all_checkbox = new BCheckBox("m_clear_all_checkbox",B_UTF8_ELLIPSIS, new BMessage(MSG_CLEAR_CHECKBOX));
+	m_clear_all_checkbox = new BCheckBox("m_clear_all_checkbox",B_UTF8_ELLIPSIS,
+			new BMessage(MSG_CLEAR_CHECKBOX));
 	m_artist_textcontrol = new BTextControl("m_artist_textcontrol","","",NULL);
 	m_album_textcontrol = new BTextControl("m_album_textcontrol","","",NULL);
 	m_title_textcontrol = new BTextControl("m_title_textcontrol","","",NULL);
@@ -143,20 +128,17 @@ EditorView::InitView()
 	menu->SetLabelFromMarked(true);
 	int genres = GenreList::NumGenres();
 	BObjectList<const char> genreList;
-	for(int i=0;i<genres;i++)
-	{
-		const char* genre = GenreList::Genre(i);
+	for(int i=0;i<genres;i++){
+		BString genre = GenreList::Genre(i);
 		genreList.AddItem(genre);
 	}
-	genreList.SortItems(GenreList::GenreSort);
+	genreList.SortItems(&GenreList::GenreSort);
 	char last = 'A';
 	char current;
-	for(int i=0;i<genres;i++)
-	{
-		const char* genre = genreList.ItemAt(i);
+	for(int i=0;i<genres;i++){
+		BString genre = genreList.ItemAt(i);
 		current = genre[0];
-		if(current != last)
-		{
+		if(current != last)		{
 			menu->AddSeparatorItem();
 		}
 		menu->AddItem(new BMenuItem(genre,new BMessage(MSG_GENRE_CHANGED)));
@@ -164,21 +146,16 @@ EditorView::InitView()
 	}
 
 	m_genre_menufield = new BMenuField("m_genre_menufield", "", menu);
-
 	m_genre_textcontrol = new BTextControl("m_genre_textcontrol","","",NULL);
 	//DONE INSIDE BOX
-
 	m_genre_box = new BBox("m_genre_box");
-
 	BGroupLayout *genreBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
 		.SetInsets(B_USE_SMALL_INSETS)
 		.Add(m_genre_menufield)
 		.Add(m_genre_textcontrol);
 
 	m_genre_box->AddChild(genreBoxLayout->View());
-
 	m_tag_lookup = new BButton("m_tag_lookup", QUERY_START_QUERY, new BMessage(MSG_TAG_LOOKUP));
-
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(m_edit_box)
@@ -214,12 +191,8 @@ EditorView::InitView()
 	WidgetsSetEnabled();
 }
 
-void
-EditorView::AttachedToWindow()
-{
+void EditorView::AttachedToWindow(){
 	AddOnView::AttachedToWindow();
-
-	PRINT(("EditorView::AttachedToWindow()\n"));
 
 	m_tag_radiobutton->SetTarget(this);
 	m_attribute_radiobutton->SetTarget(this);
@@ -238,30 +211,19 @@ EditorView::AttachedToWindow()
 #endif
 	m_genre_checkbox->SetTarget(this);
 	m_genre_menufield->Menu()->SetTargetForItems(this);
-
 	m_clear_all_checkbox->SetTarget(this);
-
 	m_tag_lookup->SetTarget(this);
 }
 
-void
-EditorView::Hide()
-{
+void EditorView::Hide(){
 	AddOnView::Hide();
-
-	PRINT(("EditorView::Hide()\n"));
 }
 
-void
-EditorView::Show()
-{
+void EditorView::Show(){
 	AddOnView::Show();
-
-	PRINT(("EditorView::Show()\n"));
 }
 
-void
-EditorView::SelectionChanged(BList* list)
+void EditorView::SelectionChanged(BList* list)
 {
 	AddOnView::SelectionChanged(list);
 	m_album_picture_changed = false;
@@ -272,74 +234,43 @@ EditorView::SelectionChanged(BList* list)
 	WidgetsSetEnabled();
 }
 
-void
-EditorView::GenreSelectionAction()
-{
+void EditorView::GenreSelectionAction() {
 	m_genre_textcontrol->SetText("");
 }
 
-void
-EditorView::Apply()
-{
+void EditorView::Apply() {
 	AddOnView::Apply();
-
-	PRINT(("EditorView::Apply()\n"));
-
 	thread_id thread = spawn_thread(EditorView::ApplyFunction,"TheEditor",
 			B_NORMAL_PRIORITY,(void*)this);
 	resume_thread(thread);
 }
 
-void
-EditorView::Reset()
-{
+void EditorView::Reset() {
 	AddOnView::Reset();
-
-	PRINT(("EditorView::Reset()\n"));
-
 	WidgetsSetValues();
 	WidgetsSetEnabled();
 	m_attribute_radiobutton->SetValue(B_CONTROL_ON);
 }
 
-void
-EditorView::SetEnabled(BCheckBox* checkbox, BControl* control)
-{
-	PRINT(("EditorView::SetEnabled(BCheckBox*,BControl*)\n"));
-
-	if ((checkbox->Value() == B_CONTROL_ON) && checkbox->IsEnabled())
-	{
+void EditorView::SetEnabled(BCheckBox* checkbox, BControl* control) {
+	if ((checkbox->Value() == B_CONTROL_ON) && checkbox->IsEnabled()) {
 		control->SetEnabled(true);
-	}
-	else
-	{
+	} else{
 		control->SetEnabled(false);
 	}
 }
 
-void
-EditorView::SetEnabled(BCheckBox* checkbox, BMenuField* menufield)
-{
-	PRINT(("EditorView::SetEnabled(BCheckBox*,BMenuField*)\n"));
-
-	if ((checkbox->Value() == B_CONTROL_ON) && checkbox->IsEnabled())
-	{
+void EditorView::SetEnabled(BCheckBox* checkbox, BMenuField* menufield) {
+	if ((checkbox->Value() == B_CONTROL_ON) && checkbox->IsEnabled()) {
 		menufield->SetEnabled(true);
-	}
-	else
-	{
+	} else {
 		menufield->SetEnabled(false);
 	}
 }
 
-void
-EditorView::WidgetsSetValues()
-{
-	PRINT(("EditorView::WidgetsSetValues()\n"));
-
+void EditorView::WidgetsSetValues() {
 	int numSelected = m_selected_items->CountItems();
-	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false)
-	{
+	if (numSelected == 0 || m_list_view->HasSelectionOfOnlyAcceptedItems() == false) {
 		m_album_picture->NoImage();
 		m_picture_checkbox->SetValue(B_CONTROL_OFF);
 		m_artist_checkbox->SetValue(B_CONTROL_OFF);
@@ -355,9 +286,7 @@ EditorView::WidgetsSetValues()
 #endif
 		m_year_checkbox->SetValue(B_CONTROL_OFF);
 		m_genre_checkbox->SetValue(B_CONTROL_OFF);
-	}
-	else if(numSelected == 1)
-	{
+	} else if(numSelected == 1) {
 		m_picture_checkbox->SetValue(B_CONTROL_ON);
 		m_artist_checkbox->SetValue(B_CONTROL_ON);
 		m_album_checkbox->SetValue(B_CONTROL_ON);
@@ -372,9 +301,7 @@ EditorView::WidgetsSetValues()
 #endif
 		m_year_checkbox->SetValue(B_CONTROL_ON);
 		m_genre_checkbox->SetValue(B_CONTROL_ON);
-	}
-	else if(numSelected > 1)
-	{
+	} else if(numSelected > 1) {
 		m_picture_checkbox->SetValue(B_CONTROL_ON);
 		m_artist_checkbox->SetValue(B_CONTROL_ON);
 		m_album_checkbox->SetValue(B_CONTROL_ON);
@@ -391,10 +318,8 @@ EditorView::WidgetsSetValues()
 		m_genre_checkbox->SetValue(B_CONTROL_ON);
 	}
 
-	if(numSelected > 0)
-	{
+	if(numSelected > 0) {
 		EntryRefItem* item = (EntryRefItem*)m_selected_items->ItemAt(0);
-
 		const char* artist;
 		const char* album;
 		const char* title;
@@ -411,72 +336,56 @@ EditorView::WidgetsSetValues()
 
 		BFile audioFile(item->EntryRef(), B_READ_WRITE);
 
-		if(m_attribute_radiobutton->Value() == B_CONTROL_ON)
-		{
+		if(m_attribute_radiobutton->Value() == B_CONTROL_ON) {
 			m_picture_checkbox->SetValue(B_CONTROL_OFF);
 			m_album_picture->NoImage();
 			AudioAttributes attributes(& audioFile);
 			artist = attributes.Artist();
-			if(!artist)
-			{
+			if(!artist) {
 				artist = "";
 			}
 			album = attributes.Album();
-			if(!album)
-			{
+			if(!album) {
 				album = "";
 			}
 			title = attributes.Title();
-			if(!title)
-			{
+			if(!title) {
 				title = "";
 			}
 			year = attributes.Year();
-			if(!year)
-			{
+			if(!year) {
 				year = "";
 			}
 			comment = attributes.Comment();
-			if(!comment)
-			{
+			if(!comment) {
 				comment = "";
 			}
 			track = attributes.Track();
-			if(!track)
-			{
+			if(!track) {
 				track = "";
 			}
 #ifdef _TTE_
 			rating = attributes.Rating();
-			if(!rating)
-			{
+			if(!rating) {
 				rating = "";
 			}
-
 			tempo = attributes.Tempo();
-			if(!tempo)
-			{
+			if(!tempo) {
 				tempo = "";
 			}
-
 			composer = attributes.Composer();
-			if(!composer)
-			{
+			if(!composer) {
 				composer = "";
 			}
-
 			gender = attributes.Gender();
-			if(!gender)
-			{
+			if(!gender) {
 				gender = "";
 			}
 #endif
 			genre = attributes.Genre();
-			if(!genre)
-			{
+			if(!genre) {
 				genre = "";
 			}
-
 			m_artist_textcontrol->SetText(artist);
 			m_album_textcontrol->SetText(album);
 			m_title_textcontrol->SetText(title);
@@ -491,56 +400,43 @@ EditorView::WidgetsSetValues()
 #endif
 			BMenu* menu = m_genre_menufield->Menu();
 			BMenuItem* item = menu->FindItem(genre);
-			if(item)
-			{
+			if(item) {
 				item->SetMarked(true);
 				m_genre_textcontrol->SetText("");
-			}
-			else
-			{
+			} else {
 				item = menu->FindItem("Other");
 				item->SetMarked(true);
 				m_genre_textcontrol->SetText(genre);
 			}
 
 			return;
-		}
-		else if(item->IsSupportedByTaglib())
-		{
+		} else if(item->IsSupportedByTaglib()) {
 			// Add album art
 			BPath filePath;
 			BEntry *entry = new BEntry(item->EntryRef());
-			if (item->IsMP3() && entry->GetPath(&filePath) == B_OK)
-			{
+			if (item->IsMP3() && entry->GetPath(&filePath) == B_OK) {
 				m_album_picture->UpdatePicture(filePath.Path());
 			}
 			delete entry;
-
 			ID3Tags tags(item);
-
 			artist = tags.Artist();
-			if(!artist)
-			{
+			if(!artist) {
 				artist = "";
 			}
 			album = tags.Album();
-			if(!album)
-			{
+			if(!album) {
 				album = "";
 			}
 			title = tags.Title();
-			if(!title)
-			{
+			if(!title) {
 				title = "";
 			}
 			year = tags.Year();
-			if(!year)
-			{
+			if(!year) {
 				year = "";
 			}
 			comment = tags.Comment();
-			if(!comment)
-			{
+			if(!comment) {
 				comment = "";
 			}
 			track = tags.Track();
@@ -723,11 +619,7 @@ EditorView::WidgetsRBValues()
 		m_apply_checkbox->SetLabel(APPLY_TO_ATTRIBUTES);
 }
 
-int32
-EditorView::ApplyFunction(void* args)
-{
-	PRINT(("EditorView::ApplyFunction(void*)\n"));
-
+int32 EditorView::ApplyFunction(void* args) {
 	EditorView* view = (EditorView*)args;
 
 	BView* appView = view->Window()->FindView("ArmyKnifeAppView");
@@ -795,157 +687,124 @@ EditorView::ApplyFunction(void* args)
 	}
 
 	if((view->m_attribute_radiobutton->Value() == B_CONTROL_ON) ||
-			(view->m_apply_checkbox->Value() == B_CONTROL_ON))
-	{
+			(view->m_apply_checkbox->Value() == B_CONTROL_ON)) {
 		doAttributes = true;
 	}
-
 	if((view->m_tag_radiobutton->Value() == B_CONTROL_ON) ||
-			(view->m_apply_checkbox->Value() == B_CONTROL_ON))
-	{
+			(view->m_apply_checkbox->Value() == B_CONTROL_ON)) {
 		doTags = true;
 	}
-
 	int numSelected = view->m_selected_items->CountItems();
 	maxMsg.AddInt32("maxValue",numSelected);
 	messenger.SendMessage(&maxMsg);
 
-	for(int i=0; i<numSelected; i++)
-	{
+	for(int i=0; i<numSelected; i++) {
 		EntryRefItem * refItem = (EntryRefItem*)view->m_selected_items->ItemAt(i);
 		BFile audioFile(refItem->EntryRef(), B_READ_WRITE);
-
 		fileMsg.MakeEmpty();
 		fileMsg.AddString("file", refItem->EntryRef()->name);
 		messenger.SendMessage(&fileMsg);
-
-		if(doAttributes)
-		{
+		if(doAttributes) {
 			AudioAttributes attributes(& audioFile);
-			if(view->m_artist_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_artist_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetArtist(artist);
 				attributes.WriteArtist();
 			}
-			if(view->m_album_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_album_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetAlbum(album);
 				attributes.WriteAlbum();
 			}
-			if(view->m_title_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_title_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetTitle(title);
 				attributes.WriteTitle();
 			}
-			if(view->m_year_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_year_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetYear(year);
 				attributes.WriteYear();
 			}
-			if(view->m_comment_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_comment_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetComment(comment);
 				attributes.WriteComment();
 			}
-			if(view->m_track_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_track_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetTrack(track);
 				attributes.WriteTrack();
 			}
 #ifdef _TTE_
-			if(view->m_rating_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_rating_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetRating(rating);
 				attributes.WriteRating();
 			}
-			if(view->m_tempo_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_tempo_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetTempo(tempo);
 				attributes.WriteTempo();
 			}
-			if(view->m_composer_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_composer_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetComposer(composer);
 				attributes.WriteComposer();
 			}
-			if(view->m_gender_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_gender_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetGender(gender);
 				attributes.WriteGender();
 			}
 #endif
-			if(view->m_genre_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_genre_checkbox->Value() == B_CONTROL_ON) {
 				attributes.SetGenre(genre);
 				attributes.WriteGenre();
 			}
 		}
 
-		if(doTags && refItem->IsSupportedByTaglib())
-		{
-			if (view->m_picture_checkbox->Value() == B_CONTROL_ON)
-			{
+		if(doTags && refItem->IsSupportedByTaglib()) {
+			if (view->m_picture_checkbox->Value() == B_CONTROL_ON) {
 				BPath filePath;
 				BEntry *entry = new BEntry(refItem->EntryRef());
-				if (refItem->IsMP3() && entry->GetPath(&filePath) == B_OK)
-				{
+				if (refItem->IsMP3() && entry->GetPath(&filePath) == B_OK) {
 					view->m_album_picture->SetPicture(filePath.Path());
 				}
 				delete entry;
 			}
 			ID3Tags tags(refItem);
-			if(view->m_artist_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_artist_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetArtist(artist);
 				tags.WriteArtist();
 			}
-			if(view->m_album_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_album_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetAlbum(album);
 				tags.WriteAlbum();
 			}
-			if(view->m_title_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_title_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetTitle(title);
 				tags.WriteTitle();
 			}
-			if(view->m_year_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_year_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetYear(year);
 				tags.WriteYear();
 			}
-			if(view->m_comment_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_comment_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetComment(comment);
 				tags.WriteComment();
 			}
-			if(view->m_track_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_track_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetTrack(track);
 				tags.WriteTrack();
 			}
-			if(view->m_genre_checkbox->Value() == B_CONTROL_ON)
-			{
+			if(view->m_genre_checkbox->Value() == B_CONTROL_ON) {
 				tags.SetGenre(genre);
 				tags.WriteGenre();
 			}
 		}
 
 		refItem->UpdateTaglibMetadata();
-
 		messenger.SendMessage(&updateMsg);
 	}
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
+
+	return B_OK;
 }
 
-void
-EditorView::MessageReceived(BMessage* message)
-{
-	//PRINT(("EditorView::MessageReceived(BMessage*)\n"));
-
-	switch(message->what)
-	{
+void EditorView::MessageReceived(BMessage* message) {
+	switch(message->what) {
 		case MSG_ARTIST_CHECKBOX:
 			SetEnabled(m_artist_checkbox,m_artist_textcontrol);
 			break;
@@ -982,7 +841,6 @@ EditorView::MessageReceived(BMessage* message)
 			SetEnabled(m_genre_checkbox,m_genre_menufield);
 			SetEnabled(m_genre_checkbox,m_genre_textcontrol);
 			break;
-
 		case MSG_CLEAR_CHECKBOX:
 			{
 				if (m_clear_all_checkbox->Value() == B_CONTROL_ON)
@@ -1064,9 +922,7 @@ EditorView::MessageReceived(BMessage* message)
 	}
 }
 
-void
-EditorView::SetAllEnabled()
-{
+void EditorView::SetAllEnabled() {
 	SetEnabled(m_artist_checkbox, m_artist_textcontrol);
 	SetEnabled(m_album_checkbox, m_album_textcontrol);
 	SetEnabled(m_title_checkbox, m_title_textcontrol);

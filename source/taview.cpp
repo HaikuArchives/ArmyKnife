@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #include <Box.h>
 #include <CheckBox.h>
 #include <Debug.h>
@@ -189,8 +193,7 @@ TAView::WidgetsSetEnabled()
 	}
 }
 
-int32
-TAView::ApplyFunction(void* args)
+int32 TAView::ApplyFunction(void* args)
 {
 	PRINT(("TAView::ApplyFunction(void*)\n"));
 
@@ -363,22 +366,16 @@ TAView::ApplyFunction(void* args)
 	}
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
+
+	return B_OK;
 }
 
-bool
-TAView::AcceptListItem(EntryRefItem* listItem)
-{
-	PRINT(("TAView::AcceptListItem()\n"));
-
+bool TAView::AcceptListItem(EntryRefItem* listItem) {
 	if (!listItem->IsFSWritable())
 		return false;
-
 	if (!listItem->IsFSAttributable())
 		return false;
-
 	if(!listItem->IsSupportedByTaglib())
 		return false;
-
 	return true;
 }
-

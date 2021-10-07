@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #include <Archivable.h>
 #include <Box.h>
 #include <Debug.h>
@@ -241,19 +245,14 @@ NAView::MakePatternMenu()
 	m_pattern_menu->SetTargetForItems(this);
 }
 
-int32
-NAView::ApplyFunction(void* args)
-{
-	PRINT(("NAView::ApplyFunction(void*)\n"));
-
+int32 NAView::ApplyFunction(void* args) {
 	NAView* view = (NAView*)args;
 
 	char pattern[256];
 	strcpy(pattern, view->m_pattern_menufield->Menu()->FindMarked()->Label());
 
 	bool a2n = false;
-	if(view->m_a2n_radiobutton->Value() == B_CONTROL_ON)
-	{
+	if(view->m_a2n_radiobutton->Value() == B_CONTROL_ON) {
 		a2n = true;
 	}
 
@@ -271,8 +270,7 @@ NAView::ApplyFunction(void* args)
 	int numSelected = view->m_selected_items->CountItems();
 	maxMsg.AddInt32("maxValue",numSelected);
 	messenger.SendMessage(&maxMsg);
-	for(int i=0;i<numSelected;i++)
-	{
+	for(int i=0;i<numSelected;i++) {
 		EntryRefItem* refItem = (EntryRefItem*)view->m_selected_items->ItemAt(i);
 		entry_ref* ref = refItem->EntryRef();
 		BFile id3File(ref,B_READ_WRITE);
@@ -282,41 +280,33 @@ NAView::ApplyFunction(void* args)
 		fileMsg.AddString("file", refItem->EntryRef()->name);
 		messenger.SendMessage(&fileMsg);
 
-		if(a2n)
-		{
+		if(a2n)	{
 			const char* artist = attributes.Artist();
-			if(!artist)
-			{
+			if(!artist) {
 				artist = "";
 			}
 			const char* album = attributes.Album();
-			if(!album)
-			{
+			if(!album) {
 				album = "";
 			}
 			const char* title = attributes.Title();
-			if(!title)
-			{
+			if(!title) {
 				title = "";
 			}
 			const char* year = attributes.Year();
-			if(!year)
-			{
+			if(!year) {
 				year = "";
 			}
 			const char* comment = attributes.Comment();
-			if(!comment)
-			{
+			if(!comment) {
 				comment = "";
 			}
 			const char* track = attributes.Track();
-			if(!track)
-			{
+			if(!track) {
 				track = "";
 			}
 			const char* genre = attributes.Genre();
-			if(!genre)
-			{
+			if(!genre) {
 				genre = "";
 			}
 
@@ -332,18 +322,14 @@ NAView::ApplyFunction(void* args)
 			entry.Rename(name.String());
 			entry.GetRef(ref);
 			refItem->UpdateText();
-		}
-		else	// n2a -- name to attributes
-		{
+		} else {
 			char name[2];
 			char value[B_PATH_NAME_LENGTH+1];
 			memset(name,0,2);
 			memset(value,0,B_PATH_NAME_LENGTH+1);
 			NameValueMatcher matcher(pattern,ref->name,'/');
-			while(matcher.NextMatch(name,value) == 0)
-			{
-				switch(name[0])
-				{
+			while(matcher.NextMatch(name,value) == 0) {
+				switch(name[0]) {
 					case 'a':
 						attributes.SetArtist(value);
 						attributes.WriteArtist();
@@ -379,26 +365,21 @@ NAView::ApplyFunction(void* args)
 		}
 		messenger.SendMessage(&updateMsg);
 	}
-	if(a2n)
-	{
+	if(a2n)	{
 		BMessage invalidateListMsg(INVALIDATE_LIST);
 		messenger.SendMessage(&invalidateListMsg);
 	}
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
+
+	return B_OK;
 }
 
-void
-NAView::MessageReceived(BMessage* message)
-{
-	//PRINT(("NAView::MessageReceived(BMessage*)\n"));
-
-	switch(message->what)
-	{
+void NAView::MessageReceived(BMessage* message) {
+	switch(message->what) {
 		case RADIO_BUTTON_EVENT:
 			WidgetsRBValues();
 			break;
-
 		case MSG_PATTERN_CHANGED:
 			{
 				int32 index;

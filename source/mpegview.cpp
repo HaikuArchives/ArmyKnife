@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #include <Archivable.h>
 #include <Box.h>
 #include <CheckBox.h>
@@ -301,11 +305,7 @@ MPEGView::WidgetsRBValues()
 	}
 }
 
-int32
-MPEGView::ApplyFunction(void* args)
-{
-	PRINT(("MPEGView::ApplyFunction(void*)\n"));
-
+int32 MPEGView::ApplyFunction(void* args) {
 	MPEGView* view = (MPEGView*)args;
 
 	BView* appView = view->Window()->FindView("ArmyKnifeAppView");
@@ -421,7 +421,7 @@ MPEGView::ApplyFunction(void* args)
 	messenger.SendMessage(&resetMsg);
 	messenger.SendMessage(&endMsg);
 
-
+	return B_OK;
 }
 
 void
