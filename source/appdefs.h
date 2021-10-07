@@ -1,9 +1,13 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #ifndef __APP_DEFS_H__
 #define __APP_DEFS_H__
 
 #define AUTHOR "Jason Burgess"
 #define PROJECT "FlipSide Software"
-#define PROJECT_WWW "http://github.com/HaikuArchives/ArmyKnife"
+#define PROJECT_WWW "github.com/HaikuArchives/ArmyKnife"
 #define MAINTAINER "Scott McCreary"
 #define MAINTAINER_EMAIL "scottmc2@gmail.com"
 

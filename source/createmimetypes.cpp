@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #include <Bitmap.h>
 #include <Debug.h>
 #include <Mime.h>

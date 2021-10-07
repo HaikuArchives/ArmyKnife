@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #ifndef __COMMAND_CONSTANTS_H__
 #define __COMMAND_CONSTANTS_H__
 

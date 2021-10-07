@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #ifndef __AUDIO_ATTRIBUTE_H__
 #define __AUDIO_ATTRIBUTE_H__
 

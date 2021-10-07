@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #ifndef __GENRE_LIST_H__
 #define __GENRE_LIST_H__
 
@@ -7,8 +11,8 @@ class GenreList
 		GenreList();
 		~GenreList();
 
-		static const char* Genre(int value);
-		static int Genre(const char* value);
+		static BString Genre(int genreindex);
+		static int Genre(BString genretofind);
 		static int NumGenres();
 		static int GenreSort(const char* g1, const char* g2);
 };

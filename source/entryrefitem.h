@@ -1,4 +1,7 @@
-#ifndef __ENTRY_REF_ITEM_H__
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */#ifndef __ENTRY_REF_ITEM_H__
 #define __ENTRY_REF_ITEM_H__
 
 #include <Entry.h>

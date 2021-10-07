@@ -1,3 +1,7 @@
+/*
+ * Copyright 2000-2021, ArmyKnife Team. All rights reserved.
+ * Distributed under the terms of the MIT License.
+ */
 #ifndef __PICK_LIST_VIEW_H__
 #define __PICK_LIST_VIEW_H__
 
