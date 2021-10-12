@@ -144,7 +144,7 @@ void EditorView::InitView()
 		menu->AddItem(new BMenuItem(genre,new BMessage(MSG_GENRE_CHANGED)));
 		last = current;
 	}
-
+	menu->SetMaxContentWidth(StringWidth("contemporary classical WWWWW "));
 	m_genre_menufield = new BMenuField("m_genre_menufield", "", menu);
 	m_genre_textcontrol = new BTextControl("m_genre_textcontrol","","",NULL);
 	//DONE INSIDE BOX
@@ -463,6 +463,7 @@ void EditorView::WidgetsSetValues() {
 			m_gender_textcontrol->SetText("");
 #endif
 			BMenu* menu = m_genre_menufield->Menu();
+			menu->SetMaxContentWidth(StringWidth("contemporary classical WWWWW "));
 			BMenuItem* item = menu->FindItem(genre);
 			if(item)
 			{
