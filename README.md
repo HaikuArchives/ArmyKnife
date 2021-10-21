@@ -1,6 +1,6 @@
 ArmyKnife
 =========
 
-New home for old BeOS favorite ArmyKnife, which is a multi-use tagger for audio files on Haiku/BeOS
+Multi-use tagger for audio files on Haiku
 
-![ArmyKnife Screenshot](ArmyKnife.png)
+![ArmyKnife Screenshot](documentation/armyknife/images/armyknife.png)
