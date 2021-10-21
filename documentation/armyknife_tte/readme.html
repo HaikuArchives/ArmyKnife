@@ -1,105 +1,114 @@
-<html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"../html-dtd/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-<title>The Army Knife</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="robots" content="all" />
+	<title>ArmyKnife</title>
+
+<style type="text/css">
+body {
+	font-size: 0.9em;
+	line-height: 1.5;
+	margin: 30px;
+	font-family: "DejaVu Sans",Arial,Helvetica,sans-serif;
+}
+h1 {
+	font-size: 1.3em;
+	border-bottom: dotted thin #e0e0e0;
+}
+h2 {
+	font-size: 1.2em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-top: 30px;
+}
+.key {				/* Shortcut (separate with &#160; */
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #c7c7c7;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px 2px 0px 2px;
+	background-color: #e8e8e8;
+	font-family: serif;
+	font-variant: small-caps;
+	font-size: 0.8em;
+}
+</style>
+
 </head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000FF">
+<body>
 
-<table>
-	<tr>
-		<td valign="top">
-			<img src="./images/armyknife_icon.gif" alt="Army Knife Icon">
-		</td>
-		<td valign="bottom">
-			<h1>Army Knife</h1>
-		</td>
-	</tr>
-</table>
+<h1><img width="64" height="64" src="./images/armyknife-icon_64.png" alt="ArmyKnife Icon" />ArmyKnife</h1>
+<p>ArmyKnife is a powerful tool to perform ID3-Tag to Attribute assignment, Attribute to ID3-Tag assignment, parsing of filenames to fill attributes, and renaming files based on their attributes. It also includes an editor that lets you work with multiple files at once. It supports MP3, Ogg Vorbis and FLAC format.</p>
+<p>Note, that to use Haiku's fast queries, the attributes have to be filled. On the other hand, to be useful on other platforms and stand alone players, the ID3 tags should be filled. Therefore, it's best to keep both in sync.</p>
+<p>You start either by selecting your files and invoking the context menu <i><b>Open With...</b></i> and choose <i><b>ArmyKnife</b></i> or simply start ArmyKnife and add files via drag&amp;drop. This is ArmyKnife's window, the opened files in a list to the right and controls to the left, depending on the selected mode:</p>
+<img src="./images/armyknife.png" alt="ArmyKnife window" />
+<p>There are three modes of operation, selected with the drop-down menu on top or switched with <span class="key">ALT</span>&#160;<span class="key">&larr;</span>/<span class="key">&rarr;</span>:</p>
 
-<table border="1">
-<tr>
-<td>
-<img src="./images/armyknife_screen_shot_1.png">
-<td>
-<center><h3>The Army Knife</h3></center><br>
-The default tab for The Army Knife can be set using the preferences panel (Edit-&gt;Preferences)
-The list contains all the files that The Army Knife knows about.  You can add files by dragging them
-onto The Army Knife, or empty the list using the Edit-&gt;Clear List command.  The Edit-&gt;Save
-Window Settings command allows users to save the current window location and size as the default.
-You may select multiple files from that list with the following commands.
-<blockquote>
-<table cellpadding="4">
-		<tr><td>Select All</td>          <td>Command-A(Alt-A)</td></tr>
-		<tr><td>Contigous Select</td>    <td>Click first file, Option(Win) Click the last file</td></tr>
-		<tr><td>Noncontigous Select</td> <td>Shift Click all desired files.</td></tr>
-</table>
-</blockquote>
-</tr>
+<h2>Edit Mode</h2>
+<table summary="Edit Mode"><tr>
+	<td valign="top"><img width="234" height="354" src="./images/armyknife-edit.png" alt="Edit Mode" /></td>
+	<td width="30"></td>
+	<td valign="top"><p>At the top, you decide if you'd like to see and edit the Haiku attributes of the files or their ID3-Tags. The checkbox below decides if your changes will also apply to the respective other.<br />
+Below are the different attributes/tags and their contents. If you can't see anything, neither in Attributes-mode nor in Tags-mode, you either haven't selected any files from the list or there really is no information available. In that case you may want to switch to <i><b>Name Mode</b></i> to salvage what's available from the filenames.</p>
+<p>All changes only affect the selected files and only after pressing <i><b>Apply</b></i>, which is the default when pressing <span class="key">ENTER</span>. Also, only the checkmarked attributes/tags will be written to these files.</p>
+<p>The "Genre" field is a bit of a special case: If you choose to set a custom genre, only Haiku attributes will contain your text. ID3-Tags only show standard genres and will fall back to "Other".</p>
+<p>There's some convenient keyboard navigation when you have to edit a tag of single files, e.g. "Title" and "Track" of an album. The cursor can stay in the respective tag's text box while you select a new file with keyboard shortcuts:</p>
+	<table summary="Keyboard navigation" cellpadding="0">
+	<tr><td width="100"><span class="key">ALT</span>&#160;<span class="key">HOME</span></td><td>First file</td></tr>
+	<tr><td><span class="key">ALT</span>&#160;<span class="key">END</span></td><td>Last file</td></tr>
+	<tr><td><span class="key">ALT</span>&#160;<span class="key">&uarr;</span></td><td>Previous file</td></tr>
+	<tr><td><span class="key">ALT</span>&#160;<span class="key">&darr;</span></td><td>Next file</td></tr>
+	</table></td>
+</tr></table>
 
-<tr>
-<td>
-<img src="./images/armyknife_screen_shot_2.png">
-</td>
-<td>
-<center><h3>The Editor</h3></center><br>
-Allows the user (you) to edit the attributes and tags of one or more files at once. You tell The Editor to
-work with attributes or tags by useing the radio buttons in the upper right.  The check box "Also Apply To ...."
-allows you to change the file's tags and attributes at the same time.   If you have no files selected the
-editor controls will be disabled by default.  You may enable and disable any controls you like using the
-check boxes.  When you hit the apply button, The Army Knife will only change the selected attributes or tags
-for the files selected in the list.  Starting with Army Knife 3.10, there is a new feature that is sure to
-be popular: User Defined Genres.  A user can now make up their own genres and use them for the Genre Attribute.
-This does not work for ID3 Tags because the genre is stored as number and not a string in tags. If a user tries
-to save a User Defined Genre in a tag, the &quot;Other&quot; genre will be saved to the tag.
-</td>
-</tr>
+<h2>Copy Mode</h2>
+<table summary="Copy Mode"><tr>
+	<td valign="top"><img width="234" height="295" src="./images/armyknife-copy.png" alt="Copy Mode" /></td>
+	<td width="30"></td>
+	<td valign="top"><p>You can copy the checkmarked fields either from <i><b>Attributes&#160;&rarr;&#160;Tags</b></i> or <i><b>Tags&#160;&rarr;&#160;Attributes</b></i>.</p>
+<p>Make sure you've got the direction right or you'll accidentally copy empty attributes over perfectly filled ID3-Tags! Better switch quickly over to the Edit mode to have another look...</p>
+<p>Again, changes take only effect on selected files after pressing <i><b>Apply</b></i>.</p></td>
+</tr></table>
 
-<tr>
-<td>
-<img src="./images/armyknife_screen_shot_3.png">
-</td>
-<td>
-<center><h3>Tags &amp; Attributes</h3></center><br>
-If Attributes -&gt; Tags is selected, then Tags &amp; Attributes will copy the value of the attributes into
-the corresponding ID3 tags for every selected file in the list. Otherwise, it will copy the ID3 Tag Values
-into the attributes.
-</td>
-</tr>
+<h2>Name Mode</h2>
+<table summary="Name Mode"><tr>
+	<td valign="top"><img width="234" height="295" src="./images/armyknife-name.png" alt="Name Mode" /></td>
+	<td width="30"></td>
+	<td valign="top"><p>You can either rename all selected files according to their attributes (<i><b>Attributes&#160;&rarr;&#160;Name</b></i>) or, conversely, fill attributes according to the filename (<i><b>Name&#160;&rarr;&#160;Attributes</b></i>).<br />
+As with the Copy mode, make sure the direction is right!</p>
+<p>The filename is analyzed/build with a pattern, selected from the <i><b>Filename</b></i> drop-down menu. Above it is a legend describing what abbreviation corresponds to what attribute. <i><b>\*</b></i> is a wildcard you can use for parts that shouldn't go in any attribute. Of course, you can define your own pattern by choosing <i><b>New..</b></i> from there.</p>
+<p>As usual, again changes take only effect on selected files after pressing <i><b>Apply</b></i>.</p></td>
+</tr></table>
+<p><br /><br /></p>
 
-<tr>
-<td>
-<img src="./images/armyknife_screen_shot_4.png">
-</td>
-<td>
-<center><h3>Names &amp; Attributes</h3></center><br>
-If Attributes -&gt; Name is choosen, Names &amp; Attributes will rename every file that is selected in the list
-using the file's attributes and the supplied pattern.  The default pattern can be changed in the preference panel.
-(Edit-&gt;Preferences) Otherwise, it will parse each file name according to the supplied pattern, and sets the
-attributes accordingly. The wildcard (/*) can be used for parts of the name that are variable, but you do not want
-to assign to an attribute.  The default pattern can be changed in the preference panel. (Edit-&gt;Preferences)
-</td>
-</tr>
-</table>
-<br>
-<br>
-<h3>Questions? Comments? Suggestions?</h3>
-Email them to <a href="mailto:jonas@kirilla.com">jonas@kirilla.com</a>
-<br>
-<br>
 <h3>Bugs? Feature Requests?</h3>
-Check out the <a href="http://dev.osdrawer.net/projects/show/armyknife"> Army Knife project page </a> at <a href="http://www.osdrawer.net">OSDrawer.net</a> first, and if it
-hasn't already been submitted, <a href="http://dev.osdrawer.net/projects/armyknife/issues/new">submit</a> it!
-<br>
-<br>
+Check out the <a href="https://github.com/HaikuArchives/ArmyKnife">ArmyKnife project page</a> at <a href="https://github.com/HaikuArchives">HaikuArchives on Github</a> first, and if it
+hasn't already been submitted, <a href="https://github.com/HaikuArchives/ArmyKnife/issues/new">submit</a> it!
+<br />
+<br />
 <b><h3>Thanks:</h3></b>
-Brian Tietz for Santa's Gift Bag<br>
-YNOP for the excellent YTabView.<br>
-Technix for the UI suggestions.<br>
-ToBeOrNotToBe for his time and Ogg expertise.<br>
-The BeShare community for all of their help.<br>
-Be for THE Operating System.<br>
-Everyone else in the BeOS community for making it what it is.<br>
-<br>
-<br>
-<br>
+Jason Burgess and Flip Side Software for making ArmyKnife and making it Open Source<br />
+Brian Tietz for Santa's Gift Bag<br />
+YNOP for the excellent YTabView.<br />
+Technix for the UI suggestions.<br />
+ToBeOrNotToBe for his time and Ogg expertise.<br />
+The BeShare community for all of their help.<br />
+Be for THE Operating System.<br />
+Everyone else in the BeOS community for making it what it is.<br />
+<br />
+Jonas Sundström and Ryan Leavengood for keeping ArmyKnife working in the transition from BeOS to Haiku in the OSDrawer.net days.<br />
+Haiku for the new Operating System.<br />
+All of the people who have worked on Haiku since 2001 to make Haiku what it is now.<br />
+HaikuPorts for helping to automate building and packaging of thousands of packages for Haiku including this one.<br />
+HaikuArchives for giving us a place to keep old BeOS programs upto date<br />
+Taglib and MusicBrainz for their nifty open source libraries<br />
+The Google Code-In students who completed several small tasks for ArmyKnife from 2012-2020<br />
+<br />
 </body>
 </html>

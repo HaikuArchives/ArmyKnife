@@ -12,7 +12,7 @@
 #define MAINTAINER_EMAIL "scottmc2@gmail.com"
 
 #ifdef _TTE_
-#define APPLICATION "Army Knife - TuneTracker Edition"
+#define APPLICATION "ArmyKnife - TuneTracker Edition"
 #define APPLICATION_DIR "ArmyKnifeTTE"
 #define SIGNATURE "application/x-vnd.armyknife-tte"
 #else
@@ -21,7 +21,7 @@
 #define SIGNATURE "application/x-vnd.armyknife"
 #endif
 
-#define VERSION "5.1.0"
+#define VERSION "5.1.1"
 
 #define PROJECT_DIR "FlipSide Software"
 #define WINDOW_FILE "window"
