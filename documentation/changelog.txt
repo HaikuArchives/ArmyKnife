@@ -95,3 +95,15 @@
 	-- list items not supported by the current mode are highlighted
 	-- files on a read-only volume are now allowed to be opened
 		(but you can't do much with them)
+
+5.1.1
+    -- Lots of changes
+    -- Moved to HaikuArchives from OSDrawer
+    -- Converted to Haiku's Layout Management and removed libSanta
+    -- Added Album Cover support
+    -- Renamed from "The Army Knife" to just simply "ArmyKnife"
+    -- Added gcc4, and now gcc8 and 64 bit support
+    -- Added drag and drop text to let users know they could do so
+    -- Added Open Files option to menu
+    -- Switched About to use BAboutWindow
+    -- Added support for more languages

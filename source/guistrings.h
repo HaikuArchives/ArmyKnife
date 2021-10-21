@@ -10,7 +10,7 @@
 #include "appdefs.h"
 
 #define WIN_TITLE B_TRANSLATE_SYSTEM_NAME(APPLICATION)
-#define PREF_TITLE B_TRANSLATE_CONTEXT("The Army Knife Preferences", "Window title")
+#define PREF_TITLE B_TRANSLATE_CONTEXT("ArmyKnife Preferences", "Window title")
 #define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online Tag Lookup", "Window title")
 
 #define FILE_MENU B_TRANSLATE_CONTEXT("File", "File menu")

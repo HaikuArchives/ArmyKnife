@@ -1,69 +1,72 @@
-1	English	application/x-vnd.armyknife	3412892590
-MPEG	Mode menu		MPEG
-Genre	Tag type		Genre
-0 have ID3v1 tags.	MPEG information		0 have ID3v1 tags.
-Reset	Edit menu: Selecting files		Reset
-No image	Status		No image
-Next File	Edit menu: Selecting files		Next File
-Last File	Edit menu: Selecting files		Last File
-Copy	Edit menu: Copy/Paste		Copy
-Pattern:	Pattern label		Pattern:
-Tags	Edit mode operation		Tags
-Select All Unsupported	Edit menu: Selecting files		Select All Unsupported
-Next Mode	Mode menu		Next Mode
-Paste	Edit menu: Copy/Paste		Paste
-Online Tag Lookup	Window title		Online Tag Lookup
-Name → Attributes	Conversion type		Name → Attributes
-Year	Tag type		Year
+1	English	application/x-vnd.armyknife	1165837343
 Info	MPEG information		Info
-Title	Tag type		Title
-Excellent	About message	In context, this means \"dismiss\"	Excellent
+Open	File menu		Open
+Copy	Edit menu: Copy/Paste		Copy
+Attributes	Edit mode operation		Attributes
+Remove	MPEG operation		Remove
+0 have ID3v2 tags.	MPEG information		0 have ID3v2 tags.
+Copy	Mode menu		Copy
+Changelog	Help menu		Changelog
+Also Apply To Attributes	Edit mode operation		Also Apply To Attributes
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Cancel	Main action		Cancel
+Clear List	Edit menu: Selecting files		Clear List
+No more results	Query lookup button		No more results
+Artist	Tag type		Artist
+Save	Main action		Save
+Also Apply To Tags	Edit mode operation		Also Apply To Tags
+Paste	Edit menu: Copy/Paste		Paste
+Add	MPEG operation		Add
+Show More	Query lookup button		Show More
+Reset	Edit menu: Selecting files		Reset
+Edit	Edit menu: Copy/Paste		Edit
+Previous Mode	Mode menu		Previous Mode
+No image	Status		No image
+idle	Status		idle
+Help	Help menu		Help
+First File	Edit menu: Selecting files		First File
+Working…	Query lookup button		Working…
+Last File	Edit menu: Selecting files		Last File
+Cut	Edit menu: Copy/Paste		Cut
+Pattern:	Pattern label		Pattern:
+Mode	Mode menu		Mode
+Tags	Edit mode operation		Tags
+About...	File menu		About...
+Comment = /c	Pattern explanation	Leave /c untouched.	Comment = /c
 0 have APE tags.	MPEG information		0 have APE tags.
+Name	Mode menu		Name
+Track	Tag type		Track
+Add	Main action		Add
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Attributes → Name	Conversion type		Attributes → Name
+Title	Tag type		Title
+Comment	Tag type		Comment
+Tags → Attributes	Conversion type		Tags → Attributes
+Next File	Edit menu: Selecting files		Next File
+0 files in selection.	MPEG information		0 files in selection.
+Next Mode	Mode menu		Next Mode
+Reset	Main action		Reset
+ selected	Main action		 selected
+Album	Tag type		Album
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
+Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
+Add/Remove	MPEG operation		Add/Remove
+Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
+Online Tag Lookup…	Editor view button		Online Tag Lookup…
+Readme	Help menu		Readme
+Online Tag Lookup	Window title		Online Tag Lookup
+0 have ID3v1 tags.	MPEG information		0 have ID3v1 tags.
+Select All Unsupported	Edit menu: Selecting files		Select All Unsupported
+Quit	File menu		Quit
+Genre	Tag type		Genre
+File	File menu		File
+Previous File	Edit menu: Selecting files		Previous File
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
 Select All	Edit menu: Selecting files		Select All
 Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
-Previous Mode	Mode menu		Previous Mode
-Clear List	Edit menu: Selecting files		Clear List
-Album	Tag type		Album
-Quit	File menu		Quit
-Remove	MPEG operation		Remove
- selected	Main action		 selected
-Copy	Mode menu		Copy
-0 files in selection.	MPEG information		0 files in selection.
-About...	File menu		About...
-idle	Status		idle
-Add/Remove	MPEG operation		Add/Remove
-Track	Tag type		Track
-Working…	Query lookup button		Working…
-Cancel	Main action		Cancel
-Apply	Main action		Apply
-Tags → Attributes	Conversion type		Tags → Attributes
-Name	Mode menu		Name
-Also Apply To Attributes	Edit mode operation		Also Apply To Attributes
-Show More	Query lookup button		Show More
-First File	Edit menu: Selecting files		First File
-Attributes	Edit mode operation		Attributes
-Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
-0 have ID3v2 tags.	MPEG information		0 have ID3v2 tags.
-Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
-No more results	Query lookup button		No more results
-Previous File	Edit menu: Selecting files		Previous File
-Cut	Edit menu: Copy/Paste		Cut
-Also Apply To Tags	Edit mode operation		Also Apply To Tags
 Edit	Mode menu		Edit
-Mode	Mode menu		Mode
-Add	Main action		Add
-File	File menu		File
+MPEG	Mode menu		MPEG
 Attributes → Tags	Conversion type		Attributes → Tags
-Comment	Tag type		Comment
-Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
-Artist	Tag type		Artist
-Edit	Edit menu: Copy/Paste		Edit
-Online Tag Lookup…	Editor view button		Online Tag Lookup…
-The Army Knife	System name		The Army Knife
-Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
-Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
-Attributes → Name	Conversion type		Attributes → Name
-Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
-Reset	Main action		Reset
-Comment = /c	Pattern explanation	Leave /c untouched.	Comment = /c
-Add	MPEG operation		Add
+Name → Attributes	Conversion type		Name → Attributes
+Year	Tag type		Year
+ArmyKnife	System name		ArmyKnife

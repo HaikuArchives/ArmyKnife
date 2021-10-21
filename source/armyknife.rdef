@@ -1,5 +1,5 @@
 /*	$Id: ArmyKnife.rdef $
-	Copyright 2009
+	Copyright 2009-2021
 	Distributed under the MIT License
 	Created: 2009-06-17
 
@@ -62,7 +62,7 @@ resource mini_icon array {
 	$"2A2A2A2A2A2A2A2A2A2A2A2A2A2A2A2A"
 };
 
-resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.Be-elfexecutable";
+resource(2, "BEOS:TYPE") #'MIMS' "application/x-vnd.be-elfexecutable";
 
 resource app_signature "application/x-vnd.armyknife";
 
@@ -78,12 +78,12 @@ resource file_types message {
 resource app_version {
 	major  = 5,
 	middle = 1,
-	minor  = 0,
+	minor  = 1,
 
 	variety = B_APPV_FINAL,
 	internal = 0,
 
-	short_info = "The Army Knife",
+	short_info = "ArmyKnife",
 	long_info = "MP3, Ogg and FLAC audio file tag editor."
 };
 
