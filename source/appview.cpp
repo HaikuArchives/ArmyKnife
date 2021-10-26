@@ -136,9 +136,11 @@ AppView::InitView()
 	m_list_view->SetSelectionMessage(new BMessage(SELECTION_CHANGED));
 
 	m_scroll_view_right = new BScrollView("m_scroll_view_right", m_list_view, B_WILL_DRAW, true, true);
+	m_scroll_view_right->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	m_scroll_view_left = new BScrollView("m_scroll_view_left", m_pick_list_view, B_WILL_DRAW, false, true);
 	m_scroll_view_left->SetExplicitMinSize(BSize(0, 250));
+	m_scroll_view_left->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	m_selected_string_view = new BStringView("m_selected_string_view","");
 	m_selected_string_view->SetAlignment(B_ALIGN_RIGHT);

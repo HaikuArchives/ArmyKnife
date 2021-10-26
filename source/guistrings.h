@@ -83,6 +83,7 @@
 #define COMMENT_PATTERN "/c"
 #define GENRE_PATTERN "/g"
 
+#define COVER_LABEL B_TRANSLATE_CONTEXT("Cover", "Tag type")
 #define ARTIST_LABEL B_TRANSLATE_CONTEXT("Artist", "Tag type")
 #define ALBUM_LABEL B_TRANSLATE_CONTEXT("Album", "Tag type")
 #define TITLE_LABEL B_TRANSLATE_CONTEXT("Title", "Tag type")
@@ -124,10 +125,10 @@
 #define DEFAULT_FUNCTION_LABEL B_TRANSLATE_CONTEXT("Default function", "Default")
 
 #define MPEG_INFO_BOX_LABEL B_TRANSLATE_CONTEXT("Info", "MPEG information")
-#define MPEG_FILES_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 files in selection.", "MPEG information")
-#define MPEG_ID3V1_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v1 tags.", "MPEG information")
-#define MPEG_ID3V2_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v2 tags.", "MPEG information")
-#define MPEG_APE_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have APE tags.", "MPEG information")
+#define MPEG_FILES_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 files in selection", "MPEG information")
+#define MPEG_ID3V1_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v1 tags", "MPEG information")
+#define MPEG_ID3V2_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v2 tags", "MPEG information")
+#define MPEG_APE_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have APE tags", "MPEG information")
 
 #define MPEG_ADD_REMOVE_BOX_LABEL B_TRANSLATE_CONTEXT("Add/Remove", "MPEG operation")
 #define MPEG_ADD_RADIOBUTTON B_TRANSLATE_CONTEXT("Add", "MPEG operation")
