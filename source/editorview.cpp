@@ -71,7 +71,7 @@ void EditorView::InitView()
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
 
 	m_edit_box = new BBox("m_edit_box");
-	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL, 0)
 		.SetInsets(B_USE_SMALL_INSETS)
 		.AddGroup(B_HORIZONTAL)
 			.Add(m_attribute_radiobutton)

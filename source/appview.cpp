@@ -160,7 +160,7 @@ AppView::InitView()
 	m_status_card = new BCardLayout();
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_DEFAULT_SPACING)
-		.SetInsets(B_USE_WINDOW_INSETS)
+		.SetInsets(B_USE_WINDOW_INSETS, 0, B_USE_WINDOW_INSETS, B_USE_WINDOW_INSETS)
 		.AddSplit(B_HORIZONTAL)
 			.Add(m_scroll_view_left)
 			.Add(m_scroll_view_right)
