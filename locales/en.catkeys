@@ -1,7 +1,7 @@
-1	English	application/x-vnd.armyknife	2406198119
+1	English	application/x-vnd.armyknife	3052435526
 Info	MPEG information		Info
-Open	File menu		Open
 Copy	Edit menu: Copy/Paste		Copy
+Open	File menu		Open
 Attributes	Edit mode operation		Attributes
 Remove	MPEG operation		Remove
 Copy	Mode menu		Copy
@@ -53,6 +53,7 @@ Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
 Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
 Add/Remove	MPEG operation		Add/Remove
 Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
+Drag and drop files here	Empty list		Drag and drop files here
 Readme	Help menu		Readme
 Quit	File menu		Quit
 Also apply to attributes	Edit mode operation		Also apply to attributes

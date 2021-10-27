@@ -39,7 +39,6 @@ class AppView : public BView
 		virtual void MessageReceived(BMessage* message);
 
 		void Apply();
-		void Draw(BRect rect);
 		void Reset();
 		void ClearList();
 		void SelectAll();

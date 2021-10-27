@@ -112,6 +112,7 @@
 #define APPLY_TO_ATTRIBUTES B_TRANSLATE_CONTEXT("Also apply to attributes", "Edit mode operation")
 #define APPLY_TO_TAGS B_TRANSLATE_CONTEXT("Also apply to tags", "Edit mode operation")
 
+#define DRAG_FILES B_TRANSLATE_CONTEXT("Drag and drop files here", "Empty list")
 #define NO_IMAGE B_TRANSLATE_CONTEXT("No image", "Status")
 #define IDLE B_TRANSLATE_CONTEXT("idle", "Status")
 
