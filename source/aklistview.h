@@ -16,6 +16,7 @@ class AKListView : public BListView
 		~AKListView	();
 
 			virtual void	KeyDown(const char* bytes, int32 numBytes);
+			virtual void	Draw(BRect rect);
 
 			virtual void	SelectAll();
 			virtual void	DeselectAll();

@@ -4,6 +4,7 @@
  */
 #include "aklistview.h"
 #include "entryrefitem.h"
+#include "guistrings.h"
 
 // AKListView is meant to hold EntryRefItems.
 // EntryRefItem is a subclass of BListItem.
@@ -149,16 +150,19 @@ AKListView::SelectAllUnsupported()
 }
 
 void
-AKListView::NoItem()
+AKListView::Draw(BRect rect)
 {
-	SetDrawingMode(B_OP_OVER);
-	SetHighColor(0,0,0);
-	BFont font;
-	font.SetSize(12.0);
-	SetFont(&font);
-	
-	const char* noItemText = "Drag and drop files here";
-	DrawString(noItemText,
-			BPoint(Bounds().Width() / 2 - StringWidth(noItemText) / 2,
-			Bounds().Height() / 2));
+	if (IsEmpty()) {
+		SetDrawingMode(B_OP_OVER);
+		SetHighColor(0,0,0);
+		BFont font;
+		font.SetSize(12.0);
+		SetFont(&font);
+
+		const char* noItemText = DRAG_FILES;
+		DrawString(noItemText,
+				BPoint(Bounds().Width() / 2 - StringWidth(noItemText) / 2,
+				Bounds().Height() / 2));
+	}
+	BListView::Draw(rect);
 }

@@ -75,13 +75,6 @@ AppView::SaveWindowFrame()
 	m_preferences->SetWindowFrame(rect);
 }
 
-void
-AppView::Draw(BRect rect)
-{
-	if (m_list_view->CountItems() == 0) {
-		m_list_view->NoItem();
-	}
-}
 
 void
 AppView::InitView()
