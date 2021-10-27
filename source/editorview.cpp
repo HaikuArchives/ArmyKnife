@@ -71,16 +71,18 @@ void EditorView::InitView()
 	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
 
 	m_edit_box = new BBox("m_edit_box");
-	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL)
+	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL, 0)
 		.SetInsets(B_USE_SMALL_INSETS)
 		.AddGroup(B_HORIZONTAL)
 			.Add(m_attribute_radiobutton)
+			.AddStrut(B_USE_BIG_SPACING)
 			.Add(m_tag_radiobutton)
+			.AddGlue()
 		.End()
 		.Add(m_apply_checkbox);
 
 	m_edit_box->AddChild(editBoxLayout->View());
-	m_picture_checkbox = new BCheckBox("m_picutre_checkbox","",
+	m_picture_checkbox = new BCheckBox("m_picutre_checkbox",COVER_LABEL,
 			new BMessage(MSG_PICTURE_CHECKBOX));
 	m_album_picture = new AlbumPictureView("bitmap_view");
 	m_artist_checkbox = new BCheckBox("m_artist_checkbox",ARTIST_LABEL,
@@ -159,31 +161,33 @@ void EditorView::InitView()
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(m_edit_box)
-		.AddGroup(B_HORIZONTAL)
-			.Add(m_picture_checkbox)
-			.Add(m_album_picture)
-		.End()
 		.AddGrid()
-			.Add(m_artist_checkbox, 0, 0)
-			.Add(m_artist_textcontrol, 1, 0)
-			.Add(m_album_checkbox, 0, 1)
-			.Add(m_album_textcontrol, 1, 1)
-			.Add(m_title_checkbox, 0, 2)
-			.Add(m_title_textcontrol, 1, 2)
-			.Add(m_year_checkbox, 0, 3)
-			.Add(m_year_textcontrol, 1, 3)
-			.Add(m_comment_checkbox, 0, 4)
-			.Add(m_comment_textcontrol, 1, 4)
-			.Add(m_track_checkbox, 0, 5)
-			.Add(m_track_textcontrol, 1, 5)
-			.Add(m_genre_checkbox, 0, 6)
-			.Add(m_genre_box, 1, 6, 1, 3)
-			.Add(m_clear_all_checkbox, 0, 7, 1, 2)
-		.End()
-		.AddGlue()
+			.Add(m_picture_checkbox, 0, 0)
+			.Add(m_album_picture, 1, 0)
+			.AddGlue(2,0)
+			.Add(m_artist_checkbox, 0, 1)
+			.Add(m_artist_textcontrol, 1, 1, 2, 1)
+			.Add(m_album_checkbox, 0, 2)
+			.Add(m_album_textcontrol, 1, 2, 2, 1)
+			.Add(m_title_checkbox, 0, 3)
+			.Add(m_title_textcontrol, 1, 3, 2, 1)
+			.Add(m_year_checkbox, 0, 4)
+			.Add(m_year_textcontrol, 1, 4, 2, 1)
+			.Add(m_comment_checkbox, 0, 5)
+			.Add(m_comment_textcontrol, 1, 5, 2, 1)
+			.Add(m_track_checkbox, 0, 6)
+			.Add(m_track_textcontrol, 1, 6, 2, 1)
+			.Add(m_genre_checkbox, 0, 7)
+			.Add(m_genre_box, 1, 7, 2, 3)
+			.Add(m_clear_all_checkbox, 0, 8, 1, 2)
+			.SetSpacing(B_USE_DEFAULT_SPACING, B_USE_DEFAULT_SPACING)
+			.End()
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
-			.Add(m_tag_lookup);
+			.Add(m_tag_lookup)
+			.AddGlue()
+			.End()
+		.AddGlue();
 
 	ResizeToPreferred();
 

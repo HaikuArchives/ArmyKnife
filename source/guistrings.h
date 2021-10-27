@@ -10,12 +10,12 @@
 #include "appdefs.h"
 
 #define WIN_TITLE B_TRANSLATE_SYSTEM_NAME(APPLICATION)
-#define PREF_TITLE B_TRANSLATE_CONTEXT("ArmyKnife Preferences", "Window title")
-#define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online Tag Lookup", "Window title")
+#define PREF_TITLE B_TRANSLATE_CONTEXT("ArmyKnife preferences", "Window title")
+#define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online tag lookup", "Window title")
 
 #define FILE_MENU B_TRANSLATE_CONTEXT("File", "File menu")
 #define OPEN_ITEM B_TRANSLATE_CONTEXT("Open", "File menu")
-#define ABOUT_ITEM B_TRANSLATE_CONTEXT("About...", "File menu")
+#define ABOUT_ITEM B_TRANSLATE_CONTEXT("About ArmyKnife", "File menu")
 #define QUIT_ITEM B_TRANSLATE_CONTEXT("Quit", "File menu")
 #define OPEN_SHORTCUT 'O'
 #define QUIT_SHORTCUT 'Q'
@@ -28,26 +28,26 @@
 #define PASTE_ITEM B_TRANSLATE_CONTEXT("Paste", "Edit menu: Copy/Paste")
 #define PASTE_ITEM_SHORTCUT 'V'
 
-#define FIRST_FILE_ITEM B_TRANSLATE_CONTEXT("First File", "Edit menu: Selecting files")
+#define FIRST_FILE_ITEM B_TRANSLATE_CONTEXT("First file", "Edit menu: Selecting files")
 #define FIRST_FILE_SHORTCUT B_HOME
-#define LAST_FILE_ITEM B_TRANSLATE_CONTEXT("Last File", "Edit menu: Selecting files")
+#define LAST_FILE_ITEM B_TRANSLATE_CONTEXT("Last file", "Edit menu: Selecting files")
 #define LAST_FILE_SHORTCUT B_END
-#define PREVIOUS_FILE_ITEM B_TRANSLATE_CONTEXT("Previous File", "Edit menu: Selecting files")
+#define PREVIOUS_FILE_ITEM B_TRANSLATE_CONTEXT("Previous file", "Edit menu: Selecting files")
 #define PREVIOUS_FILE_SHORTCUT B_UP_ARROW
-#define NEXT_FILE_ITEM B_TRANSLATE_CONTEXT("Next File", "Edit menu: Selecting files")
+#define NEXT_FILE_ITEM B_TRANSLATE_CONTEXT("Next file", "Edit menu: Selecting files")
 #define NEXT_FILE_SHORTCUT B_DOWN_ARROW
 #define RESET_ITEM B_TRANSLATE_CONTEXT("Reset", "Edit menu: Selecting files")
 #define RESET_SHORTCUT 'R'
-#define CLEAR_LIST_ITEM B_TRANSLATE_CONTEXT("Clear List", "Edit menu: Selecting files")
+#define CLEAR_LIST_ITEM B_TRANSLATE_CONTEXT("Clear list", "Edit menu: Selecting files")
 #define CLEAR_LIST_SHORTCUT 'L'
-#define SELECT_ALL_ITEM B_TRANSLATE_CONTEXT("Select All", "Edit menu: Selecting files")
-#define SELECT_ALL_UNSUPPORTED_ITEM B_TRANSLATE_CONTEXT("Select All Unsupported", "Edit menu: Selecting files")
+#define SELECT_ALL_ITEM B_TRANSLATE_CONTEXT("Select all", "Edit menu: Selecting files")
+#define SELECT_ALL_UNSUPPORTED_ITEM B_TRANSLATE_CONTEXT("Select all unsupported", "Edit menu: Selecting files")
 #define SELECT_ALL_SHORTCUT 'A'
 
 #define MODE_MENU B_TRANSLATE_CONTEXT("Mode", "Mode menu")
-#define PREVIOUS_MODE_NAME B_TRANSLATE_CONTEXT("Previous Mode", "Mode menu")
+#define PREVIOUS_MODE_NAME B_TRANSLATE_CONTEXT("Previous mode", "Mode menu")
 #define PREVIOUS_MODE_SHORTCUT B_LEFT_ARROW
-#define NEXT_MODE_NAME B_TRANSLATE_CONTEXT("Next Mode", "Mode menu")
+#define NEXT_MODE_NAME B_TRANSLATE_CONTEXT("Next mode", "Mode menu")
 #define NEXT_MODE_SHORTCUT B_RIGHT_ARROW
 #define EDITOR_MODE_NAME B_TRANSLATE_CONTEXT("Edit", "Mode menu")
 #define TA_MODE_NAME B_TRANSLATE_CONTEXT("Copy", "Mode menu")
@@ -62,7 +62,7 @@
 #define CHANGELOG_ITEM B_TRANSLATE_CONTEXT("Changelog", "Help menu")
 
 #define OPTIONS_MENU B_TRANSLATE_CONTEXT("Options", "Options menu")
-#define BEEP_ON_UNSUPPORTED B_TRANSLATE_CONTEXT("Beep On Unsupported Files", "Options menu")
+#define BEEP_ON_UNSUPPORTED B_TRANSLATE_CONTEXT("Beep on unsupported files", "Options menu")
 
 #define ABOUT_BTN B_TRANSLATE_ALL("Excellent", "About message", "In context, this means \"dismiss\"")
 
@@ -83,6 +83,7 @@
 #define COMMENT_PATTERN "/c"
 #define GENRE_PATTERN "/g"
 
+#define COVER_LABEL B_TRANSLATE_CONTEXT("Cover", "Tag type")
 #define ARTIST_LABEL B_TRANSLATE_CONTEXT("Artist", "Tag type")
 #define ALBUM_LABEL B_TRANSLATE_CONTEXT("Album", "Tag type")
 #define TITLE_LABEL B_TRANSLATE_CONTEXT("Title", "Tag type")
@@ -108,8 +109,8 @@
 #define EDIT_LABEL B_TRANSLATE_CONTEXT("Edit", "Edit mode operation")
 #define ATTRIBUTES_LABEL B_TRANSLATE_CONTEXT("Attributes", "Edit mode operation")
 #define TAGS_LABEL B_TRANSLATE_CONTEXT("Tags", "Edit mode operation")
-#define APPLY_TO_ATTRIBUTES B_TRANSLATE_CONTEXT("Also Apply To Attributes", "Edit mode operation")
-#define APPLY_TO_TAGS B_TRANSLATE_CONTEXT("Also Apply To Tags", "Edit mode operation")
+#define APPLY_TO_ATTRIBUTES B_TRANSLATE_CONTEXT("Also apply to attributes", "Edit mode operation")
+#define APPLY_TO_TAGS B_TRANSLATE_CONTEXT("Also apply to tags", "Edit mode operation")
 
 #define NO_IMAGE B_TRANSLATE_CONTEXT("No image", "Status")
 #define IDLE B_TRANSLATE_CONTEXT("idle", "Status")
@@ -120,14 +121,14 @@
 #define CANCEL_BUTTON B_TRANSLATE_CONTEXT("Cancel", "Main action")
 #define SELECTED_TEXT B_TRANSLATE_CONTEXT(" selected", "Main action")
 
-#define DEFAULT_NA_PATTERN_LABEL B_TRANSLATE_CONTEXT("Default Name & Attributes Pattern", "Default")
-#define DEFAULT_FUNCTION_LABEL B_TRANSLATE_CONTEXT("Default Function", "Default")
+#define DEFAULT_NA_PATTERN_LABEL B_TRANSLATE_CONTEXT("Default name & attributes pattern", "Default")
+#define DEFAULT_FUNCTION_LABEL B_TRANSLATE_CONTEXT("Default function", "Default")
 
 #define MPEG_INFO_BOX_LABEL B_TRANSLATE_CONTEXT("Info", "MPEG information")
-#define MPEG_FILES_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 files in selection.", "MPEG information")
-#define MPEG_ID3V1_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v1 tags.", "MPEG information")
-#define MPEG_ID3V2_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v2 tags.", "MPEG information")
-#define MPEG_APE_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have APE tags.", "MPEG information")
+#define MPEG_FILES_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 files in selection", "MPEG information")
+#define MPEG_ID3V1_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v1 tags", "MPEG information")
+#define MPEG_ID3V2_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have ID3v2 tags", "MPEG information")
+#define MPEG_APE_STRING_DEFAULT B_TRANSLATE_CONTEXT("0 have APE tags", "MPEG information")
 
 #define MPEG_ADD_REMOVE_BOX_LABEL B_TRANSLATE_CONTEXT("Add/Remove", "MPEG operation")
 #define MPEG_ADD_RADIOBUTTON B_TRANSLATE_CONTEXT("Add", "MPEG operation")
@@ -140,8 +141,8 @@
 #define GENDER_LABEL "Gender"
 #endif
 
-#define QUERY_START_QUERY B_TRANSLATE_CONTEXT("Online Tag Lookup" B_UTF8_ELLIPSIS, "Editor view button")
-#define QUERY_MORE B_TRANSLATE_CONTEXT("Show More", "Query lookup button")
+#define QUERY_START_QUERY B_TRANSLATE_CONTEXT("Online tag lookup" B_UTF8_ELLIPSIS, "Editor view button")
+#define QUERY_MORE B_TRANSLATE_CONTEXT("Show more", "Query lookup button")
 #define QUERY_WORKING B_TRANSLATE_CONTEXT("Working" B_UTF8_ELLIPSIS, "Query lookup button")
 #define QUERY_NO_MORE_RESULTS B_TRANSLATE_CONTEXT("No more results", "Query lookup button")
 

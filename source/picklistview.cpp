@@ -35,10 +35,11 @@ PickListView::PickListView(const char* name, uint32 flags, border_style border) 
 
 	m_card_view = new BView("m_card_view", 0, m_view_layout);
 	
-	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_ITEM_SPACING)
-		.SetInsets(0,10,0,10)
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.SetInsets(0, B_USE_SMALL_INSETS, 0, 0)
 		.Add(m_view_box)
-		.Add(m_card_view);
+		.Add(m_card_view)
+		.AddGlue(100);
 }
 
 
