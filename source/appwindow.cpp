@@ -30,14 +30,10 @@
 #include "guistrings.h"
 #include "preferences.h"
 
-#define WIN_LEFT 100
-#define WIN_TOP 100
-#define WIN_RIGHT 600
-#define WIN_BOTTOM 700
 #define WIN_MIN_WIDTH 550
 #define WIN_MIN_HEIGHT 400
 
-AppWindow::AppWindow() : BWindow(BRect(WIN_LEFT,WIN_TOP,WIN_RIGHT,WIN_BOTTOM),
+AppWindow::AppWindow(BRect frame) : BWindow(frame,
 	WIN_TITLE,B_TITLED_WINDOW,B_ASYNCHRONOUS_CONTROLS | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	PRINT(("AppWindow::AppWindow()\n"));
@@ -159,8 +155,6 @@ AppWindow::InitWindow()
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.Add(m_menu_bar)
 		.Add(m_app_view);
-
-	ResizeToPreferred();
 }
 
 void
@@ -319,22 +313,12 @@ AppWindow::MessageReceived(BMessage* message)
 	}
 }
 
-void
-AppWindow::FrameMoved(BPoint point)
-{
-	m_app_view->SaveWindowFrame();
-}
-
-void
-AppWindow::FrameResized(float width, float height)
-{
-	m_app_view->SaveWindowFrame();
-}
-
 bool
 AppWindow::QuitRequested()
 {
 	PRINT(("AppWindow::QuitRequested()\n"));
+
+	m_app_view->SaveWindowSettings();
 
 	thread_id addrefs = find_thread("AddRefs");
 	if(addrefs != B_NAME_NOT_FOUND)
@@ -398,7 +382,10 @@ AppWindow::CreateWindow()
 	}
 	else
 	{
-		win = new AppWindow();
+		Preferences prefs = Preferences();
+		BRect frame;
+		prefs.GetWindowFrame(&frame);
+		win = new AppWindow(frame);
 	}
 	return(win);
 }

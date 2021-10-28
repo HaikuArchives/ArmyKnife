@@ -53,7 +53,7 @@ class AppView : public BView
 		void SetPreviousMode();
 		void SetNextMode();
 
-		void SaveWindowFrame();
+		void SaveWindowSettings();
 
 		BButton*			m_apply_button;
 
@@ -74,6 +74,7 @@ class AppView : public BView
 		BScrollView*		m_scroll_view_right;
 		BScrollView*		m_scroll_view_left;
 		BStringView*		m_selected_string_view;
+		BSplitView*			m_split_view;
 
 		BButton*			m_reset_button;
 		BStatusBar*			m_status_bar;

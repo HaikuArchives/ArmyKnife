@@ -61,18 +61,19 @@ AppView::~AppView()
 {
 	PRINT(("AppView::~AppView()\n"));
 
-	m_preferences->SetMode(m_pick_list_view->SelectedIndex());
-
 	delete m_preferences;
 }
 
 void
-AppView::SaveWindowFrame()
+AppView::SaveWindowSettings()
 {
 	PRINT(("AppView::SaveWindowFrame()\n"));
 
-	BRect rect = Window()->Frame();
-	m_preferences->SetWindowFrame(rect);
+	float left = m_split_view->ItemWeight((int32)0);
+	float right = m_split_view->ItemWeight(1);
+	m_preferences->SetSplitWeights(left, right);
+	m_preferences->SetWindowFrame(Window()->Frame());
+	m_preferences->SetMode(m_pick_list_view->SelectedIndex());
 }
 
 
@@ -157,6 +158,7 @@ AppView::InitView()
 	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_DEFAULT_SPACING)
 		.SetInsets(B_USE_WINDOW_INSETS, 0, B_USE_WINDOW_INSETS, B_USE_WINDOW_INSETS)
 		.AddSplit(B_HORIZONTAL)
+		.GetSplitView(&m_split_view)
 			.Add(m_scroll_view_left)
 			.Add(m_scroll_view_right)
 		.End()
@@ -196,6 +198,12 @@ AppView::InitView()
 	}
 
 	SelectView(m_preferences->GetMode());
+
+	float left;
+	float right;
+	m_preferences->GetSplitWeights(&left, &right);
+	m_split_view->SetItemWeight(0, left, false);
+	m_split_view->SetItemWeight(1, right, true);
 }
 
 void // *******

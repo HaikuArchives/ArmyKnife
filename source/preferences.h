@@ -36,7 +36,8 @@ class Preferences
 
 		void	GetWindowFrame(BRect * rect);
 		void	SetWindowFrame(BRect rect);
-
+		void	GetSplitWeights(float * left, float * right);
+		void	SetSplitWeights(float left, float right);
 	private:
 
 		void		MakeDefaults();
@@ -45,8 +46,8 @@ class Preferences
 		int32		m_pattern;
 		BMessage	m_filename_patterns;
 		BRect		m_window_frame;
-
-
+		float		m_split_left;
+		float		m_split_right;
 };
 
 #endif
