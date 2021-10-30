@@ -17,14 +17,12 @@ class Preferences;
 class AppWindow : public BWindow
 {
 	public:
-		AppWindow();
+		AppWindow(BRect frame);
 		AppWindow(BMessage* archive);
 		~AppWindow();
 		static AppWindow* CreateWindow();
 		virtual void MessageReceived(BMessage* message);
 		virtual bool QuitRequested();
-		virtual void FrameMoved(BPoint point);
-		virtual void FrameResized(float width, float height);
 
 		void DisableInterface();
 		void EnableInterface();

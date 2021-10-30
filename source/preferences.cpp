@@ -164,6 +164,24 @@ Preferences::SetWindowFrame(BRect rect)
 }
 
 void
+Preferences::GetSplitWeights(float * left, float * right)
+{
+	PRINT(("Preferences::GetSplitWeights()\n"));
+
+	*left = m_split_left;
+	*right = m_split_right;
+}
+
+void
+Preferences::SetSplitWeights(float left, float right)
+{
+	PRINT(("Preferences::SetSplitWeights()\n"));
+
+	m_split_left = left;
+	m_split_right = right;
+}
+
+void
 Preferences::GetPreferences()
 {
 	PRINT(("Preferences::GetPreferences()\n"));
@@ -186,6 +204,8 @@ Preferences::GetPreferences()
 		int32		pattern	=	0;
 		BMessage	patterns;
 		BRect		rect	(200,200,700,600);
+		float		left	=	0;
+		float		right	=	0;
 
 		status = message.FindInt32("mode", &mode);
 		if(status == B_OK)
@@ -202,6 +222,14 @@ Preferences::GetPreferences()
 		status = message.FindRect("winframe", &rect);
 		if(status == B_OK)
 			m_window_frame = rect;
+
+		status = message.FindFloat("splitleft", &left);
+		if(status == B_OK)
+			m_split_left = left;
+
+		status = message.FindFloat("splitright", &right);
+		if(status == B_OK)
+			m_split_right = right;
 	}
 	else
 		PRINT(("Error: %s\n", strerror(status)));
@@ -217,6 +245,8 @@ Preferences::SavePreferences()
 	preferences.AddInt32("pattern", m_pattern);
 	preferences.AddMessage("patterns", & m_filename_patterns);
 	preferences.AddRect("winframe", m_window_frame);
+	preferences.AddFloat("splitleft", m_split_left);
+	preferences.AddFloat("splitright", m_split_right);
 
 	BPath path;
 	find_directory(B_USER_SETTINGS_DIRECTORY,&path);
