@@ -21,7 +21,7 @@ Preferences::Preferences()
 :	m_mode				(0),
 	m_pattern			(0),
 	m_filename_patterns	(),
-	m_window_frame		(200,200,700,600)
+	m_window_frame		(5,30,690,565)
 {
 	PRINT(("Preferences::Preferences()\n"));
 
