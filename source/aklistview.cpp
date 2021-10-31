@@ -154,10 +154,7 @@ AKListView::Draw(BRect rect)
 {
 	if (IsEmpty()) {
 		SetDrawingMode(B_OP_OVER);
-		SetHighColor(0,0,0);
-		BFont font;
-		font.SetSize(12.0);
-		SetFont(&font);
+		SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 		const char* noItemText = DRAG_FILES;
 		DrawString(noItemText,

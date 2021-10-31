@@ -127,11 +127,7 @@ Barberpole::_DrawOnBitmap()
 
 		fBitmapView->SetDrawingMode(B_OP_COPY);
 
-		rgb_color  color;
-		color.red = 0;
-		color.green = 0;
-		color.blue = 200;
-		color.alpha = 255;
+		rgb_color  color(ui_color(B_STATUS_BAR_COLOR));
 		fBitmapView->SetHighColor(color);
 
 		// draw the pole
