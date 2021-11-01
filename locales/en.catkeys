@@ -1,4 +1,4 @@
-1	English	application/x-vnd.armyknife	3052435526
+1	English	application/x-vnd.armyknife	38576544
 Info	MPEG information		Info
 Copy	Edit menu: Copy/Paste		Copy
 Open	File menu		Open
@@ -11,7 +11,9 @@ Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
 Select all	Edit menu: Selecting files		Select all
 Cover	Tag type		Cover
 About ArmyKnife	File menu		About ArmyKnife
+Scott McCreary is a current maintainer.	About window		Scott McCreary is a current maintainer.
 Cancel	Main action		Cancel
+Created by Jason Burgess of now defunct FlipSide Software.\n His former website has since been taken over by another company by the same name. The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives	About window		Created by Jason Burgess of now defunct FlipSide Software.\n His former website has since been taken over by another company by the same name. The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives
 No more results	Query lookup button		No more results
 Artist	Tag type		Artist
 Online tag lookup…	Editor view button		Online tag lookup…
@@ -19,13 +21,14 @@ Save	Main action		Save
 Online tag lookup	Window title		Online tag lookup
 Paste	Edit menu: Copy/Paste		Paste
 Add	MPEG operation		Add
-Reset	Edit menu: Selecting files		Reset
 0 have ID3v1 tags	MPEG information		0 have ID3v1 tags
+Reset	Edit menu: Selecting files		Reset
 Edit	Edit menu: Copy/Paste		Edit
 Select all unsupported	Edit menu: Selecting files		Select all unsupported
 No image	Status		No image
 idle	Status		idle
 Help	Help menu		Help
+To request new features, or to report bugs, file a new issue at:\n http://github.com/HaikuArchives/ArmyKnife/issues	About window		To request new features, or to report bugs, file a new issue at:\n http://github.com/HaikuArchives/ArmyKnife/issues
 Working…	Query lookup button		Working…
 Cut	Edit menu: Copy/Paste		Cut
 Clear list	Edit menu: Selecting files		Clear list

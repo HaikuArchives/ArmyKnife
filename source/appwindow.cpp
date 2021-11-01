@@ -343,7 +343,7 @@ AppWindow::QuitRequested()
 void
 AppWindow::AboutRequested()
 {
-	BAboutWindow* about = new BAboutWindow("ArmyKnife", SIGNATURE);
+	BAboutWindow* about = new BAboutWindow(APPLICATION, SIGNATURE);
 	
 	const char* author[] = {
 		"Jason Burgess",
@@ -351,12 +351,9 @@ AppWindow::AboutRequested()
 	};
 	
 	about->AddAuthors(author);
-	about->AddText("Created by Jason Burgess of now defunct FlipSide Software.\n"
-			"His former website has since been taken over by another company by the same name.");
-	about->AddText("The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives");
-	about->AddText(MAINTAINER " is a current maintainer.");
-	about->AddText("To request new features, or to report bugs, file a new issue at:\n"
-			"http://github.com/HaikuArchives/ArmyKnife/issues");
+	about->AddText(ABOUT_TEXT);
+	about->AddText(ABOUT_MAINTAINER);
+	about->AddText(ABOUT_BUGTRACKER);
 	about->Show();
 }
 

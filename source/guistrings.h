@@ -9,6 +9,10 @@
 
 #include "appdefs.h"
 
+#define ABOUT_TEXT B_TRANSLATE_CONTEXT("Created by Jason Burgess of now defunct FlipSide Software.\n His former website has since been taken over by another company by the same name. The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives", "About window")
+#define ABOUT_MAINTAINER B_TRANSLATE_CONTEXT(MAINTAINER" is a current maintainer.", "About window")
+#define ABOUT_BUGTRACKER B_TRANSLATE_CONTEXT("To request new features, or to report bugs, file a new issue at:\n http://github.com/HaikuArchives/ArmyKnife/issues", "About window")
+
 #define WIN_TITLE B_TRANSLATE_SYSTEM_NAME(APPLICATION)
 #define PREF_TITLE B_TRANSLATE_CONTEXT("ArmyKnife preferences", "Window title")
 #define LOOKUP_TITLE B_TRANSLATE_CONTEXT("Online tag lookup", "Window title")
