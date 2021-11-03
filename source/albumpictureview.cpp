@@ -100,7 +100,7 @@ AlbumPictureView::Draw(BRect rect)
 void
 AlbumPictureView::Clear()
 {
-	SetHighColor(255,255,255);
+	SetHighColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	FillRect(Bounds());
 }
 
@@ -268,13 +268,10 @@ AlbumPictureView::NoImage()
 	delete m_bitmap;
 	m_bitmap = NULL;
 	Clear();
-	SetHighColor(0,0,0);
-	BFont font;
-	font.SetSize(12.0);
-	SetFont(&font);
+	SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	const char* noImageText = NO_IMAGE;
-	DrawString(noImageText, 
+	DrawString(noImageText,
 		BPoint(Bounds().Width() / 2 - StringWidth(noImageText) / 2,
 		Bounds().Height() / 2));
 	m_attached_to_track = false;

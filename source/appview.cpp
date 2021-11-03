@@ -138,7 +138,7 @@ AppView::InitView()
 
 	m_selected_string_view = new BStringView("m_selected_string_view","");
 	m_selected_string_view->SetAlignment(B_ALIGN_RIGHT);
-	m_selected_string_view->SetFontSize(10);
+	m_selected_string_view->SetFontSize(be_plain_font->Size() * 0.9f);
 
 	m_apply_button = new BButton("m_apply_button", APPLY_BUTTON,
 		new BMessage(MSG_APPLY));
