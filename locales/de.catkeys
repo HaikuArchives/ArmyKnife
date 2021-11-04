@@ -1,74 +1,77 @@
-1	English	application/x-vnd.armyknife	3052435526
-Info	MPEG information		Info
-Copy	Edit menu: Copy/Paste		Kopieren
-Open	File menu		Öffnen
-Attributes	Edit mode operation		Attribute
-Remove	MPEG operation		Entfernen
-Copy	Mode menu		Kopieren
-Changelog	Help menu		Änderungsprotokoll
-Previous file	Edit menu: Selecting files		Vorherige Datei
-Track = /k	Pattern explanation	Leave /k untouched.	Nummer = /k
-Select all	Edit menu: Selecting files		Alle auswählen
-Cover	Tag type		Cover
-About ArmyKnife	File menu		Über ArmyKnife
-Cancel	Main action		Abbrechen
-No more results	Query lookup button		Keine weiteren Ergebnisse
-Artist	Tag type		Künstler
-Online tag lookup…	Editor view button		Online-Tag-Suche…
-Save	Main action		Speichern
-Online tag lookup	Window title		Online-Tag-Suche
-Paste	Edit menu: Copy/Paste		Einfügen
-Add	MPEG operation		Hinzufügen
-Reset	Edit menu: Selecting files		Zurücksetzen
-0 have ID3v1 tags	MPEG information		0 haben ID3v1-Tags
-Edit	Edit menu: Copy/Paste		Bearbeiten
-Select all unsupported	Edit menu: Selecting files		Alle nicht Unterstützten auswählen
-No image	Status		Kein Bild
-idle	Status		untätig
-Help	Help menu		Hilfe
-Working…	Query lookup button		Arbeitet…
-Cut	Edit menu: Copy/Paste		Ausschneiden
-Clear list	Edit menu: Selecting files		Liste leeren
-Pattern:	Pattern label		Muster:
-Mode	Mode menu		Modus
-Tags	Edit mode operation		Tags
-Comment = /c	Pattern explanation	Leave /c untouched.	Kommentar = /c
-Show more	Query lookup button		Mehr anzeigen
-0 have ID3v2 tags	MPEG information		0 haben ID3v2-Tags
-Name	Mode menu		Name
-Track	Tag type		Nummer
-Previous mode	Mode menu		Vorheriger Modus
-Add	Main action		Hinzufügen
-Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
-Attributes → Name	Conversion type		Attribute → Name
-First file	Edit menu: Selecting files		Erste Datei
-Title	Tag type		Titel
-Comment	Tag type		Kommentar
-Tags → Attributes	Conversion type		Tags → Attribute
-Last file	Edit menu: Selecting files		Letzte Datei
-Reset	Main action		Zurücksetzen
+1	German	application/x-vnd.armyknife	2754283573
  selected	Main action		 ausgewählt
-Album	Tag type		Album
-Wildcard = /*	Pattern explanation	Leave /* untouched.	Beliebig = /*
-Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
-Add/Remove	MPEG operation		Hinzufügen/Entfernen
-Year = /y	Pattern explanation	Leave /y untouched.	Jahr = /y
-Drag and drop files here	Empty list		Dateien hier fallen lassen
-Readme	Help menu		Readme
-Quit	File menu		Schließen
-Also apply to attributes	Edit mode operation		Auch auf Attribute anwenden
-Genre	Tag type		Genre
-0 have APE tags	MPEG information		0 haben APE-Tags
-File	File menu		Datei
+Add	Main action		Hinzufügen
+Cancel	Main action		Abbrechen
+Reset	Main action		Zurücksetzen
+Save	Main action		Speichern
 0 files in selection	MPEG information		0 Dateien ausgewählt
-Artist = /a	Pattern explanation	Leave /a untouched.	Künstler = /a
-Next file	Edit menu: Selecting files		Nächste Datei
-Next mode	Mode menu		Nächster Modus
+0 have APE tags	MPEG information		0 haben APE-Tags
+0 have ID3v1 tags	MPEG information		0 haben ID3v1-Tags
+0 have ID3v2 tags	MPEG information		0 haben ID3v2-Tags
+Info	MPEG information		Info
+About ArmyKnife	File menu		Über ArmyKnife
+File	File menu		Datei
+Open	File menu		Öffnen
+Quit	File menu		Schließen
+Add	MPEG operation		Hinzufügen
+Add/Remove	MPEG operation		Hinzufügen/Entfernen
+Remove	MPEG operation		Entfernen
+Album	Tag type		Album
+Artist	Tag type		Künstler
+Comment	Tag type		Kommentar
+Cover	Tag type		Cover
+Genre	Tag type		Genre
+Title	Tag type		Titel
+Track	Tag type		Nummer
+Year	Tag type		Jahr
 Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
-Edit	Mode menu		Bearbeiten
-MPEG	Mode menu		MPEG
+Artist = /a	Pattern explanation	Leave /a untouched.	Künstler = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Kommentar = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Nummer = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Beliebig = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Jahr = /y
+Also apply to attributes	Edit mode operation		Auch auf Attribute anwenden
+Also apply to tags	Edit mode operation		Auch auf Tags anwenden
+Attributes	Edit mode operation		Attribute
+Tags	Edit mode operation		Tags
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attribute → Name
 Attributes → Tags	Conversion type		Attribute → Tags
 Name → Attributes	Conversion type		Name → Attribute
-Also apply to tags	Edit mode operation		Auch auf Tags anwenden
-Year	Tag type		Jahr
-ArmyKnife	System name		ArmyKnife
+Tags → Attributes	Conversion type		Tags → Attribute
+Changelog	Help menu		Änderungsprotokoll
+Help	Help menu		Hilfe
+Readme	Help menu		Readme
+Clear list	Edit menu: Selecting files		Liste leeren
+First file	Edit menu: Selecting files		Erste Datei
+Last file	Edit menu: Selecting files		Letzte Datei
+Next file	Edit menu: Selecting files		Nächste Datei
+Previous file	Edit menu: Selecting files		Vorherige Datei
+Reset	Edit menu: Selecting files		Zurücksetzen
+Select all	Edit menu: Selecting files		Alle auswählen
+Select all unsupported	Edit menu: Selecting files		Alle nicht Unterstützten auswählen
+Copy	Edit menu: Copy/Paste		Kopieren
+Cut	Edit menu: Copy/Paste		Ausschneiden
+Edit	Edit menu: Copy/Paste		Bearbeiten
+Paste	Edit menu: Copy/Paste		Einfügen
+Copy	Mode menu		Kopieren
+Edit	Mode menu		Bearbeiten
+Mode	Mode menu		Modus
+MPEG	Mode menu		MPEG
+Name	Mode menu		Name
+Next mode	Mode menu		Nächster Modus
+Previous mode	Mode menu		Vorheriger Modus
+Delete current	Pattern menu		Aktuelles Muster entfernen
+Filename:	Pattern menu		Dateiname:
+New filename pattern	Pattern menu		Neues Muster für Dateiname
+New…	Pattern menu		Neu…
+Drag and drop files here	Empty list		Dateien hier fallen lassen
+idle	Status		untätig
+No image	Status		Kein Bild
+No more results	Query lookup button		Keine weiteren Ergebnisse
+Show more	Query lookup button		Mehr anzeigen
+Working…	Query lookup button		Arbeitet…
+Online tag lookup	Window title		Online-Tag-Suche
+Online tag lookup…	Editor view button		Online-Tag-Suche…

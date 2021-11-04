@@ -1,0 +1,77 @@
+1	Portuguese	application/x-vnd.armyknife	2754283573
+ selected	Main action		 selecionados
+Add	Main action		Adicionar
+Cancel	Main action		Cancelar
+Reset	Main action		Repor
+Save	Main action		Guardar
+0 files in selection	MPEG information		0 ficheiro(s) na seleção
+0 have APE tags	MPEG information		0 têm etiquetas APE
+0 have ID3v1 tags	MPEG information		0 têm etiquetas ID3v1
+0 have ID3v2 tags	MPEG information		0 têm etiquetas ID3v2
+Info	MPEG information		Informação
+About ArmyKnife	File menu		Acerca ArmyKnife
+File	File menu		Ficheiro
+Open	File menu		Abrir
+Quit	File menu		Sair
+Add	MPEG operation		Adicionar
+Add/Remove	MPEG operation		Adicionar/Remover
+Remove	MPEG operation		Remover
+Album	Tag type		Álbum
+Artist	Tag type		Artista
+Comment	Tag type		Commentário
+Cover	Tag type		Capa
+Genre	Tag type		Género
+Title	Tag type		Título
+Track	Tag type		Faixa
+Year	Tag type		Ano
+Album = /n	Pattern explanation	Leave /n untouched.	Álbum = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artista = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Comentário = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Género = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Título = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Faixa = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Caracteres de substituição = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Ano = /y
+Also apply to attributes	Edit mode operation		Aplicar também a atributos
+Also apply to tags	Edit mode operation		Aplicar também a etiquetas
+Attributes	Edit mode operation		Atributos
+Tags	Edit mode operation		Etiquetas
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Atributos → Nome
+Attributes → Tags	Conversion type		Atributos → Etiquetas
+Name → Attributes	Conversion type		Nome → Atributos
+Tags → Attributes	Conversion type		Etiquetas → Atributos
+Changelog	Help menu		Registo de alterações
+Help	Help menu		Ajuda
+Readme	Help menu		Leia-me
+Clear list	Edit menu: Selecting files		Limpar lista
+First file	Edit menu: Selecting files		Primeiro ficheiro
+Last file	Edit menu: Selecting files		Último ficheiro
+Next file	Edit menu: Selecting files		Próximo ficheiro
+Previous file	Edit menu: Selecting files		Ficheiro anterior
+Reset	Edit menu: Selecting files		Repor
+Select all	Edit menu: Selecting files		Selecionar todos
+Select all unsupported	Edit menu: Selecting files		Selecionar todos os não suportados
+Copy	Edit menu: Copy/Paste		Copiar
+Cut	Edit menu: Copy/Paste		Cortar
+Edit	Edit menu: Copy/Paste		Editar
+Paste	Edit menu: Copy/Paste		Colar
+Copy	Mode menu		Copiar
+Edit	Mode menu		Editar
+Mode	Mode menu		Modo
+MPEG	Mode menu		MPEG
+Name	Mode menu		Nome
+Next mode	Mode menu		Modo seguinte
+Previous mode	Mode menu		Modo anterior
+Delete current	Pattern menu		Apagar atual
+Filename:	Pattern menu		Nome de ficheiro:
+New filename pattern	Pattern menu		Novo padrão de nome de ficheiro
+New…	Pattern menu		Novo…
+Drag and drop files here	Empty list		Arrastar e largar ficheiros aqui
+idle	Status		ocioso
+No image	Status		Nenhuma imagem
+No more results	Query lookup button		Não há mais resultados
+Show more	Query lookup button		Mostrar mais
+Working…	Query lookup button		A trabalhar…
+Online tag lookup	Window title		Pesquisa de etiquetas on-line
+Online tag lookup…	Editor view button		Pesquisa de etiquetas on-line…

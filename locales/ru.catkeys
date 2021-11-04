@@ -1,0 +1,77 @@
+1	Russian	application/x-vnd.armyknife	2754283573
+ selected	Main action		 выделено
+Add	Main action		Добавить
+Cancel	Main action		Отмена
+Reset	Main action		Сбросить
+Save	Main action		Сохранить
+0 files in selection	MPEG information		0 файлов в выборке
+0 have APE tags	MPEG information		0 имеют тэги APE
+0 have ID3v1 tags	MPEG information		0 имеют тэги ID3v1
+0 have ID3v2 tags	MPEG information		0 имеют тэги ID3v2
+Info	MPEG information		Информация
+About ArmyKnife	File menu		Про ArmyKnife
+File	File menu		Файл
+Open	File menu		Открыть
+Quit	File menu		Выйти
+Add	MPEG operation		Добавить
+Add/Remove	MPEG operation		Добавить/Удалить
+Remove	MPEG operation		Удалить
+Album	Tag type		Альбом
+Artist	Tag type		Артист
+Comment	Tag type		Комментарий
+Cover	Tag type		Обложка
+Genre	Tag type		Жанр
+Title	Tag type		Заголовок
+Track	Tag type		Дорожка
+Year	Tag type		Год
+Album = /n	Pattern explanation	Leave /n untouched.	Альбом = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Комментарий = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Жанр = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Шаблон = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Год = /y
+Also apply to attributes	Edit mode operation		Также применить к атрибутам
+Also apply to tags	Edit mode operation		Также применить к тэгам
+Attributes	Edit mode operation		Атрибуты
+Tags	Edit mode operation		Тэги
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Атрибуты → Имя
+Attributes → Tags	Conversion type		Атрибуты → Тэги
+Name → Attributes	Conversion type		Имя → Атрибуты
+Tags → Attributes	Conversion type		Тэги → Атрибуты
+Changelog	Help menu		Changelog
+Help	Help menu		Справка
+Readme	Help menu		Readme
+Clear list	Edit menu: Selecting files		Очистить список
+First file	Edit menu: Selecting files		Первый файл
+Last file	Edit menu: Selecting files		Последний файл
+Next file	Edit menu: Selecting files		Следующий файл
+Previous file	Edit menu: Selecting files		Предыдущий файл
+Reset	Edit menu: Selecting files		Сбросить
+Select all	Edit menu: Selecting files		Выделить все
+Select all unsupported	Edit menu: Selecting files		Выделить все неподдерживаемые
+Copy	Edit menu: Copy/Paste		Копировать
+Cut	Edit menu: Copy/Paste		Вырезать
+Edit	Edit menu: Copy/Paste		Изменить
+Paste	Edit menu: Copy/Paste		Вставить
+Copy	Mode menu		Копировать
+Edit	Mode menu		Изменить
+Mode	Mode menu		Режим
+MPEG	Mode menu		MPEG
+Name	Mode menu		Имя
+Next mode	Mode menu		Следующий режим
+Previous mode	Mode menu		Предыдущий режим
+Delete current	Pattern menu		Удалить текущий
+Filename:	Pattern menu		Имя файла:
+New filename pattern	Pattern menu		New filename pattern
+New…	Pattern menu		Новый…
+Drag and drop files here	Empty list		Drag and drop files here
+idle	Status		бездействие
+No image	Status		Нет изображения
+No more results	Query lookup button		Больше нет результатов
+Show more	Query lookup button		Показать больше
+Working…	Query lookup button		Обработка…
+Online tag lookup	Window title		Online tag lookup
+Online tag lookup…	Editor view button		Online tag lookup…
