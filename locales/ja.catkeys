@@ -1,74 +1,77 @@
-1	English	application/x-vnd.armyknife	3052435526
-Info	MPEG information		情報
-Copy	Edit menu: Copy/Paste		コピー
-Open	File menu		開く
-Attributes	Edit mode operation		属性
-Remove	MPEG operation		削除
-Copy	Mode menu		コピー
-Changelog	Help menu		変更履歴
-Previous file	Edit menu: Selecting files		前のファイル
-Track = /k	Pattern explanation	Leave /k untouched.	トラック = /k
-Select all	Edit menu: Selecting files		すべてを選択
-Cover	Tag type		Cover
-About ArmyKnife	File menu		について ArmyKnife
-Cancel	Main action		中止
-No more results	Query lookup button		結果は以上です。
-Artist	Tag type		アーティスト
-Online tag lookup…	Editor view button		ネットでタグを検索…
-Save	Main action		保存
-Online tag lookup	Window title		ネットでタグを検索
-Paste	Edit menu: Copy/Paste		貼り付け
-Add	MPEG operation		追加
-Reset	Edit menu: Selecting files		初期設定
-0 have ID3v1 tags	MPEG information		0 ID3v1 タグ付
-Edit	Edit menu: Copy/Paste		編集
-Select all unsupported	Edit menu: Selecting files		非対応のすべてを選択
-No image	Status		画像無し
-idle	Status		停止中
-Help	Help menu		ヘルプ
-Working…	Query lookup button		処理中…
-Cut	Edit menu: Copy/Paste		切り取り
-Clear list	Edit menu: Selecting files		消去
-Pattern:	Pattern label		パターン:
-Mode	Mode menu		モード
-Tags	Edit mode operation		タグ
-Comment = /c	Pattern explanation	Leave /c untouched.	コメント = /c
-Show more	Query lookup button		更に表示
-0 have ID3v2 tags	MPEG information		0 ID2v1 タグ付
-Name	Mode menu		名前
-Track	Tag type		トラック
-Previous mode	Mode menu		前のモード
-Add	Main action		追加
-Genre = /g	Pattern explanation	Leave /g untouched.	ジャンル = /g
-Attributes → Name	Conversion type		属性 → 名前
-First file	Edit menu: Selecting files		先頭のファイル
-Title	Tag type		曲名
-Comment	Tag type		コメント
-Tags → Attributes	Conversion type		タグ → 属性
-Last file	Edit menu: Selecting files		末尾のファイル
-Reset	Main action		初期設定
+1	Japanese	application/x-vnd.armyknife	2754283573
  selected	Main action		 選択中
-Album	Tag type		アルバム
-Wildcard = /*	Pattern explanation	Leave /* untouched.	ワイルドカード = /*
-Title = /t	Pattern explanation	Leave /t untouched.	曲名 = /t
-Add/Remove	MPEG operation		追加/削除
-Year = /y	Pattern explanation	Leave /y untouched.	年 = /y
-Drag and drop files here	Empty list		Drag and drop files here
-Readme	Help menu		Readme
-Quit	File menu		終了
-Also apply to attributes	Edit mode operation		属性にも適用
-Genre	Tag type		ジャンル
-0 have APE tags	MPEG information		0 APE タグ付
-File	File menu		ファイル
+Add	Main action		追加
+Cancel	Main action		中止
+Reset	Main action		初期設定
+Save	Main action		保存
 0 files in selection	MPEG information		0 ファイルが選択中。
-Artist = /a	Pattern explanation	Leave /a untouched.	アーティスト = /a
-Next file	Edit menu: Selecting files		次のファイル
-Next mode	Mode menu		次のモード
+0 have APE tags	MPEG information		0 APE タグ付
+0 have ID3v1 tags	MPEG information		0 ID3v1 タグ付
+0 have ID3v2 tags	MPEG information		0 ID2v1 タグ付
+Info	MPEG information		情報
+About ArmyKnife	File menu		について ArmyKnife
+File	File menu		ファイル
+Open	File menu		開く
+Quit	File menu		終了
+Add	MPEG operation		追加
+Add/Remove	MPEG operation		追加/削除
+Remove	MPEG operation		削除
+Album	Tag type		アルバム
+Artist	Tag type		アーティスト
+Comment	Tag type		コメント
+Cover	Tag type		Cover
+Genre	Tag type		ジャンル
+Title	Tag type		曲名
+Track	Tag type		トラック
+Year	Tag type		年
 Album = /n	Pattern explanation	Leave /n untouched.	アルバム = /n
-Edit	Mode menu		編集
-MPEG	Mode menu		MPEG
+Artist = /a	Pattern explanation	Leave /a untouched.	アーティスト = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	コメント = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	ジャンル = /g
+Title = /t	Pattern explanation	Leave /t untouched.	曲名 = /t
+Track = /k	Pattern explanation	Leave /k untouched.	トラック = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	ワイルドカード = /*
+Year = /y	Pattern explanation	Leave /y untouched.	年 = /y
+Also apply to attributes	Edit mode operation		属性にも適用
+Also apply to tags	Edit mode operation		タグにも適用
+Attributes	Edit mode operation		属性
+Tags	Edit mode operation		タグ
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		属性 → 名前
 Attributes → Tags	Conversion type		属性 → タグ
 Name → Attributes	Conversion type		名前 → 属性
-Also apply to tags	Edit mode operation		タグにも適用
-Year	Tag type		年
-ArmyKnife	System name		ArmyKnife
+Tags → Attributes	Conversion type		タグ → 属性
+Changelog	Help menu		変更履歴
+Help	Help menu		ヘルプ
+Readme	Help menu		Readme
+Clear list	Edit menu: Selecting files		消去
+First file	Edit menu: Selecting files		先頭のファイル
+Last file	Edit menu: Selecting files		末尾のファイル
+Next file	Edit menu: Selecting files		次のファイル
+Previous file	Edit menu: Selecting files		前のファイル
+Reset	Edit menu: Selecting files		初期設定
+Select all	Edit menu: Selecting files		すべてを選択
+Select all unsupported	Edit menu: Selecting files		非対応のすべてを選択
+Copy	Edit menu: Copy/Paste		コピー
+Cut	Edit menu: Copy/Paste		切り取り
+Edit	Edit menu: Copy/Paste		編集
+Paste	Edit menu: Copy/Paste		貼り付け
+Copy	Mode menu		コピー
+Edit	Mode menu		編集
+Mode	Mode menu		モード
+MPEG	Mode menu		MPEG
+Name	Mode menu		名前
+Next mode	Mode menu		次のモード
+Previous mode	Mode menu		前のモード
+Delete current	Pattern menu		Delete current
+Filename:	Pattern menu		Filename:
+New filename pattern	Pattern menu		New filename pattern
+New…	Pattern menu		New…
+Drag and drop files here	Empty list		Drag and drop files here
+idle	Status		停止中
+No image	Status		画像無し
+No more results	Query lookup button		結果は以上です。
+Show more	Query lookup button		更に表示
+Working…	Query lookup button		処理中…
+Online tag lookup	Window title		ネットでタグを検索
+Online tag lookup…	Editor view button		ネットでタグを検索…

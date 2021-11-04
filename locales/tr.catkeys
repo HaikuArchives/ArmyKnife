@@ -1,0 +1,77 @@
+1	Turkish	application/x-vnd.armyknife	2754283573
+ selected	Main action		 seçili
+Add	Main action		Ekle
+Cancel	Main action		İptal
+Reset	Main action		Sıfırla
+Save	Main action		Kaydet
+0 files in selection	MPEG information		Hiçbir dosya seçili değil
+0 have APE tags	MPEG information		Hiçbirinin APE etiketi yok
+0 have ID3v1 tags	MPEG information		Hiçbirinin ID3v1 etiketi yok
+0 have ID3v2 tags	MPEG information		Hiçbirinin ID3v2 etiketi yok
+Info	MPEG information		Bilgi
+About ArmyKnife	File menu		Hakkında ArmyKnife
+File	File menu		Dosya
+Open	File menu		Aç
+Quit	File menu		Çık
+Add	MPEG operation		Ekle
+Add/Remove	MPEG operation		Ekle/Kaldır
+Remove	MPEG operation		Kaldır
+Album	Tag type		Albüm
+Artist	Tag type		Sanatçı
+Comment	Tag type		Yorum
+Cover	Tag type		Kapak
+Genre	Tag type		Tarz
+Title	Tag type		Başlık
+Track	Tag type		Parça
+Year	Tag type		Yıl
+Album = /n	Pattern explanation	Leave /n untouched.	Albüm = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Sanatçı = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Yorum = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Tarz = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Başlık = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Parça = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Joker = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Yıl = /y
+Also apply to attributes	Edit mode operation		Özniteliklere de uygula
+Also apply to tags	Edit mode operation		Etiketlere de uygula
+Attributes	Edit mode operation		Öznitelikler
+Tags	Edit mode operation		Etiketler
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Öznitelikler → Ad
+Attributes → Tags	Conversion type		Öznitelikler → Etiketler
+Name → Attributes	Conversion type		Ad → Öznitelikler
+Tags → Attributes	Conversion type		Etiketler → Öznitelikler
+Changelog	Help menu		Değişiklik günlüğü
+Help	Help menu		Yardım
+Readme	Help menu		Beni oku
+Clear list	Edit menu: Selecting files		Listeyi temizle
+First file	Edit menu: Selecting files		İlk dosya
+Last file	Edit menu: Selecting files		Son dosya
+Next file	Edit menu: Selecting files		Sonraki dosya
+Previous file	Edit menu: Selecting files		Önceki dosya
+Reset	Edit menu: Selecting files		Sıfırla
+Select all	Edit menu: Selecting files		Tümünü seç
+Select all unsupported	Edit menu: Selecting files		Desteklenmeyen tümünü seç
+Copy	Edit menu: Copy/Paste		Kopyala
+Cut	Edit menu: Copy/Paste		Kes
+Edit	Edit menu: Copy/Paste		Düzen
+Paste	Edit menu: Copy/Paste		Yapıştır
+Copy	Mode menu		Kopyala
+Edit	Mode menu		Düzenle
+Mode	Mode menu		Kip
+MPEG	Mode menu		aboutMPEG
+Name	Mode menu		Ad
+Next mode	Mode menu		Sonraki kip
+Previous mode	Mode menu		Önceki kip
+Delete current	Pattern menu		Geçerliyi sil
+Filename:	Pattern menu		Dosya adı:
+New filename pattern	Pattern menu		Yeni dosya adı dizgisi
+New…	Pattern menu		Yeni…
+Drag and drop files here	Empty list		Dosyaları buraya sürükleyip bırakın
+idle	Status		boşta
+No image	Status		Görsel yok
+No more results	Query lookup button		Sonuç yok
+Show more	Query lookup button		Daha fazla göster
+Working…	Query lookup button		Çalışıyor…
+Online tag lookup	Window title		Çevrimiçi etiket arama
+Online tag lookup…	Editor view button		Çevrimiçi etiket arama…
