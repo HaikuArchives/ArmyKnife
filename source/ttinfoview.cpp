@@ -296,7 +296,7 @@ TTInfoView::MessageReceived(BMessage* message)
 }
 
 void
-TTInfoView::GetInfoFromSelection(int32 numberOfSelectedItems, BString *output, bool doListFiles = false)
+TTInfoView::GetInfoFromSelection(int32 numberOfSelectedItems, BString *output, bool doListFiles)
 {
 	PRINT(("TTInfoView::GetInfoFromSelection(%ld, %s, ", numberOfSelectedItems, output->String()));
 	if (doListFiles)

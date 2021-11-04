@@ -20,6 +20,7 @@ class BScrollView;
 class BListView;
 class BMessage;
 class BRect;
+class BSplitView;
 class BStatusBar;
 class BStringView;
 class PickListView;
