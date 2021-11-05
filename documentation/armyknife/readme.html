@@ -44,20 +44,20 @@ h2 {
 <body>
 
 <h1><img width="64" height="64" src="./images/armyknife-icon_64.png" alt="ArmyKnife Icon" />ArmyKnife</h1>
-<p>ArmyKnife is a powerful tool to perform ID3-Tag to Attribute assignment, Attribute to ID3-Tag assignment, parsing of filenames to fill attributes, and renaming files based on their attributes. It also includes an editor that lets you work with multiple files at once. It supports MP3, Ogg Vorbis and FLAC format.</p>
-<p>Note, that to use Haiku's fast queries, the attributes have to be filled. On the other hand, to be useful on other platforms and stand alone players, the ID3 tags should be filled. Therefore, it's best to keep both in sync.</p>
-<p>You start either by selecting your files and invoking the context menu <i><b>Open With...</b></i> and choose <i><b>ArmyKnife</b></i> or simply start ArmyKnife and add files via drag&amp;drop. This is ArmyKnife's window, the opened files in a list to the right and controls to the left, depending on the selected mode:</p>
+<p>ArmyKnife is a powerful tool to perform Tag to Attribute assignment, Attribute to Tag assignment, parsing of filenames to fill attributes, and renaming files based on their attributes. It also includes an editor that lets you work with multiple files at once. It supports MP3, Ogg Vorbis and FLAC format.</p>
+<p>Note, that to use Haiku's fast queries, the attributes have to be filled. On the other hand, to be useful on other platforms and stand alone players, the tags should be filled. Therefore, it's best to keep both in sync.</p>
+<p>You start either by selecting your files and invoking Tracker's context menu <i><b>Open with...</b></i> and choose <i><b>ArmyKnife</b></i> or simply start ArmyKnife and add files via drag&amp;drop. This is ArmyKnife's window, the opened files in a list to the right and controls to the left, depending on the selected mode:</p>
 <img src="./images/armyknife.png" alt="ArmyKnife window" />
-<p>There are three modes of operation, selected with the drop-down menu on top or switched with <span class="key">ALT</span>&#160;<span class="key">&larr;</span>/<span class="key">&rarr;</span>:</p>
+<p>There are four modes of operation, selected with the drop-down menu on top or switched with <span class="key">ALT</span>&#160;<span class="key">&larr;</span>/<span class="key">&rarr;</span>:</p>
 
 <h2>Edit Mode</h2>
-<table summary="Edit Mode"><tr>
-	<td valign="top"><img width="234" height="354" src="./images/armyknife-edit.png" alt="Edit Mode" /></td>
+<table summary="Edit mode"><tr>
+	<td valign="top"><img width="277" height="421" src="./images/armyknife-edit.png" alt="Edit mode" /></td>
 	<td width="30"></td>
-	<td valign="top"><p>At the top, you decide if you'd like to see and edit the Haiku attributes of the files or their ID3-Tags. The checkbox below decides if your changes will also apply to the respective other.<br />
-Below are the different attributes/tags and their contents. If you can't see anything, neither in Attributes-mode nor in Tags-mode, you either haven't selected any files from the list or there really is no information available. In that case you may want to switch to <i><b>Name Mode</b></i> to salvage what's available from the filenames.</p>
-<p>All changes only affect the selected files and only after pressing <i><b>Apply</b></i>, which is the default when pressing <span class="key">ENTER</span>. Also, only the checkmarked attributes/tags will be written to these files.</p>
-<p>The "Genre" field is a bit of a special case: If you choose to set a custom genre, only Haiku attributes will contain your text. ID3-Tags only show standard genres and will fall back to "Other".</p>
+	<td valign="top"><p>At the top, you decide if you'd like to see and edit the Haiku attributes of the files or their tags. The checkbox below decides if your changes will also apply to the respective other.<br />
+Below are the different attributes/tags and their contents. If you can't see anything, neither in Attributes-mode nor in Tags-mode, you either haven't selected any files from the list or there really is no information available. In that case you may want to switch to <i><b>Name mode</b></i> to salvage what's available from the filenames.</p>
+<p>All changes only affect the selected files and only after clicking <i><b>Save</b></i>, which is the default when pressing <span class="key">ENTER</span>. Also, only the checkmarked attributes/tags will be written to these files.</p>
+<p>The "Genre" field is a bit of a special case: If you choose to set a custom genre, only Haiku attributes will contain your text. Tags only show standard genres and will fall back to "Other".</p>
 <p>There's some convenient keyboard navigation when you have to edit a tag of single files, e.g. "Title" and "Track" of an album. The cursor can stay in the respective tag's text box while you select a new file with keyboard shortcuts:</p>
 	<table summary="Keyboard navigation" cellpadding="0">
 	<tr><td width="100"><span class="key">ALT</span>&#160;<span class="key">HOME</span></td><td>First file</td></tr>
@@ -67,29 +67,38 @@ Below are the different attributes/tags and their contents. If you can't see any
 	</table></td>
 </tr></table>
 
-<h2>Copy Mode</h2>
-<table summary="Copy Mode"><tr>
-	<td valign="top"><img width="234" height="295" src="./images/armyknife-copy.png" alt="Copy Mode" /></td>
+<h2>Copy mode</h2>
+<table summary="Copy mode"><tr>
+	<td valign="top"><img width="277" height="312" src="./images/armyknife-copy.png" alt="Copy mode" /></td>
 	<td width="30"></td>
 	<td valign="top"><p>You can copy the checkmarked fields either from <i><b>Attributes&#160;&rarr;&#160;Tags</b></i> or <i><b>Tags&#160;&rarr;&#160;Attributes</b></i>.</p>
-<p>Make sure you've got the direction right or you'll accidentally copy empty attributes over perfectly filled ID3-Tags! Better switch quickly over to the Edit mode to have another look...</p>
-<p>Again, changes take only effect on selected files after pressing <i><b>Apply</b></i>.</p></td>
+<p>Make sure you've got the direction right or you'll accidentally copy empty attributes over perfectly filled Tags! Better switch quickly over to the Edit mode to have another look...</p>
+<p>Again, changes take only effect on selected files after clicking <i><b>Save</b></i>.</p></td>
 </tr></table>
 
-<h2>Name Mode</h2>
-<table summary="Name Mode"><tr>
-	<td valign="top"><img width="234" height="295" src="./images/armyknife-name.png" alt="Name Mode" /></td>
+<h2>Name mode</h2>
+<table summary="Name mode"><tr>
+	<td valign="top"><img width="277" height="326" src="./images/armyknife-name.png" alt="Name mode" /></td>
 	<td width="30"></td>
 	<td valign="top"><p>You can either rename all selected files according to their attributes (<i><b>Attributes&#160;&rarr;&#160;Name</b></i>) or, conversely, fill attributes according to the filename (<i><b>Name&#160;&rarr;&#160;Attributes</b></i>).<br />
 As with the Copy mode, make sure the direction is right!</p>
-<p>The filename is analyzed/build with a pattern, selected from the <i><b>Filename</b></i> drop-down menu. Above it is a legend describing what abbreviation corresponds to what attribute. <i><b>\*</b></i> is a wildcard you can use for parts that shouldn't go in any attribute. Of course, you can define your own pattern by choosing <i><b>New..</b></i> from there.</p>
-<p>As usual, again changes take only effect on selected files after pressing <i><b>Apply</b></i>.</p></td>
+<p>The filename is analyzed/build with a pattern, selected from the <i><b>Filename</b></i> drop-down menu. Above it is a legend describing what abbreviation corresponds to what attribute. <i><b>\*</b></i> is a wildcard you can use for parts that shouldn't go in any attribute. Of course, you can define your own pattern by choosing <i><b>New...</b></i> from there.</p>
+<p>As usual, again changes take only effect on selected files after clicking <i><b>Save</b></i>.</p></td>
 </tr></table>
+
+<h2>MPEG mode</h2>
+<table summary="MPEG mode"><tr>
+	<td valign="top"><img width="277" height="375" src="./images/armyknife-mpeg.png" alt="MPEG mode" /></td>
+	<td width="30"></td>
+	<td valign="top"><p>This mode shows if the selected files have any tags set. You can also add or remove specific tags that you choose with the checkmarks at the bottom.</p>
+<p>The changes take effect on selected files after clicking <i><b>Save</b></i>.</p></td>
+</tr></table>
+
 <p><br /><br /></p>
 
 <h3>Bugs? Feature Requests?</h3>
-Check out the <a href="https://github.com/HaikuArchives/ArmyKnife">ArmyKnife project page</a> at <a href="https://github.com/HaikuArchives">HaikuArchives on Github</a> first, and if it
-hasn't already been submitted, <a href="https://github.com/HaikuArchives/ArmyKnife/issues/new">submit</a> it!
+Check out the <a href="https://github.com/HaikuArchives/ArmyKnife">ArmyKnife project page</a> at <a href="https://github.com/HaikuArchives">HaikuArchives on Github</a> first, and if your bug or feature request
+hasn't already been filed, <a href="https://github.com/HaikuArchives/ArmyKnife/issues/new">submit</a> it!
 <br />
 <br />
 <b><h3>Thanks:</h3></b>
@@ -106,7 +115,7 @@ Jonas Sundström and Ryan Leavengood for keeping ArmyKnife working in the transi
 Haiku for the new Operating System.<br />
 All of the people who have worked on Haiku since 2001 to make Haiku what it is now.<br />
 HaikuPorts for helping to automate building and packaging of thousands of packages for Haiku including this one.<br />
-HaikuArchives for giving us a place to keep old BeOS programs upto date<br />
+HaikuArchives for giving us a place to keep old BeOS programs uptodate<br />
 Taglib and MusicBrainz for their nifty open source libraries<br />
 The Google Code-In students who completed several small tasks for ArmyKnife from 2012-2020<br />
 <br />
