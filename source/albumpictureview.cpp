@@ -72,7 +72,7 @@ AlbumPictureView::ProcessRefs(BMessage *message)
 		BEntry(&tempRef).GetPath(&filePath) == B_OK &&
 		(m_bitmap = BTranslationUtils::GetBitmap(filePath.Path())) != NULL)
 	{
-		// Draw only if we a track is chosen in the list
+		// Draw only if a track is chosen in the list
 		if (m_attached_to_track)
 			DrawBitmap(m_bitmap, BRect(0, 0,
 				Bounds().Width(),
