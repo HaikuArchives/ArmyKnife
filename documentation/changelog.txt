@@ -106,4 +106,7 @@
     -- Added drag and drop text to let users know they could do so
     -- Added Open Files option to menu
     -- Switched About to use BAboutWindow
+    -- Added split view for better GUI control
+    -- Added auto save for window settings
     -- Added support for more languages
+		Portuguesse (pt) Russian (ru) Spanish (es) Turkish (tr)
