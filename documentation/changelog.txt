@@ -107,4 +107,4 @@
     -- Added Open Files option to menu
     -- Switched About to use BAboutWindow
     -- Added support for more languages
-		Croatian (hr) Portuguesse (pt) Russian (ru) Spanish (es) Turkish (tr)
+		Portuguesse (pt) Russian (ru) Spanish (es) Turkish (tr)
