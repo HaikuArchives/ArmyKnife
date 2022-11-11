@@ -344,16 +344,15 @@ void
 AppWindow::AboutRequested()
 {
 	BAboutWindow* about = new BAboutWindow(APPLICATION, SIGNATURE);
-	
-	const char* author[] = {
+
+	const char* authors[] = {
 		"Jason Burgess",
+		"The Haiku Archive Team",
 		NULL
 	};
-	
-	about->AddAuthors(author);
-	about->AddText(ABOUT_TEXT);
-	about->AddText(ABOUT_MAINTAINER);
-	about->AddText(ABOUT_BUGTRACKER);
+	about->AddCopyright(2007, "Jason Burgess");
+	about->AddAuthors(authors);
+	about->AddDescription(ABOUT_TEXT),
 	about->Show();
 }
 
