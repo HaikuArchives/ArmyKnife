@@ -74,8 +74,8 @@ NAView::InitView()
 	m_wildcard_stringview = new BStringView("m_wildcard_strv",WILDCARD_PATTERN_INFO);
 
 	m_pattern_menu = new BMenu("Please Add Pattern!");
-	m_pattern_menufield = new BMenuField(PATTERN_LABEL, "Filename:", m_pattern_menu);
-	m_pattern_menufield->SetDivider(StringWidth("Filename:") + 3);
+	m_pattern_menufield = new BMenuField(PATTERN_LABEL, m_pattern_menu);
+	m_pattern_menufield->SetDivider(StringWidth(PATTERN_LABEL) + 3);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -231,8 +231,8 @@ NAView::MakePatternMenu()
 	}
 
 	m_pattern_menu->AddSeparatorItem();
-	m_pattern_menu->AddItem(new BMenuItem("New" B_UTF8_ELLIPSIS, new BMessage(MSG_NEW_PATTERN)));
-	m_pattern_menu->AddItem(new BMenuItem("Delete Current", new BMessage(MSG_DELETE_PATTERN)));
+	m_pattern_menu->AddItem(new BMenuItem(PATTERN_MENU_NEW, new BMessage(MSG_NEW_PATTERN)));
+	m_pattern_menu->AddItem(new BMenuItem(PATTERN_MENU_DELETE, new BMessage(MSG_DELETE_PATTERN)));
 
 	int32 index = m_preferences->GetPattern();
 

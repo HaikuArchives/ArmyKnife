@@ -96,7 +96,9 @@
 #define TRACK_LABEL B_TRANSLATE_CONTEXT("Track", "Tag type")
 #define GENRE_LABEL B_TRANSLATE_CONTEXT("Genre", "Tag type")
 
-#define PATTERN_LABEL B_TRANSLATE_CONTEXT("Pattern:", "Pattern label")
+#define PATTERN_LABEL B_TRANSLATE_CONTEXT("Filename:", "Filename pattern label")
+#define PATTERN_MENU_NEW B_TRANSLATE_CONTEXT("New" B_UTF8_ELLIPSIS, "New filename pattern")
+#define PATTERN_MENU_DELETE B_TRANSLATE_CONTEXT("Delete current", "Delete filename pattern")
 
 #ifdef __HAIKU__
 #define A2T_LABEL B_TRANSLATE_CONTEXT("Attributes \xe2\x86\x92 Tags", "Conversion type")
