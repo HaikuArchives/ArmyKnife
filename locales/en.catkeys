@@ -1,4 +1,4 @@
-1	English	application/x-vnd.armyknife	38576544
+1	English	application/x-vnd.armyknife	4243205792
 Info	MPEG information		Info
 Copy	Edit menu: Copy/Paste		Copy
 Open	File menu		Open
@@ -6,33 +6,32 @@ Attributes	Edit mode operation		Attributes
 Remove	MPEG operation		Remove
 Copy	Mode menu		Copy
 Changelog	Help menu		Changelog
+New…	New filename pattern		New…
+Filename:	Filename pattern label		Filename:
 Previous file	Edit menu: Selecting files		Previous file
 Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
 Select all	Edit menu: Selecting files		Select all
 Cover	Tag type		Cover
 About ArmyKnife	File menu		About ArmyKnife
-Scott McCreary is a current maintainer.	About window		Scott McCreary is a current maintainer.
 Cancel	Main action		Cancel
-Created by Jason Burgess of now defunct FlipSide Software.\n His former website has since been taken over by another company by the same name. The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives	About window		Created by Jason Burgess of now defunct FlipSide Software.\n His former website has since been taken over by another company by the same name. The FlipSide Software applications are hosted by HaikuArchives at github.com/HaikuArchives
 No more results	Query lookup button		No more results
 Artist	Tag type		Artist
 Online tag lookup…	Editor view button		Online tag lookup…
 Save	Main action		Save
 Online tag lookup	Window title		Online tag lookup
 Paste	Edit menu: Copy/Paste		Paste
+The all-in-one metadata editor for audio and MPEG files.	About window		The all-in-one metadata editor for audio and MPEG files.
 Add	MPEG operation		Add
-0 have ID3v1 tags	MPEG information		0 have ID3v1 tags
 Reset	Edit menu: Selecting files		Reset
+0 have ID3v1 tags	MPEG information		0 have ID3v1 tags
 Edit	Edit menu: Copy/Paste		Edit
 Select all unsupported	Edit menu: Selecting files		Select all unsupported
 No image	Status		No image
 idle	Status		idle
 Help	Help menu		Help
-To request new features, or to report bugs, file a new issue at:\n http://github.com/HaikuArchives/ArmyKnife/issues	About window		To request new features, or to report bugs, file a new issue at:\n http://github.com/HaikuArchives/ArmyKnife/issues
 Working…	Query lookup button		Working…
 Cut	Edit menu: Copy/Paste		Cut
 Clear list	Edit menu: Selecting files		Clear list
-Pattern:	Pattern label		Pattern:
 Mode	Mode menu		Mode
 Tags	Edit mode operation		Tags
 Comment = /c	Pattern explanation	Leave /c untouched.	Comment = /c
@@ -52,6 +51,7 @@ Last file	Edit menu: Selecting files		Last file
 Reset	Main action		Reset
  selected	Main action		 selected
 Album	Tag type		Album
+Delete current	Delete filename pattern		Delete current
 Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
 Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
 Add/Remove	MPEG operation		Add/Remove
