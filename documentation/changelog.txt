@@ -110,3 +110,11 @@
     -- Added auto save for window settings
     -- Added support for more languages
 		Portuguesse (pt) Russian (ru) Spanish (es) Turkish (tr)
+
+5.1.2
+	-- Build fix addressing missing symbols
+	-- Minor fixes of GUI strings and trannslations
+	-- Added support for more languages
+		 Catalan (ca) English (Australian) (en_AU) English (British) (en_GB)
+		 French (fr) Friulian (fur) Indonesian (id) Italian (it) Romanian (ro)
+		 Sardinian (sc)Swedish (sv)
