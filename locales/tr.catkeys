@@ -1,15 +1,15 @@
-1	Turkish	application/x-vnd.armyknife	2754283573
+1	Turkish	application/x-vnd.armyknife	4243205792
  selected	Main action		 seçili
 Add	Main action		Ekle
-Cancel	Main action		İptal
+Cancel	Main action		Vazgeç
 Reset	Main action		Sıfırla
 Save	Main action		Kaydet
-0 files in selection	MPEG information		Hiçbir dosya seçili değil
-0 have APE tags	MPEG information		Hiçbirinin APE etiketi yok
-0 have ID3v1 tags	MPEG information		Hiçbirinin ID3v1 etiketi yok
-0 have ID3v2 tags	MPEG information		Hiçbirinin ID3v2 etiketi yok
+0 files in selection	MPEG information		0 dosya seçili
+0 have APE tags	MPEG information		0 dosyada APE etiketi var
+0 have ID3v1 tags	MPEG information		0 dosyada ID3v1 etiketi var
+0 have ID3v2 tags	MPEG information		0 dosyada ID3v2 etiketi var
 Info	MPEG information		Bilgi
-About ArmyKnife	File menu		Hakkında ArmyKnife
+About ArmyKnife	File menu		ArmyKnife hakkında
 File	File menu		Dosya
 Open	File menu		Aç
 Quit	File menu		Çık
@@ -18,16 +18,16 @@ Add/Remove	MPEG operation		Ekle/Kaldır
 Remove	MPEG operation		Kaldır
 Album	Tag type		Albüm
 Artist	Tag type		Sanatçı
-Comment	Tag type		Yorum
+Comment	Tag type		Açıklama
 Cover	Tag type		Kapak
-Genre	Tag type		Tarz
+Genre	Tag type		Tür
 Title	Tag type		Başlık
 Track	Tag type		Parça
 Year	Tag type		Yıl
 Album = /n	Pattern explanation	Leave /n untouched.	Albüm = /n
 Artist = /a	Pattern explanation	Leave /a untouched.	Sanatçı = /a
-Comment = /c	Pattern explanation	Leave /c untouched.	Yorum = /c
-Genre = /g	Pattern explanation	Leave /g untouched.	Tarz = /g
+Comment = /c	Pattern explanation	Leave /c untouched.	Açıklama = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Tür = /g
 Title = /t	Pattern explanation	Leave /t untouched.	Başlık = /t
 Track = /k	Pattern explanation	Leave /k untouched.	Parça = /k
 Wildcard = /*	Pattern explanation	Leave /* untouched.	Joker = /*
@@ -59,19 +59,19 @@ Paste	Edit menu: Copy/Paste		Yapıştır
 Copy	Mode menu		Kopyala
 Edit	Mode menu		Düzenle
 Mode	Mode menu		Kip
-MPEG	Mode menu		aboutMPEG
+MPEG	Mode menu		MPEG
 Name	Mode menu		Ad
 Next mode	Mode menu		Sonraki kip
 Previous mode	Mode menu		Önceki kip
-Delete current	Pattern menu		Geçerliyi sil
-Filename:	Pattern menu		Dosya adı:
-New filename pattern	Pattern menu		Yeni dosya adı dizgisi
-New…	Pattern menu		Yeni…
+Delete current	Delete filename pattern		Geçerliyi sil
 Drag and drop files here	Empty list		Dosyaları buraya sürükleyip bırakın
+Filename:	Filename pattern label		Dosya adı:
 idle	Status		boşta
 No image	Status		Görsel yok
+New…	New filename pattern		Yeni…
 No more results	Query lookup button		Sonuç yok
 Show more	Query lookup button		Daha fazla göster
 Working…	Query lookup button		Çalışıyor…
-Online tag lookup	Window title		Çevrimiçi etiket arama
-Online tag lookup…	Editor view button		Çevrimiçi etiket arama…
+Online tag lookup	Window title		Çevrimiçi etiket ara
+Online tag lookup…	Editor view button		Çevrimiçi etiket ara…
+The all-in-one metadata editor for audio and MPEG files.	About window		Ses ve MPEG dosyaları için hepsi bir arada üst veri düzenleyici.

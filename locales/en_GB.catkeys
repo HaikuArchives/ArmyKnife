@@ -1,0 +1,77 @@
+1	English (British)	application/x-vnd.armyknife	4243205792
+ selected	Main action		 selected
+Add	Main action		Add
+Cancel	Main action		Cancel
+Reset	Main action		Reset
+Save	Main action		Save
+0 files in selection	MPEG information		0 files in selection
+0 have APE tags	MPEG information		0 have APE tags
+0 have ID3v1 tags	MPEG information		0 have ID3v1 tags
+0 have ID3v2 tags	MPEG information		0 have ID3v2 tags
+Info	MPEG information		Info
+About ArmyKnife	File menu		About ArmyKnife
+File	File menu		File
+Open	File menu		Open
+Quit	File menu		Quit
+Add	MPEG operation		Add
+Add/Remove	MPEG operation		Add/Remove
+Remove	MPEG operation		Remove
+Album	Tag type		Album
+Artist	Tag type		Artist
+Comment	Tag type		Comment
+Cover	Tag type		Cover
+Genre	Tag type		Genre
+Title	Tag type		Title
+Track	Tag type		Track
+Year	Tag type		Year
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Comment = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Year = /y
+Also apply to attributes	Edit mode operation		Also apply to attributes
+Also apply to tags	Edit mode operation		Also apply to tags
+Attributes	Edit mode operation		Attributes
+Tags	Edit mode operation		Tags
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attributes → Name
+Attributes → Tags	Conversion type		Attributes → Tags
+Name → Attributes	Conversion type		Name → Attributes
+Tags → Attributes	Conversion type		Tags → Attributes
+Changelog	Help menu		Changelog
+Help	Help menu		Help
+Readme	Help menu		Readme
+Clear list	Edit menu: Selecting files		Clear list
+First file	Edit menu: Selecting files		First file
+Last file	Edit menu: Selecting files		Last file
+Next file	Edit menu: Selecting files		Next file
+Previous file	Edit menu: Selecting files		Previous file
+Reset	Edit menu: Selecting files		Reset
+Select all	Edit menu: Selecting files		Select all
+Select all unsupported	Edit menu: Selecting files		Select all unsupported
+Copy	Edit menu: Copy/Paste		Copy
+Cut	Edit menu: Copy/Paste		Cut
+Edit	Edit menu: Copy/Paste		Edit
+Paste	Edit menu: Copy/Paste		Paste
+Copy	Mode menu		Copy
+Edit	Mode menu		Edit
+Mode	Mode menu		Mode
+MPEG	Mode menu		MPEG
+Name	Mode menu		Name
+Next mode	Mode menu		Next mode
+Previous mode	Mode menu		Previous mode
+Delete current	Delete filename pattern		Delete current
+Drag and drop files here	Empty list		Drag and drop files here
+Filename:	Filename pattern label		Filename:
+idle	Status		idle
+No image	Status		No image
+New…	New filename pattern		New…
+No more results	Query lookup button		No more results
+Show more	Query lookup button		Show more
+Working…	Query lookup button		Working…
+Online tag lookup	Window title		Online tag lookup
+Online tag lookup…	Editor view button		Online tag lookup…
+The all-in-one metadata editor for audio and MPEG files.	About window		The all-in-one metadata editor for audio and MPEG files.

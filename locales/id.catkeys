@@ -1,0 +1,77 @@
+1	Indonesian	application/x-vnd.armyknife	4243205792
+ selected	Main action		 terpilih
+Add	Main action		Tambah
+Cancel	Main action		Batal
+Reset	Main action		Reset
+Save	Main action		Simpan
+0 files in selection	MPEG information		0 berkas dipilih
+0 have APE tags	MPEG information		0 mempunyai tag APE
+0 have ID3v1 tags	MPEG information		0 mempunyai tag ID3v1
+0 have ID3v2 tags	MPEG information		0 mempunyai tag ID3v2
+Info	MPEG information		Info
+About ArmyKnife	File menu		Tentang ArmyKnife
+File	File menu		Berkas
+Open	File menu		Buka
+Quit	File menu		Keluar
+Add	MPEG operation		Tambah
+Add/Remove	MPEG operation		Tambah/Copot
+Remove	MPEG operation		Copot
+Album	Tag type		Album
+Artist	Tag type		Artis
+Comment	Tag type		Komentar
+Cover	Tag type		Kover
+Genre	Tag type		Genre
+Title	Tag type		Judul
+Track	Tag type		Trek
+Year	Tag type		Tahun
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artis = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Komentar = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Judul= /t
+Track = /k	Pattern explanation	Leave /k untouched.	Trek = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Kartuliar = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Tahun = /y
+Also apply to attributes	Edit mode operation		Berlaku juga untuk atribut
+Also apply to tags	Edit mode operation		Juga berlaku untuk tag
+Attributes	Edit mode operation		Attribute
+Tags	Edit mode operation		Tag
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attribut → Nama
+Attributes → Tags	Conversion type		Attribut → Tags
+Name → Attributes	Conversion type		Nama → Attribut
+Tags → Attributes	Conversion type		Tag → Attribut
+Changelog	Help menu		Log perubahan
+Help	Help menu		Tolong
+Readme	Help menu		Bacasaya
+Clear list	Edit menu: Selecting files		Bersihkan daftar
+First file	Edit menu: Selecting files		Berkas pertama
+Last file	Edit menu: Selecting files		Berkas terakhir
+Next file	Edit menu: Selecting files		Berkas berikutnya
+Previous file	Edit menu: Selecting files		Berkas sebelumnya
+Reset	Edit menu: Selecting files		Reset
+Select all	Edit menu: Selecting files		Pilih semua
+Select all unsupported	Edit menu: Selecting files		Pilih semua tidak didukung
+Copy	Edit menu: Copy/Paste		Salin
+Cut	Edit menu: Copy/Paste		Potong
+Edit	Edit menu: Copy/Paste		Edit
+Paste	Edit menu: Copy/Paste		Tempel
+Copy	Mode menu		Salin
+Edit	Mode menu		Sunting
+Mode	Mode menu		Moda
+MPEG	Mode menu		MPEG
+Name	Mode menu		Nama
+Next mode	Mode menu		Moda selanjutnya
+Previous mode	Mode menu		Moda sebelumnya
+Delete current	Delete filename pattern		Hapus saat ini
+Drag and drop files here	Empty list		Seret dan jatuhkan berkas di sini
+Filename:	Filename pattern label		Namaberkas:
+idle	Status		diam
+No image	Status		Tiada gambar
+New…	New filename pattern		Baru…
+No more results	Query lookup button		Tiada hasil lagi
+Show more	Query lookup button		Tunjukkan lagi
+Working…	Query lookup button		Dikerjakan…
+Online tag lookup	Window title		Mencari tag online
+Online tag lookup…	Editor view button		Pencarian tag online…
+The all-in-one metadata editor for audio and MPEG files.	About window		Editor metadata all-in-one untuk file audio dan MPEG.

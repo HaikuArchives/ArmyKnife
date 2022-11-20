@@ -1,4 +1,4 @@
-1	Portuguese	application/x-vnd.armyknife	2754283573
+1	Portuguese	application/x-vnd.armyknife	4243205792
  selected	Main action		 selecionados
 Add	Main action		Adicionar
 Cancel	Main action		Cancelar
@@ -63,15 +63,15 @@ MPEG	Mode menu		MPEG
 Name	Mode menu		Nome
 Next mode	Mode menu		Modo seguinte
 Previous mode	Mode menu		Modo anterior
-Delete current	Pattern menu		Apagar atual
-Filename:	Pattern menu		Nome de ficheiro:
-New filename pattern	Pattern menu		Novo padrão de nome de ficheiro
-New…	Pattern menu		Novo…
+Delete current	Delete filename pattern		Excluir atual
 Drag and drop files here	Empty list		Arrastar e largar ficheiros aqui
+Filename:	Filename pattern label		Filename:
 idle	Status		ocioso
 No image	Status		Nenhuma imagem
+New…	New filename pattern		Novo...
 No more results	Query lookup button		Não há mais resultados
 Show more	Query lookup button		Mostrar mais
 Working…	Query lookup button		A trabalhar…
 Online tag lookup	Window title		Pesquisa de etiquetas on-line
 Online tag lookup…	Editor view button		Pesquisa de etiquetas on-line…
+The all-in-one metadata editor for audio and MPEG files.	About window		O editor de metadados tudo-em-um para arquivos de áudio e MPEG.

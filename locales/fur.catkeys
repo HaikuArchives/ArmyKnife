@@ -1,0 +1,77 @@
+1	Friulian	application/x-vnd.armyknife	4243205792
+ selected	Main action		selezionât
+Add	Main action		Zonte
+Cancel	Main action		Anule
+Reset	Main action		Ristabilìs
+Save	Main action		Salve
+0 files in selection	MPEG information		0 files te selezion
+0 have APE tags	MPEG information		0 a àn etichetis APE
+0 have ID3v1 tags	MPEG information		0 a àn etichetis ID3v1
+0 have ID3v2 tags	MPEG information		0 a àn etichetis ID3v2
+Info	MPEG information		Informazions
+About ArmyKnife	File menu		Informazions su ArmyKnife
+File	File menu		File
+Open	File menu		Vierç
+Quit	File menu		Jes
+Add	MPEG operation		Zonte
+Add/Remove	MPEG operation		Zonte/Gjave
+Remove	MPEG operation		Gjave
+Album	Tag type		Album
+Artist	Tag type		Artist
+Comment	Tag type		Coment
+Cover	Tag type		Cuvierte
+Genre	Tag type		Gjenar
+Title	Tag type		Titul
+Track	Tag type		Linie
+Year	Tag type		An
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Coment = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Gjenar = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titul = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Linie = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Caratar mate = /*
+Year = /y	Pattern explanation	Leave /y untouched.	An = /y
+Also apply to attributes	Edit mode operation		Apliche ancje ai atribûts
+Also apply to tags	Edit mode operation		Apliche ancje aes etichetis
+Attributes	Edit mode operation		Atribûts
+Tags	Edit mode operation		Etichetis
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Atribûts → Non
+Attributes → Tags	Conversion type		Atribûts → Etichetis
+Name → Attributes	Conversion type		Non → Atribûts
+Tags → Attributes	Conversion type		Etichetis → Atribûts
+Changelog	Help menu		Regjistri modifichis
+Help	Help menu		Jutori
+Readme	Help menu		Leimi
+Clear list	Edit menu: Selecting files		Nete la liste
+First file	Edit menu: Selecting files		Prin file
+Last file	Edit menu: Selecting files		Ultin file
+Next file	Edit menu: Selecting files		File successîf
+Previous file	Edit menu: Selecting files		File precedent
+Reset	Edit menu: Selecting files		Ristabilìs
+Select all	Edit menu: Selecting files		Selezione dut
+Select all unsupported	Edit menu: Selecting files		Selezione ducj chei no supuartâts
+Copy	Edit menu: Copy/Paste		Copie
+Cut	Edit menu: Copy/Paste		Taie
+Edit	Edit menu: Copy/Paste		Modifiche
+Paste	Edit menu: Copy/Paste		Tache
+Copy	Mode menu		Copie
+Edit	Mode menu		Modifiche
+Mode	Mode menu		Modalitât
+MPEG	Mode menu		MPEG
+Name	Mode menu		Non
+Next mode	Mode menu		Modalitât sucessive
+Previous mode	Mode menu		Modalitât precedente
+Delete current	Delete filename pattern		Elimine corint
+Drag and drop files here	Empty list		Strissine e mole i files achì
+Filename:	Filename pattern label		Non dal file:
+idle	Status		inatîf
+No image	Status		Nissune imagjin
+New…	New filename pattern		Gnûf…
+No more results	Query lookup button		Nissun altri risultât
+Show more	Query lookup button		Mostre altris
+Working…	Query lookup button		In vore…
+Online tag lookup	Window title		Ricercje etichetis in rêt
+Online tag lookup…	Editor view button		Ricercje etichetis in rêt…
+The all-in-one metadata editor for audio and MPEG files.	About window		L'editôr di metadâts dut-intun pai files audio e MPEG.

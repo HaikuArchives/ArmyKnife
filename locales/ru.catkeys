@@ -1,4 +1,4 @@
-1	Russian	application/x-vnd.armyknife	2754283573
+1	Russian	application/x-vnd.armyknife	4243205792
  selected	Main action		 выделено
 Add	Main action		Добавить
 Cancel	Main action		Отмена
@@ -25,11 +25,11 @@ Title	Tag type		Заголовок
 Track	Tag type		Дорожка
 Year	Tag type		Год
 Album = /n	Pattern explanation	Leave /n untouched.	Альбом = /n
-Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Artist = /a	Pattern explanation	Leave /a untouched.	Исполнитель = /a
 Comment = /c	Pattern explanation	Leave /c untouched.	Комментарий = /c
 Genre = /g	Pattern explanation	Leave /g untouched.	Жанр = /g
-Title = /t	Pattern explanation	Leave /t untouched.	Title = /t
-Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Title = /t	Pattern explanation	Leave /t untouched.	Название = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Дорожка = /k
 Wildcard = /*	Pattern explanation	Leave /* untouched.	Шаблон = /*
 Year = /y	Pattern explanation	Leave /y untouched.	Год = /y
 Also apply to attributes	Edit mode operation		Также применить к атрибутам
@@ -41,7 +41,7 @@ Attributes → Name	Conversion type		Атрибуты → Имя
 Attributes → Tags	Conversion type		Атрибуты → Тэги
 Name → Attributes	Conversion type		Имя → Атрибуты
 Tags → Attributes	Conversion type		Тэги → Атрибуты
-Changelog	Help menu		Changelog
+Changelog	Help menu		Изменения
 Help	Help menu		Справка
 Readme	Help menu		Readme
 Clear list	Edit menu: Selecting files		Очистить список
@@ -63,15 +63,15 @@ MPEG	Mode menu		MPEG
 Name	Mode menu		Имя
 Next mode	Mode menu		Следующий режим
 Previous mode	Mode menu		Предыдущий режим
-Delete current	Pattern menu		Удалить текущий
-Filename:	Pattern menu		Имя файла:
-New filename pattern	Pattern menu		New filename pattern
-New…	Pattern menu		Новый…
-Drag and drop files here	Empty list		Drag and drop files here
+Delete current	Delete filename pattern		Удалить текущий
+Drag and drop files here	Empty list		Перетащите файлы сюда
+Filename:	Filename pattern label		Имя файла:
 idle	Status		бездействие
 No image	Status		Нет изображения
+New…	New filename pattern		Новый…
 No more results	Query lookup button		Больше нет результатов
 Show more	Query lookup button		Показать больше
 Working…	Query lookup button		Обработка…
-Online tag lookup	Window title		Online tag lookup
-Online tag lookup…	Editor view button		Online tag lookup…
+Online tag lookup	Window title		Поиск тегов онлайн
+Online tag lookup…	Editor view button		Поиск онлайн…
+The all-in-one metadata editor for audio and MPEG files.	About window		Универсальный редактор метаданных аудио и MPEG файлов.

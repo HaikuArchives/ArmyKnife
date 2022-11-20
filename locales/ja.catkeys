@@ -1,4 +1,4 @@
-1	Japanese	application/x-vnd.armyknife	2754283573
+1	Japanese	application/x-vnd.armyknife	4243205792
  selected	Main action		 選択中
 Add	Main action		追加
 Cancel	Main action		中止
@@ -63,15 +63,15 @@ MPEG	Mode menu		MPEG
 Name	Mode menu		名前
 Next mode	Mode menu		次のモード
 Previous mode	Mode menu		前のモード
-Delete current	Pattern menu		Delete current
-Filename:	Pattern menu		Filename:
-New filename pattern	Pattern menu		New filename pattern
-New…	Pattern menu		New…
+Delete current	Delete filename pattern		Delete current
 Drag and drop files here	Empty list		Drag and drop files here
+Filename:	Filename pattern label		Filename:
 idle	Status		停止中
 No image	Status		画像無し
+New…	New filename pattern		New…
 No more results	Query lookup button		結果は以上です。
 Show more	Query lookup button		更に表示
 Working…	Query lookup button		処理中…
 Online tag lookup	Window title		ネットでタグを検索
 Online tag lookup…	Editor view button		ネットでタグを検索…
+The all-in-one metadata editor for audio and MPEG files.	About window		The all-in-one metadata editor for audio and MPEG files.

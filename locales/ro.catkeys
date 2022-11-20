@@ -1,0 +1,77 @@
+1	Romanian	application/x-vnd.armyknife	4243205792
+ selected	Main action		selectat
+Add	Main action		Adaugă
+Cancel	Main action		Anulează
+Reset	Main action		Restabilește
+Save	Main action		Salvează
+0 files in selection	MPEG information		0 fișiere în selecție
+0 have APE tags	MPEG information		0 au etichete APE
+0 have ID3v1 tags	MPEG information		0 au etichete ID3v1
+0 have ID3v2 tags	MPEG information		0 au etichete ID3v2
+Info	MPEG information		Informații
+About ArmyKnife	File menu		Despre ArmyKnife
+File	File menu		Fișier
+Open	File menu		Deschide
+Quit	File menu		Ieșire
+Add	MPEG operation		Adaugă
+Add/Remove	MPEG operation		Adaugă/Elimină
+Remove	MPEG operation		Elimină
+Album	Tag type		Album
+Artist	Tag type		Artist
+Comment	Tag type		Comentariu
+Cover	Tag type		Copertă
+Genre	Tag type		Gen
+Title	Tag type		Titlu
+Track	Tag type		Pistă
+Year	Tag type		An
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Comentariu = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Gen = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titlu = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Pistă = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
+Year = /y	Pattern explanation	Leave /y untouched.	An = /y
+Also apply to attributes	Edit mode operation		Aplică și la atribute
+Also apply to tags	Edit mode operation		Aplică și la etichete
+Attributes	Edit mode operation		Atribute
+Tags	Edit mode operation		Etichete
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Atribute → Nume
+Attributes → Tags	Conversion type		Atribute → Etichete
+Name → Attributes	Conversion type		Nume → Atribute
+Tags → Attributes	Conversion type		Etichete → Atribute
+Changelog	Help menu		Istoric de modificări
+Help	Help menu		Ajutor
+Readme	Help menu		Citește-mă
+Clear list	Edit menu: Selecting files		Curăță lista
+First file	Edit menu: Selecting files		Primul fișier
+Last file	Edit menu: Selecting files		Ultimul fișier
+Next file	Edit menu: Selecting files		Fișierul următor
+Previous file	Edit menu: Selecting files		Fișierul anterior
+Reset	Edit menu: Selecting files		Restabilește
+Select all	Edit menu: Selecting files		Selectează toate
+Select all unsupported	Edit menu: Selecting files		Selectează toate nesuportate
+Copy	Edit menu: Copy/Paste		Copiază
+Cut	Edit menu: Copy/Paste		Taie
+Edit	Edit menu: Copy/Paste		Editează
+Paste	Edit menu: Copy/Paste		Lipește
+Copy	Mode menu		Copiază
+Edit	Mode menu		Editează
+Mode	Mode menu		Mod
+MPEG	Mode menu		MPEG
+Name	Mode menu		Nume
+Next mode	Mode menu		Modul următor
+Previous mode	Mode menu		Modul anteriorr
+Delete current	Delete filename pattern		Elimină fișierul curent
+Drag and drop files here	Empty list		Trageți și plasați fișiere aici
+Filename:	Filename pattern label		Nume fișier:
+idle	Status		inactiv
+No image	Status		Fără imagine
+New…	New filename pattern		Nou…
+No more results	Query lookup button		Nu mai sunt rezultate
+Show more	Query lookup button		Arată mai multe
+Working…	Query lookup button		Se lucrează…
+Online tag lookup	Window title		Căutare online de etichete
+Online tag lookup…	Editor view button		Căutare online de etichete…
+The all-in-one metadata editor for audio and MPEG files.	About window		Editorul all-in-one metadata pentru fișierele audio și MPEG.

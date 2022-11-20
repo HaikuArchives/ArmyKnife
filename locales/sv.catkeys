@@ -1,0 +1,77 @@
+1	Swedish	application/x-vnd.armyknife	4243205792
+ selected	Main action		vald
+Add	Main action		Lägg till
+Cancel	Main action		Avbryt
+Reset	Main action		Återställa
+Save	Main action		Spara
+0 files in selection	MPEG information		0 filer i urval
+0 have APE tags	MPEG information		0 har APE-taggar
+0 have ID3v1 tags	MPEG information		0 har ID3v1-taggar
+0 have ID3v2 tags	MPEG information		0 har ID3v2-taggar
+Info	MPEG information		Info
+About ArmyKnife	File menu		Om ArmyKnife
+File	File menu		Fil
+Open	File menu		Öppen
+Quit	File menu		Avsluta
+Add	MPEG operation		Lägg till
+Add/Remove	MPEG operation		Lägg till ta bort
+Remove	MPEG operation		Ta bort
+Album	Tag type		Album
+Artist	Tag type		Artist
+Comment	Tag type		Kommentar
+Cover	Tag type		Omslag
+Genre	Tag type		Genre
+Title	Tag type		Titel
+Track	Tag type		Spår
+Year	Tag type		År
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artist = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Kommentar = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Spår = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Jokertecken = /*
+Year = /y	Pattern explanation	Leave /y untouched.	År = /y
+Also apply to attributes	Edit mode operation		Gäller även attribut
+Also apply to tags	Edit mode operation		Gäller även taggar
+Attributes	Edit mode operation		Attribut
+Tags	Edit mode operation		Taggar
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attribut → Namn
+Attributes → Tags	Conversion type		Attribut → Taggar
+Name → Attributes	Conversion type		Namn → Attribut
+Tags → Attributes	Conversion type		Taggar → Attribut
+Changelog	Help menu		Ändringslogg
+Help	Help menu		Hjälp
+Readme	Help menu		Läs mig
+Clear list	Edit menu: Selecting files		Rensa listan
+First file	Edit menu: Selecting files		Första filen
+Last file	Edit menu: Selecting files		Sista filen
+Next file	Edit menu: Selecting files		Nästa fil
+Previous file	Edit menu: Selecting files		Föregående fil
+Reset	Edit menu: Selecting files		Återställa
+Select all	Edit menu: Selecting files		Välj alla
+Select all unsupported	Edit menu: Selecting files		Välj alla som inte stöds
+Copy	Edit menu: Copy/Paste		Kopiera
+Cut	Edit menu: Copy/Paste		Skära
+Edit	Edit menu: Copy/Paste		Redigera
+Paste	Edit menu: Copy/Paste		Klistra
+Copy	Mode menu		Kopiera
+Edit	Mode menu		Redigera
+Mode	Mode menu		Läge
+MPEG	Mode menu		MPEG
+Name	Mode menu		Namn
+Next mode	Mode menu		Nästa läge
+Previous mode	Mode menu		Föregående läge
+Delete current	Delete filename pattern		Ta bort aktuell
+Drag and drop files here	Empty list		Dra och släpp filer här
+Filename:	Filename pattern label		Filnamn:
+idle	Status		på tomgång
+No image	Status		Ingen bild
+New…	New filename pattern		Ny…
+No more results	Query lookup button		Inga fler resultat
+Show more	Query lookup button		Visa mer
+Working…	Query lookup button		Arbetssätt…
+Online tag lookup	Window title		Online tag lookup
+Online tag lookup…	Editor view button		Taggensökning online..
+The all-in-one metadata editor for audio and MPEG files.	About window		Allt-i-ett-metadataredigeraren för ljud- och MPEG-filer.

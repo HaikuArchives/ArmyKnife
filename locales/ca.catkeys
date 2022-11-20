@@ -1,0 +1,77 @@
+1	Catalan	application/x-vnd.armyknife	4243205792
+ selected	Main action		 seleccionat/s
+Add	Main action		Afegeix
+Cancel	Main action		Cancel·la
+Reset	Main action		Restableix
+Save	Main action		Desa
+0 files in selection	MPEG information		0 fitxers a la selecció
+0 have APE tags	MPEG information		0 tenen etiquetes APE
+0 have ID3v1 tags	MPEG information		0 tenen etiquetes ID3v1
+0 have ID3v2 tags	MPEG information		0 tenen etiquetes ID3v2
+Info	MPEG information		Informació
+About ArmyKnife	File menu		Sobre el Ganivet suís
+File	File menu		Fitxer
+Open	File menu		Obre
+Quit	File menu		Surt
+Add	MPEG operation		Afegeix
+Add/Remove	MPEG operation		Afegeix / Suprimeix
+Remove	MPEG operation		Suprimeix
+Album	Tag type		Àlbum
+Artist	Tag type		Artista
+Comment	Tag type		Comentari
+Cover	Tag type		Coberta
+Genre	Tag type		Gènere
+Title	Tag type		Títol
+Track	Tag type		Pista
+Year	Tag type		Any
+Album = /n	Pattern explanation	Leave /n untouched.	Àlbum = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artista = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Comentari = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Gènere = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Títol = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Pista = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Comodí = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Any = /y
+Also apply to attributes	Edit mode operation		També s'aplica als atributs
+Also apply to tags	Edit mode operation		També s'aplica a les etiquetes
+Attributes	Edit mode operation		Atributs
+Tags	Edit mode operation		Etiquetes
+ArmyKnife	System name		Ganivet suís
+Attributes → Name	Conversion type		Atributs → Nom
+Attributes → Tags	Conversion type		Atributs → Etiquetes
+Name → Attributes	Conversion type		Nom → Atributs
+Tags → Attributes	Conversion type		Etiquetes → Atributs
+Changelog	Help menu		Registre de canvis
+Help	Help menu		Ajuda
+Readme	Help menu		Llegiu-me
+Clear list	Edit menu: Selecting files		Neteja la llista
+First file	Edit menu: Selecting files		El primer fitxer
+Last file	Edit menu: Selecting files		El darrer fitxer
+Next file	Edit menu: Selecting files		Fitxer següent
+Previous file	Edit menu: Selecting files		Fitxer anterior
+Reset	Edit menu: Selecting files		Restableix
+Select all	Edit menu: Selecting files		Selecciona-ho tot
+Select all unsupported	Edit menu: Selecting files		Selecciona tot el que no s'admet
+Copy	Edit menu: Copy/Paste		Copia
+Cut	Edit menu: Copy/Paste		Retalla
+Edit	Edit menu: Copy/Paste		Edita
+Paste	Edit menu: Copy/Paste		Enganxa
+Copy	Mode menu		Copia
+Edit	Mode menu		Edita
+Mode	Mode menu		Mode
+MPEG	Mode menu		MPEG
+Name	Mode menu		Nom
+Next mode	Mode menu		Mode següent
+Previous mode	Mode menu		Mode anterior
+Delete current	Delete filename pattern		Suprimeix l'actual
+Drag and drop files here	Empty list		Arrossegueu i deixeu anar els fitxers aquí.
+Filename:	Filename pattern label		Nom del fitxer:
+idle	Status		inactiu
+No image	Status		Cap imatge
+New…	New filename pattern		Nou...
+No more results	Query lookup button		No hi ha més resultats.
+Show more	Query lookup button		Mostra'n més
+Working…	Query lookup button		Treballant...
+Online tag lookup	Window title		Cerca d'etiquetes en línia
+Online tag lookup…	Editor view button		Cerca d'etiquetes en línia...
+The all-in-one metadata editor for audio and MPEG files.	About window		L'editor de metadades integrat per a fitxers d'àudio i MPEG.

@@ -1,0 +1,77 @@
+1	Dutch	application/x-vnd.armyknife	4243205792
+ selected	Main action		geselecteerd
+Add	Main action		Toevoegen
+Cancel	Main action		Annuleren
+Reset	Main action		Reset
+Save	Main action		Opslaan
+0 files in selection	MPEG information		0 bestanden in selectie
+0 have APE tags	MPEG information		0 hebben APE tags
+0 have ID3v1 tags	MPEG information		0 hebben ID3v1 tags
+0 have ID3v2 tags	MPEG information		0 hebben ID3v2 tags
+Info	MPEG information		Info
+About ArmyKnife	File menu		Over ArmyKnife
+File	File menu		Bestand
+Open	File menu		Open
+Quit	File menu		Afsluiten
+Add	MPEG operation		Toevoegen
+Add/Remove	MPEG operation		Toevoegen/Verwijderen
+Remove	MPEG operation		Verwijderen
+Album	Tag type		Album
+Artist	Tag type		Artiest
+Comment	Tag type		Commentaar
+Cover	Tag type		Cover
+Genre	Tag type		Genre
+Title	Tag type		Titel
+Track	Tag type		Track
+Year	Tag type		Jaar
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artiest = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Commentaar = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Wildcard = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Jaar = /y
+Also apply to attributes	Edit mode operation		Ook toepassen aan attributen
+Also apply to tags	Edit mode operation		Ook toepassen aan tags
+Attributes	Edit mode operation		Attributen
+Tags	Edit mode operation		Tags
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attributen, → Naam
+Attributes → Tags	Conversion type		Attributen → Tags
+Name → Attributes	Conversion type		Naam → Attributen
+Tags → Attributes	Conversion type		Tags → Attributen
+Changelog	Help menu		Changelog
+Help	Help menu		Help
+Readme	Help menu		Readme
+Clear list	Edit menu: Selecting files		Lijst wissen
+First file	Edit menu: Selecting files		Eerste bestand
+Last file	Edit menu: Selecting files		Laatste bestand
+Next file	Edit menu: Selecting files		Volgend bestand
+Previous file	Edit menu: Selecting files		Vorig bestand
+Reset	Edit menu: Selecting files		Reset
+Select all	Edit menu: Selecting files		Alles selecteren
+Select all unsupported	Edit menu: Selecting files		Alles niet ondersteund selecteren
+Copy	Edit menu: Copy/Paste		Kopieer
+Cut	Edit menu: Copy/Paste		Knippen
+Edit	Edit menu: Copy/Paste		Bewerken
+Paste	Edit menu: Copy/Paste		Plakken
+Copy	Mode menu		Kopieer
+Edit	Mode menu		Bewerken
+Mode	Mode menu		Modus
+MPEG	Mode menu		MPEG
+Name	Mode menu		Naam
+Next mode	Mode menu		Volgende modus
+Previous mode	Mode menu		Vorige modus
+Delete current	Delete filename pattern		Verwijder huidige
+Drag and drop files here	Empty list		Sleep en drop bestanden hier
+Filename:	Filename pattern label		Bestandsnaam:
+idle	Status		niet actief
+No image	Status		Geen afbeelding
+New…	New filename pattern		Nieuw…
+No more results	Query lookup button		Geen volgende resultaten
+Show more	Query lookup button		Toon meer
+Working…	Query lookup button		Werken…
+Online tag lookup	Window title		Online tag opzoeken
+Online tag lookup…	Editor view button		Online tag opzoeken…
+The all-in-one metadata editor for audio and MPEG files.	About window		De alles-in-een metadata bewerker voor MPEG bestanden

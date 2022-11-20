@@ -1,0 +1,77 @@
+1	Sardinian	application/x-vnd.armyknife	4243205792
+ selected	Main action		seberada
+Add	Main action		Agiunghe
+Cancel	Main action		Cassa
+Reset	Main action		Torra a nou
+Save	Main action		Salva
+0 files in selection	MPEG information		0 ischedas in su séberu
+0 have APE tags	MPEG information		0 portant etichetas APE
+0 have ID3v1 tags	MPEG information		0 portant etichetas ID3v1
+0 have ID3v2 tags	MPEG information		0 portant etichetas ID3v2
+Info	MPEG information		Impostas
+About ArmyKnife	File menu		A subra de Resòrgia-de-Armada
+File	File menu		Ischeda
+Open	File menu		Aberi
+Quit	File menu		Essi
+Add	MPEG operation		Agiunghe
+Add/Remove	MPEG operation		Agiunghe/Boga
+Remove	MPEG operation		Boga
+Album	Tag type		Album
+Artist	Tag type		Artista
+Comment	Tag type		Cummentu
+Cover	Tag type		Subra-coberta
+Genre	Tag type		Genia
+Title	Tag type		Tìtulu
+Track	Tag type		Rastru
+Year	Tag type		Annu
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artista = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Cummentu = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genia = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Tìtulu = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Rastru = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Mata = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Annu = /y
+Also apply to attributes	Edit mode operation		Àplica fintzas a is atributos
+Also apply to tags	Edit mode operation		Àplica fintzas a is etichetas
+Attributes	Edit mode operation		Atributos
+Tags	Edit mode operation		Etichetas
+ArmyKnife	System name		Resòrgia-de-Armada
+Attributes → Name	Conversion type		Atributos → Númene
+Attributes → Tags	Conversion type		Atributos → Etichetas
+Name → Attributes	Conversion type		Númene → Atributos
+Tags → Attributes	Conversion type		Etichetas → Atributos
+Changelog	Help menu		Registru de is càmbios
+Help	Help menu		Agiudu
+Readme	Help menu		Leghe·mi
+Clear list	Edit menu: Selecting files		Lìmpia sa lista
+First file	Edit menu: Selecting files		Prima ischèda
+Last file	Edit menu: Selecting files		Última ischeda
+Next file	Edit menu: Selecting files		Ischeda sighente
+Previous file	Edit menu: Selecting files		Ischeda pretzedente
+Reset	Edit menu: Selecting files		Torra a nou
+Select all	Edit menu: Selecting files		Sèbera totu
+Select all unsupported	Edit menu: Selecting files		Sèbera totu chena suportu
+Copy	Edit menu: Copy/Paste		Copia
+Cut	Edit menu: Copy/Paste		Sega
+Edit	Edit menu: Copy/Paste		Muda
+Paste	Edit menu: Copy/Paste		Ataca
+Copy	Mode menu		Copia
+Edit	Mode menu		Muda
+Mode	Mode menu		Modu
+MPEG	Mode menu		MPEG
+Name	Mode menu		Númene
+Next mode	Mode menu		Modu sighente
+Previous mode	Mode menu		Modu pretzedente
+Delete current	Delete filename pattern		Burra atuale
+Drag and drop files here	Empty list		Traga e iscapa is ischedas inoghe
+Filename:	Filename pattern label		Nùmene de ischeda:
+idle	Status		isfainadu
+No image	Status		Peruna immàgine
+New…	New filename pattern		Nou…
+No more results	Query lookup button		Perunu àteru resultadu
+Show more	Query lookup button		Mustra ancora
+Working…	Query lookup button		Traballende…
+Online tag lookup	Window title		Cobera s'eticheta in sa retza
+Online tag lookup…	Editor view button		Cobera s'eticheta in sa retza…
+The all-in-one metadata editor for audio and MPEG files.	About window		Su mudadore de meta-datos totu-in-unu pro ischedas audio e MPEG.

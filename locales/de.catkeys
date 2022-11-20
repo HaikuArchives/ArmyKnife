@@ -1,4 +1,4 @@
-1	German	application/x-vnd.armyknife	2754283573
+1	German	application/x-vnd.armyknife	4243205792
  selected	Main action		 ausgewählt
 Add	Main action		Hinzufügen
 Cancel	Main action		Abbrechen
@@ -22,14 +22,14 @@ Comment	Tag type		Kommentar
 Cover	Tag type		Cover
 Genre	Tag type		Genre
 Title	Tag type		Titel
-Track	Tag type		Nummer
+Track	Tag type		Track
 Year	Tag type		Jahr
 Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
 Artist = /a	Pattern explanation	Leave /a untouched.	Künstler = /a
 Comment = /c	Pattern explanation	Leave /c untouched.	Kommentar = /c
 Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
 Title = /t	Pattern explanation	Leave /t untouched.	Titel = /t
-Track = /k	Pattern explanation	Leave /k untouched.	Nummer = /k
+Track = /k	Pattern explanation	Leave /k untouched.	Track = /k
 Wildcard = /*	Pattern explanation	Leave /* untouched.	Beliebig = /*
 Year = /y	Pattern explanation	Leave /y untouched.	Jahr = /y
 Also apply to attributes	Edit mode operation		Auch auf Attribute anwenden
@@ -51,7 +51,7 @@ Next file	Edit menu: Selecting files		Nächste Datei
 Previous file	Edit menu: Selecting files		Vorherige Datei
 Reset	Edit menu: Selecting files		Zurücksetzen
 Select all	Edit menu: Selecting files		Alle auswählen
-Select all unsupported	Edit menu: Selecting files		Alle nicht Unterstützten auswählen
+Select all unsupported	Edit menu: Selecting files		Alle nicht-unterstützten auswählen
 Copy	Edit menu: Copy/Paste		Kopieren
 Cut	Edit menu: Copy/Paste		Ausschneiden
 Edit	Edit menu: Copy/Paste		Bearbeiten
@@ -63,15 +63,15 @@ MPEG	Mode menu		MPEG
 Name	Mode menu		Name
 Next mode	Mode menu		Nächster Modus
 Previous mode	Mode menu		Vorheriger Modus
-Delete current	Pattern menu		Aktuelles Muster entfernen
-Filename:	Pattern menu		Dateiname:
-New filename pattern	Pattern menu		Neues Muster für Dateiname
-New…	Pattern menu		Neu…
+Delete current	Delete filename pattern		Aktuelles entfernen
 Drag and drop files here	Empty list		Dateien hier fallen lassen
-idle	Status		untätig
+Filename:	Filename pattern label		Dateiname:
+idle	Status		…
 No image	Status		Kein Bild
+New…	New filename pattern		Neu…
 No more results	Query lookup button		Keine weiteren Ergebnisse
 Show more	Query lookup button		Mehr anzeigen
 Working…	Query lookup button		Arbeitet…
 Online tag lookup	Window title		Online-Tag-Suche
 Online tag lookup…	Editor view button		Online-Tag-Suche…
+The all-in-one metadata editor for audio and MPEG files.	About window		Der Editor für Metadaten von Audio- und MPEG-Dateien.

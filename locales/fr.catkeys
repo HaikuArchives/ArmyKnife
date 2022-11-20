@@ -1,0 +1,77 @@
+1	French	application/x-vnd.armyknife	4243205792
+ selected	Main action		Sélectionné
+Add	Main action		Ajouter
+Cancel	Main action		Annuler
+Reset	Main action		Réinitialiser
+Save	Main action		Sauvegarder
+0 files in selection	MPEG information		0 fichier dans la sélection
+0 have APE tags	MPEG information		0 ont des étiquettes APE
+0 have ID3v1 tags	MPEG information		0 ont des étiquettes ID3v1
+0 have ID3v2 tags	MPEG information		0 ont des étiquettes ID3v2
+Info	MPEG information		Info
+About ArmyKnife	File menu		À propos d'ArmyKnife
+File	File menu		Fichier
+Open	File menu		Ouvrir
+Quit	File menu		Quitter
+Add	MPEG operation		Ajouter
+Add/Remove	MPEG operation		Ajouter/Supprimer
+Remove	MPEG operation		Supprimer
+Album	Tag type		Album
+Artist	Tag type		Artiste
+Comment	Tag type		Commentaire
+Cover	Tag type		Couverture
+Genre	Tag type		Genre
+Title	Tag type		Titre
+Track	Tag type		Piste
+Year	Tag type		Année
+Album = /n	Pattern explanation	Leave /n untouched.	Album = /n
+Artist = /a	Pattern explanation	Leave /a untouched.	Artiste = /a
+Comment = /c	Pattern explanation	Leave /c untouched.	Commentaire = /c
+Genre = /g	Pattern explanation	Leave /g untouched.	Genre = /g
+Title = /t	Pattern explanation	Leave /t untouched.	Titre = /t
+Track = /k	Pattern explanation	Leave /k untouched.	Piste = /k
+Wildcard = /*	Pattern explanation	Leave /* untouched.	Joker = /*
+Year = /y	Pattern explanation	Leave /y untouched.	Année = /y
+Also apply to attributes	Edit mode operation		Appliquer aussi aux attributs
+Also apply to tags	Edit mode operation		Appliquer aussi aux tags
+Attributes	Edit mode operation		Attributs
+Tags	Edit mode operation		Tags
+ArmyKnife	System name		ArmyKnife
+Attributes → Name	Conversion type		Attributs → Nom
+Attributes → Tags	Conversion type		Attributs → Tags
+Name → Attributes	Conversion type		Nom → Attributs
+Tags → Attributes	Conversion type		Tags → Attributs
+Changelog	Help menu		Journal des modifications
+Help	Help menu		Aide
+Readme	Help menu		Lisezmoi
+Clear list	Edit menu: Selecting files		Nettoyer la liste
+First file	Edit menu: Selecting files		Premier fichier
+Last file	Edit menu: Selecting files		Dernier fichier
+Next file	Edit menu: Selecting files		Fichier suivant
+Previous file	Edit menu: Selecting files		Fichier précédent
+Reset	Edit menu: Selecting files		Réinitialiser
+Select all	Edit menu: Selecting files		Sélectionner tout
+Select all unsupported	Edit menu: Selecting files		Sélectionner tous ceux non-supportés
+Copy	Edit menu: Copy/Paste		Copier
+Cut	Edit menu: Copy/Paste		Couper
+Edit	Edit menu: Copy/Paste		Éditer
+Paste	Edit menu: Copy/Paste		Coller
+Copy	Mode menu		Copier
+Edit	Mode menu		Éditer
+Mode	Mode menu		Mode
+MPEG	Mode menu		MPEG
+Name	Mode menu		Nom
+Next mode	Mode menu		Mode suivant
+Previous mode	Mode menu		Mode précédent
+Delete current	Delete filename pattern		Supprimer le nom actuel
+Drag and drop files here	Empty list		Glissez et déposez les fichiers ici
+Filename:	Filename pattern label		Nom de fichier :
+idle	Status		En attente
+No image	Status		Pas d'image
+New…	New filename pattern		Nouveau…
+No more results	Query lookup button		Aucun autre résultat
+Show more	Query lookup button		En afficher plus
+Working…	Query lookup button		En cours…
+Online tag lookup	Window title		Recherche des tags en ligne
+Online tag lookup…	Editor view button		Recherche des tags en ligne…
+The all-in-one metadata editor for audio and MPEG files.	About window		L'éditeur de métadonnées tout-en-un pour les fichiers audio et MPEG.
