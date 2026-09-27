@@ -46,7 +46,7 @@ class QueryWindow : public BWindow
 			private:
 				BMessenger m_reply_to;
 				Query* m_query;
-				BObjectList<Queryable> m_records;
+				BObjectList<Queryable, true> m_records;
 		};
 
 		Worker* m_worker;
