@@ -212,28 +212,14 @@ AlbumPictureView::UpdatePicture(const char *path)
 			}
 			if (pictureFrame != NULL)
 			{
-				// WARNING: HACK
-				// This loop is needed because
-				// sometimes the image cannot be loaded
-				// in first few runs (idk why that happens)
-				// P.S. It still fails sometimes
 				delete m_bitmap;
 				m_bitmap = NULL;
-				const uint32 maxCount = 50;
 				TagLib::ByteVector pictureData = pictureFrame->picture();
-				for (int counter = 0; counter < maxCount && m_bitmap == NULL;
-					++counter)
-				{
-					delete m_bitmap;
-
-					BMemoryIO *memStream = new BMemoryIO(
-						pictureData.data(),
-						pictureData.size());
-
-					m_bitmap = BTranslationUtils::GetBitmap(memStream);
-
+				BMemoryIO *memStream = new BMemoryIO(
+					pictureData.data(),
+					pictureData.size());
+				m_bitmap = BTranslationUtils::GetBitmap(memStream);
 					delete memStream;
-				}
 				if (m_bitmap != NULL)
 				{
 					DrawBitmap(m_bitmap,
