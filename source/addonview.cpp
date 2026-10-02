@@ -105,6 +105,7 @@ AddOnView::FlagUnacceptedListItems()
 {
 	PRINT(("AddOnView::FlagUnacceptedListItems()\n"));
 
+	bool hadSelection = m_list_view->CurrentSelection(0) >= 0;
 	bool foundUnaccepted = false;
 
 	EntryRefItem* listItem;
@@ -124,9 +125,11 @@ AddOnView::FlagUnacceptedListItems()
 	}
 
 	if (foundUnaccepted) {
-		m_list_view->DeselectAll();
-		m_list_view->ScrollToFirstUnaccepted();
-	} else {
+		if (!m_list_view->HasSelectionOfOnlyAcceptedItems()) {
+			m_list_view->DeselectAll();
+			m_list_view->ScrollToFirstUnaccepted();
+		}
+	} else if (!hadSelection) {
 		m_list_view->SelectAll();
 	}
 }

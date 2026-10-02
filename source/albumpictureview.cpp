@@ -74,9 +74,7 @@ AlbumPictureView::ProcessRefs(BMessage *message)
 	{
 		// Draw only if a track is chosen in the list
 		if (m_attached_to_track)
-			DrawBitmap(m_bitmap, BRect(0, 0,
-				Bounds().Width(),
-				Bounds().Height()));
+			Invalidate();
 		return true;
 	}
 	return false;
@@ -113,7 +111,10 @@ AlbumPictureView::SetPicture(const char *path)
 		return;
 
 	TagLib::MPEG::File file(path);
-	TagLib::ID3v2::Tag *fileTags = file.ID3v2Tag();
+	TagLib::ID3v2::Tag *fileTags = file.ID3v2Tag(true);
+	if (fileTags == NULL)
+		return;
+
 	TagLib::ID3v2::FrameList foundFrames = fileTags->frameList("APIC");
 
 	// Delete all the covers in this file
@@ -165,7 +166,7 @@ AlbumPictureView::SetPicture(const char *path)
 	pictureFrame->setMimeType(mimeName);
 	pictureFrame->setType(TagLib::ID3v2::AttachedPictureFrame::FrontCover);
 	pictureFrame->setPicture(
-		TagLib::ByteVector(static_cast<const char*>(buffer->Buffer()), buffer->BufferLength() + 1));
+		TagLib::ByteVector(static_cast<const char*>(buffer->Buffer()), buffer->BufferLength()));
 	printf("drag:%i\n", fileTags->frameList("APIC").size());
 	fileTags->addFrame(pictureFrame);
 	printf("drag:%i\n", fileTags->frameList("APIC").size());
@@ -211,27 +212,14 @@ AlbumPictureView::UpdatePicture(const char *path)
 			}
 			if (pictureFrame != NULL)
 			{
-				// WARNING: HACK
-				// This loop is needed because
-				// sometimes the image cannot be loaded
-				// in first few runs (idk why that happens)
-				// P.S. It still fails sometimes
 				delete m_bitmap;
 				m_bitmap = NULL;
-				const uint32 maxCount = 50;
-				for (int counter = 0; counter < maxCount && m_bitmap == NULL;
-					++counter)
-				{
-					delete m_bitmap;
-
-					BMemoryIO *memStream = new BMemoryIO(
-						pictureFrame->picture().data(),
-						pictureFrame->picture().size());
-
-					m_bitmap = BTranslationUtils::GetBitmap(memStream);
-
+				TagLib::ByteVector pictureData = pictureFrame->picture();
+				BMemoryIO *memStream = new BMemoryIO(
+					pictureData.data(),
+					pictureData.size());
+				m_bitmap = BTranslationUtils::GetBitmap(memStream);
 					delete memStream;
-				}
 				if (m_bitmap != NULL)
 				{
 					DrawBitmap(m_bitmap,

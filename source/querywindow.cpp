@@ -128,7 +128,7 @@ QueryWindow::Worker::Worker(Query* query, BMessenger reply_to)
 	BLooper(),
 	m_query(query),
 	m_reply_to(reply_to),
-	m_records(20, true)
+	m_records(20)
 {
 	PRINT(("QueryWindow::Worker::Worker(Query*, BMessenger)\n"));
 }

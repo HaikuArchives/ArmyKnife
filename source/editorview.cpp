@@ -58,25 +58,25 @@ EditorView::~EditorView(){
 void EditorView::InitView()
 {
 	int space = 6;
-	m_attribute_radiobutton = new BRadioButton("m_attribute_radiobutton",ATTRIBUTES_LABEL,
-			new BMessage(RADIO_BUTTON_EVENT));
-	m_attribute_radiobutton->SetValue(B_CONTROL_ON);
-
 	m_tag_radiobutton = new BRadioButton("m_tag_radiobutton",TAGS_LABEL,
+			new BMessage(RADIO_BUTTON_EVENT));
+	m_tag_radiobutton->SetValue(B_CONTROL_ON);
+
+	m_attribute_radiobutton = new BRadioButton("m_attribute_radiobutton",ATTRIBUTES_LABEL,
 			new BMessage(RADIO_BUTTON_EVENT));
 
 	m_apply_checkbox = new BCheckBox("m_apply_checkbox",APPLY_TO_ATTRIBUTES,
 			new BMessage(MSG_APPLY_TO_BOTH));
 	m_apply_checkbox->SetValue(B_CONTROL_OFF);
-	m_apply_checkbox->SetLabel(APPLY_TO_TAGS);
+	WidgetsRBValues();
 
 	m_edit_box = new BBox("m_edit_box");
 	BGroupLayout *editBoxLayout = BLayoutBuilder::Group<>(B_VERTICAL, 0)
 		.SetInsets(B_USE_SMALL_INSETS)
 		.AddGroup(B_HORIZONTAL)
-			.Add(m_attribute_radiobutton)
-			.AddStrut(B_USE_BIG_SPACING)
 			.Add(m_tag_radiobutton)
+			.AddStrut(B_USE_BIG_SPACING)
+			.Add(m_attribute_radiobutton)
 			.AddGlue()
 		.End()
 		.Add(m_apply_checkbox);
@@ -253,7 +253,7 @@ void EditorView::Reset() {
 	AddOnView::Reset();
 	WidgetsSetValues();
 	WidgetsSetEnabled();
-	m_attribute_radiobutton->SetValue(B_CONTROL_ON);
+	m_tag_radiobutton->SetValue(B_CONTROL_ON);
 }
 
 void EditorView::SetEnabled(BCheckBox* checkbox, BControl* control) {
